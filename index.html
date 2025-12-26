@@ -3,36 +3,478 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Claduta Corporation</title>
+    <title>Claduta Corporation | Strategic Capital. Real Assets. Global Reach.</title>
+    <meta name="description" content="Claduta Corporation - Investment and project development company focused on natural resources, energy, and real assets.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: system-ui, -apple-system, sans-serif;
-            background: #0a1628;
-            color: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+        :root {
+            --green-dark: #2d4a3e;
+            --green-medium: #3d5a4e;
+            --cream: #f5f3ef;
+            --charcoal: #1a1a1a;
+            --gold: #c9a961;
+            --white: #ffffff;
+        }
+
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .container {
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--white);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+
+        .nav-logo img {
+            height: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--green-dark);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-medium) 100%);
+            padding: 120px 5% 80px;
             text-align: center;
-            padding: 2rem;
         }
-        h1 {
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-logo {
+            max-width: 400px;
+            margin-bottom: 2rem;
+            filter: brightness(0) invert(1);
+        }
+
+        .hero h1 {
+            color: var(--white);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.02em;
+        }
+
+        .hero p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.25rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--gold);
+            color: var(--charcoal);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--white);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 5%;
+        }
+
+        .section-dark {
+            background: var(--charcoal);
+            color: var(--white);
+        }
+
+        .section-cream {
+            background: var(--cream);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
             font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
         }
-        p {
-            color: #94a3b8;
+
+        .section-header p {
             font-size: 1.1rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--green-dark);
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 350px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        /* Focus Areas */
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .focus-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 4px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .focus-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .focus-card h3 {
+            color: var(--green-dark);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .focus-card p {
+            color: var(--charcoal);
+            opacity: 0.8;
+        }
+
+        /* Projects Preview */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 2.5rem;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: var(--gold);
+        }
+
+        .project-card .tag {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--charcoal);
+            padding: 0.25rem 0.75rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            border-radius: 2px;
+        }
+
+        .project-card h3 {
+            margin-bottom: 0.75rem;
+        }
+
+        .project-card p {
+            opacity: 0.8;
+            font-size: 0.95rem;
+        }
+
+        /* CTA */
+        .cta {
+            text-align: center;
+            background: var(--green-dark);
+            color: var(--white);
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: var(--white);
+            padding: 60px 5% 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-brand img {
+            max-width: 200px;
+            filter: brightness(0) invert(1);
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            opacity: 0.7;
+            font-size: 0.95rem;
+        }
+
+        .footer-links h4, .footer-contact h4 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-weight: 600;
+        }
+
+        .footer-links a {
+            display: block;
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.7;
+            margin-bottom: 0.5rem;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-contact p {
+            opacity: 0.7;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.6;
+            font-size: 0.9rem;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Claduta Corporation</h1>
-        <p>Investment Excellence in Natural Resources</p>
-    </div>
+    <nav>
+        <a href="index.html" class="nav-logo">
+            <img src="assets/logo-header.png" alt="Claduta Corporation">
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <img src="assets/logo-full.png" alt="Claduta Corporation" class="hero-logo">
+            <h1>Strategic Capital. Real Assets. Global Reach.</h1>
+            <p>Connecting investors with high-value opportunities in natural resources, energy, and real asset development.</p>
+            <a href="projects.html" class="btn">View Our Projects</a>
+        </div>
+    </section>
+
+    <section class="section-cream">
+        <div class="container about-grid">
+            <div class="about-text">
+                <h2>About Claduta Corporation</h2>
+                <p>Claduta Corporation is a U.S.-based investment and project development company headquartered in South Dakota. We specialize in identifying, structuring, and managing high-potential ventures in natural resources, energy, and real asset sectors.</p>
+                <p>Our approach combines rigorous due diligence with strategic partnerships to deliver sustainable returns for our investors while driving economic growth in the communities where we operate.</p>
+                <p>With a focus on transparency and long-term value creation, we bridge the gap between capital and opportunity across domestic and international markets.</p>
+            </div>
+            <div class="about-image">
+                <img src="assets/logo-horizontal.png" alt="Claduta Corporation">
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <h2>Investment Focus</h2>
+                <p>We target opportunities in sectors with tangible assets, proven demand, and strong fundamentals.</p>
+            </div>
+            <div class="focus-grid">
+                <div class="focus-card">
+                    <h3>Oil & Natural Gas</h3>
+                    <p>Strategic investments in exploration, production, and distribution across proven reserves and emerging plays.</p>
+                </div>
+                <div class="focus-card">
+                    <h3>Mining & Minerals</h3>
+                    <p>Precious metals, industrial minerals, and critical resources essential to modern infrastructure and technology.</p>
+                </div>
+                <div class="focus-card">
+                    <h3>Agriculture</h3>
+                    <p>Large-scale farming operations, agribusiness ventures, and sustainable food production systems.</p>
+                </div>
+                <div class="focus-card">
+                    <h3>Renewable Energy</h3>
+                    <p>Ethanol production, biofuels, and clean energy projects driving the transition to sustainable power.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2>Current Projects</h2>
+                <p>Active opportunities in our investment portfolio.</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <span class="tag">Oil & Gas</span>
+                    <h3>Humble Dome</h3>
+                    <p>Strategic oil and gas development project in a proven Texas field with significant upside potential.</p>
+                </div>
+                <div class="project-card">
+                    <span class="tag">Coming Soon</span>
+                    <h3>Project 2</h3>
+                    <p>Details on additional investment opportunities will be announced soon.</p>
+                </div>
+                <div class="project-card">
+                    <span class="tag">Coming Soon</span>
+                    <h3>Project 3</h3>
+                    <p>Details on additional investment opportunities will be announced soon.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="projects.html" class="btn">View All Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Explore Opportunities?</h2>
+            <p>Connect with our team to learn more about current and upcoming investment projects.</p>
+            <a href="contact.html" class="btn">Contact Us</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="assets/logo-full.png" alt="Claduta Corporation">
+                <p>Investment and project development focused on natural resources and real assets.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <a href="index.html">Home</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p>info@cladutacorp.com</p>
+                <p>+1 (727) 623-2652</p>
+                <p>South Dakota, USA</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Claduta Corporation. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>
