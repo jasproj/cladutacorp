@@ -154,6 +154,20 @@
     </style>
 </head>
 <body>
+    <!-- Access Gate Modal -->
+    <div id="accessGate" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 9999; display: flex; align-items: center; justify-content: center;">
+        <div style="background: #fff; padding: 3rem; border-radius: 8px; max-width: 450px; text-align: center; margin: 20px;">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">🔐</div>
+            <h2 style="color: #2d4a3e; margin-bottom: 1rem; font-family: 'Playfair Display', serif;">Data Room Access</h2>
+            <p style="color: #666; margin-bottom: 2rem;">This area contains confidential information protected under NDA. Enter your access code to continue.</p>
+            <input type="text" id="accessCodeInput" placeholder="Enter Access Code" style="width: 100%; padding: 1rem; border: 2px solid #ddd; border-radius: 4px; font-size: 1.1rem; text-align: center; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1rem;">
+            <p id="accessError" style="color: #c0392b; display: none; margin-bottom: 1rem;">Invalid access code. Please try again.</p>
+            <button onclick="checkAccess()" style="width: 100%; padding: 1rem; background: #c9a961; color: #1a1a1a; border: none; border-radius: 4px; font-size: 1rem; font-weight: 600; cursor: pointer;">Enter Data Room</button>
+            <p style="margin-top: 1.5rem; font-size: 0.85rem; color: #888;">Don't have an access code? <a href="nda-application.html" style="color: #2d4a3e;">Complete your NDA →</a></p>
+        </div>
+    </div>
+
+    <div id="mainContent" style="display: none;">
     <div class="confidential-banner">&#128274; CONFIDENTIAL — NDA REQUIRED — DO NOT DISTRIBUTE</div>
 
     <nav>
@@ -556,6 +570,48 @@
         </div>
         <p class="footer-copy">&copy; 2024 Claduta Corporation. South Dakota. All rights reserved.</p>
     </footer>
+    </div><!-- End mainContent -->
+
+    <script>
+        // Access Control
+        const VALID_CODES = ['HUMBLE2024', 'DATAROOM', 'INVESTOR2024']; // Add your codes here
+        
+        function checkStoredAccess() {
+            const ndaSigned = localStorage.getItem('humble_nda_signed');
+            const accessGranted = localStorage.getItem('humble_access_granted');
+            return ndaSigned === 'true' || accessGranted === 'true';
+        }
+
+        function showContent() {
+            document.getElementById('accessGate').style.display = 'none';
+            document.getElementById('mainContent').style.display = 'block';
+        }
+
+        function checkAccess() {
+            const code = document.getElementById('accessCodeInput').value.toUpperCase().trim();
+            if (VALID_CODES.includes(code)) {
+                localStorage.setItem('humble_access_granted', 'true');
+                showContent();
+            } else {
+                document.getElementById('accessError').style.display = 'block';
+                document.getElementById('accessCodeInput').style.borderColor = '#c0392b';
+            }
+        }
+
+        // Check on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            if (checkStoredAccess()) {
+                showContent();
+            } else {
+                document.getElementById('accessGate').style.display = 'flex';
+            }
+        });
+
+        // Allow Enter key
+        document.getElementById('accessCodeInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') checkAccess();
+        });
+    </script>
 
     <script>
         function reveal() {
