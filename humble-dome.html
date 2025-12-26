@@ -214,7 +214,7 @@
             
             <div class="hero-stats">
                 <div class="hero-stat">
-                    <span class="hero-stat-value" id="stat-wells">5</span>
+                    <span class="hero-stat-value" id="stat-wells">9</span>
                     <span class="hero-stat-label">Proven Wells</span>
                 </div>
                 <div class="hero-stat">
@@ -389,6 +389,62 @@
                     </div>
                     <p class="well-note">Main pad location. Underground flowlines connect all wells here.</p>
                 </div>
+
+                <div class="well-card reveal" data-type="secondary" style="animation-delay: 0.5s;">
+                    <div class="well-header">
+                        <span class="well-name">Bahr #2</span>
+                        <span class="well-status secondary">Secondary</span>
+                    </div>
+                    <div class="well-stats">
+                        <div class="well-stat"><span>API Number</span><strong>4220132365</strong></div>
+                        <div class="well-stat"><span>Field</span><strong>Cross Creek</strong></div>
+                        <div class="well-stat"><span>Formation</span><strong>Wilcox</strong></div>
+                        <div class="well-stat"><span>Status</span><strong>Evaluation</strong></div>
+                    </div>
+                    <p class="well-note">Part of 9-well portfolio. Awaiting engineering assessment.</p>
+                </div>
+
+                <div class="well-card reveal" data-type="secondary" style="animation-delay: 0.6s;">
+                    <div class="well-header">
+                        <span class="well-name">Bahr #6</span>
+                        <span class="well-status secondary">Secondary</span>
+                    </div>
+                    <div class="well-stats">
+                        <div class="well-stat"><span>API Number</span><strong>4220132447</strong></div>
+                        <div class="well-stat"><span>Field</span><strong>Cross Creek</strong></div>
+                        <div class="well-stat"><span>Formation</span><strong>Wilcox</strong></div>
+                        <div class="well-stat"><span>Status</span><strong>Evaluation</strong></div>
+                    </div>
+                    <p class="well-note">Part of 9-well portfolio. Awaiting engineering assessment.</p>
+                </div>
+
+                <div class="well-card reveal" data-type="secondary" style="animation-delay: 0.7s;">
+                    <div class="well-header">
+                        <span class="well-name">Bahr #8</span>
+                        <span class="well-status secondary">Secondary</span>
+                    </div>
+                    <div class="well-stats">
+                        <div class="well-stat"><span>API Number</span><strong>4220132437</strong></div>
+                        <div class="well-stat"><span>Field</span><strong>Cross Creek</strong></div>
+                        <div class="well-stat"><span>Formation</span><strong>Wilcox</strong></div>
+                        <div class="well-stat"><span>Status</span><strong>Evaluation</strong></div>
+                    </div>
+                    <p class="well-note">Part of 9-well portfolio. Awaiting engineering assessment.</p>
+                </div>
+
+                <div class="well-card reveal" data-type="secondary" style="animation-delay: 0.8s;">
+                    <div class="well-header">
+                        <span class="well-name">Cleveland Agent #1</span>
+                        <span class="well-status secondary">Secondary</span>
+                    </div>
+                    <div class="well-stats">
+                        <div class="well-stat"><span>API Number</span><strong>4220132444</strong></div>
+                        <div class="well-stat"><span>Field</span><strong>Cross Creek</strong></div>
+                        <div class="well-stat"><span>Formation</span><strong>Wilcox</strong></div>
+                        <div class="well-stat"><span>Status</span><strong>Evaluation</strong></div>
+                    </div>
+                    <p class="well-note">Additional well in Cross Creek field. Part of full portfolio acquisition.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -425,6 +481,13 @@
                     <p class="team-role">Chief Financial Officer</p>
                     <p>Financial strategy and reporting. Managing capital allocation and investor distributions.</p>
                     <p class="team-contact">305-747-3779</p>
+                </div>
+
+                <div class="team-card reveal" style="animation-delay: 0.3s;">
+                    <div class="team-avatar">SM</div>
+                    <h3>Steven McGuire</h3>
+                    <p class="team-role">Technical Advisor</p>
+                    <p>Former COO of Spectral Oil &amp; Gas. Led the 2016 acquisition from White Oak Resources. Deep knowledge of Cross Creek field.</p>
                 </div>
             </div>
 
@@ -619,12 +682,12 @@
         // Animate counter
         setTimeout(() => {
             let count = 0;
-            const target = 5;
+            const target = 9;
             const interval = setInterval(() => {
                 count++;
                 document.getElementById('stat-wells').textContent = count;
                 if (count >= target) clearInterval(interval);
-            }, 200);
+            }, 150);
         }, 500);
     </script>
 </body>
