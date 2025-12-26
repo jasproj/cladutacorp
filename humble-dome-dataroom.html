@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Humble Dome Data Room | Confidential | Claduta Corporation</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green-dark: #2d4a3e;
+            --green-medium: #3d5a4e;
+            --green-light: #4a6b5d;
+            --cream: #f5f3ef;
+            --cream-dark: #e8e4dc;
+            --charcoal: #1a1a1a;
+            --gold: #c9a961;
+            --gold-light: #d4b978;
+            --white: #ffffff;
+            --orange: #e67e22;
+            --red: #c0392b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Source Sans Pro', sans-serif; color: var(--charcoal); line-height: 1.6; overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 600; }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Confidential Banner */
+        .confidential-banner { background: var(--red); color: var(--white); text-align: center; padding: 0.75rem; font-weight: 600; font-size: 0.9rem; letter-spacing: 1px; position: fixed; top: 0; width: 100%; z-index: 1001; }
+
+        nav { position: fixed; top: 40px; width: 100%; background: var(--white); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); z-index: 1000; }
+        .nav-logo img { height: 50px; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--charcoal); font-weight: 600; font-size: 0.95rem; transition: color 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--green-dark); }
+
+        .hero { min-height: 60vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-medium) 100%); padding: 160px 5% 80px; text-align: center; }
+        .hero-content { max-width: 1000px; animation: fadeInUp 1s ease; }
+        .hero-badge { display: inline-block; background: rgba(192, 57, 43, 0.3); border: 1px solid var(--red); color: var(--white); padding: 0.5rem 1.5rem; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 2rem; }
+        .hero h1 { color: var(--white); font-size: 3.5rem; margin-bottom: 1rem; }
+        .hero-subtitle { color: rgba(255,255,255,0.9); font-size: 1.3rem; font-weight: 300; }
+
+        section { padding: 80px 5%; }
+        .section-cream { background: var(--cream); }
+        .section-dark { background: var(--charcoal); color: var(--white); }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-label { display: inline-block; color: var(--gold); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem; }
+        .section-header h2 { font-size: 2.2rem; margin-bottom: 1rem; }
+        .section-header p { font-size: 1rem; opacity: 0.8; max-width: 700px; margin: 0 auto; }
+
+        /* Well Cards */
+        .well-filters { display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .filter-btn { background: transparent; border: 1px solid var(--green-dark); color: var(--green-dark); padding: 0.5rem 1.5rem; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+        .filter-btn:hover, .filter-btn.active { background: var(--green-dark); color: var(--white); }
+        .well-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+        .well-card { background: var(--white); border: 1px solid #e0e0e0; border-radius: 4px; padding: 1.5rem; transition: all 0.4s ease; }
+        .well-card:hover { border-color: var(--gold); box-shadow: 0 10px 30px rgba(0,0,0,0.1); transform: translateY(-5px); }
+        .well-card.highlight { border-color: var(--gold); background: linear-gradient(135deg, #fffbf0 0%, var(--white) 100%); }
+        .well-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #eee; }
+        .well-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; color: var(--green-dark); }
+        .well-status { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 2px; letter-spacing: 1px; }
+        .well-status.priority { background: var(--gold); color: var(--charcoal); }
+        .well-status.secondary { background: var(--cream); color: var(--green-dark); }
+        .well-status.subsalt { background: var(--orange); color: var(--white); animation: pulse 2s infinite; }
+        .well-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .well-stat span { display: block; font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
+        .well-stat strong { font-size: 1rem; color: var(--charcoal); }
+        .well-note { margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed #ddd; font-size: 0.85rem; color: var(--green-dark); font-style: italic; }
+        .well-api { font-size: 0.8rem; color: #666; margin-top: 0.5rem; font-family: monospace; }
+
+        /* Team Section */
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .team-card { background: var(--white); padding: 2rem; text-align: center; border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .team-avatar { width: 80px; height: 80px; background: var(--green-dark); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--white); font-family: 'Playfair Display', serif; }
+        .team-card h3 { color: var(--green-dark); margin-bottom: 0.25rem; font-size: 1.2rem; }
+        .team-role { color: var(--gold); font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 0.75rem; }
+        .team-card p { color: #666; font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .team-contact { font-weight: 600; color: var(--green-dark); font-size: 0.95rem; }
+
+        /* Partners */
+        .partners-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; }
+        .partner { text-align: center; padding: 1rem; }
+        .partner-name { font-weight: 600; color: var(--green-dark); }
+        .partner-role { font-size: 0.85rem; color: #888; }
+
+        /* Investment Terms */
+        .terms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .terms-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 2rem; border-radius: 4px; }
+        .terms-box h3 { color: var(--gold); margin-bottom: 1.5rem; font-size: 1.3rem; }
+        .term-row { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .term-row:last-child { border-bottom: none; }
+        .term-label { color: rgba(255,255,255,0.7); }
+        .term-value { font-weight: 600; color: var(--white); }
+
+        /* Calculator */
+        .calculator { background: var(--white); padding: 2rem; border-radius: 4px; color: var(--charcoal); }
+        .calculator h3 { color: var(--green-dark); margin-bottom: 1.5rem; font-size: 1.3rem; }
+        .calc-input { margin-bottom: 1.25rem; }
+        .calc-input label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--green-dark); font-size: 0.9rem; }
+        .calc-input input[type="range"] { width: 100%; margin-bottom: 0.5rem; accent-color: var(--gold); }
+        .calc-input .value-display { text-align: right; font-weight: 600; color: var(--gold); }
+        .calc-results { background: var(--cream); padding: 1.25rem; border-radius: 4px; margin-top: 1.5rem; }
+        .calc-result-row { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.05); font-size: 0.95rem; }
+        .calc-result-row:last-child { border-bottom: none; font-weight: 700; color: var(--green-dark); }
+
+        /* Timeline */
+        .timeline { max-width: 700px; margin: 0 auto; }
+        .timeline-item { display: grid; grid-template-columns: 100px 1fr; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid #ddd; }
+        .timeline-item:last-child { border-bottom: none; }
+        .timeline-period { font-weight: 600; color: var(--gold); font-size: 0.9rem; }
+        .timeline-title { color: var(--green-dark); margin-bottom: 0.25rem; font-size: 1.1rem; }
+        .timeline-desc { opacity: 0.8; font-size: 0.95rem; }
+
+        /* Documents */
+        .docs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+        .doc-card { background: var(--white); border: 1px solid #e0e0e0; padding: 1.5rem; text-align: center; border-radius: 4px; transition: all 0.3s; }
+        .doc-card:hover { border-color: var(--gold); box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        .doc-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .doc-card h4 { color: var(--green-dark); margin-bottom: 0.5rem; }
+        .doc-card p { font-size: 0.85rem; color: #888; }
+
+        /* CTA */
+        .cta-section { text-align: center; background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-medium) 100%); color: var(--white); }
+        .cta-section h2 { font-size: 2rem; margin-bottom: 1rem; }
+        .btn { display: inline-block; padding: 1rem 2rem; font-weight: 600; text-decoration: none; border-radius: 2px; transition: all 0.3s; margin: 0.5rem; }
+        .btn-primary { background: var(--gold); color: var(--charcoal); }
+        .btn-primary:hover { background: var(--white); }
+        .btn-outline { background: transparent; color: var(--white); border: 2px solid var(--white); }
+
+        .disclaimer { background: var(--charcoal); color: rgba(255,255,255,0.6); padding: 2rem 5%; font-size: 0.8rem; line-height: 1.8; }
+        .disclaimer strong { color: var(--gold); }
+        footer { background: var(--charcoal); color: var(--white); padding: 30px 5% 15px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .footer-content { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; flex-wrap: wrap; gap: 1rem; }
+        .footer-brand img { max-width: 120px; filter: brightness(0) invert(1); }
+        .footer-links { display: flex; gap: 2rem; list-style: none; }
+        .footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.9rem; }
+        .footer-copy { width: 100%; text-align: center; padding-top: 1.5rem; margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.6; font-size: 0.85rem; }
+
+        @media (max-width: 968px) { .terms-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+            .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="confidential-banner">&#128274; CONFIDENTIAL — NDA REQUIRED — DO NOT DISTRIBUTE</div>
+
+    <nav>
+        <a href="index.html" class="nav-logo"><img src="logo-header.png" alt="Claduta Corporation"></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="humble-dome.html">Humble Dome</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">&#128274; Confidential Data Room</span>
+            <h1>Humble Dome</h1>
+            <p class="hero-subtitle">Cross Creek Field &bull; Harris County, Texas &bull; Bahr Lease Portfolio</p>
+        </div>
+    </section>
+
+    <!-- Property Overview -->
+    <section class="section-cream">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Property Details</span>
+                <h2>Cross Creek Field — Humble Salt Dome</h2>
+                <p>Birthplace of Exxon's predecessor, Humble Oil. 1,500 acres with 9 wells in the Bahr Lease portfolio.</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                <div class="reveal">
+                    <h3 style="color: var(--green-dark); margin-bottom: 1rem;">Location</h3>
+                    <p><strong>Field:</strong> Cross Creek Field</p>
+                    <p><strong>County:</strong> Harris County, Texas</p>
+                    <p><strong>Acreage:</strong> 1,500 acres</p>
+                    <p><strong>Address:</strong> 13930 Smith Road, Humble, TX 77396</p>
+                    <p><strong>Boundaries:</strong> Cross Creek (N), I-69/US59 (S), Deerbrook Mall (S)</p>
+                    <p><strong>Well Spacing:</strong> 1,200 ft / 40 acre units</p>
+                </div>
+                <div class="reveal" style="animation-delay: 0.2s;">
+                    <h3 style="color: var(--green-dark); margin-bottom: 1rem;">Regulatory</h3>
+                    <p><strong>Operator:</strong> Spectral Oil and Gas Corp</p>
+                    <p><strong>Operator #:</strong> 809042</p>
+                    <p><strong>Field Numbers:</strong> 21840475, 21840477</p>
+                    <p><strong>Formations:</strong> Wilcox A, B, C sands</p>
+                    <p><strong>Original Lessees:</strong> Chevron U.S.A. Inc.</p>
+                    <p><strong>Lessor:</strong> Bahr Interest et al</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Well Portfolio -->
+    <section>
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Asset Details</span>
+                <h2>Bahr Well Portfolio</h2>
+                <p>9 wells with documented production history. Priority wells targeted for immediate rework.</p>
+            </div>
+
+            <div class="well-filters reveal">
+                <button class="filter-btn active" data-filter="all">All Wells (9)</button>
+                <button class="filter-btn" data-filter="priority">Priority (2)</button>
+                <button class="filter-btn" data-filter="subsalt">Subsalt Upside (1)</button>
+                <button class="filter-btn" data-filter="secondary">Secondary (6)</button>
+            </div>
+
+            <div class="well-grid">
+                <!-- Bahr #7 - Priority -->
+                <div class="well-card reveal" data-type="priority">
+                    <div class="well-header">
+                        <span class="well-name">Bahr #7</span>
+                        <span class="well-status priority">Priority</span>
+                    </div>
+                    <div class="well-stats">
+                        <div class="well-stat"><span>Original Rate</span><strong>6,500 MCFD / 170 BOPD</strong></div>
+                        <div class="well-stat"><span>Cumulative</span><strong>3.8 BCF</strong></div>
+                        <div class="well-stat"><span>Target Rate</span><strong>2,400 MCFD / 20 BOPD</strong></div>
+                        <div class="well-stat"><span>Depth</span><strong>7,850 ft</strong></div>
+                    </div>
+                    <p class="well-note">Wilcox A & C sands with multiple lobes unfractured. Multi-stage frac planned.</p>
+                    <p class="well-api">API: 4220132448</p>
+                </div>
+
+                <!-- Bahr #9 - Priority -->
+                <div class="well-card reveal" data-type="priority">
+                    <div class="well-header">
+                        <span class="well-name">Bahr #9</span>
+                        <span class="well-status priority">Priority</span>
+                    </div>
+                    <div class="well-stats">
+                        <div class="well-stat"><span>Original Rate</span><strong>500 MCFD / 10 BOPD</strong></div>
+                        <div class="well-stat"><span>Cumulative</span><strong>0.5 BCF</strong></div>
+                        <div class="well-stat"><span>Target Rate</span><strong>2,400 MCFD / 20 BOPD</strong></div>
+                        <div class="well-stat"><span>Depth</span><strong>8,100 ft</strong></div>
+                    </div>
+                    <p class="well-note">Perforated but not fractured sands in Wilcox A & B. Significant upside.</p>
+                    <p class="well-api">API: 4220132475</p>
+                </div>
+
+                <!-- Bahr #3 - Subsalt -->
+                <div class="well-card highlight reveal" data-type="subsalt">
+                    <div class="well-header">
+                        <span class="well-name">Bahr #3</span>
+                        <span class="well-status subsalt">Subsalt Upside</span>
+                    </div>
+                    <div class="well-stats">
+                        <div class="well-stat"><span>Original Rate</span><strong>5,800 MCFD / 136 BOPD</strong></div>
+                        <div class="well-stat"><span>Cumulative</span><strong>2.3 BCF</strong></div>
+                        <div class="well-stat"><span>Target Rate</span><strong style="color: var(--orange);">10 MMCFD / 400 BOPD</strong></div>
+                        <div class="well-stat"><span>Pay Zone</span><strong>16,350-16,450 ft</strong></div>
+                    </div>
+                    <p class="well-note">★ Subsalt zone NEVER COMPLETED. Bottom hole pressure 14,000+ psi. 7" casing + 4-stage frac planned.</p>
+                    <p class="well-api">API: 4220132417</p>
+                </div>
+
+                <!-- Bahr #1 - Secondary -->
+                <div class="well-card reveal" data-type="secondary">
+                    <div class="well-header">
+                        <span class="well-name">Bahr #1</span>
+                        <span class="well-status secondary">Secondary</span>
+                    </div>
+                    <div class="well-stats">
+                        <div class="well-stat"><span>Original Rate</span><strong>7,200 MCFD / 108 BOPD</strong></div>
+                        <div class="well-stat"><span>Cumulative</span><strong>7.1 BCF</strong></div>
+                        <div class="well-stat"><span>Target Rate</span><strong>300 MCFD / 5 BOPD</strong></div>
+                        <div class="well-stat"><span>Work</span><strong>7-Stage Frac + HF Acid</strong></div>
+                    </div>
+                    <p class="well-note">Highest historical producer. Declined due to salt plugs and tubing leaks.</p>
+                    <p class="well-api">API: 4220132323</p>
+                </div>
+
+                <!-- Bahr #2 - Secondary -->
+                <div class="well-card reveal" data-type="secondary">
+                    <div class="well-header">
+                        <span class="well-name">Bahr #2</span>
+                        <span class="well-status secondary">Secondary</span>
+                    </div>
+                    <div class="well-stats">
+                        <div class="well-stat"><span>Formation</span><strong>Wilcox</strong></div>
+                        <div class="well-stat"><span>Field</span><strong>Cross Creek</strong></div>
+                        <div class="well-stat"><span>County</span><strong>Harris</strong></div>
+                        <div class="well-stat"><span>Status</span><strong>Evaluation</strong></div>
+                    </div>
+                    <p class="well-note">Part of portfolio. Awaiting engineering assessment.</p>
+                    <p class="well-api">API: 4220132365</p>
+                </div>
+
+                <!-- Bahr #4 - Secondary -->
+                <div class="well-card reveal" data-type="secondary">
+                    <div class="well-header">
+                        <span class="well-name">Bahr #4</span>
+                        <span class="well-status secondary">Secondary</span>
+                    </div>
+                    <div class="well-stats">
+                        <div class="well-stat"><span>Original Rate</span><strong>1,100 MCFD / 100 BOPD</strong></div>
+                        <div class="well-stat"><span>Cumulative</span><strong>0.35 BCF</strong></div>
+                        <div class="well-stat"><span>Target Rate</span><strong>300 MCFD / 5 BOPD</strong></div>
+                        <div class="well-stat"><span>Work</span><strong>Tubing Replacement</strong></div>
+                    </div>
+                    <p class="well-note">Main pad location. All underground flowlines connect here.</p>
+                    <p class="well-api">API: 4220132429</p>
+                </div>
+
+                <!-- Bahr #6 - Secondary -->
+                <div class="well-card reveal" data-type="secondary">
+                    <div class="well-header">
+                        <span class="well-name">Bahr #6</span>
+                        <span class="well-status secondary">Secondary</span>
+                    </div>
+                    <div class="well-stats">
+                        <div class="well-stat"><span>Formation</span><strong>Wilcox</strong></div>
+                        <div class="well-stat"><span>Field</span><strong>Cross Creek</strong></div>
+                        <div class="well-stat"><span>County</span><strong>Harris</strong></div>
+                        <div class="well-stat"><span>Status</span><strong>Evaluation</strong></div>
+                    </div>
+                    <p class="well-note">Part of portfolio. Awaiting engineering assessment.</p>
+                    <p class="well-api">API: 4220132447</p>
+                </div>
+
+                <!-- Bahr #8 - Secondary -->
+                <div class="well-card reveal" data-type="secondary">
+                    <div class="well-header">
+                        <span class="well-name">Bahr #8</span>
+                        <span class="well-status secondary">Secondary</span>
+                    </div>
+                    <div class="well-stats">
+                        <div class="well-stat"><span>Formation</span><strong>Wilcox</strong></div>
+                        <div class="well-stat"><span>Field</span><strong>Cross Creek</strong></div>
+                        <div class="well-stat"><span>County</span><strong>Harris</strong></div>
+                        <div class="well-stat"><span>Status</span><strong>Evaluation</strong></div>
+                    </div>
+                    <p class="well-note">Part of portfolio. Awaiting engineering assessment.</p>
+                    <p class="well-api">API: 4220132437</p>
+                </div>
+
+                <!-- Cleveland Agent #1 - Secondary -->
+                <div class="well-card reveal" data-type="secondary">
+                    <div class="well-header">
+                        <span class="well-name">Cleveland Agent #1</span>
+                        <span class="well-status secondary">Secondary</span>
+                    </div>
+                    <div class="well-stats">
+                        <div class="well-stat"><span>Formation</span><strong>Wilcox</strong></div>
+                        <div class="well-stat"><span>Field</span><strong>Cross Creek</strong></div>
+                        <div class="well-stat"><span>County</span><strong>Harris</strong></div>
+                        <div class="well-stat"><span>Status</span><strong>Evaluation</strong></div>
+                    </div>
+                    <p class="well-note">Additional well in Cross Creek field. Part of full portfolio acquisition.</p>
+                    <p class="well-api">API: 4220132444</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="section-cream">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Leadership</span>
+                <h2>Management Team</h2>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-card reveal">
+                    <div class="team-avatar">JD</div>
+                    <h3>Jason Dudney</h3>
+                    <p class="team-role">Chief Executive Officer</p>
+                    <p>Strategic leadership and investor relations.</p>
+                    <p class="team-contact">727-623-2652</p>
+                </div>
+
+                <div class="team-card reveal">
+                    <div class="team-avatar">GT</div>
+                    <h3>Gustavo Taboada</h3>
+                    <p class="team-role">Chief Operating Officer</p>
+                    <p>Field operations, drilling, completions, production.</p>
+                    <p class="team-contact">713-478-9464</p>
+                </div>
+
+                <div class="team-card reveal">
+                    <div class="team-avatar">TC</div>
+                    <h3>Tomme Claycomb</h3>
+                    <p class="team-role">Chief Financial Officer</p>
+                    <p>Financial strategy, capital allocation, distributions.</p>
+                    <p class="team-contact">305-747-3779</p>
+                </div>
+
+                <div class="team-card reveal">
+                    <div class="team-avatar">SM</div>
+                    <h3>Steven McGuire</h3>
+                    <p class="team-role">Technical Advisor</p>
+                    <p>Former COO of Spectral Oil & Gas. Led 2016 White Oak acquisition.</p>
+                </div>
+            </div>
+
+            <div class="section-header reveal" style="margin-top: 3rem; margin-bottom: 1.5rem;">
+                <span class="section-label">Service Partners</span>
+            </div>
+
+            <div class="partners-grid reveal">
+                <div class="partner"><p class="partner-name">Schlumberger</p><p class="partner-role">Oilfield Services</p></div>
+                <div class="partner"><p class="partner-name">REDBIRD Energy</p><p class="partner-role">Current Operator</p></div>
+                <div class="partner"><p class="partner-name">Newmarc Petroleum</p><p class="partner-role">Technical Advisory</p></div>
+                <div class="partner"><p class="partner-name">Bruington Engineering</p><p class="partner-role">Engineering</p></div>
+                <div class="partner"><p class="partner-name">C&J Energy Services</p><p class="partner-role">Completions</p></div>
+                <div class="partner"><p class="partner-name">Kinder Morgan</p><p class="partner-role">Gas Offtake</p></div>
+                <div class="partner"><p class="partner-name">Firebird / CDL Crude</p><p class="partner-role">Oil Trucking</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment Terms -->
+    <section class="section-dark">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Investment Structure</span>
+                <h2>Terms & Projections</h2>
+            </div>
+
+            <div class="terms-grid">
+                <div class="terms-box reveal">
+                    <h3>Phase 1: Two-Well Program</h3>
+                    <div class="term-row"><span class="term-label">Target Wells</span><span class="term-value">Bahr #7 & #9</span></div>
+                    <div class="term-row"><span class="term-label">Capital Required</span><span class="term-value">$783,000</span></div>
+                    <div class="term-row"><span class="term-label">Working Interest</span><span class="term-value">75%</span></div>
+                    <div class="term-row"><span class="term-label">Lease Burden</span><span class="term-value">25%</span></div>
+                    <div class="term-row"><span class="term-label">Payout Period</span><span class="term-value">9 Months</span></div>
+                    <div class="term-row"><span class="term-label">5-Year ROI</span><span class="term-value">9.9x</span></div>
+                    <div class="term-row"><span class="term-label">Reserves (Texadon)</span><span class="term-value">10.1 BCF + 114K bbl</span></div>
+                </div>
+
+                <div class="calculator reveal">
+                    <h3>Return Calculator</h3>
+                    <div class="calc-input">
+                        <label>Investment Amount</label>
+                        <input type="range" id="investAmount" min="100000" max="2000000" step="50000" value="250000">
+                        <div class="value-display">$<span id="investDisplay">250,000</span></div>
+                    </div>
+                    <div class="calc-input">
+                        <label>Gas Price ($/MCF)</label>
+                        <input type="range" id="gasPrice" min="2" max="6" step="0.25" value="3.50">
+                        <div class="value-display">$<span id="gasPriceDisplay">3.50</span></div>
+                    </div>
+                    <div class="calc-input">
+                        <label>Hold Period (Years)</label>
+                        <input type="range" id="holdPeriod" min="1" max="7" step="1" value="5">
+                        <div class="value-display"><span id="holdPeriodDisplay">5</span> years</div>
+                    </div>
+                    <div class="calc-results">
+                        <div class="calc-result-row"><span>Annual Preferred (12%)</span><span id="annualPref">$30,000</span></div>
+                        <div class="calc-result-row"><span>Est. Annual Cash Flow</span><span id="annualCash">$74,000</span></div>
+                        <div class="calc-result-row"><span>Est. Total Return</span><span id="totalReturn">$520,000</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="terms-box reveal" style="margin-top: 2rem;">
+                <h3>Full Portfolio Program</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <div>
+                        <div class="term-row"><span class="term-label">Total Offering</span><span class="term-value">$5M - $7M</span></div>
+                        <div class="term-row"><span class="term-label">Minimum Investment</span><span class="term-value">$100,000</span></div>
+                        <div class="term-row"><span class="term-label">Preferred Return</span><span class="term-value">12% Annual</span></div>
+                        <div class="term-row"><span class="term-label">Distribution</span><span class="term-value">Quarterly</span></div>
+                    </div>
+                    <div>
+                        <div class="term-row"><span class="term-label">Investor Share (Pre-Pref)</span><span class="term-value">80%</span></div>
+                        <div class="term-row"><span class="term-label">Investor Share (Post-Pref)</span><span class="term-value">75%</span></div>
+                        <div class="term-row"><span class="term-label">Payout Period</span><span class="term-value">24-36 Months</span></div>
+                        <div class="term-row"><span class="term-label">Offering Type</span><span class="term-value">Reg D 506(c)</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="section-cream">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Execution</span>
+                <h2>Project Timeline</h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item reveal"><span class="timeline-period">Month 1</span><div><h3 class="timeline-title">Capital Close & Mobilization</h3><p class="timeline-desc">Final capital close, vendor contracts executed, equipment mobilized.</p></div></div>
+                <div class="timeline-item reveal"><span class="timeline-period">Month 2</span><div><h3 class="timeline-title">Site Preparation</h3><p class="timeline-desc">Wellhead inspections, surface equipment upgrades, pipeline verification.</p></div></div>
+                <div class="timeline-item reveal"><span class="timeline-period">Month 2-3</span><div><h3 class="timeline-title">Well Rework Operations</h3><p class="timeline-desc">Tubing replacement, HF acid, multi-stage fracturing on Bahr #7 & #9.</p></div></div>
+                <div class="timeline-item reveal"><span class="timeline-period">Month 4+</span><div><h3 class="timeline-title">Production Online</h3><p class="timeline-desc">Wells online. Production flows to Kinder Morgan. Daily monitoring.</p></div></div>
+                <div class="timeline-item reveal"><span class="timeline-period">Month 5</span><div><h3 class="timeline-title">First Revenue</h3><p class="timeline-desc">First sales revenue received. Investor distributions begin.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documents -->
+    <section>
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Data Room Documents</span>
+                <h2>Available Materials</h2>
+            </div>
+            <div class="docs-grid reveal">
+                <div class="doc-card"><span class="doc-icon">📄</span><h4>Business Plan</h4><p>Full financial model & projections</p></div>
+                <div class="doc-card"><span class="doc-icon">📊</span><h4>Engineering Reports</h4><p>Reserve estimates & well analysis</p></div>
+                <div class="doc-card"><span class="doc-icon">🗺️</span><h4>Lease Maps</h4><p>Field maps & well locations</p></div>
+                <div class="doc-card"><span class="doc-icon">📋</span><h4>PPM</h4><p>Private Placement Memorandum</p></div>
+                <div class="doc-card"><span class="doc-icon">✍️</span><h4>Subscription Docs</h4><p>Investment agreements</p></div>
+                <div class="doc-card"><span class="doc-icon">⚖️</span><h4>Operating Agreement</h4><p>JOA & participation terms</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="reveal">Ready to Proceed?</h2>
+            <p class="reveal" style="opacity: 0.9; margin-bottom: 2rem;">Contact our team to discuss investment participation and next steps.</p>
+            <div class="reveal">
+                <a href="mailto:info@cladutacorp.com?subject=Humble%20Dome%20Investment%20Interest" class="btn btn-primary">Email Investment Team</a>
+                <a href="tel:+17276232652" class="btn btn-outline">Call: (727) 623-2652</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="disclaimer">
+        <div class="container">
+            <strong>CONFIDENTIAL:</strong> This material contains confidential information subject to Non-Disclosure Agreement. Distribution prohibited. Securities offered only to accredited investors pursuant to Regulation D Rule 506(c). Past performance is not indicative of future results. Oil and gas investments involve significant risks including loss of principal. Consult your own advisors before investing.
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <a href="index.html" class="footer-brand"><img src="logo-full.png" alt="Claduta Corporation"></a>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <p class="footer-copy">&copy; 2024 Claduta Corporation. South Dakota. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function reveal() {
+            document.querySelectorAll('.reveal').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+                    el.classList.add('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', reveal);
+        reveal();
+
+        // Calculator
+        const investAmount = document.getElementById('investAmount');
+        const gasPrice = document.getElementById('gasPrice');
+        const holdPeriod = document.getElementById('holdPeriod');
+
+        function formatNumber(num) { return num.toLocaleString('en-US'); }
+        function formatCurrency(num) { return num >= 1000000 ? '$' + (num / 1000000).toFixed(1) + 'M' : '$' + formatNumber(Math.round(num)); }
+
+        function updateCalculator() {
+            const invest = parseFloat(investAmount.value);
+            const gas = parseFloat(gasPrice.value);
+            const years = parseFloat(holdPeriod.value);
+
+            document.getElementById('investDisplay').textContent = formatNumber(invest);
+            document.getElementById('gasPriceDisplay').textContent = gas.toFixed(2);
+            document.getElementById('holdPeriodDisplay').textContent = years;
+
+            const annualPref = invest * 0.12;
+            const baseAnnualReturn = (invest * 9.9) / 5;
+            const gasAdjustedReturn = baseAnnualReturn * (gas / 3.50);
+            const totalReturn = gasAdjustedReturn * years;
+
+            document.getElementById('annualPref').textContent = formatCurrency(annualPref);
+            document.getElementById('annualCash').textContent = formatCurrency(gasAdjustedReturn);
+            document.getElementById('totalReturn').textContent = formatCurrency(totalReturn);
+        }
+
+        investAmount.addEventListener('input', updateCalculator);
+        gasPrice.addEventListener('input', updateCalculator);
+        holdPeriod.addEventListener('input', updateCalculator);
+        updateCalculator();
+
+        // Well filter
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                document.querySelectorAll('.well-card').forEach(card => {
+                    card.style.display = (filter === 'all' || card.dataset.type === filter) ? 'block' : 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

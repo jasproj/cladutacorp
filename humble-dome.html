@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Humble Dome | Natural Gas Reactivation Program | Claduta Corporation</title>
-    <meta name="description" content="Investment opportunity in proven natural gas assets. Historic Bahr wells, Harris County Texas. Bitcoin mining integration. Accredited investors only.">
+    <meta name="description" content="Private investment opportunity in proven natural gas assets. Harris County Texas. Accredited investors only.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -19,7 +19,6 @@
             --gold-light: #d4b978;
             --white: #ffffff;
             --orange: #e67e22;
-            --blue: #3498db;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -27,24 +26,20 @@
         body { font-family: 'Source Sans Pro', sans-serif; color: var(--charcoal); line-height: 1.6; overflow-x: hidden; }
         h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 600; }
 
-        /* Animations */
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
         @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
         @keyframes glow { 0%, 100% { box-shadow: 0 0 20px rgba(201, 169, 97, 0.3); } 50% { box-shadow: 0 0 40px rgba(201, 169, 97, 0.6); } }
 
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* Navigation */
         nav { position: fixed; top: 0; width: 100%; background: var(--white); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); z-index: 1000; }
         .nav-logo img { height: 50px; }
         .nav-links { display: flex; gap: 2rem; list-style: none; }
         .nav-links a { text-decoration: none; color: var(--charcoal); font-weight: 600; font-size: 0.95rem; transition: color 0.3s; }
         .nav-links a:hover, .nav-links a.active { color: var(--green-dark); }
 
-        /* Hero */
         .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-medium) 100%); padding: 120px 5% 80px; text-align: center; position: relative; overflow: hidden; }
         .hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 50px 50px; animation: shimmer 20s linear infinite; }
         .hero-content { position: relative; z-index: 2; max-width: 1000px; animation: fadeInUp 1s ease; }
@@ -66,7 +61,6 @@
         .btn-outline { background: transparent; color: var(--white); border: 2px solid var(--white); }
         .btn-outline:hover { background: var(--white); color: var(--green-dark); }
 
-        /* Sections */
         section { padding: 100px 5%; }
         .section-cream { background: var(--cream); }
         .section-dark { background: var(--charcoal); color: var(--white); }
@@ -95,26 +89,11 @@
         .overview-card h3 { color: var(--green-dark); margin-bottom: 0.5rem; font-size: 1.3rem; }
         .overview-card p { opacity: 0.8; }
 
-        /* Well Cards */
-        .well-filters { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; }
-        .filter-btn { background: transparent; border: 1px solid var(--green-dark); color: var(--green-dark); padding: 0.5rem 1.5rem; font-weight: 600; cursor: pointer; transition: all 0.3s; }
-        .filter-btn:hover, .filter-btn.active { background: var(--green-dark); color: var(--white); }
-        .well-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
-        .well-card { background: var(--white); border: 1px solid #e0e0e0; border-radius: 4px; padding: 1.5rem; transition: all 0.4s ease; position: relative; overflow: hidden; }
-        .well-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: var(--gold); transform: scaleX(0); transition: transform 0.3s ease; }
-        .well-card:hover::after { transform: scaleX(1); }
-        .well-card:hover { border-color: var(--gold); box-shadow: 0 10px 30px rgba(0,0,0,0.1); transform: translateY(-5px); }
-        .well-card.highlight { border-color: var(--gold); background: linear-gradient(135deg, #fffbf0 0%, var(--white) 100%); }
-        .well-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #eee; }
-        .well-name { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600; color: var(--green-dark); }
-        .well-status { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 2px; letter-spacing: 1px; }
-        .well-status.priority { background: var(--gold); color: var(--charcoal); }
-        .well-status.secondary { background: var(--cream); color: var(--green-dark); }
-        .well-status.subsalt { background: var(--orange); color: var(--white); animation: pulse 2s infinite; }
-        .well-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        .well-stat span { display: block; font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
-        .well-stat strong { font-size: 1.1rem; color: var(--charcoal); }
-        .well-note { margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed #ddd; font-size: 0.9rem; color: var(--green-dark); font-style: italic; }
+        /* Investment Highlights */
+        .highlights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .highlight-card { text-align: center; padding: 2rem; }
+        .highlight-number { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 700; color: var(--gold); display: block; margin-bottom: 0.5rem; }
+        .highlight-label { font-size: 1rem; opacity: 0.8; }
 
         /* Team Section */
         .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
@@ -124,16 +103,8 @@
         .team-card h3 { color: var(--green-dark); margin-bottom: 0.5rem; }
         .team-role { color: var(--gold); font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 1rem; }
         .team-card p { color: #666; font-size: 0.95rem; }
-        .team-contact { margin-top: 1rem; font-weight: 600; color: var(--green-dark); }
 
-        /* Partners */
-        .partners-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 3rem; margin-top: 2rem; }
-        .partner { text-align: center; opacity: 0.7; transition: opacity 0.3s; }
-        .partner:hover { opacity: 1; }
-        .partner-name { font-weight: 600; color: var(--green-dark); }
-        .partner-role { font-size: 0.85rem; color: #888; }
-
-        /* Investment Section */
+        /* Investment Terms */
         .investment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
         .investment-terms { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 2.5rem; border-radius: 4px; }
         .investment-terms h3 { color: var(--gold); margin-bottom: 2rem; font-size: 1.5rem; }
@@ -142,25 +113,13 @@
         .term-label { color: rgba(255,255,255,0.7); }
         .term-value { font-weight: 600; color: var(--white); }
 
-        /* Calculator */
-        .calculator { background: var(--white); padding: 2.5rem; border-radius: 4px; color: var(--charcoal); }
-        .calculator h3 { color: var(--green-dark); margin-bottom: 2rem; font-size: 1.5rem; }
-        .calc-input { margin-bottom: 1.5rem; }
-        .calc-input label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--green-dark); }
-        .calc-input input[type="range"] { width: 100%; margin-bottom: 0.5rem; accent-color: var(--gold); }
-        .calc-input .value-display { text-align: right; font-weight: 600; color: var(--gold); }
-        .calc-results { background: var(--cream); padding: 1.5rem; border-radius: 4px; margin-top: 2rem; }
-        .calc-result-row { display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.05); }
-        .calc-result-row:last-child { border-bottom: none; font-weight: 700; font-size: 1.1rem; color: var(--green-dark); }
-
-        /* Timeline */
-        .timeline { max-width: 800px; margin: 0 auto; position: relative; }
-        .timeline::before { content: ''; position: absolute; left: 120px; top: 0; bottom: 0; width: 2px; background: var(--gold); }
-        .timeline-item { display: grid; grid-template-columns: 120px 1fr; gap: 2rem; padding: 2rem 0; position: relative; }
-        .timeline-item::after { content: ''; position: absolute; left: 114px; top: 2.2rem; width: 14px; height: 14px; background: var(--gold); border-radius: 50%; border: 3px solid var(--cream); }
-        .timeline-period { font-weight: 600; color: var(--gold); font-size: 0.9rem; text-align: right; }
-        .timeline-title { color: var(--green-dark); margin-bottom: 0.5rem; font-size: 1.2rem; }
-        .timeline-desc { opacity: 0.8; }
+        /* NDA Gate */
+        .nda-gate { background: linear-gradient(135deg, var(--charcoal) 0%, #2a2a2a 100%); border: 2px solid var(--gold); padding: 3rem; border-radius: 4px; text-align: center; max-width: 600px; margin: 0 auto; }
+        .nda-gate h3 { color: var(--gold); margin-bottom: 1rem; font-size: 1.8rem; }
+        .nda-gate p { color: rgba(255,255,255,0.8); margin-bottom: 2rem; }
+        .nda-items { text-align: left; margin: 2rem 0; padding: 0 2rem; }
+        .nda-items li { color: rgba(255,255,255,0.9); margin-bottom: 0.75rem; list-style: none; padding-left: 1.5rem; position: relative; }
+        .nda-items li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: bold; }
 
         /* CTA */
         .cta-section { text-align: center; background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-medium) 100%); color: var(--white); position: relative; overflow: hidden; }
@@ -169,7 +128,6 @@
         .cta-section p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
         .cta-note { margin-top: 2rem; font-size: 0.9rem; opacity: 0.7; }
 
-        /* Disclaimer & Footer */
         .disclaimer { background: var(--charcoal); color: rgba(255,255,255,0.6); padding: 3rem 5%; font-size: 0.85rem; line-height: 1.8; }
         .disclaimer strong { color: var(--gold); }
         footer { background: var(--charcoal); color: var(--white); padding: 40px 5% 20px; border-top: 1px solid rgba(255,255,255,0.1); }
@@ -180,17 +138,12 @@
         .footer-links a:hover { color: var(--gold); }
         .footer-copy { width: 100%; text-align: center; padding-top: 2rem; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.6; font-size: 0.9rem; }
 
-        /* Responsive */
         @media (max-width: 968px) { .pathways-grid, .investment-grid { grid-template-columns: 1fr; } }
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .hero h1 { font-size: 2.5rem; }
             .hero-stats { gap: 1.5rem; }
             .hero-stat-value { font-size: 2rem; }
-            .timeline::before { display: none; }
-            .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
-            .timeline-item::after { display: none; }
-            .timeline-period { text-align: left; }
         }
     </style>
 </head>
@@ -209,12 +162,12 @@
         <div class="hero-content">
             <span class="hero-badge">&#9670; Featured Investment &#9670;</span>
             <h1>Humble Dome</h1>
-            <p class="hero-subtitle">Natural Gas Reactivation &bull; Harris County, Texas</p>
-            <p style="color: rgba(255,255,255,0.8); margin-bottom: 1rem;">Birthplace of Exxon's predecessor, Humble Oil &bull; Cross Creek Field &bull; 1,500 Acres</p>
+            <p class="hero-subtitle">Natural Gas Reactivation Program &bull; Harris County, Texas</p>
+            <p style="color: rgba(255,255,255,0.8); margin-bottom: 1rem;">Historic Salt Dome Field &bull; Proven Reserves &bull; Multiple Revenue Channels</p>
             
             <div class="hero-stats">
                 <div class="hero-stat">
-                    <span class="hero-stat-value" id="stat-wells">9</span>
+                    <span class="hero-stat-value">9</span>
                     <span class="hero-stat-label">Proven Wells</span>
                 </div>
                 <div class="hero-stat">
@@ -223,16 +176,46 @@
                 </div>
                 <div class="hero-stat">
                     <span class="hero-stat-value">9.9x</span>
-                    <span class="hero-stat-label">5-Year ROI</span>
+                    <span class="hero-stat-label">Projected ROI</span>
                 </div>
                 <div class="hero-stat">
-                    <span class="hero-stat-value">9 mo</span>
-                    <span class="hero-stat-label">Payout Period</span>
+                    <span class="hero-stat-value">1,500</span>
+                    <span class="hero-stat-label">Acres</span>
                 </div>
             </div>
 
-            <a href="#contact" class="btn btn-primary">Request Data Room Access</a>
-            <a href="#pathways" class="btn btn-outline">See Profit Pathways</a>
+            <a href="#nda" class="btn btn-primary">Request NDA &amp; Data Room</a>
+            <a href="#opportunity" class="btn btn-outline">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Opportunity Overview -->
+    <section class="section-cream" id="opportunity">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">The Opportunity</span>
+                <h2>Proven Assets. Modern Techniques. Multiple Exit Channels.</h2>
+                <p>A historic Texas salt dome field with documented production history and significant remaining reserves, available for reactivation using modern completion techniques.</p>
+            </div>
+
+            <div class="overview-grid">
+                <div class="overview-card reveal">
+                    <h3>Historic Production</h3>
+                    <p>This field has produced over 14 BCF of natural gas across multiple wells. Original production rates exceeded 7,000 MCFD from individual wells.</p>
+                </div>
+                <div class="overview-card reveal" style="animation-delay: 0.1s;">
+                    <h3>Proven Reserves</h3>
+                    <p>Multiple pay zones in the Wilcox formation remain untapped. Engineering reports indicate significant recoverable reserves using modern fracturing techniques.</p>
+                </div>
+                <div class="overview-card reveal" style="animation-delay: 0.2s;">
+                    <h3>Infrastructure In Place</h3>
+                    <p>Existing underground flowlines, separators, stock tanks, compressors, and surface facilities dramatically reduce capital requirements.</p>
+                </div>
+                <div class="overview-card reveal" style="animation-delay: 0.3s;">
+                    <h3>Immediate Offtake</h3>
+                    <p>Existing contracts with major pipeline operators and oil purchasers. Production can flow to market within 30 days of completion.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -242,372 +225,155 @@
             <div class="section-header reveal">
                 <span class="section-label">Diversified Revenue</span>
                 <h2>Three Profit Pathways</h2>
-                <p>Our weekly profit analyzer directs output to the most profitable channel in real-time.</p>
+                <p>Dynamic allocation to maximize returns based on real-time market conditions.</p>
             </div>
 
             <div class="pathways-grid">
                 <div class="pathway-card reveal">
                     <span class="pathway-icon">&#9889;</span>
                     <h3>Grid Sales</h3>
-                    <p>Sell natural gas directly to the regional grid via Kinder Morgan. Stable, predictable revenue at market rates.</p>
-                    <p><strong>Offtake:</strong> Kinder Morgan via Gulf Coast Gathering</p>
+                    <p>Direct natural gas sales to regional pipeline operators at market rates. Stable, predictable baseline revenue.</p>
                     <div class="pathway-highlight">Baseline Revenue</div>
                 </div>
 
                 <div class="pathway-card reveal" style="animation-delay: 0.2s;">
                     <span class="pathway-icon">&#8383;</span>
                     <h3>Bitcoin Mining</h3>
-                    <p>Convert wellhead gas to electricity powering on-site ASIC miners. Monetize stranded gas at premium rates.</p>
-                    <p><strong>Estimated Capacity:</strong> ~1 BTC/year</p>
+                    <p>Convert wellhead gas to electricity powering on-site mining operations. Monetize stranded gas at premium rates.</p>
                     <div class="pathway-highlight">Crypto Upside</div>
                 </div>
 
                 <div class="pathway-card reveal" style="animation-delay: 0.4s;">
                     <span class="pathway-icon">&#128187;</span>
                     <h3>AI Data Centers</h3>
-                    <p>East Texas is adding hyperscale data centers. Natural gas-fed on-site power is the most profitable long-term channel.</p>
-                    <p><strong>Future:</strong> Direct PPAs with AI facilities</p>
+                    <p>The region is rapidly adding hyperscale data centers. Natural gas-fed on-site power is the most profitable long-term channel.</p>
                     <div class="pathway-highlight">Future Growth</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Overview -->
-    <section class="section-cream" id="overview">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-label">Project Overview</span>
-                <h2>A Proven Asset with Untapped Potential</h2>
-                <p>The Humble Salt Dome has produced over 14 BCF. Our reactivation targets wells with known reserves using modern completion techniques.</p>
-            </div>
-
-            <div class="overview-grid">
-                <div class="overview-card reveal">
-                    <h3>Prime Location</h3>
-                    <p>Harris County, Texas — minutes from Houston's energy corridor. Bounded by Cross Creek, I-69, and Deerbrook Mall. Direct pipeline access.</p>
-                </div>
-                <div class="overview-card reveal" style="animation-delay: 0.1s;">
-                    <h3>Proven Reserves</h3>
-                    <p>Wilcox A, B, and C sand formations. Engineering reports indicate significant remaining reserves. Bahr #3 subsalt zone untapped.</p>
-                </div>
-                <div class="overview-card reveal" style="animation-delay: 0.2s;">
-                    <h3>Infrastructure In Place</h3>
-                    <p>Underground flowlines connecting all wells to main pad at Bahr #4. Separators, stock tanks, compressors, and power generators ready.</p>
-                </div>
-                <div class="overview-card reveal" style="animation-delay: 0.3s;">
-                    <h3>Immediate Offtake</h3>
-                    <p>Gas contracted through Kinder Morgan. Oil trucked by Firebird (Houston) and CDL Crude (Humble). All buyers secured at wellhead.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- The Wells -->
-    <section>
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-label">Asset Details</span>
-                <h2>The Bahr Well Portfolio</h2>
-                <p>Each well evaluated based on production history, remaining reserves, and rework requirements.</p>
-            </div>
-
-            <div class="well-filters reveal">
-                <button class="filter-btn active" data-filter="all">All Wells</button>
-                <button class="filter-btn" data-filter="priority">Priority</button>
-                <button class="filter-btn" data-filter="secondary">Secondary</button>
-                <button class="filter-btn" data-filter="subsalt">Subsalt Upside</button>
-            </div>
-
-            <div class="well-grid">
-                <div class="well-card reveal" data-type="priority">
-                    <div class="well-header">
-                        <span class="well-name">Bahr #7</span>
-                        <span class="well-status priority">Priority</span>
-                    </div>
-                    <div class="well-stats">
-                        <div class="well-stat"><span>Original Rate</span><strong>6,500 MCFD / 170 BOPD</strong></div>
-                        <div class="well-stat"><span>Cumulative</span><strong>3.8 BCF</strong></div>
-                        <div class="well-stat"><span>Target Rate</span><strong>2,400 MCFD / 20 BOPD</strong></div>
-                        <div class="well-stat"><span>Proposed Work</span><strong>Multi-stage Frac</strong></div>
-                    </div>
-                    <p class="well-note">Wilcox A &amp; C sands with multiple lobes unfractured. Lower Wilcox C &amp; B sands targeted.</p>
-                </div>
-
-                <div class="well-card reveal" data-type="priority" style="animation-delay: 0.1s;">
-                    <div class="well-header">
-                        <span class="well-name">Bahr #9</span>
-                        <span class="well-status priority">Priority</span>
-                    </div>
-                    <div class="well-stats">
-                        <div class="well-stat"><span>Original Rate</span><strong>500 MCFD / 10 BOPD</strong></div>
-                        <div class="well-stat"><span>Cumulative</span><strong>0.5 BCF</strong></div>
-                        <div class="well-stat"><span>Target Rate</span><strong>2,400 MCFD / 20 BOPD</strong></div>
-                        <div class="well-stat"><span>Proposed Work</span><strong>Multi-stage Frac</strong></div>
-                    </div>
-                    <p class="well-note">Perforated but not fractured sands in Wilcox A &amp; B. Significant upside potential.</p>
-                </div>
-
-                <div class="well-card highlight reveal" data-type="subsalt" style="animation-delay: 0.2s;">
-                    <div class="well-header">
-                        <span class="well-name">Bahr #3</span>
-                        <span class="well-status subsalt">Subsalt Upside</span>
-                    </div>
-                    <div class="well-stats">
-                        <div class="well-stat"><span>Original Rate</span><strong>5,800 MCFD / 136 BOPD</strong></div>
-                        <div class="well-stat"><span>Cumulative</span><strong>2.3 BCF</strong></div>
-                        <div class="well-stat"><span>Target Rate</span><strong style="color: var(--orange);">10 MMCFD / 400 BOPD</strong></div>
-                        <div class="well-stat"><span>Proposed Work</span><strong>7" Casing + 4-Stage Frac</strong></div>
-                    </div>
-                    <p class="well-note">&#9733; Pay zone at 16,350-16,450 ft never completed. Bottom hole pressure 14,000+ psi. Massive upside.</p>
-                </div>
-
-                <div class="well-card reveal" data-type="secondary" style="animation-delay: 0.3s;">
-                    <div class="well-header">
-                        <span class="well-name">Bahr #1</span>
-                        <span class="well-status secondary">Secondary</span>
-                    </div>
-                    <div class="well-stats">
-                        <div class="well-stat"><span>Original Rate</span><strong>7,200 MCFD / 108 BOPD</strong></div>
-                        <div class="well-stat"><span>Cumulative</span><strong>7.1 BCF</strong></div>
-                        <div class="well-stat"><span>Target Rate</span><strong>300 MCFD / 5 BOPD</strong></div>
-                        <div class="well-stat"><span>Proposed Work</span><strong>7-Stage Frac + HF Acid</strong></div>
-                    </div>
-                    <p class="well-note">Highest historical producer. Declined due to salt plugs and tubing leaks.</p>
-                </div>
-
-                <div class="well-card reveal" data-type="secondary" style="animation-delay: 0.4s;">
-                    <div class="well-header">
-                        <span class="well-name">Bahr #4</span>
-                        <span class="well-status secondary">Secondary</span>
-                    </div>
-                    <div class="well-stats">
-                        <div class="well-stat"><span>Original Rate</span><strong>1,100 MCFD / 100 BOPD</strong></div>
-                        <div class="well-stat"><span>Cumulative</span><strong>0.35 BCF</strong></div>
-                        <div class="well-stat"><span>Target Rate</span><strong>300 MCFD / 5 BOPD</strong></div>
-                        <div class="well-stat"><span>Proposed Work</span><strong>Tubing Replacement</strong></div>
-                    </div>
-                    <p class="well-note">Main pad location. Underground flowlines connect all wells here.</p>
-                </div>
-
-                <div class="well-card reveal" data-type="secondary" style="animation-delay: 0.5s;">
-                    <div class="well-header">
-                        <span class="well-name">Bahr #2</span>
-                        <span class="well-status secondary">Secondary</span>
-                    </div>
-                    <div class="well-stats">
-                        <div class="well-stat"><span>API Number</span><strong>4220132365</strong></div>
-                        <div class="well-stat"><span>Field</span><strong>Cross Creek</strong></div>
-                        <div class="well-stat"><span>Formation</span><strong>Wilcox</strong></div>
-                        <div class="well-stat"><span>Status</span><strong>Evaluation</strong></div>
-                    </div>
-                    <p class="well-note">Part of 9-well portfolio. Awaiting engineering assessment.</p>
-                </div>
-
-                <div class="well-card reveal" data-type="secondary" style="animation-delay: 0.6s;">
-                    <div class="well-header">
-                        <span class="well-name">Bahr #6</span>
-                        <span class="well-status secondary">Secondary</span>
-                    </div>
-                    <div class="well-stats">
-                        <div class="well-stat"><span>API Number</span><strong>4220132447</strong></div>
-                        <div class="well-stat"><span>Field</span><strong>Cross Creek</strong></div>
-                        <div class="well-stat"><span>Formation</span><strong>Wilcox</strong></div>
-                        <div class="well-stat"><span>Status</span><strong>Evaluation</strong></div>
-                    </div>
-                    <p class="well-note">Part of 9-well portfolio. Awaiting engineering assessment.</p>
-                </div>
-
-                <div class="well-card reveal" data-type="secondary" style="animation-delay: 0.7s;">
-                    <div class="well-header">
-                        <span class="well-name">Bahr #8</span>
-                        <span class="well-status secondary">Secondary</span>
-                    </div>
-                    <div class="well-stats">
-                        <div class="well-stat"><span>API Number</span><strong>4220132437</strong></div>
-                        <div class="well-stat"><span>Field</span><strong>Cross Creek</strong></div>
-                        <div class="well-stat"><span>Formation</span><strong>Wilcox</strong></div>
-                        <div class="well-stat"><span>Status</span><strong>Evaluation</strong></div>
-                    </div>
-                    <p class="well-note">Part of 9-well portfolio. Awaiting engineering assessment.</p>
-                </div>
-
-                <div class="well-card reveal" data-type="secondary" style="animation-delay: 0.8s;">
-                    <div class="well-header">
-                        <span class="well-name">Cleveland Agent #1</span>
-                        <span class="well-status secondary">Secondary</span>
-                    </div>
-                    <div class="well-stats">
-                        <div class="well-stat"><span>API Number</span><strong>4220132444</strong></div>
-                        <div class="well-stat"><span>Field</span><strong>Cross Creek</strong></div>
-                        <div class="well-stat"><span>Formation</span><strong>Wilcox</strong></div>
-                        <div class="well-stat"><span>Status</span><strong>Evaluation</strong></div>
-                    </div>
-                    <p class="well-note">Additional well in Cross Creek field. Part of full portfolio acquisition.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Team Section -->
+    <!-- Investment Highlights -->
     <section class="section-cream">
         <div class="container">
             <div class="section-header reveal">
+                <span class="section-label">By The Numbers</span>
+                <h2>Investment Highlights</h2>
+            </div>
+
+            <div class="highlights-grid reveal">
+                <div class="highlight-card">
+                    <span class="highlight-number">9</span>
+                    <span class="highlight-label">Wells in Portfolio</span>
+                </div>
+                <div class="highlight-card">
+                    <span class="highlight-number">14+</span>
+                    <span class="highlight-label">BCF Cumulative Production</span>
+                </div>
+                <div class="highlight-card">
+                    <span class="highlight-number">9.9x</span>
+                    <span class="highlight-label">5-Year Projected ROI</span>
+                </div>
+                <div class="highlight-card">
+                    <span class="highlight-number">12%</span>
+                    <span class="highlight-label">Preferred Return</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Preview -->
+    <section>
+        <div class="container">
+            <div class="section-header reveal">
                 <span class="section-label">Leadership</span>
-                <h2>The Team</h2>
-                <p>Experienced upstream O&amp;G professionals with a global track record.</p>
+                <h2>Experienced Team</h2>
+                <p>Decades of combined upstream oil &amp; gas experience across exploration, drilling, completions, and production.</p>
             </div>
 
             <div class="team-grid">
                 <div class="team-card reveal">
-                    <div class="team-avatar">JD</div>
-                    <h3>Jason Dudney</h3>
-                    <p class="team-role">Chief Executive Officer</p>
-                    <p>Strategic leadership and investor relations. Driving Claduta's acquisition and development strategy.</p>
-                    <p class="team-contact">727-623-2652</p>
+                    <div class="team-avatar">CEO</div>
+                    <h3>Chief Executive Officer</h3>
+                    <p class="team-role">Strategic Leadership</p>
+                    <p>Investor relations, capital allocation, and overall corporate strategy.</p>
                 </div>
 
                 <div class="team-card reveal" style="animation-delay: 0.1s;">
-                    <div class="team-avatar">GT</div>
-                    <h3>Gustavo Taboada</h3>
-                    <p class="team-role">Chief Operating Officer</p>
-                    <p>Field operations leadership. Decades of upstream O&amp;G expertise managing drilling, completions, and production.</p>
-                    <p class="team-contact">713-478-9464</p>
+                    <div class="team-avatar">COO</div>
+                    <h3>Chief Operating Officer</h3>
+                    <p class="team-role">Field Operations</p>
+                    <p>Decades of upstream O&amp;G expertise managing drilling, completions, and production operations.</p>
                 </div>
 
                 <div class="team-card reveal" style="animation-delay: 0.2s;">
-                    <div class="team-avatar">TC</div>
-                    <h3>Tomme Claycomb</h3>
-                    <p class="team-role">Chief Financial Officer</p>
-                    <p>Financial strategy and reporting. Managing capital allocation and investor distributions.</p>
-                    <p class="team-contact">305-747-3779</p>
-                </div>
-
-                <div class="team-card reveal" style="animation-delay: 0.3s;">
-                    <div class="team-avatar">SM</div>
-                    <h3>Steven McGuire</h3>
-                    <p class="team-role">Technical Advisor</p>
-                    <p>Former COO of Spectral Oil &amp; Gas. Led the 2016 acquisition from White Oak Resources. Deep knowledge of Cross Creek field.</p>
+                    <div class="team-avatar">CFO</div>
+                    <h3>Chief Financial Officer</h3>
+                    <p class="team-role">Financial Strategy</p>
+                    <p>Capital management, investor reporting, and distribution waterfall execution.</p>
                 </div>
             </div>
 
-            <div class="section-header reveal" style="margin-top: 4rem; margin-bottom: 2rem;">
-                <span class="section-label">Operational Support</span>
-                <h3>In-House Capabilities</h3>
-            </div>
-
-            <div class="overview-grid">
-                <div class="overview-card reveal">
-                    <h3>Field Operations Team</h3>
-                    <p>Dedicated in-house rebuild and field operations crew for rapid mobilization and execution.</p>
-                </div>
-                <div class="overview-card reveal" style="animation-delay: 0.1s;">
-                    <h3>Weekly Profit Analyzer</h3>
-                    <p>Analysis directing optimal offtake channel: grid sales vs. crypto mining vs. AI data center supply.</p>
-                </div>
-                <div class="overview-card reveal" style="animation-delay: 0.2s;">
-                    <h3>Accounting &amp; Reporting</h3>
-                    <p>Dedicated accountant managing production accounting, revenue allocation, and quarterly investor reporting.</p>
-                </div>
-            </div>
-
-            <div class="section-header reveal" style="margin-top: 4rem; margin-bottom: 2rem;">
-                <span class="section-label">Service Partners</span>
-            </div>
-
-            <div class="partners-grid reveal">
-                <div class="partner"><p class="partner-name">Schlumberger</p><p class="partner-role">Oilfield Services</p></div>
-                <div class="partner"><p class="partner-name">REDBIRD Energy</p><p class="partner-role">Current Operator</p></div>
-                <div class="partner"><p class="partner-name">Newmarc Petroleum</p><p class="partner-role">Technical Advisory</p></div>
-                <div class="partner"><p class="partner-name">Bruington Engineering</p><p class="partner-role">Engineering</p></div>
-                <div class="partner"><p class="partner-name">C&amp;J Energy Services</p><p class="partner-role">Completions</p></div>
-            </div>
+            <p class="reveal" style="text-align: center; margin-top: 3rem; opacity: 0.7;">Full team details and contact information available after NDA execution.</p>
         </div>
     </section>
 
-    <!-- Investment Terms -->
+    <!-- Investment Terms Preview -->
     <section class="section-dark" id="investment">
         <div class="container">
             <div class="section-header reveal">
                 <span class="section-label">Investment Structure</span>
-                <h2>Terms &amp; Returns</h2>
+                <h2>Terms Overview</h2>
                 <p>Reg D 506(c) private placement structured for accredited investors.</p>
             </div>
 
             <div class="investment-grid">
                 <div class="investment-terms reveal">
-                    <h3>Deal Terms</h3>
-                    <div class="term-row"><span class="term-label">Phase 1 Capital</span><span class="term-value">$783,000</span></div>
-                    <div class="term-row"><span class="term-label">Full Program</span><span class="term-value">$5M - $7M</span></div>
+                    <h3>Deal Structure</h3>
+                    <div class="term-row"><span class="term-label">Offering Type</span><span class="term-value">Reg D 506(c)</span></div>
                     <div class="term-row"><span class="term-label">Minimum Investment</span><span class="term-value">$100,000</span></div>
                     <div class="term-row"><span class="term-label">Preferred Return</span><span class="term-value">12% Annual</span></div>
                     <div class="term-row"><span class="term-label">Investor Share</span><span class="term-value">80% → 75%</span></div>
-                    <div class="term-row"><span class="term-label">Payout Period</span><span class="term-value">9 Months</span></div>
-                    <div class="term-row"><span class="term-label">5-Year ROI</span><span class="term-value">9.9x</span></div>
+                    <div class="term-row"><span class="term-label">Projected Payout</span><span class="term-value">9-24 Months</span></div>
+                    <div class="term-row"><span class="term-label">5-Year ROI Target</span><span class="term-value">9.9x</span></div>
                     <div class="term-row"><span class="term-label">Investor Type</span><span class="term-value">Accredited Only</span></div>
                 </div>
 
-                <div class="calculator reveal" style="animation-delay: 0.2s;">
-                    <h3>Return Calculator</h3>
-                    <div class="calc-input">
-                        <label>Investment Amount</label>
-                        <input type="range" id="investAmount" min="100000" max="2000000" step="50000" value="250000">
-                        <div class="value-display">$<span id="investDisplay">250,000</span></div>
-                    </div>
-                    <div class="calc-input">
-                        <label>Gas Price ($/MCF)</label>
-                        <input type="range" id="gasPrice" min="2" max="6" step="0.25" value="3.50">
-                        <div class="value-display">$<span id="gasPriceDisplay">3.50</span></div>
-                    </div>
-                    <div class="calc-input">
-                        <label>Hold Period (Years)</label>
-                        <input type="range" id="holdPeriod" min="1" max="7" step="1" value="5">
-                        <div class="value-display"><span id="holdPeriodDisplay">5</span> years</div>
-                    </div>
-                    <div class="calc-results">
-                        <div class="calc-result-row"><span>Annual Preferred (12%)</span><span id="annualPref">$30,000</span></div>
-                        <div class="calc-result-row"><span>Est. Annual Cash Flow</span><span id="annualCash">$74,000</span></div>
-                        <div class="calc-result-row"><span>Est. Total Return</span><span id="totalReturn">$520,000</span></div>
-                    </div>
+                <div class="nda-gate reveal" style="animation-delay: 0.2s;">
+                    <h3>&#128274; Data Room Access</h3>
+                    <p>Complete project details are available to qualified investors after NDA execution.</p>
+                    <ul class="nda-items">
+                        <li>Individual well specifications &amp; production history</li>
+                        <li>Engineering reports &amp; reserve estimates</li>
+                        <li>Full team bios &amp; contact information</li>
+                        <li>Financial projections &amp; sensitivity analysis</li>
+                        <li>Legal documents &amp; subscription materials</li>
+                    </ul>
+                    <a href="#nda" class="btn btn-primary">Request NDA</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Timeline -->
-    <section class="section-cream">
-        <div class="container">
-            <div class="section-header reveal">
-                <span class="section-label">Execution</span>
-                <h2>Project Timeline</h2>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item reveal"><span class="timeline-period">Month 1</span><div><h3 class="timeline-title">Capital Close &amp; Mobilization</h3><p class="timeline-desc">Final capital close, vendor contracts executed, equipment and crews mobilized.</p></div></div>
-                <div class="timeline-item reveal" style="animation-delay: 0.1s;"><span class="timeline-period">Month 2</span><div><h3 class="timeline-title">Site Preparation</h3><p class="timeline-desc">Wellhead inspections, surface equipment upgrades, Kinder Morgan pipeline verification.</p></div></div>
-                <div class="timeline-item reveal" style="animation-delay: 0.2s;"><span class="timeline-period">Month 2-3</span><div><h3 class="timeline-title">Well Rework Operations</h3><p class="timeline-desc">Tubing replacement, HF acid treatments, multi-stage fracturing on Bahr #7 &amp; #9.</p></div></div>
-                <div class="timeline-item reveal" style="animation-delay: 0.3s;"><span class="timeline-period">Month 4+</span><div><h3 class="timeline-title">Production Online</h3><p class="timeline-desc">Wells online. Production flows to Kinder Morgan. Daily monitoring initiated.</p></div></div>
-                <div class="timeline-item reveal" style="animation-delay: 0.4s;"><span class="timeline-period">Month 5</span><div><h3 class="timeline-title">First Revenue</h3><p class="timeline-desc">First sales revenue received. Investor distributions begin per waterfall structure.</p></div></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta-section" id="contact">
+    <!-- NDA CTA -->
+    <section class="cta-section" id="nda">
         <div class="container" style="position: relative; z-index: 2;">
-            <span class="section-label reveal">Ready to Invest?</span>
+            <span class="section-label reveal">Qualified Investors</span>
             <h2 class="reveal">Request Data Room Access</h2>
-            <p class="reveal">Get the full investor package: geological reports, production history, financial projections, PPM, and subscription documents.</p>
+            <p class="reveal">Submit your NDA to receive the complete investor package including well-by-well technical data, production history, financial projections, and subscription documents.</p>
+            
             <div class="reveal">
-                <a href="mailto:info@cladutacorp.com?subject=Humble%20Dome%20Data%20Room%20Request" class="btn btn-primary">Email for Access</a>
+                <a href="mailto:info@cladutacorp.com?subject=Humble%20Dome%20NDA%20Request" class="btn btn-primary">Request NDA via Email</a>
                 <a href="tel:+17276232652" class="btn btn-outline">Call: (727) 623-2652</a>
             </div>
+
             <p class="cta-note reveal">Reg D Rule 506(c) Private Placement &bull; Accredited Investors Only &bull; SEC Rule 501</p>
         </div>
     </section>
 
     <div class="disclaimer">
         <div class="container">
-            <strong>IMPORTANT DISCLAIMER:</strong> This material is for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any securities. Securities are offered only to accredited investors pursuant to Regulation D Rule 506(c) of the Securities Act of 1933. Past performance is not indicative of future results. Oil and gas investments involve significant risks including loss of principal. Projections and forward-looking statements are based on assumptions that may not materialize. Bitcoin mining returns are subject to cryptocurrency price volatility and network difficulty adjustments. Investors should consult with their own legal, tax, and financial advisors before making any investment decision.
+            <strong>IMPORTANT DISCLAIMER:</strong> This material is for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any securities. Securities are offered only to accredited investors pursuant to Regulation D Rule 506(c) of the Securities Act of 1933. Past performance is not indicative of future results. Oil and gas investments involve significant risks including loss of principal. Projections and forward-looking statements are based on assumptions that may not materialize. Investors should consult with their own legal, tax, and financial advisors before making any investment decision. Detailed project information is available only after execution of a non-disclosure agreement.
         </div>
     </div>
 
@@ -624,7 +390,6 @@
     </footer>
 
     <script>
-        // Scroll reveal
         function reveal() {
             document.querySelectorAll('.reveal').forEach(el => {
                 if (el.getBoundingClientRect().top < window.innerHeight - 150) {
@@ -634,61 +399,6 @@
         }
         window.addEventListener('scroll', reveal);
         reveal();
-
-        // Calculator
-        const investAmount = document.getElementById('investAmount');
-        const gasPrice = document.getElementById('gasPrice');
-        const holdPeriod = document.getElementById('holdPeriod');
-
-        function formatNumber(num) { return num.toLocaleString('en-US'); }
-        function formatCurrency(num) { return num >= 1000000 ? '$' + (num / 1000000).toFixed(1) + 'M' : '$' + formatNumber(Math.round(num)); }
-
-        function updateCalculator() {
-            const invest = parseFloat(investAmount.value);
-            const gas = parseFloat(gasPrice.value);
-            const years = parseFloat(holdPeriod.value);
-
-            document.getElementById('investDisplay').textContent = formatNumber(invest);
-            document.getElementById('gasPriceDisplay').textContent = gas.toFixed(2);
-            document.getElementById('holdPeriodDisplay').textContent = years;
-
-            const annualPref = invest * 0.12;
-            const baseAnnualReturn = (invest * 9.9) / 5;
-            const gasAdjustedReturn = baseAnnualReturn * (gas / 3.50);
-            const totalReturn = gasAdjustedReturn * years;
-
-            document.getElementById('annualPref').textContent = formatCurrency(annualPref);
-            document.getElementById('annualCash').textContent = formatCurrency(gasAdjustedReturn);
-            document.getElementById('totalReturn').textContent = formatCurrency(totalReturn);
-        }
-
-        investAmount.addEventListener('input', updateCalculator);
-        gasPrice.addEventListener('input', updateCalculator);
-        holdPeriod.addEventListener('input', updateCalculator);
-        updateCalculator();
-
-        // Well filter
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const filter = btn.dataset.filter;
-                document.querySelectorAll('.well-card').forEach(card => {
-                    card.style.display = (filter === 'all' || card.dataset.type === filter) ? 'block' : 'none';
-                });
-            });
-        });
-
-        // Animate counter
-        setTimeout(() => {
-            let count = 0;
-            const target = 9;
-            const interval = setInterval(() => {
-                count++;
-                document.getElementById('stat-wells').textContent = count;
-                if (count >= target) clearInterval(interval);
-            }, 150);
-        }, 500);
     </script>
 </body>
 </html>
