@@ -156,14 +156,27 @@
 <body>
     <!-- Access Gate Modal -->
     <div id="accessGate" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 9999; display: flex; align-items: center; justify-content: center;">
-        <div style="background: #fff; padding: 3rem; border-radius: 8px; max-width: 450px; text-align: center; margin: 20px;">
+        <div style="background: #fff; padding: 3rem; border-radius: 8px; max-width: 480px; text-align: center; margin: 20px;">
             <div style="font-size: 4rem; margin-bottom: 1rem;">🔐</div>
-            <h2 style="color: #2d4a3e; margin-bottom: 1rem; font-family: 'Playfair Display', serif;">Data Room Access</h2>
-            <p style="color: #666; margin-bottom: 2rem;">This area contains confidential information protected under NDA. Enter your access code to continue.</p>
-            <input type="text" id="accessCodeInput" placeholder="Enter Access Code" style="width: 100%; padding: 1rem; border: 2px solid #ddd; border-radius: 4px; font-size: 1.1rem; text-align: center; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1rem;">
-            <p id="accessError" style="color: #c0392b; display: none; margin-bottom: 1rem;">Invalid access code. Please try again.</p>
-            <button onclick="checkAccess()" style="width: 100%; padding: 1rem; background: #c9a961; color: #1a1a1a; border: none; border-radius: 4px; font-size: 1rem; font-weight: 600; cursor: pointer;">Enter Data Room</button>
-            <p style="margin-top: 1.5rem; font-size: 0.85rem; color: #888;">Don't have an access code? <a href="nda-application.html" style="color: #2d4a3e;">Complete your NDA →</a></p>
+            <h2 style="color: #2d4a3e; margin-bottom: 0.5rem; font-family: 'Playfair Display', serif;">Data Room Access</h2>
+            <p style="color: #666; margin-bottom: 1.5rem; font-size: 0.95rem;">This area contains confidential information protected under NDA.</p>
+            
+            <div style="background: #f8f8f8; padding: 1.5rem; border-radius: 6px; margin-bottom: 1.5rem;">
+                <label style="display: block; text-align: left; font-weight: 600; color: #2d4a3e; margin-bottom: 0.5rem; font-size: 0.9rem;">Enter Your Access Code</label>
+                <input type="text" id="accessCodeInput" placeholder="e.g., HUMBLE2024" style="width: 100%; padding: 1rem; border: 2px solid #ddd; border-radius: 4px; font-size: 1.1rem; text-align: center; letter-spacing: 2px; text-transform: uppercase;">
+                <p id="accessError" style="color: #c0392b; display: none; margin-top: 0.75rem; margin-bottom: 0; font-size: 0.85rem;">Invalid access code. Please check and try again.</p>
+            </div>
+
+            <button onclick="checkAccess()" style="width: 100%; padding: 1rem; background: #c9a961; color: #1a1a1a; border: none; border-radius: 4px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.3s;">Enter Data Room</button>
+            
+            <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #eee;">
+                <p style="font-size: 0.85rem; color: #888; margin-bottom: 0.75rem;">Don't have an access code?</p>
+                <a href="nda-application.html" style="color: #2d4a3e; font-weight: 600; text-decoration: none;">Complete Your NDA Application →</a>
+            </div>
+
+            <p style="margin-top: 1.5rem; font-size: 0.75rem; color: #aaa;">
+                Already signed? Your access may be saved on your original browser/device.
+            </p>
         </div>
     </div>
 
@@ -215,6 +228,45 @@
                     <p><strong>Formations:</strong> Wilcox A, B, C sands</p>
                     <p><strong>Original Lessees:</strong> Chevron U.S.A. Inc.</p>
                     <p><strong>Lessor:</strong> Bahr Interest et al</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Well Map -->
+    <section class="section-dark" style="padding: 60px 5%;">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Technical Analysis</span>
+                <h2>Interactive Well Map</h2>
+                <p>Click any well marker to view detailed production history, engineering data, and revenue projections.</p>
+            </div>
+
+            <div class="reveal" style="background: #0a0a0b; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; margin-top: 2rem;">
+                <iframe src="humble-dome-well-map.html" style="width: 100%; height: 700px; border: none;" title="Humble Dome Interactive Well Map"></iframe>
+            </div>
+
+            <div class="reveal" style="text-align: center; margin-top: 1.5rem;">
+                <a href="humble-dome-well-map.html" target="_blank" class="btn btn-primary" style="background: transparent; border: 2px solid var(--gold); color: var(--gold);">
+                    Open Full Screen Map ↗
+                </a>
+            </div>
+
+            <div class="reveal" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem;">
+                <div style="text-align: center; padding: 1.5rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px;">
+                    <div style="font-size: 2.5rem; color: var(--gold); font-family: 'Playfair Display', serif; font-weight: 700;">2</div>
+                    <div style="color: rgba(255,255,255,0.7); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Priority Targets</div>
+                    <div style="color: rgba(255,255,255,0.5); font-size: 0.8rem; margin-top: 0.5rem;">Bahr #7 & #9</div>
+                </div>
+                <div style="text-align: center; padding: 1.5rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px;">
+                    <div style="font-size: 2.5rem; color: #ef4444; font-family: 'Playfair Display', serif; font-weight: 700;">1</div>
+                    <div style="color: rgba(255,255,255,0.7); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Subsalt Re-Entry</div>
+                    <div style="color: rgba(255,255,255,0.5); font-size: 0.8rem; margin-top: 0.5rem;">Bahr #3 — 10 MMCFD Target</div>
+                </div>
+                <div style="text-align: center; padding: 1.5rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px;">
+                    <div style="font-size: 2.5rem; color: #10b981; font-family: 'Playfair Display', serif; font-weight: 700;">6</div>
+                    <div style="color: rgba(255,255,255,0.7); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Active Wells</div>
+                    <div style="color: rgba(255,255,255,0.5); font-size: 0.8rem; margin-top: 0.5rem;">Secondary Workover Candidates</div>
                 </div>
             </div>
         </div>
@@ -574,7 +626,7 @@
 
     <script>
         // Access Control
-        const VALID_CODES = ['HUMBLE2024', 'DATAROOM', 'INVESTOR2024']; // Add your codes here
+        const VALID_CODES = ['HUMBLE2024', 'DATAROOM', 'INVESTOR2024', 'CLADUTA2024', 'JDMASTER']; // Add your codes here
         
         function checkStoredAccess() {
             const ndaSigned = localStorage.getItem('humble_nda_signed');

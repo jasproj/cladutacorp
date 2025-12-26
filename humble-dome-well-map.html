@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Humble Dome Interactive Well Map</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;600&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-bg: #0a0a0b;
+            --color-bg-elevated: #111113;
+            --color-bg-card: #16161a;
+            --color-surface: #1a1a1f;
+            --color-border: #2a2a30;
+            --color-text: #e8e6e3;
+            --color-text-muted: #8a8a8d;
+            --color-accent: #f59e0b;
+            --color-accent-glow: rgba(245, 158, 11, 0.4);
+            --color-accent-dark: #b45309;
+            --color-success: #10b981;
+            --color-danger: #ef4444;
+            --color-info: #3b82f6;
+            --font-display: 'Bebas Neue', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-body: 'Source Sans 3', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-bg);
+            color: var(--color-text);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .map-section {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .map-header {
+            margin-bottom: 2rem;
+        }
+
+        .map-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+        }
+
+        .map-title {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            letter-spacing: 2px;
+        }
+
+        .map-container {
+            position: relative;
+            background: var(--color-bg-card);
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        /* Map Controls */
+        .map-controls {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 20;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .map-control-btn {
+            width: 40px;
+            height: 40px;
+            background: var(--color-bg-elevated);
+            border: 1px solid var(--color-border);
+            color: var(--color-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1.25rem;
+        }
+
+        .map-control-btn:hover {
+            background: var(--color-surface);
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+
+        /* Map Legend */
+        .map-legend {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            z-index: 20;
+            background: rgba(10, 10, 11, 0.95);
+            border: 1px solid var(--color-border);
+            padding: 1rem;
+            min-width: 180px;
+        }
+
+        .legend-title {
+            font-family: var(--font-mono);
+            font-size: 0.625rem;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.375rem 0;
+            font-size: 0.75rem;
+        }
+
+        .legend-marker {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .legend-marker.priority {
+            background: var(--color-accent);
+            box-shadow: 0 0 10px var(--color-accent-glow);
+        }
+
+        .legend-marker.active {
+            background: var(--color-success);
+        }
+
+        .legend-marker.reentry {
+            background: var(--color-danger);
+        }
+
+        /* Map Canvas */
+        .map-canvas {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/10;
+            background: 
+                radial-gradient(ellipse at 30% 40%, rgba(245, 158, 11, 0.03) 0%, transparent 50%),
+                linear-gradient(180deg, var(--color-bg-elevated) 0%, var(--color-bg) 100%);
+            overflow: hidden;
+        }
+
+        /* Grid overlay */
+        .map-grid {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+
+        /* Topographic lines */
+        .topo-lines {
+            position: absolute;
+            inset: 0;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .topo-line {
+            position: absolute;
+            border: 1px solid var(--color-accent);
+            border-radius: 50%;
+            animation: topo-pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes topo-pulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.1; }
+        }
+
+        /* Field boundary */
+        .field-boundary {
+            position: absolute;
+            top: 15%;
+            left: 20%;
+            width: 55%;
+            height: 65%;
+            border: 2px dashed rgba(245, 158, 11, 0.3);
+            border-radius: 30% 70% 60% 40% / 40% 50% 50% 60%;
+            pointer-events: none;
+        }
+
+        .field-label {
+            position: absolute;
+            top: 8%;
+            left: 25%;
+            font-family: var(--font-mono);
+            font-size: 0.625rem;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            opacity: 0.6;
+        }
+
+        /* Salt dome indicator */
+        .salt-dome {
+            position: absolute;
+            top: 25%;
+            left: 30%;
+            width: 35%;
+            height: 45%;
+            background: radial-gradient(ellipse, rgba(245, 158, 11, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .salt-dome-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: rgba(245, 158, 11, 0.15);
+            letter-spacing: 8px;
+            white-space: nowrap;
+        }
+
+        /* Well markers */
+        .well-marker {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            z-index: 10;
+            transition: z-index 0s;
+        }
+
+        .well-marker:hover {
+            z-index: 50;
+        }
+
+        .well-marker-dot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--color-success);
+            border: 2px solid var(--color-bg);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+        }
+
+        .well-marker.priority .well-marker-dot {
+            background: var(--color-accent);
+            box-shadow: 0 0 20px var(--color-accent-glow);
+            animation: marker-pulse 2s infinite;
+        }
+
+        .well-marker.reentry .well-marker-dot {
+            background: var(--color-danger);
+        }
+
+        @keyframes marker-pulse {
+            0%, 100% { 
+                box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.6);
+            }
+            50% { 
+                box-shadow: 0 0 20px 8px rgba(245, 158, 11, 0.2);
+            }
+        }
+
+        .well-marker:hover .well-marker-dot {
+            transform: translate(-50%, -50%) scale(1.3);
+        }
+
+        .well-marker-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            border: 1px solid transparent;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .well-marker:hover .well-marker-ring {
+            border-color: var(--color-accent);
+            width: 40px;
+            height: 40px;
+        }
+
+        .well-marker-label {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 8px;
+            font-family: var(--font-mono);
+            font-size: 0.625rem;
+            color: var(--color-text-muted);
+            white-space: nowrap;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .well-marker:hover .well-marker-label {
+            color: var(--color-accent);
+        }
+
+        /* Tooltip */
+        .well-tooltip {
+            position: absolute;
+            bottom: calc(100% + 15px);
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: var(--color-bg-elevated);
+            border: 1px solid var(--color-border);
+            padding: 0;
+            min-width: 280px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .well-marker:hover .well-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .tooltip-header {
+            padding: 1rem;
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tooltip-name {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .tooltip-status {
+            font-family: var(--font-mono);
+            font-size: 0.625rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.25rem 0.5rem;
+            border-radius: 2px;
+        }
+
+        .tooltip-status.priority {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--color-accent);
+            border: 1px solid var(--color-accent);
+        }
+
+        .tooltip-status.active {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--color-success);
+            border: 1px solid var(--color-success);
+        }
+
+        .tooltip-status.reentry {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--color-danger);
+            border: 1px solid var(--color-danger);
+        }
+
+        .tooltip-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: var(--color-border);
+        }
+
+        .tooltip-stat {
+            background: var(--color-bg-card);
+            padding: 0.75rem;
+            text-align: center;
+        }
+
+        .tooltip-stat-value {
+            font-family: var(--font-mono);
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .tooltip-stat-value.highlight {
+            color: var(--color-accent);
+        }
+
+        .tooltip-stat-label {
+            font-size: 0.625rem;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.25rem;
+        }
+
+        .tooltip-meta {
+            padding: 0.75rem 1rem;
+            background: var(--color-surface);
+            font-family: var(--font-mono);
+            font-size: 0.6875rem;
+            color: var(--color-text-muted);
+        }
+
+        .tooltip-meta-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.25rem 0;
+        }
+
+        .tooltip-meta-row span:last-child {
+            color: var(--color-text);
+        }
+
+        .tooltip-chart {
+            padding: 1rem;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .tooltip-chart-title {
+            font-family: var(--font-mono);
+            font-size: 0.625rem;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+
+        .mini-chart {
+            height: 60px;
+            display: flex;
+            align-items: flex-end;
+            gap: 2px;
+        }
+
+        .mini-chart-bar {
+            flex: 1;
+            background: var(--color-accent);
+            opacity: 0.6;
+            transition: opacity 0.2s ease;
+            min-width: 4px;
+        }
+
+        .mini-chart-bar:hover {
+            opacity: 1;
+        }
+
+        .tooltip-footer {
+            padding: 0.75rem 1rem;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+        }
+
+        .tooltip-cta {
+            font-family: var(--font-mono);
+            font-size: 0.625rem;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Tooltip arrow */
+        .well-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 8px solid transparent;
+            border-top-color: var(--color-bg-elevated);
+        }
+
+        /* Connection lines between wells */
+        .connection-lines {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .connection-line {
+            stroke: var(--color-border);
+            stroke-width: 1;
+            stroke-dasharray: 4 4;
+            opacity: 0.3;
+        }
+
+        /* Info panel */
+        .map-info {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            right: 1rem;
+            background: rgba(10, 10, 11, 0.9);
+            border: 1px solid var(--color-border);
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .map-info-item {
+            text-align: center;
+        }
+
+        .map-info-value {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            color: var(--color-accent);
+        }
+
+        .map-info-label {
+            font-family: var(--font-mono);
+            font-size: 0.625rem;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Coordinates display */
+        .coordinates {
+            position: absolute;
+            bottom: 5rem;
+            right: 1rem;
+            font-family: var(--font-mono);
+            font-size: 0.6875rem;
+            color: var(--color-text-muted);
+            background: rgba(10, 10, 11, 0.8);
+            padding: 0.5rem 0.75rem;
+            border: 1px solid var(--color-border);
+        }
+
+        /* Selected well detail panel */
+        .detail-panel {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 450px;
+            height: 100vh;
+            background: var(--color-bg-elevated);
+            border-left: 1px solid var(--color-border);
+            z-index: 200;
+            transition: right 0.4s ease;
+            overflow-y: auto;
+        }
+
+        .detail-panel.open {
+            right: 0;
+        }
+
+        .detail-panel-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 190;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .detail-panel-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .detail-header {
+            padding: 2rem;
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .detail-close {
+            width: 40px;
+            height: 40px;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            color: var(--color-text);
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+        }
+
+        .detail-close:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+
+        .detail-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+        }
+
+        .detail-subtitle {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            margin-top: 0.5rem;
+        }
+
+        .detail-section {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .detail-section-title {
+            font-family: var(--font-mono);
+            font-size: 0.6875rem;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .detail-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .detail-stat {
+            background: var(--color-surface);
+            padding: 1rem;
+        }
+
+        .detail-stat-value {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .detail-stat-label {
+            font-size: 0.6875rem;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.25rem;
+        }
+
+        .detail-chart {
+            height: 200px;
+            background: var(--color-surface);
+            display: flex;
+            align-items: flex-end;
+            padding: 1rem;
+            gap: 4px;
+        }
+
+        .chart-bar {
+            flex: 1;
+            background: linear-gradient(to top, var(--color-accent-dark), var(--color-accent));
+            transition: all 0.3s ease;
+            position: relative;
+            min-width: 8px;
+        }
+
+        .chart-bar:hover {
+            background: var(--color-accent);
+        }
+
+        .chart-bar::after {
+            content: attr(data-value);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-mono);
+            font-size: 0.5rem;
+            color: var(--color-text-muted);
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .chart-bar:hover::after {
+            opacity: 1;
+        }
+
+        .detail-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .detail-meta-row {
+            display: flex;
+            justify-content: space-between;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--color-border);
+            font-size: 0.875rem;
+        }
+
+        .detail-meta-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-meta-label {
+            color: var(--color-text-muted);
+        }
+
+        .detail-meta-value {
+            font-family: var(--font-mono);
+            color: var(--color-text);
+        }
+
+        .detail-work {
+            background: var(--color-surface);
+            padding: 1rem;
+            font-size: 0.875rem;
+            line-height: 1.6;
+            color: var(--color-text-muted);
+        }
+
+        .detail-work strong {
+            color: var(--color-text);
+        }
+
+        /* Production data placeholder */
+        .production-placeholder {
+            background: var(--color-surface);
+            padding: 2rem;
+            text-align: center;
+            border: 1px dashed var(--color-border);
+        }
+
+        .production-placeholder-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .production-placeholder-text {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .map-legend {
+                display: none;
+            }
+
+            .map-info {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .map-info-item {
+                flex: 1;
+                min-width: 80px;
+            }
+
+            .detail-panel {
+                width: 100%;
+                right: -100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="map-section">
+        <div class="map-header">
+            <div class="map-label">Cross Creek Field • Harris County, TX</div>
+            <h2 class="map-title">HUMBLE DOME WELL MAP</h2>
+        </div>
+
+        <div class="map-container">
+            <!-- Map Controls -->
+            <div class="map-controls">
+                <button class="map-control-btn" title="Zoom In">+</button>
+                <button class="map-control-btn" title="Zoom Out">−</button>
+                <button class="map-control-btn" title="Reset View">⟲</button>
+            </div>
+
+            <!-- Legend -->
+            <div class="map-legend">
+                <div class="legend-title">Well Status</div>
+                <div class="legend-item">
+                    <div class="legend-marker priority"></div>
+                    <span>Priority Target</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-marker active"></div>
+                    <span>Active</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-marker reentry"></div>
+                    <span>Re-Entry Target</span>
+                </div>
+            </div>
+
+            <!-- Map Canvas -->
+            <div class="map-canvas" id="mapCanvas">
+                <!-- Grid -->
+                <div class="map-grid"></div>
+
+                <!-- Topographic lines -->
+                <div class="topo-lines">
+                    <div class="topo-line" style="top: 20%; left: 25%; width: 50%; height: 60%;"></div>
+                    <div class="topo-line" style="top: 25%; left: 30%; width: 40%; height: 50%;"></div>
+                    <div class="topo-line" style="top: 30%; left: 35%; width: 30%; height: 40%;"></div>
+                </div>
+
+                <!-- Salt dome indicator -->
+                <div class="salt-dome">
+                    <div class="salt-dome-label">HUMBLE SALT DOME</div>
+                </div>
+
+                <!-- Field boundary -->
+                <div class="field-boundary"></div>
+                <div class="field-label">CROSS CREEK FIELD BOUNDARY</div>
+
+                <!-- Connection lines SVG -->
+                <svg class="connection-lines" viewBox="0 0 100 100" preserveAspectRatio="none">
+                    <line class="connection-line" x1="28" y1="32" x2="35" y2="38"/>
+                    <line class="connection-line" x1="35" y1="38" x2="42" y2="35"/>
+                    <line class="connection-line" x1="42" y1="35" x2="38" y2="45"/>
+                    <line class="connection-line" x1="38" y1="45" x2="50" y2="42"/>
+                    <line class="connection-line" x1="50" y1="42" x2="55" y2="50"/>
+                    <line class="connection-line" x1="55" y1="50" x2="48" y2="55"/>
+                    <line class="connection-line" x1="48" y1="55" x2="58" y2="60"/>
+                </svg>
+
+                <!-- Well Markers -->
+                <!-- Bahr #1 -->
+                <div class="well-marker active" style="left: 28%; top: 32%;" data-well="1" onclick="openDetail(1)">
+                    <div class="well-marker-ring"></div>
+                    <div class="well-marker-dot"></div>
+                    <div class="well-marker-label">#1</div>
+                    <div class="well-tooltip">
+                        <div class="tooltip-header">
+                            <span class="tooltip-name">BAHR #1</span>
+                            <span class="tooltip-status active">Active</span>
+                        </div>
+                        <div class="tooltip-stats">
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value highlight">7,200</div>
+                                <div class="tooltip-stat-label">Peak MCFD</div>
+                            </div>
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value">108</div>
+                                <div class="tooltip-stat-label">Peak BOPD</div>
+                            </div>
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value highlight">7.1</div>
+                                <div class="tooltip-stat-label">BCF Cumulative</div>
+                            </div>
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value">300</div>
+                                <div class="tooltip-stat-label">Target MCFD</div>
+                            </div>
+                        </div>
+                        <div class="tooltip-meta">
+                            <div class="tooltip-meta-row">
+                                <span>API</span>
+                                <span>42-201-32323</span>
+                            </div>
+                            <div class="tooltip-meta-row">
+                                <span>Lease</span>
+                                <span>148210</span>
+                            </div>
+                        </div>
+                        <div class="tooltip-chart">
+                            <div class="tooltip-chart-title">Production History</div>
+                            <div class="mini-chart">
+                                <div class="mini-chart-bar" style="height: 90%;"></div>
+                                <div class="mini-chart-bar" style="height: 85%;"></div>
+                                <div class="mini-chart-bar" style="height: 75%;"></div>
+                                <div class="mini-chart-bar" style="height: 65%;"></div>
+                                <div class="mini-chart-bar" style="height: 55%;"></div>
+                                <div class="mini-chart-bar" style="height: 45%;"></div>
+                                <div class="mini-chart-bar" style="height: 35%;"></div>
+                                <div class="mini-chart-bar" style="height: 30%;"></div>
+                                <div class="mini-chart-bar" style="height: 25%;"></div>
+                                <div class="mini-chart-bar" style="height: 20%;"></div>
+                                <div class="mini-chart-bar" style="height: 15%;"></div>
+                                <div class="mini-chart-bar" style="height: 12%;"></div>
+                            </div>
+                        </div>
+                        <div class="tooltip-footer">
+                            <span class="tooltip-cta">Click for full details →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bahr #2 -->
+                <div class="well-marker active" style="left: 35%; top: 38%;" data-well="2" onclick="openDetail(2)">
+                    <div class="well-marker-ring"></div>
+                    <div class="well-marker-dot"></div>
+                    <div class="well-marker-label">#2</div>
+                    <div class="well-tooltip">
+                        <div class="tooltip-header">
+                            <span class="tooltip-name">BAHR #2</span>
+                            <span class="tooltip-status active">Active</span>
+                        </div>
+                        <div class="tooltip-stats">
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value">—</div>
+                                <div class="tooltip-stat-label">Peak MCFD</div>
+                            </div>
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value">—</div>
+                                <div class="tooltip-stat-label">Peak BOPD</div>
+                            </div>
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value">—</div>
+                                <div class="tooltip-stat-label">BCF Cumulative</div>
+                            </div>
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value">TBD</div>
+                                <div class="tooltip-stat-label">Target MCFD</div>
+                            </div>
+                        </div>
+                        <div class="tooltip-meta">
+                            <div class="tooltip-meta-row">
+                                <span>API</span>
+                                <span>42-201-32365</span>
+                            </div>
+                            <div class="tooltip-meta-row">
+                                <span>Lease</span>
+                                <span>155124</span>
+                            </div>
+                        </div>
+                        <div class="tooltip-footer">
+                            <span class="tooltip-cta">Click for full details →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bahr #3 -->
+                <div class="well-marker reentry" style="left: 42%; top: 35%;" data-well="3" onclick="openDetail(3)">
+                    <div class="well-marker-ring"></div>
+                    <div class="well-marker-dot"></div>
+                    <div class="well-marker-label">#3</div>
+                    <div class="well-tooltip">
+                        <div class="tooltip-header">
+                            <span class="tooltip-name">BAHR #3</span>
+                            <span class="tooltip-status reentry">Re-Entry</span>
+                        </div>
+                        <div class="tooltip-stats">
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value highlight">5,800</div>
+                                <div class="tooltip-stat-label">Peak MCFD</div>
+                            </div>
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value">136</div>
+                                <div class="tooltip-stat-label">Peak BOPD</div>
+                            </div>
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value highlight">2.3</div>
+                                <div class="tooltip-stat-label">BCF Cumulative</div>
+                            </div>
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value" style="color: var(--color-accent);">10,000</div>
+                                <div class="tooltip-stat-label">Target MCFD</div>
+                            </div>
+                        </div>
+                        <div class="tooltip-meta">
+                            <div class="tooltip-meta-row">
+                                <span>API</span>
+                                <span>42-201-32417</span>
+                            </div>
+                            <div class="tooltip-meta-row">
+                                <span>Lease</span>
+                                <span>157025</span>
+                            </div>
+                        </div>
+                        <div class="tooltip-chart">
+                            <div class="tooltip-chart-title">Subsalt Re-Entry Potential</div>
+                            <div class="mini-chart">
+                                <div class="mini-chart-bar" style="height: 60%; background: var(--color-danger);"></div>
+                                <div class="mini-chart-bar" style="height: 55%; background: var(--color-danger);"></div>
+                                <div class="mini-chart-bar" style="height: 45%; background: var(--color-danger);"></div>
+                                <div class="mini-chart-bar" style="height: 35%; background: var(--color-danger);"></div>
+                                <div class="mini-chart-bar" style="height: 25%; background: var(--color-text-muted); opacity: 0.3;"></div>
+                                <div class="mini-chart-bar" style="height: 100%; background: var(--color-accent);"></div>
+                            </div>
+                        </div>
+                        <div class="tooltip-footer">
+                            <span class="tooltip-cta">Click for full details →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bahr #4 -->
+                <div class="well-marker active" style="left: 38%; top: 45%;" data-well="4" onclick="openDetail(4)">
+                    <div class="well-marker-ring"></div>
+                    <div class="well-marker-dot"></div>
+                    <div class="well-marker-label">#4</div>
+                    <div class="well-tooltip">
+                        <div class="tooltip-header">
+                            <span class="tooltip-name">BAHR #4</span>
+                            <span class="tooltip-status active">Active</span>
+                        </div>
+                        <div class="tooltip-stats">
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value highlight">1,100</div>
+                                <div class="tooltip-stat-label">Peak MCFD</div>
+                            </div>
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value">100</div>
+                                <div class="tooltip-stat-label">Peak BOPD</div>
+                            </div>
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value highlight">0.35</div>
+                                <div class="tooltip-stat-label">BCF Cumulative</div>
+                            </div>
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value">300</div>
+                                <div class="tooltip-stat-label">Target MCFD</div>
+                            </div>
+                        </div>
+                        <div class="tooltip-meta">
+                            <div class="tooltip-meta-row">
+                                <span>API</span>
+                                <span>42-201-32429</span>
+                            </div>
+                            <div class="tooltip-meta-row">
+                                <span>Lease</span>
+                                <span>160513</span>
+                            </div>
+                        </div>
+                        <div class="tooltip-footer">
+                            <span class="tooltip-cta">Click for full details →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bahr #6 -->
+                <div class="well-marker active" style="left: 50%; top: 42%;" data-well="6" onclick="openDetail(6)">
+                    <div class="well-marker-ring"></div>
+                    <div class="well-marker-dot"></div>
+                    <div class="well-marker-label">#6</div>
+                    <div class="well-tooltip">
+                        <div class="tooltip-header">
+                            <span class="tooltip-name">BAHR #6</span>
+                            <span class="tooltip-status active">Active</span>
+                        </div>
+                        <div class="tooltip-stats">
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value">—</div>
+                                <div class="tooltip-stat-label">Peak MCFD</div>
+                            </div>
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value">—</div>
+                                <div class="tooltip-stat-label">Peak BOPD</div>
+                            </div>
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value">—</div>
+                                <div class="tooltip-stat-label">BCF Cumulative</div>
+                            </div>
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value">TBD</div>
+                                <div class="tooltip-stat-label">Target MCFD</div>
+                            </div>
+                        </div>
+                        <div class="tooltip-meta">
+                            <div class="tooltip-meta-row">
+                                <span>API</span>
+                                <span>42-201-32447</span>
+                            </div>
+                            <div class="tooltip-meta-row">
+                                <span>Lease</span>
+                                <span>161466</span>
+                            </div>
+                        </div>
+                        <div class="tooltip-footer">
+                            <span class="tooltip-cta">Click for full details →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bahr #7 - PRIORITY -->
+                <div class="well-marker priority" style="left: 55%; top: 50%;" data-well="7" onclick="openDetail(7)">
+                    <div class="well-marker-ring"></div>
+                    <div class="well-marker-dot"></div>
+                    <div class="well-marker-label">#7</div>
+                    <div class="well-tooltip">
+                        <div class="tooltip-header">
+                            <span class="tooltip-name">BAHR #7</span>
+                            <span class="tooltip-status priority">Priority</span>
+                        </div>
+                        <div class="tooltip-stats">
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value highlight">6,500</div>
+                                <div class="tooltip-stat-label">Peak MCFD</div>
+                            </div>
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value">170</div>
+                                <div class="tooltip-stat-label">Peak BOPD</div>
+                            </div>
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value highlight">3.8</div>
+                                <div class="tooltip-stat-label">BCF Cumulative</div>
+                            </div>
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value" style="color: var(--color-accent);">2,400</div>
+                                <div class="tooltip-stat-label">Target MCFD</div>
+                            </div>
+                        </div>
+                        <div class="tooltip-meta">
+                            <div class="tooltip-meta-row">
+                                <span>API</span>
+                                <span>42-201-32448</span>
+                            </div>
+                            <div class="tooltip-meta-row">
+                                <span>Lease</span>
+                                <span>161313</span>
+                            </div>
+                        </div>
+                        <div class="tooltip-chart">
+                            <div class="tooltip-chart-title">Production History</div>
+                            <div class="mini-chart">
+                                <div class="mini-chart-bar" style="height: 85%;"></div>
+                                <div class="mini-chart-bar" style="height: 80%;"></div>
+                                <div class="mini-chart-bar" style="height: 70%;"></div>
+                                <div class="mini-chart-bar" style="height: 60%;"></div>
+                                <div class="mini-chart-bar" style="height: 50%;"></div>
+                                <div class="mini-chart-bar" style="height: 42%;"></div>
+                                <div class="mini-chart-bar" style="height: 35%;"></div>
+                                <div class="mini-chart-bar" style="height: 28%;"></div>
+                                <div class="mini-chart-bar" style="height: 22%;"></div>
+                                <div class="mini-chart-bar" style="height: 18%;"></div>
+                                <div class="mini-chart-bar" style="height: 15%;"></div>
+                                <div class="mini-chart-bar" style="height: 12%;"></div>
+                            </div>
+                        </div>
+                        <div class="tooltip-footer">
+                            <span class="tooltip-cta">Click for full details →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bahr #8 -->
+                <div class="well-marker active" style="left: 48%; top: 55%;" data-well="8" onclick="openDetail(8)">
+                    <div class="well-marker-ring"></div>
+                    <div class="well-marker-dot"></div>
+                    <div class="well-marker-label">#8</div>
+                    <div class="well-tooltip">
+                        <div class="tooltip-header">
+                            <span class="tooltip-name">BAHR #8</span>
+                            <span class="tooltip-status active">Active</span>
+                        </div>
+                        <div class="tooltip-stats">
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value">—</div>
+                                <div class="tooltip-stat-label">Peak MCFD</div>
+                            </div>
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value">—</div>
+                                <div class="tooltip-stat-label">Peak BOPD</div>
+                            </div>
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value">—</div>
+                                <div class="tooltip-stat-label">BCF Cumulative</div>
+                            </div>
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value">TBD</div>
+                                <div class="tooltip-stat-label">Target MCFD</div>
+                            </div>
+                        </div>
+                        <div class="tooltip-meta">
+                            <div class="tooltip-meta-row">
+                                <span>API</span>
+                                <span>42-201-32437</span>
+                            </div>
+                            <div class="tooltip-meta-row">
+                                <span>Lease</span>
+                                <span>165882</span>
+                            </div>
+                        </div>
+                        <div class="tooltip-footer">
+                            <span class="tooltip-cta">Click for full details →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bahr #9 - PRIORITY -->
+                <div class="well-marker priority" style="left: 58%; top: 60%;" data-well="9" onclick="openDetail(9)">
+                    <div class="well-marker-ring"></div>
+                    <div class="well-marker-dot"></div>
+                    <div class="well-marker-label">#9</div>
+                    <div class="well-tooltip">
+                        <div class="tooltip-header">
+                            <span class="tooltip-name">BAHR #9</span>
+                            <span class="tooltip-status priority">Priority</span>
+                        </div>
+                        <div class="tooltip-stats">
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value highlight">500</div>
+                                <div class="tooltip-stat-label">Peak MCFD</div>
+                            </div>
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value">10</div>
+                                <div class="tooltip-stat-label">Peak BOPD</div>
+                            </div>
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value highlight">0.5</div>
+                                <div class="tooltip-stat-label">BCF Cumulative</div>
+                            </div>
+                            <div class="tooltip-stat">
+                                <div class="tooltip-stat-value" style="color: var(--color-accent);">2,400</div>
+                                <div class="tooltip-stat-label">Target MCFD</div>
+                            </div>
+                        </div>
+                        <div class="tooltip-meta">
+                            <div class="tooltip-meta-row">
+                                <span>API</span>
+                                <span>42-201-32475</span>
+                            </div>
+                            <div class="tooltip-meta-row">
+                                <span>Lease</span>
+                                <span>165671</span>
+                            </div>
+                        </div>
+                        <div class="tooltip-chart">
+                            <div class="tooltip-chart-title">Upside Potential</div>
+                            <div class="mini-chart">
+                                <div class="mini-chart-bar" style="height: 15%;"></div>
+                                <div class="mini-chart-bar" style="height: 12%;"></div>
+                                <div class="mini-chart-bar" style="height: 10%;"></div>
+                                <div class="mini-chart-bar" style="height: 8%;"></div>
+                                <div class="mini-chart-bar" style="height: 6%;"></div>
+                                <div class="mini-chart-bar" style="height: 5%; background: var(--color-text-muted); opacity: 0.3;"></div>
+                                <div class="mini-chart-bar" style="height: 70%; background: var(--color-accent);"></div>
+                            </div>
+                        </div>
+                        <div class="tooltip-footer">
+                            <span class="tooltip-cta">Click for full details →</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coordinates -->
+                <div class="coordinates">
+                    <span id="coordDisplay">30.0342°N, 95.2842°W</span>
+                </div>
+
+                <!-- Info Bar -->
+                <div class="map-info">
+                    <div class="map-info-item">
+                        <div class="map-info-value">8</div>
+                        <div class="map-info-label">Total Wells</div>
+                    </div>
+                    <div class="map-info-item">
+                        <div class="map-info-value">14.05</div>
+                        <div class="map-info-label">BCF Cumulative</div>
+                    </div>
+                    <div class="map-info-item">
+                        <div class="map-info-value">1,500</div>
+                        <div class="map-info-label">Acres</div>
+                    </div>
+                    <div class="map-info-item">
+                        <div class="map-info-value">2</div>
+                        <div class="map-info-label">Priority Targets</div>
+                    </div>
+                    <div class="map-info-item">
+                        <div class="map-info-value">1</div>
+                        <div class="map-info-label">Re-Entry</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detail Panel Overlay -->
+    <div class="detail-panel-overlay" id="detailOverlay" onclick="closeDetail()"></div>
+
+    <!-- Detail Panel -->
+    <div class="detail-panel" id="detailPanel">
+        <div class="detail-header">
+            <div>
+                <h2 class="detail-title" id="detailTitle">BAHR #1</h2>
+                <div class="detail-subtitle" id="detailSubtitle">API: 42-201-32323 • Lease: 148210</div>
+            </div>
+            <button class="detail-close" onclick="closeDetail()">×</button>
+        </div>
+
+        <div class="detail-section">
+            <div class="detail-section-title">Production Summary</div>
+            <div class="detail-stats">
+                <div class="detail-stat">
+                    <div class="detail-stat-value" id="detailPeakGas">7,200</div>
+                    <div class="detail-stat-label">Peak MCFD</div>
+                </div>
+                <div class="detail-stat">
+                    <div class="detail-stat-value" id="detailPeakOil">108</div>
+                    <div class="detail-stat-label">Peak BOPD</div>
+                </div>
+                <div class="detail-stat">
+                    <div class="detail-stat-value" id="detailCumulative" style="color: var(--color-accent);">7.1 BCF</div>
+                    <div class="detail-stat-label">Cumulative Gas</div>
+                </div>
+                <div class="detail-stat">
+                    <div class="detail-stat-value" id="detailTarget" style="color: var(--color-accent);">300</div>
+                    <div class="detail-stat-label">Target MCFD</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="detail-section-title">Production History</div>
+            <div class="detail-chart" id="detailChart">
+                <!-- Chart bars will be generated dynamically -->
+            </div>
+            <div class="production-placeholder" id="productionPlaceholder" style="display: none;">
+                <div class="production-placeholder-icon">📊</div>
+                <div class="production-placeholder-text">RRC Production Data<br>Coming Soon</div>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="detail-section-title">Well Information</div>
+            <div class="detail-meta">
+                <div class="detail-meta-row">
+                    <span class="detail-meta-label">Formation</span>
+                    <span class="detail-meta-value" id="detailFormation">Wilcox A & C</span>
+                </div>
+                <div class="detail-meta-row">
+                    <span class="detail-meta-label">Completion Date</span>
+                    <span class="detail-meta-value" id="detailCompletion">1997-06-02</span>
+                </div>
+                <div class="detail-meta-row">
+                    <span class="detail-meta-label">Current Operator</span>
+                    <span class="detail-meta-value">Redbird Oilfield Services</span>
+                </div>
+                <div class="detail-meta-row">
+                    <span class="detail-meta-label">Field</span>
+                    <span class="detail-meta-value">Cross Creek (Wilcox)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="detail-section-title">Proposed Work Program</div>
+            <div class="detail-work" id="detailWork">
+                <strong>7-stage fracture, HF acid job, and tubing replacement</strong> proposed with an expected production of 300 MCFD and 5 BOPD. Well was fractured in the Wilcox A and C sands and production has declined due to salt plugs and tubing leaks.
+            </div>
+        </div>
+
+        <div class="detail-section">
+            <div class="detail-section-title">Revenue Calculator</div>
+            <div class="detail-stats">
+                <div class="detail-stat">
+                    <div class="detail-stat-value" id="detailMonthlyRev">$28,350</div>
+                    <div class="detail-stat-label">Est. Monthly Revenue</div>
+                </div>
+                <div class="detail-stat">
+                    <div class="detail-stat-value" id="detailAnnualRev">$340,200</div>
+                    <div class="detail-stat-label">Est. Annual Revenue</div>
+                </div>
+            </div>
+            <div style="font-size: 0.6875rem; color: var(--color-text-muted); margin-top: 1rem; font-family: var(--font-mono);">
+                Based on target production @ $3.15/MMBtu (current Henry Hub)
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Well data store
+        const wellData = {
+            1: {
+                name: 'BAHR #1',
+                api: '42-201-32323',
+                lease: '148210',
+                status: 'active',
+                peakGas: '7,200',
+                peakOil: '108',
+                cumulative: '7.1 BCF',
+                target: '300',
+                formation: 'Wilcox A & C',
+                completion: '1997-06-02',
+                work: '<strong>7-stage fracture, HF acid job, and tubing replacement</strong> proposed with an expected production of 300 MCFD and 5 BOPD. Well was fractured in the Wilcox A and C sands and production has declined due to salt plugs and tubing leaks.',
+                chartData: [90, 85, 75, 65, 55, 45, 35, 30, 25, 20, 15, 12, 10, 8, 6, 5, 4, 3]
+            },
+            2: {
+                name: 'BAHR #2',
+                api: '42-201-32365',
+                lease: '155124',
+                status: 'active',
+                peakGas: '—',
+                peakOil: '—',
+                cumulative: '—',
+                target: 'TBD',
+                formation: 'Wilcox',
+                completion: '—',
+                work: '<strong>Evaluation pending.</strong> Well data under review for workover potential.',
+                chartData: null
+            },
+            3: {
+                name: 'BAHR #3',
+                api: '42-201-32417',
+                lease: '157025',
+                status: 'reentry',
+                peakGas: '5,800',
+                peakOil: '136',
+                cumulative: '2.3 BCF',
+                target: '10,000',
+                formation: 'Subsalt Wilcox',
+                completion: '—',
+                work: '<strong>Subsalt re-entry target.</strong> The well was drilled from 12,800 ft to 16,100 ft through a salt overhang of the Humble Salt Dome. The pay sand at 16,350 ft - 16,450 ft was not completed. Proposed: 7" casing to 17,500 ft with four-stage fracturing completion. Bottom hole pressures in excess of 14,000 psi suggest a well rate of <strong>10 MMCFD and 400 BOPD</strong>.',
+                chartData: [60, 55, 45, 35, 25, 100]
+            },
+            4: {
+                name: 'BAHR #4',
+                api: '42-201-32429',
+                lease: '160513',
+                status: 'active',
+                peakGas: '1,100',
+                peakOil: '100',
+                cumulative: '0.35 BCF',
+                target: '300',
+                formation: 'Wilcox A',
+                completion: '—',
+                work: '<strong>Tubing replacement</strong> proposed. Well was fractured in the Wilcox A sand and production has declined due to the formation of salt plugs and tubing leaks. Expected production of 300 MCFD and 5 BOPD.',
+                chartData: [40, 35, 30, 25, 20, 15, 12, 10, 8, 6, 5, 4]
+            },
+            6: {
+                name: 'BAHR #6',
+                api: '42-201-32447',
+                lease: '161466',
+                status: 'active',
+                peakGas: '—',
+                peakOil: '—',
+                cumulative: '—',
+                target: 'TBD',
+                formation: 'Wilcox',
+                completion: '—',
+                work: '<strong>Evaluation pending.</strong> Well data under review for workover potential.',
+                chartData: null
+            },
+            7: {
+                name: 'BAHR #7',
+                api: '42-201-32448',
+                lease: '161313',
+                status: 'priority',
+                peakGas: '6,500',
+                peakOil: '170',
+                cumulative: '3.8 BCF',
+                target: '2,400',
+                formation: 'Wilcox A, C, B',
+                completion: '1996-07-13',
+                work: '<strong>PRIORITY TARGET — Multistage fracturing in lower Wilcox C and B sands.</strong> Well was fractured in the Wilcox A and C sands with multiple lobes unfractured. Proposed multi-stage fracturing can reach production of <strong>2,400 MCFD and 20 BOPD</strong>.',
+                chartData: [85, 80, 70, 60, 50, 42, 35, 28, 22, 18, 15, 12, 10, 8, 6, 5]
+            },
+            8: {
+                name: 'BAHR #8',
+                api: '42-201-32437',
+                lease: '165882',
+                status: 'active',
+                peakGas: '—',
+                peakOil: '—',
+                cumulative: '—',
+                target: 'TBD',
+                formation: 'Wilcox',
+                completion: '1997-06-16',
+                work: '<strong>Evaluation pending.</strong> Well data under review for workover potential.',
+                chartData: null
+            },
+            9: {
+                name: 'BAHR #9',
+                api: '42-201-32475',
+                lease: '165671',
+                status: 'priority',
+                peakGas: '500',
+                peakOil: '10',
+                cumulative: '0.5 BCF',
+                target: '2,400',
+                formation: 'Wilcox A & B',
+                completion: '—',
+                work: '<strong>PRIORITY TARGET — Multi-stage fracturing of unfractured zones.</strong> Well was fractured in the Wilcox A and B sands with a number of perforated but not fractured sands. Proposed multi-stage fracturing can reach production of <strong>2,400 MCFD and 20 BOPD</strong>.',
+                chartData: [15, 12, 10, 8, 6, 70]
+            }
+        };
+
+        // Open detail panel
+        function openDetail(wellId) {
+            const well = wellData[wellId];
+            if (!well) return;
+
+            // Update panel content
+            document.getElementById('detailTitle').textContent = well.name;
+            document.getElementById('detailSubtitle').textContent = `API: ${well.api} • Lease: ${well.lease}`;
+            document.getElementById('detailPeakGas').textContent = well.peakGas;
+            document.getElementById('detailPeakOil').textContent = well.peakOil;
+            document.getElementById('detailCumulative').textContent = well.cumulative;
+            document.getElementById('detailTarget').textContent = well.target;
+            document.getElementById('detailFormation').textContent = well.formation;
+            document.getElementById('detailCompletion').textContent = well.completion;
+            document.getElementById('detailWork').innerHTML = well.work;
+
+            // Calculate revenue estimates
+            const targetMCFD = parseInt(well.target.replace(/,/g, '')) || 0;
+            const monthlyRev = targetMCFD * 30 * 3.15; // $3.15/MMBtu
+            const annualRev = monthlyRev * 12;
+            
+            document.getElementById('detailMonthlyRev').textContent = targetMCFD ? `$${monthlyRev.toLocaleString()}` : '—';
+            document.getElementById('detailAnnualRev').textContent = targetMCFD ? `$${annualRev.toLocaleString()}` : '—';
+
+            // Generate chart
+            const chartContainer = document.getElementById('detailChart');
+            const placeholder = document.getElementById('productionPlaceholder');
+            
+            if (well.chartData) {
+                chartContainer.style.display = 'flex';
+                placeholder.style.display = 'none';
+                chartContainer.innerHTML = well.chartData.map(h => 
+                    `<div class="chart-bar" style="height: ${h}%;" data-value="${h}%"></div>`
+                ).join('');
+            } else {
+                chartContainer.style.display = 'none';
+                placeholder.style.display = 'block';
+            }
+
+            // Show panel
+            document.getElementById('detailPanel').classList.add('open');
+            document.getElementById('detailOverlay').classList.add('open');
+        }
+
+        // Close detail panel
+        function closeDetail() {
+            document.getElementById('detailPanel').classList.remove('open');
+            document.getElementById('detailOverlay').classList.remove('open');
+        }
+
+        // Update coordinates on mouse move
+        const mapCanvas = document.getElementById('mapCanvas');
+        const coordDisplay = document.getElementById('coordDisplay');
+
+        mapCanvas.addEventListener('mousemove', (e) => {
+            const rect = mapCanvas.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width;
+            const y = (e.clientY - rect.top) / rect.height;
+            
+            // Map to approximate coordinates (Humble area)
+            const lat = (30.08 - (y * 0.1)).toFixed(4);
+            const lng = (95.32 - (x * 0.1)).toFixed(4);
+            
+            coordDisplay.textContent = `${lat}°N, ${lng}°W`;
+        });
+
+        // Keyboard escape to close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeDetail();
+            }
+        });
+    </script>
+</body>
+</html>
