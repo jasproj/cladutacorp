@@ -244,25 +244,29 @@
 
             <!-- Summary Stats - Refined -->
             <div class="reveal" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 3rem;">
-                <div class="stat-card">
+                <div class="stat-card has-tooltip">
                     <div class="stat-value">$63M</div>
                     <div class="stat-label">Lifetime Revenue</div>
                     <div class="stat-detail">Gas: $56.6M • Oil: $6.4M</div>
+                    <div class="stat-tooltip">Combined gas + condensate revenue from all 7 producing wells over 32 years (Nov 1993 - Oct 2025). Revenue calculated using actual Henry Hub and WTI prices at time of production.</div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card has-tooltip">
                     <div class="stat-value">18.7 BCF</div>
                     <div class="stat-label">Gas Produced</div>
                     <div class="stat-detail">Avg $3.03/MMBtu realized</div>
+                    <div class="stat-tooltip">18,691,500 MCF total natural gas from Cross Creek Field. Peak production 3.83 BCF in 1996. Current rate ~105K MCF/year. Wilcox formation at 7,800-16,400 ft depth.</div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card has-tooltip">
                     <div class="stat-value">237K BBL</div>
                     <div class="stat-label">Condensate</div>
                     <div class="stat-detail">Avg $26.79/BBL realized</div>
+                    <div class="stat-tooltip">237,385 barrels of condensate (light oil) produced alongside gas. Gas-to-oil ratio ~79:1. Condensate sold at WTI-linked prices, averaging $26.79/BBL over field life.</div>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card has-tooltip">
                     <div class="stat-value">288 MCFD</div>
                     <div class="stat-label">Current Rate</div>
                     <div class="stat-detail">~$27K/month at $3.15</div>
+                    <div class="stat-tooltip">Current combined daily rate from all 7 active wells (Oct 2025). Wells producing at ~3% of peak capacity. Workovers on priority wells could restore 5,000+ MCFD.</div>
                 </div>
             </div>
 
@@ -387,30 +391,35 @@
             <div class="reveal" style="margin-top: 3rem;">
                 <h3 style="color: rgba(255,255,255,0.9); margin-bottom: 1.25rem; font-size: 1.1rem; font-weight: 600;">Peak Revenue Years</h3>
                 <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <div class="year-card top">
+                    <div class="year-card top has-tooltip">
                         <span class="year-revenue">$10.75M</span>
                         <span class="year-label">1996</span>
                         <span class="year-detail">3.83 BCF • Peak year</span>
+                        <div class="year-tooltip">All 7 wells online and producing at peak rates. Bahr #7 hit 6,400 MCFD. Gas averaged $2.40/MMBtu. Best single year in field history.</div>
                     </div>
-                    <div class="year-card">
+                    <div class="year-card has-tooltip">
                         <span class="year-revenue">$7.87M</span>
                         <span class="year-label">1997</span>
                         <span class="year-detail">2.92 BCF</span>
+                        <div class="year-tooltip">First full year with all wells. Natural decline begins but still strong production. Gas averaged $2.40/MMBtu. Bahr #9 came online June.</div>
                     </div>
-                    <div class="year-card">
+                    <div class="year-card has-tooltip">
                         <span class="year-revenue">$4.67M</span>
                         <span class="year-label">1995</span>
                         <span class="year-detail">2.36 BCF</span>
+                        <div class="year-tooltip">Ramp-up year. Bahr #1 peaked at 7,200 MCFD (Mar). Wells #2-3 came online. Low gas prices ($1.55/MMBtu avg) but high volume offset.</div>
                     </div>
-                    <div class="year-card">
+                    <div class="year-card has-tooltip">
                         <span class="year-revenue">$4.1M</span>
                         <span class="year-label">1998</span>
                         <span class="year-detail">1.80 BCF</span>
+                        <div class="year-tooltip">Production down 38% from peak as natural decline accelerates. Salt plugging and tubing issues emerging. Gas averaged $2.09/MMBtu.</div>
                     </div>
-                    <div class="year-card">
+                    <div class="year-card has-tooltip">
                         <span class="year-revenue">$3.6M</span>
                         <span class="year-label">2000</span>
                         <span class="year-detail">0.87 BCF • High prices</span>
+                        <div class="year-tooltip">Lower volume (77% decline from peak) but gas prices spiked to $4.15/MMBtu average. Demonstrates price sensitivity of field economics.</div>
                     </div>
                 </div>
             </div>
@@ -419,40 +428,40 @@
             <div class="reveal" style="margin-top: 3rem;">
                 <h3 style="color: rgba(255,255,255,0.9); margin-bottom: 1.25rem; font-size: 1.1rem; font-weight: 600;">Annual Production (MCF)</h3>
                 <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 1.5rem; overflow-x: auto;">
-                    <div style="display: flex; align-items: flex-end; gap: 3px; height: 160px; min-width: 700px;">
-                        <div class="chart-bar" style="height: 1%;"></div>
-                        <div class="chart-bar" style="height: 0%;"></div>
-                        <div class="chart-bar" style="height: 62%;"></div>
-                        <div class="chart-bar peak" style="height: 100%;"></div>
-                        <div class="chart-bar" style="height: 76%;"></div>
-                        <div class="chart-bar" style="height: 47%;"></div>
-                        <div class="chart-bar" style="height: 33%;"></div>
-                        <div class="chart-bar" style="height: 23%;"></div>
-                        <div class="chart-bar" style="height: 13%;"></div>
-                        <div class="chart-bar" style="height: 9%;"></div>
-                        <div class="chart-bar" style="height: 9%;"></div>
-                        <div class="chart-bar" style="height: 10%;"></div>
-                        <div class="chart-bar" style="height: 7%;"></div>
-                        <div class="chart-bar" style="height: 9%;"></div>
-                        <div class="chart-bar" style="height: 8%;"></div>
-                        <div class="chart-bar" style="height: 6%;"></div>
-                        <div class="chart-bar" style="height: 10%;"></div>
-                        <div class="chart-bar" style="height: 10%;"></div>
-                        <div class="chart-bar" style="height: 8%;"></div>
-                        <div class="chart-bar" style="height: 6%;"></div>
-                        <div class="chart-bar" style="height: 4%;"></div>
-                        <div class="chart-bar" style="height: 4%;"></div>
-                        <div class="chart-bar" style="height: 3%;"></div>
-                        <div class="chart-bar" style="height: 4%;"></div>
-                        <div class="chart-bar" style="height: 5%;"></div>
-                        <div class="chart-bar" style="height: 4%;"></div>
-                        <div class="chart-bar" style="height: 4%;"></div>
-                        <div class="chart-bar" style="height: 3%;"></div>
-                        <div class="chart-bar" style="height: 3%;"></div>
-                        <div class="chart-bar" style="height: 3%;"></div>
-                        <div class="chart-bar" style="height: 2.5%;"></div>
-                        <div class="chart-bar" style="height: 2.4%;"></div>
-                        <div class="chart-bar current" style="height: 2%;"></div>
+                    <div class="chart-container">
+                        <div class="chart-bar-wrap" style="height: 1%;"><div class="chart-bar"></div><div class="chart-tooltip">'93: 32K MCF • $69K<br>First production Nov</div></div>
+                        <div class="chart-bar-wrap" style="height: 0%;"><div class="chart-bar"></div><div class="chart-tooltip">'94: No production</div></div>
+                        <div class="chart-bar-wrap" style="height: 62%;"><div class="chart-bar"></div><div class="chart-tooltip">'95: 2.36M MCF • $4.67M<br>Wells #1-3 online. Bahr #1 peaked 7,200 MCFD</div></div>
+                        <div class="chart-bar-wrap" style="height: 100%;"><div class="chart-bar peak"></div><div class="chart-tooltip">'96: 3.83M MCF • $10.75M<br>★ PEAK YEAR - All 7 wells producing</div></div>
+                        <div class="chart-bar-wrap" style="height: 76%;"><div class="chart-bar"></div><div class="chart-tooltip">'97: 2.92M MCF • $7.87M<br>Bahr #9 online. Natural decline begins</div></div>
+                        <div class="chart-bar-wrap" style="height: 47%;"><div class="chart-bar"></div><div class="chart-tooltip">'98: 1.80M MCF • $4.1M<br>38% decline. Salt plugging issues emerge</div></div>
+                        <div class="chart-bar-wrap" style="height: 33%;"><div class="chart-bar"></div><div class="chart-tooltip">'99: 1.26M MCF • $2.98M<br>Continued decline</div></div>
+                        <div class="chart-bar-wrap" style="height: 23%;"><div class="chart-bar"></div><div class="chart-tooltip">'00: 868K MCF • $3.6M<br>Gas price spike to $4.15 avg</div></div>
+                        <div class="chart-bar-wrap" style="height: 13%;"><div class="chart-bar"></div><div class="chart-tooltip">'01: 501K MCF • $2.37M<br>Price volatility ($9 Jan → $2 Dec)</div></div>
+                        <div class="chart-bar-wrap" style="height: 9%;"><div class="chart-bar"></div><div class="chart-tooltip">'02: 336K MCF • $1.13M<br>Low prices, continued decline</div></div>
+                        <div class="chart-bar-wrap" style="height: 9%;"><div class="chart-bar"></div><div class="chart-tooltip">'03: 332K MCF • $1.8M<br>Prices recover to $5 avg</div></div>
+                        <div class="chart-bar-wrap" style="height: 10%;"><div class="chart-bar"></div><div class="chart-tooltip">'04: 390K MCF • $2.37M<br>Production stabilizes</div></div>
+                        <div class="chart-bar-wrap" style="height: 7%;"><div class="chart-bar"></div><div class="chart-tooltip">'05: 276K MCF • $2.4M<br>Hurricane season impacts. $8+ gas</div></div>
+                        <div class="chart-bar-wrap" style="height: 9%;"><div class="chart-bar"></div><div class="chart-tooltip">'06: 344K MCF • $2.43M<br>Post-hurricane recovery</div></div>
+                        <div class="chart-bar-wrap" style="height: 8%;"><div class="chart-bar"></div><div class="chart-tooltip">'07: 325K MCF • $2.34M<br>Steady state production</div></div>
+                        <div class="chart-bar-wrap" style="height: 6%;"><div class="chart-bar"></div><div class="chart-tooltip">'08: 229K MCF • $2.21M<br>Gas peaked $12.69 (Jun) then crashed</div></div>
+                        <div class="chart-bar-wrap" style="height: 10%;"><div class="chart-bar"></div><div class="chart-tooltip">'09: 367K MCF • $1.61M<br>Production up, prices down post-crash</div></div>
+                        <div class="chart-bar-wrap" style="height: 10%;"><div class="chart-bar"></div><div class="chart-tooltip">'10: 384K MCF • $1.92M<br>Shale revolution begins</div></div>
+                        <div class="chart-bar-wrap" style="height: 8%;"><div class="chart-bar"></div><div class="chart-tooltip">'11: 289K MCF • $1.4M<br>Shale gas floods market</div></div>
+                        <div class="chart-bar-wrap" style="height: 6%;"><div class="chart-bar"></div><div class="chart-tooltip">'12: 215K MCF • $761K<br>Gas hits $1.95 low (Apr)</div></div>
+                        <div class="chart-bar-wrap" style="height: 4%;"><div class="chart-bar"></div><div class="chart-tooltip">'13: 169K MCF • $760K<br>Prices recover slightly</div></div>
+                        <div class="chart-bar-wrap" style="height: 4%;"><div class="chart-bar"></div><div class="chart-tooltip">'14: 148K MCF • $758K<br>Polar vortex spike (Feb $5.93)</div></div>
+                        <div class="chart-bar-wrap" style="height: 3%;"><div class="chart-bar"></div><div class="chart-tooltip">'15: 131K MCF • $389K<br>Price collapse to $1.93</div></div>
+                        <div class="chart-bar-wrap" style="height: 4%;"><div class="chart-bar"></div><div class="chart-tooltip">'16: 153K MCF • $458K<br>Prices bottom, slow recovery</div></div>
+                        <div class="chart-bar-wrap" style="height: 5%;"><div class="chart-bar"></div><div class="chart-tooltip">'17: 175K MCF • $602K<br>Production bump, stable prices</div></div>
+                        <div class="chart-bar-wrap" style="height: 4%;"><div class="chart-bar"></div><div class="chart-tooltip">'18: 142K MCF • $527K<br>Prices avg $3.15</div></div>
+                        <div class="chart-bar-wrap" style="height: 4%;"><div class="chart-bar"></div><div class="chart-tooltip">'19: 139K MCF • $419K<br>Pre-COVID baseline</div></div>
+                        <div class="chart-bar-wrap" style="height: 3%;"><div class="chart-bar"></div><div class="chart-tooltip">'20: 113K MCF • $260K<br>COVID demand crash. $1.63 low</div></div>
+                        <div class="chart-bar-wrap" style="height: 3%;"><div class="chart-bar"></div><div class="chart-tooltip">'21: 105K MCF • $474K<br>Winter storm Uri ($5.35 Feb)</div></div>
+                        <div class="chart-bar-wrap" style="height: 3%;"><div class="chart-bar"></div><div class="chart-tooltip">'22: 98K MCF • $705K<br>Ukraine war. Gas hit $8.81 (Aug)</div></div>
+                        <div class="chart-bar-wrap" style="height: 2.5%;"><div class="chart-bar"></div><div class="chart-tooltip">'23: 96K MCF • $298K<br>Post-spike normalization</div></div>
+                        <div class="chart-bar-wrap" style="height: 2.4%;"><div class="chart-bar"></div><div class="chart-tooltip">'24: 92K MCF • $259K<br>Low prices ($1.61 Apr)</div></div>
+                        <div class="chart-bar-wrap" style="height: 2%;"><div class="chart-bar current"></div><div class="chart-tooltip">'25 YTD: 80K MCF • $279K<br>Through Oct. Current 288 MCFD</div></div>
                     </div>
                     <div style="display: flex; justify-content: space-between; margin-top: 0.75rem; font-size: 0.7rem; color: rgba(255,255,255,0.4);">
                         <span>'93</span>
@@ -462,20 +471,22 @@
                         <span>'25</span>
                     </div>
                 </div>
-                <p style="margin-top: 0.75rem; font-size: 0.75rem; color: rgba(255,255,255,0.4);">Peak: 3.83M MCF (1996) • Current: 288 MCFD • Decline curve typical of mature wells</p>
+                <p style="margin-top: 0.75rem; font-size: 0.75rem; color: rgba(255,255,255,0.4);">Hover/tap bars for details • Decline curve typical of mature wells without intervention</p>
             </div>
 
             <!-- Revenue Split - Compact -->
             <div class="reveal" style="margin-top: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
-                <div class="revenue-card">
+                <div class="revenue-card has-tooltip">
                     <div class="revenue-type">Gas Revenue</div>
                     <div class="revenue-amount">$56.6M</div>
                     <div class="revenue-detail">18.69 BCF @ avg $3.03/MMBtu</div>
+                    <div class="revenue-tooltip">Natural gas sold at Henry Hub spot prices. Price range: $1.61 (Apr 2024) to $12.69 (Jun 2008). 90% of total field revenue from gas.</div>
                 </div>
-                <div class="revenue-card">
+                <div class="revenue-card has-tooltip">
                     <div class="revenue-type">Condensate Revenue</div>
                     <div class="revenue-amount">$6.36M</div>
                     <div class="revenue-detail">237K BBL @ avg $26.79/BBL</div>
+                    <div class="revenue-tooltip">Condensate (light oil) sold at WTI-linked prices. Gas-to-oil ratio ~79:1. 10% of total revenue. Current WTI ~$72 vs historical avg $27.</div>
                 </div>
             </div>
         </div>
@@ -491,11 +502,13 @@
             border-radius: 6px;
             cursor: default;
             transition: all 0.2s ease;
+            position: relative;
         }
         .stat-card:hover {
             background: rgba(255,255,255,0.04);
             border-color: rgba(201, 169, 97, 0.3);
         }
+        .stat-card.has-tooltip { cursor: pointer; }
         .stat-value {
             font-size: 2rem;
             color: var(--gold);
@@ -513,6 +526,28 @@
             color: rgba(255,255,255,0.35);
             font-size: 0.7rem;
             margin-top: 0.5rem;
+        }
+        .stat-tooltip {
+            display: none;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 100%;
+            width: 280px;
+            background: rgba(20, 20, 25, 0.98);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 4px;
+            padding: 0.75rem 1rem;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.4;
+            z-index: 100;
+            margin-top: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            text-align: left;
+        }
+        .stat-card.has-tooltip:hover .stat-tooltip {
+            display: block;
         }
 
         /* Well Bars - New Layout */
@@ -652,6 +687,7 @@
             text-align: center;
             cursor: default;
             transition: all 0.2s ease;
+            position: relative;
         }
         .year-card:hover {
             background: rgba(255,255,255,0.04);
@@ -661,6 +697,7 @@
             background: rgba(201, 169, 97, 0.1);
             border-color: rgba(201, 169, 97, 0.3);
         }
+        .year-card.has-tooltip { cursor: pointer; }
         .year-revenue {
             display: block;
             font-size: 1.25rem;
@@ -678,26 +715,91 @@
             font-size: 0.7rem;
             color: rgba(255,255,255,0.4);
         }
+        .year-tooltip {
+            display: none;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 100%;
+            width: 240px;
+            background: rgba(20, 20, 25, 0.98);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 4px;
+            padding: 0.75rem 1rem;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.4;
+            z-index: 100;
+            margin-top: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            text-align: left;
+        }
+        .year-card.has-tooltip:hover .year-tooltip {
+            display: block;
+        }
 
-        /* Chart bars */
-        .chart-bar {
+        /* Chart container and bars */
+        .chart-container {
+            display: flex;
+            align-items: flex-end;
+            gap: 3px;
+            height: 160px;
+            min-width: 700px;
+        }
+        .chart-bar-wrap {
             flex: 1;
+            position: relative;
+            min-width: 12px;
+        }
+        .chart-bar {
+            width: 100%;
+            height: 100%;
             background: rgba(201, 169, 97, 0.5);
             border-radius: 2px 2px 0 0;
-            cursor: default;
+            cursor: pointer;
             transition: all 0.15s ease;
-            min-width: 12px;
         }
         .chart-bar:hover {
             background: var(--gold);
-            transform: scaleY(1.05);
-            transform-origin: bottom;
         }
         .chart-bar.peak {
             background: var(--gold);
         }
         .chart-bar.current {
             background: #10b981;
+        }
+        .chart-tooltip {
+            display: none;
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 180px;
+            background: rgba(20, 20, 25, 0.98);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 4px;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.4;
+            z-index: 100;
+            margin-bottom: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            text-align: left;
+            white-space: normal;
+        }
+        .chart-bar-wrap:hover .chart-tooltip {
+            display: block;
+        }
+        /* Keep tooltips on screen */
+        .chart-bar-wrap:nth-child(-n+3) .chart-tooltip {
+            left: 0;
+            transform: none;
+        }
+        .chart-bar-wrap:nth-last-child(-n+3) .chart-tooltip {
+            left: auto;
+            right: 0;
+            transform: none;
         }
 
         /* Revenue cards */
@@ -708,11 +810,13 @@
             padding: 1.25rem;
             cursor: default;
             transition: all 0.2s ease;
+            position: relative;
         }
         .revenue-card:hover {
             background: rgba(255,255,255,0.04);
             border-color: rgba(201, 169, 97, 0.3);
         }
+        .revenue-card.has-tooltip { cursor: pointer; }
         .revenue-type {
             color: rgba(255,255,255,0.5);
             font-size: 0.75rem;
@@ -728,6 +832,26 @@
         .revenue-detail {
             font-size: 0.8rem;
             color: rgba(255,255,255,0.4);
+        }
+        .revenue-tooltip {
+            display: none;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 100%;
+            background: rgba(20, 20, 25, 0.98);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 4px;
+            padding: 0.75rem 1rem;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.4;
+            z-index: 100;
+            margin-top: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+        .revenue-card.has-tooltip:hover .revenue-tooltip {
+            display: block;
         }
         
         /* Mobile responsive */
