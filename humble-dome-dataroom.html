@@ -155,7 +155,7 @@
 </head>
 <body>
     <!-- Access Gate Modal -->
-    <div id="accessGate" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 9999; align-items: center; justify-content: center;">
+    <div id="accessGate" style="display: none;">
         <div style="background: #fff; padding: 3rem; border-radius: 8px; max-width: 480px; text-align: center; margin: 20px;">
             <div style="font-size: 4rem; margin-bottom: 1rem;">🔐</div>
             <h2 style="color: #2d4a3e; margin-bottom: 0.5rem; font-family: 'Playfair Display', serif;">Data Room Access</h2>
@@ -180,7 +180,7 @@
         </div>
     </div>
 
-    <div id="mainContent" style="display: none;">
+    <div id="mainContent" style="display: block;">
     <div class="confidential-banner">&#128274; CONFIDENTIAL — NDA REQUIRED — DO NOT DISTRIBUTE</div>
 
     <nav>
@@ -243,7 +243,7 @@
             </div>
 
             <!-- Summary Stats - Refined -->
-            <div class="reveal" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 3rem;">
+            <div class="reveal stats-grid-4">
                 <div class="stat-card has-tooltip">
                     <div class="stat-value">$63M</div>
                     <div class="stat-label">Lifetime Revenue</div>
@@ -390,7 +390,7 @@
             <!-- Top Revenue Years - Smaller -->
             <div class="reveal" style="margin-top: 3rem;">
                 <h3 style="color: rgba(255,255,255,0.9); margin-bottom: 1.25rem; font-size: 1.1rem; font-weight: 600;">Peak Revenue Years</h3>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <div class="year-cards-wrap" style="display: flex; gap: 1rem; flex-wrap: wrap;">
                     <div class="year-card top has-tooltip">
                         <span class="year-revenue">$10.75M</span>
                         <span class="year-label">1996</span>
@@ -475,7 +475,7 @@
             </div>
 
             <!-- Revenue Split - Compact -->
-            <div class="reveal" style="margin-top: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+            <div class="reveal revenue-grid-2" style="margin-top: 3rem;">
                 <div class="revenue-card has-tooltip">
                     <div class="revenue-type">Gas Revenue</div>
                     <div class="revenue-amount">$56.6M</div>
@@ -855,7 +855,44 @@
         }
         
         /* Mobile responsive */
-        @media (max-width: 600px) {
+        .stats-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            overflow: visible;
+        }
+        .revenue-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        @media (max-width: 900px) {
+            .stat-card .stat-value {
+                font-size: 1.5rem;
+            }
+            .materials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 700px) {
+            /* Fix 4-column stat grid for mobile */
+            .stats-grid-4 {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            .stat-card {
+                padding: 1rem 0.75rem;
+            }
+            .stat-value {
+                font-size: 1.4rem !important;
+            }
+            .stat-label {
+                font-size: 0.7rem;
+            }
+            .stat-detail {
+                font-size: 0.65rem;
+            }
+            /* Well rows */
             .well-row {
                 flex-wrap: wrap;
             }
@@ -867,11 +904,46 @@
                 width: 100%;
                 margin-top: 0.5rem;
             }
-            .stat-card {
-                padding: 1rem 0.75rem;
+            /* Year cards */
+            .year-cards-wrap {
+                flex-direction: column;
+            }
+            .year-card {
+                width: 100%;
+            }
+            /* Chart */
+            .chart-container {
+                min-width: 500px;
+            }
+            /* Revenue cards */
+            .revenue-grid-2 {
+                grid-template-columns: 1fr !important;
+            }
+            /* Map iframe */
+            .map-iframe {
+                height: 500px !important;
+            }
+        }
+        @media (max-width: 500px) {
+            .stats-grid-4 {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 0.75rem !important;
             }
             .stat-value {
-                font-size: 1.5rem;
+                font-size: 1.2rem !important;
+            }
+            .map-iframe {
+                height: 450px !important;
+            }
+            .stat-tooltip {
+                width: 200px;
+                font-size: 0.7rem;
+                left: 0;
+                transform: none;
+            }
+            .stat-card:nth-child(even) .stat-tooltip {
+                left: auto;
+                right: 0;
             }
         }
     </style>
@@ -886,7 +958,7 @@
             </div>
 
             <div class="reveal" style="background: #0a0a0b; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; overflow: hidden; margin-top: 2rem;">
-                <iframe src="humble-dome-well-map.html" style="width: 100%; height: 700px; border: none;" title="Humble Dome Interactive Well Map"></iframe>
+                <iframe src="humble-dome-well-map.html" class="map-iframe" style="width: 100%; height: 700px; border: none;" title="Humble Dome Interactive Well Map"></iframe>
             </div>
 
             <div class="reveal" style="text-align: center; margin-top: 1.5rem;">
@@ -1477,18 +1549,14 @@
             }
         }
 
-        // Check on page load
+        // Check on page load - DISABLED (gateway removed)
         document.addEventListener('DOMContentLoaded', function() {
-            if (checkStoredAccess()) {
-                showContent();
-            } else {
-                document.getElementById('accessGate').style.display = 'flex';
-            }
-            
-            // Allow Enter key
-            document.getElementById('accessCodeInput').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') checkAccess();
-            });
+            // Access gate disabled - content shown by default
+            // if (checkStoredAccess()) {
+            //     showContent();
+            // } else {
+            //     document.getElementById('accessGate').style.display = 'flex';
+            // }
         });
     </script>
 
