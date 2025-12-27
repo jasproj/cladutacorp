@@ -155,7 +155,7 @@
 </head>
 <body>
     <!-- Access Gate Modal -->
-    <div id="accessGate" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 9999; display: flex; align-items: center; justify-content: center;">
+    <div id="accessGate" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 9999; align-items: center; justify-content: center;">
         <div style="background: #fff; padding: 3rem; border-radius: 8px; max-width: 480px; text-align: center; margin: 20px;">
             <div style="font-size: 4rem; margin-bottom: 1rem;">🔐</div>
             <h2 style="color: #2d4a3e; margin-bottom: 0.5rem; font-family: 'Playfair Display', serif;">Data Room Access</h2>
@@ -641,11 +641,11 @@
             } else {
                 document.getElementById('accessGate').style.display = 'flex';
             }
-        });
-
-        // Allow Enter key
-        document.getElementById('accessCodeInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') checkAccess();
+            
+            // Allow Enter key
+            document.getElementById('accessCodeInput').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') checkAccess();
+            });
         });
     </script>
 
