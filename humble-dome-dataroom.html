@@ -234,297 +234,380 @@
     </section>
 
     <!-- VERIFIED PRODUCTION & REVENUE DATA -->
-    <section class="section-dark" style="padding: 80px 5%;">
+    <section class="section-dark" style="padding: 60px 5%;">
         <div class="container">
             <div class="section-header reveal">
                 <span class="section-label">RRC Verified Data</span>
                 <h2>32 Years of Production & Revenue</h2>
-                <p>Official Texas Railroad Commission production data from Nov 1993 - Oct 2025</p>
+                <p>Official Texas Railroad Commission production data • Nov 1993 - Oct 2025</p>
             </div>
 
-            <!-- Big Numbers -->
-            <div class="reveal" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-bottom: 4rem;">
-                <div style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;">
-                    <div style="font-size: 3.5rem; color: var(--gold); font-family: 'Playfair Display', serif; font-weight: 700;">$63M</div>
-                    <div style="color: rgba(255,255,255,0.7); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Lifetime Revenue</div>
+            <!-- Summary Stats - Refined -->
+            <div class="reveal" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 3rem;">
+                <div class="stat-card" title="Combined gas + condensate revenue from all 7 producing wells over 32 years">
+                    <div class="stat-value">$63M</div>
+                    <div class="stat-label">Lifetime Revenue</div>
+                    <div class="stat-detail">Gas: $56.6M • Oil: $6.4M</div>
                 </div>
-                <div style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;">
-                    <div style="font-size: 3.5rem; color: var(--gold); font-family: 'Playfair Display', serif; font-weight: 700;">18.7</div>
-                    <div style="color: rgba(255,255,255,0.7); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">BCF Gas Produced</div>
+                <div class="stat-card" title="18,691,500 MCF total natural gas production from Cross Creek Field">
+                    <div class="stat-value">18.7 BCF</div>
+                    <div class="stat-label">Gas Produced</div>
+                    <div class="stat-detail">Avg $3.03/MMBtu realized</div>
                 </div>
-                <div style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;">
-                    <div style="font-size: 3.5rem; color: var(--gold); font-family: 'Playfair Display', serif; font-weight: 700;">237K</div>
-                    <div style="color: rgba(255,255,255,0.7); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">BBL Condensate</div>
+                <div class="stat-card" title="237,385 barrels of condensate (light oil) produced alongside gas">
+                    <div class="stat-value">237K BBL</div>
+                    <div class="stat-label">Condensate</div>
+                    <div class="stat-detail">Avg $26.79/BBL realized</div>
                 </div>
-                <div style="text-align: center; padding: 2rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;">
-                    <div style="font-size: 3.5rem; color: var(--gold); font-family: 'Playfair Display', serif; font-weight: 700;">288</div>
-                    <div style="color: rgba(255,255,255,0.7); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Current MCFD</div>
+                <div class="stat-card" title="Current combined daily rate from all active wells as of Oct 2025">
+                    <div class="stat-value">288 MCFD</div>
+                    <div class="stat-label">Current Rate</div>
+                    <div class="stat-detail">~$27K/month at $3.15</div>
                 </div>
             </div>
 
             <!-- Revenue by Well -->
             <div class="reveal">
-                <h3 style="color: var(--gold); margin-bottom: 1.5rem; font-size: 1.3rem;">Revenue by Well (Lifetime)</h3>
-                <div style="display: grid; gap: 1rem;">
+                <h3 style="color: rgba(255,255,255,0.9); margin-bottom: 1.25rem; font-size: 1.1rem; font-weight: 600;">Revenue by Well</h3>
+                <div style="display: grid; gap: 0.75rem;">
                     <!-- Bahr #1 -->
-                    <div style="background: rgba(255,255,255,0.03); padding: 1rem 1.5rem; border-radius: 4px; display: grid; grid-template-columns: 120px 1fr 120px; align-items: center; gap: 1rem;">
-                        <span style="font-weight: 600;">Bahr #1</span>
-                        <div style="background: rgba(255,255,255,0.1); height: 24px; border-radius: 2px; overflow: hidden;">
-                            <div style="background: linear-gradient(90deg, var(--gold), #d4b978); height: 100%; width: 45%; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; font-size: 0.75rem; font-weight: 600; color: #1a1a1a;">8.35 BCF</div>
+                    <div class="well-bar" title="Bahr #1: First well drilled. Peak 7,200 MCFD in Mar 1995. Declined due to salt plugs and tubing leaks. Proposed: 7-stage frac + HF acid job.">
+                        <span class="well-bar-name">Bahr #1</span>
+                        <div class="well-bar-track">
+                            <div class="well-bar-fill" style="width: 45%;">8.35 BCF</div>
                         </div>
-                        <span style="text-align: right; font-weight: 700; color: var(--gold);">$28.6M</span>
+                        <span class="well-bar-revenue">$28.6M</span>
                     </div>
                     <!-- Bahr #7 -->
-                    <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid var(--gold); padding: 1rem 1.5rem; border-radius: 4px; display: grid; grid-template-columns: 120px 1fr 120px; align-items: center; gap: 1rem;">
-                        <span style="font-weight: 600; color: var(--gold);">Bahr #7 ★</span>
-                        <div style="background: rgba(255,255,255,0.1); height: 24px; border-radius: 2px; overflow: hidden;">
-                            <div style="background: linear-gradient(90deg, var(--gold), #d4b978); height: 100%; width: 23%; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; font-size: 0.75rem; font-weight: 600; color: #1a1a1a;">4.28 BCF</div>
+                    <div class="well-bar priority" title="PRIORITY: Peak 6,400 MCFD in Oct 1996. Multiple Wilcox lobes never fractured. Multi-stage frac can restore 2,400 MCFD.">
+                        <span class="well-bar-name">Bahr #7 ★</span>
+                        <div class="well-bar-track">
+                            <div class="well-bar-fill gold" style="width: 23%;">4.28 BCF</div>
                         </div>
-                        <span style="text-align: right; font-weight: 700; color: var(--gold);">$13.2M</span>
+                        <span class="well-bar-revenue">$13.2M</span>
                     </div>
                     <!-- Bahr #3 -->
-                    <div style="background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; padding: 1rem 1.5rem; border-radius: 4px; display: grid; grid-template-columns: 120px 1fr 120px; align-items: center; gap: 1rem;">
-                        <span style="font-weight: 600; color: #ef4444;">Bahr #3 ⚡</span>
-                        <div style="background: rgba(255,255,255,0.1); height: 24px; border-radius: 2px; overflow: hidden;">
-                            <div style="background: linear-gradient(90deg, #ef4444, #f87171); height: 100%; width: 14%; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; font-size: 0.75rem; font-weight: 600; color: #fff;">2.56 BCF</div>
+                    <div class="well-bar subsalt" title="SUBSALT UPSIDE: Drilled through salt overhang to 16,100 ft. Pay zone at 16,350-16,450 ft NEVER COMPLETED. 14,000+ psi BHP suggests 10 MMCFD potential.">
+                        <span class="well-bar-name">Bahr #3 ⚡</span>
+                        <div class="well-bar-track">
+                            <div class="well-bar-fill red" style="width: 14%;">2.56 BCF</div>
                         </div>
-                        <span style="text-align: right; font-weight: 700; color: #ef4444;">$7.43M</span>
+                        <span class="well-bar-revenue">$7.43M</span>
                     </div>
                     <!-- Bahr #2 -->
-                    <div style="background: rgba(255,255,255,0.03); padding: 1rem 1.5rem; border-radius: 4px; display: grid; grid-template-columns: 120px 1fr 120px; align-items: center; gap: 1rem;">
-                        <span style="font-weight: 600;">Bahr #2</span>
-                        <div style="background: rgba(255,255,255,0.1); height: 24px; border-radius: 2px; overflow: hidden;">
-                            <div style="background: linear-gradient(90deg, var(--gold), #d4b978); height: 100%; width: 6%; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; font-size: 0.75rem; font-weight: 600; color: #1a1a1a;">1.16 BCF</div>
+                    <div class="well-bar" title="Bahr #2: Peak 2,660 MCFD in Jul 1995. Currently 18 MCFD. Under evaluation for workover potential.">
+                        <span class="well-bar-name">Bahr #2</span>
+                        <div class="well-bar-track">
+                            <div class="well-bar-fill" style="width: 6%;">1.16 BCF</div>
                         </div>
-                        <span style="text-align: right; font-weight: 700; color: var(--gold);">$4.44M</span>
+                        <span class="well-bar-revenue">$4.44M</span>
                     </div>
                     <!-- Bahr #4 -->
-                    <div style="background: rgba(255,255,255,0.03); padding: 1rem 1.5rem; border-radius: 4px; display: grid; grid-template-columns: 120px 1fr 120px; align-items: center; gap: 1rem;">
-                        <span style="font-weight: 600;">Bahr #4</span>
-                        <div style="background: rgba(255,255,255,0.1); height: 24px; border-radius: 2px; overflow: hidden;">
-                            <div style="background: linear-gradient(90deg, var(--gold), #d4b978); height: 100%; width: 5%; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; font-size: 0.75rem; font-weight: 600; color: #1a1a1a;">0.88 BCF</div>
+                    <div class="well-bar" title="Bahr #4: Main pad location - all flowlines connect here. Peak 1,295 MCFD. Tubing replacement proposed.">
+                        <span class="well-bar-name">Bahr #4</span>
+                        <div class="well-bar-track">
+                            <div class="well-bar-fill" style="width: 5%;">0.88 BCF</div>
                         </div>
-                        <span style="text-align: right; font-weight: 700; color: var(--gold);">$4.33M</span>
+                        <span class="well-bar-revenue">$4.33M</span>
                     </div>
                     <!-- Bahr #9 -->
-                    <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid var(--gold); padding: 1rem 1.5rem; border-radius: 4px; display: grid; grid-template-columns: 120px 1fr 120px; align-items: center; gap: 1rem;">
-                        <span style="font-weight: 600; color: var(--gold);">Bahr #9 ★</span>
-                        <div style="background: rgba(255,255,255,0.1); height: 24px; border-radius: 2px; overflow: hidden;">
-                            <div style="background: linear-gradient(90deg, var(--gold), #d4b978); height: 100%; width: 3.5%; display: flex; align-items: center; padding-left: 8px; font-size: 0.75rem; font-weight: 600; color: #fff;">0.65 BCF</div>
+                    <div class="well-bar priority" title="PRIORITY: Peak only 600 MCFD - multiple zones perforated but NEVER FRACTURED. Multi-stage frac can achieve 2,400 MCFD.">
+                        <span class="well-bar-name">Bahr #9 ★</span>
+                        <div class="well-bar-track">
+                            <div class="well-bar-fill gold" style="width: 3.5%;">0.65 BCF</div>
                         </div>
-                        <span style="text-align: right; font-weight: 700; color: var(--gold);">$2.73M</span>
+                        <span class="well-bar-revenue">$2.73M</span>
                     </div>
                     <!-- Bahr #6 -->
-                    <div style="background: rgba(255,255,255,0.03); padding: 1rem 1.5rem; border-radius: 4px; display: grid; grid-template-columns: 120px 1fr 120px; align-items: center; gap: 1rem;">
-                        <span style="font-weight: 600;">Bahr #6</span>
-                        <div style="background: rgba(255,255,255,0.1); height: 24px; border-radius: 2px; overflow: hidden;">
-                            <div style="background: linear-gradient(90deg, var(--gold), #d4b978); height: 100%; width: 4%; display: flex; align-items: center; padding-left: 8px; font-size: 0.75rem; font-weight: 600; color: #fff;">0.81 BCF</div>
+                    <div class="well-bar" title="Bahr #6: Peak 1,260 MCFD in Sep 1996. Currently 6 MCFD. Under evaluation.">
+                        <span class="well-bar-name">Bahr #6</span>
+                        <div class="well-bar-track">
+                            <div class="well-bar-fill" style="width: 4%;">0.81 BCF</div>
                         </div>
-                        <span style="text-align: right; font-weight: 700; color: var(--gold);">$2.26M</span>
+                        <span class="well-bar-revenue">$2.26M</span>
                     </div>
                 </div>
-                <p style="margin-top: 1rem; font-size: 0.8rem; color: rgba(255,255,255,0.5);">★ Priority Target &nbsp;|&nbsp; ⚡ Subsalt Re-Entry (10 MMCFD potential)</p>
+                <p style="margin-top: 0.75rem; font-size: 0.75rem; color: rgba(255,255,255,0.4);">★ Priority Target &nbsp;|&nbsp; ⚡ Subsalt Re-Entry &nbsp;|&nbsp; Hover for details</p>
             </div>
 
-            <!-- Top Revenue Years -->
-            <div class="reveal" style="margin-top: 4rem;">
-                <h3 style="color: var(--gold); margin-bottom: 1.5rem; font-size: 1.3rem;">Top Revenue Years</h3>
-                <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem;">
-                    <div style="text-align: center; padding: 1.5rem 1rem; background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(245, 158, 11, 0.05)); border: 1px solid var(--gold); border-radius: 8px;">
-                        <div style="font-size: 2rem; font-weight: 700; color: var(--gold);">$10.75M</div>
-                        <div style="font-size: 1.5rem; color: rgba(255,255,255,0.9); margin: 0.25rem 0;">1996</div>
-                        <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">3.8 BCF</div>
+            <!-- Top Revenue Years - Smaller -->
+            <div class="reveal" style="margin-top: 3rem;">
+                <h3 style="color: rgba(255,255,255,0.9); margin-bottom: 1.25rem; font-size: 1.1rem; font-weight: 600;">Peak Revenue Years</h3>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <div class="year-card top" title="1996: 7 wells online, peak field production. Gas price averaged $2.40/MMBtu.">
+                        <span class="year-revenue">$10.75M</span>
+                        <span class="year-label">1996</span>
+                        <span class="year-detail">3.83 BCF</span>
                     </div>
-                    <div style="text-align: center; padding: 1.5rem 1rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;">
-                        <div style="font-size: 2rem; font-weight: 700; color: var(--gold);">$7.87M</div>
-                        <div style="font-size: 1.5rem; color: rgba(255,255,255,0.9); margin: 0.25rem 0;">1997</div>
-                        <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">2.9 BCF</div>
+                    <div class="year-card" title="1997: Full year of production from all wells. Gas price averaged $2.40/MMBtu.">
+                        <span class="year-revenue">$7.87M</span>
+                        <span class="year-label">1997</span>
+                        <span class="year-detail">2.92 BCF</span>
                     </div>
-                    <div style="text-align: center; padding: 1.5rem 1rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;">
-                        <div style="font-size: 2rem; font-weight: 700; color: var(--gold);">$4.67M</div>
-                        <div style="font-size: 1.5rem; color: rgba(255,255,255,0.9); margin: 0.25rem 0;">1995</div>
-                        <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">2.4 BCF</div>
+                    <div class="year-card" title="1995: Wells #1-3 came online. Gas price averaged $1.55/MMBtu - low prices but high volume.">
+                        <span class="year-revenue">$4.67M</span>
+                        <span class="year-label">1995</span>
+                        <span class="year-detail">2.36 BCF</span>
                     </div>
-                    <div style="text-align: center; padding: 1.5rem 1rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;">
-                        <div style="font-size: 2rem; font-weight: 700; color: var(--gold);">$4.1M</div>
-                        <div style="font-size: 1.5rem; color: rgba(255,255,255,0.9); margin: 0.25rem 0;">1998</div>
-                        <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">1.8 BCF</div>
+                    <div class="year-card" title="1998: Natural decline begins. Gas price averaged $2.09/MMBtu.">
+                        <span class="year-revenue">$4.1M</span>
+                        <span class="year-label">1998</span>
+                        <span class="year-detail">1.80 BCF</span>
                     </div>
-                    <div style="text-align: center; padding: 1.5rem 1rem; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px;">
-                        <div style="font-size: 2rem; font-weight: 700; color: var(--gold);">$3.6M</div>
-                        <div style="font-size: 1.5rem; color: rgba(255,255,255,0.9); margin: 0.25rem 0;">2000</div>
-                        <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">0.87 BCF</div>
+                    <div class="year-card" title="2000: Lower volume but higher prices - gas spiked to $4.15/MMBtu avg.">
+                        <span class="year-revenue">$3.6M</span>
+                        <span class="year-label">2000</span>
+                        <span class="year-detail">0.87 BCF</span>
                     </div>
                 </div>
             </div>
 
             <!-- Annual Production Chart -->
-            <div class="reveal" style="margin-top: 4rem;">
-                <h3 style="color: var(--gold); margin-bottom: 1.5rem; font-size: 1.3rem;">Annual Production History (1993-2025)</h3>
-                <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 2rem; overflow-x: auto;">
-                    <div style="display: flex; align-items: flex-end; gap: 4px; height: 200px; min-width: 800px;">
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 1%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">93</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: rgba(255,255,255,0.2); height: 0%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">94</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 62%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">95</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 100%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">96</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 76%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">97</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 47%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">98</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 33%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">99</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 23%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">00</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 13%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">01</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 9%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">02</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 9%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">03</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 10%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">04</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 7%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">05</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 9%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">06</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 8%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">07</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 6%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">08</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 10%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">09</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 10%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">10</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 8%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">11</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 6%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">12</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 4%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">13</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 4%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">14</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 3%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">15</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 4%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">16</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 5%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">17</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 4%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">18</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 4%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">19</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 3%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">20</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 3%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">21</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 3%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">22</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 2.5%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">23</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: var(--gold); height: 2.4%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">24</span>
-                        </div>
-                        <div style="flex: 1; display: flex; flex-direction: column; align-items: center;">
-                            <div style="width: 100%; background: #10b981; height: 2%; border-radius: 2px 2px 0 0;"></div>
-                            <span style="font-size: 0.6rem; color: rgba(255,255,255,0.5); margin-top: 4px; transform: rotate(-45deg);">25</span>
-                        </div>
+            <div class="reveal" style="margin-top: 3rem;">
+                <h3 style="color: rgba(255,255,255,0.9); margin-bottom: 1.25rem; font-size: 1.1rem; font-weight: 600;">Annual Production (MCF)</h3>
+                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 6px; padding: 1.5rem; overflow-x: auto;">
+                    <div style="display: flex; align-items: flex-end; gap: 3px; height: 160px; min-width: 700px;">
+                        <div class="chart-bar" style="height: 1%;" title="1993: 31,700 MCF • $69K revenue • First production Nov"></div>
+                        <div class="chart-bar" style="height: 0%;" title="1994: No production recorded"></div>
+                        <div class="chart-bar" style="height: 62%;" title="1995: 2.36M MCF • $4.67M revenue • Wells #1-3 online"></div>
+                        <div class="chart-bar peak" style="height: 100%;" title="1996: 3.83M MCF • $10.75M revenue • PEAK YEAR - All wells producing"></div>
+                        <div class="chart-bar" style="height: 76%;" title="1997: 2.92M MCF • $7.87M revenue"></div>
+                        <div class="chart-bar" style="height: 47%;" title="1998: 1.80M MCF • $4.1M revenue • Natural decline begins"></div>
+                        <div class="chart-bar" style="height: 33%;" title="1999: 1.26M MCF • $2.98M revenue"></div>
+                        <div class="chart-bar" style="height: 23%;" title="2000: 868K MCF • $3.6M revenue • Gas prices spike"></div>
+                        <div class="chart-bar" style="height: 13%;" title="2001: 501K MCF • $2.37M revenue"></div>
+                        <div class="chart-bar" style="height: 9%;" title="2002: 336K MCF • $1.13M revenue"></div>
+                        <div class="chart-bar" style="height: 9%;" title="2003: 332K MCF • $1.8M revenue"></div>
+                        <div class="chart-bar" style="height: 10%;" title="2004: 390K MCF • $2.37M revenue"></div>
+                        <div class="chart-bar" style="height: 7%;" title="2005: 276K MCF • $2.4M revenue • Hurricane season"></div>
+                        <div class="chart-bar" style="height: 9%;" title="2006: 344K MCF • $2.43M revenue"></div>
+                        <div class="chart-bar" style="height: 8%;" title="2007: 325K MCF • $2.34M revenue"></div>
+                        <div class="chart-bar" style="height: 6%;" title="2008: 229K MCF • $2.21M revenue • Gas price peak $12.69"></div>
+                        <div class="chart-bar" style="height: 10%;" title="2009: 367K MCF • $1.61M revenue • Post-crash prices"></div>
+                        <div class="chart-bar" style="height: 10%;" title="2010: 384K MCF • $1.92M revenue"></div>
+                        <div class="chart-bar" style="height: 8%;" title="2011: 289K MCF • $1.4M revenue"></div>
+                        <div class="chart-bar" style="height: 6%;" title="2012: 215K MCF • $761K revenue • Shale glut"></div>
+                        <div class="chart-bar" style="height: 4%;" title="2013: 169K MCF • $760K revenue"></div>
+                        <div class="chart-bar" style="height: 4%;" title="2014: 148K MCF • $758K revenue"></div>
+                        <div class="chart-bar" style="height: 3%;" title="2015: 131K MCF • $389K revenue • Price collapse"></div>
+                        <div class="chart-bar" style="height: 4%;" title="2016: 153K MCF • $458K revenue"></div>
+                        <div class="chart-bar" style="height: 5%;" title="2017: 175K MCF • $602K revenue"></div>
+                        <div class="chart-bar" style="height: 4%;" title="2018: 142K MCF • $527K revenue"></div>
+                        <div class="chart-bar" style="height: 4%;" title="2019: 139K MCF • $419K revenue"></div>
+                        <div class="chart-bar" style="height: 3%;" title="2020: 113K MCF • $260K revenue • COVID"></div>
+                        <div class="chart-bar" style="height: 3%;" title="2021: 105K MCF • $474K revenue • Winter storm spike"></div>
+                        <div class="chart-bar" style="height: 3%;" title="2022: 98K MCF • $705K revenue • Ukraine war prices"></div>
+                        <div class="chart-bar" style="height: 2.5%;" title="2023: 96K MCF • $298K revenue"></div>
+                        <div class="chart-bar" style="height: 2.4%;" title="2024: 92K MCF • $259K revenue"></div>
+                        <div class="chart-bar current" style="height: 2%;" title="2025 YTD: 80K MCF • $279K revenue • Through October"></div>
                     </div>
-                    <div style="display: flex; justify-content: space-between; margin-top: 1rem; font-size: 0.75rem; color: rgba(255,255,255,0.5);">
-                        <span>Peak: 3.83 BCF (1996)</span>
-                        <span>Current: 288 MCFD</span>
+                    <div style="display: flex; justify-content: space-between; margin-top: 0.75rem; font-size: 0.7rem; color: rgba(255,255,255,0.4);">
+                        <span>'93</span>
+                        <span>'00</span>
+                        <span>'10</span>
+                        <span>'20</span>
+                        <span>'25</span>
                     </div>
                 </div>
-                <p style="margin-top: 1rem; font-size: 0.8rem; color: rgba(255,255,255,0.5);">Production decline typical of mature wells — workovers can restore significant rates</p>
+                <p style="margin-top: 0.75rem; font-size: 0.75rem; color: rgba(255,255,255,0.4);">Hover bars for yearly details • Decline curve typical of mature wells without intervention</p>
             </div>
 
-            <!-- Revenue Breakdown -->
-            <div class="reveal" style="margin-top: 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-                <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 2rem;">
-                    <h4 style="color: var(--gold); margin-bottom: 1rem;">Gas Revenue</h4>
-                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--white);">$56.6M</div>
-                    <div style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 0.5rem;">18.69 BCF @ avg $3.03/MMBtu</div>
-                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                        <div style="font-size: 0.8rem; color: rgba(255,255,255,0.5);">Current Henry Hub: $3.15/MMBtu</div>
-                    </div>
+            <!-- Revenue Split - Compact -->
+            <div class="reveal" style="margin-top: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                <div class="revenue-card" title="Natural gas sold at Henry Hub spot prices. Peak price $12.69/MMBtu (Jun 2008), Low $1.61 (Apr 2024).">
+                    <div class="revenue-type">Gas Revenue</div>
+                    <div class="revenue-amount">$56.6M</div>
+                    <div class="revenue-detail">18.69 BCF @ avg $3.03/MMBtu</div>
                 </div>
-                <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 2rem;">
-                    <h4 style="color: var(--gold); margin-bottom: 1rem;">Oil/Condensate Revenue</h4>
-                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--white);">$6.36M</div>
-                    <div style="font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-top: 0.5rem;">237,385 BBL @ avg $26.79/BBL</div>
-                    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                        <div style="font-size: 0.8rem; color: rgba(255,255,255,0.5);">Current WTI: ~$72/BBL</div>
-                    </div>
+                <div class="revenue-card" title="Condensate (light oil) sold at WTI-linked prices. Averaged 12.7 BBL per MMCF gas ratio.">
+                    <div class="revenue-type">Condensate Revenue</div>
+                    <div class="revenue-amount">$6.36M</div>
+                    <div class="revenue-detail">237K BBL @ avg $26.79/BBL</div>
                 </div>
             </div>
         </div>
     </section>
+
+    <style>
+        /* Refined stat cards */
+        .stat-card {
+            text-align: center;
+            padding: 1.25rem 1rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 6px;
+            cursor: help;
+            transition: all 0.2s ease;
+        }
+        .stat-card:hover {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(201, 169, 97, 0.3);
+        }
+        .stat-value {
+            font-size: 2rem;
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+        .stat-label {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.25rem;
+        }
+        .stat-detail {
+            color: rgba(255,255,255,0.35);
+            font-size: 0.7rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Well bars */
+        .well-bar {
+            display: grid;
+            grid-template-columns: 90px 1fr 80px;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.6rem 1rem;
+            background: rgba(255,255,255,0.02);
+            border-radius: 4px;
+            cursor: help;
+            transition: all 0.2s ease;
+        }
+        .well-bar:hover {
+            background: rgba(255,255,255,0.05);
+        }
+        .well-bar.priority {
+            background: rgba(201, 169, 97, 0.08);
+            border: 1px solid rgba(201, 169, 97, 0.2);
+        }
+        .well-bar.subsalt {
+            background: rgba(239, 68, 68, 0.08);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+        .well-bar-name {
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .well-bar.priority .well-bar-name { color: var(--gold); }
+        .well-bar.subsalt .well-bar-name { color: #f87171; }
+        .well-bar-track {
+            background: rgba(255,255,255,0.08);
+            height: 18px;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .well-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, rgba(201, 169, 97, 0.7), rgba(201, 169, 97, 0.4));
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 6px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.9);
+        }
+        .well-bar-fill.gold {
+            background: linear-gradient(90deg, var(--gold), rgba(201, 169, 97, 0.6));
+        }
+        .well-bar-fill.red {
+            background: linear-gradient(90deg, #ef4444, rgba(239, 68, 68, 0.6));
+        }
+        .well-bar-revenue {
+            text-align: right;
+            font-weight: 600;
+            color: var(--gold);
+            font-size: 0.9rem;
+        }
+
+        /* Year cards */
+        .year-card {
+            padding: 1rem 1.25rem;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 6px;
+            text-align: center;
+            cursor: help;
+            transition: all 0.2s ease;
+        }
+        .year-card:hover {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(201, 169, 97, 0.3);
+        }
+        .year-card.top {
+            background: rgba(201, 169, 97, 0.1);
+            border-color: rgba(201, 169, 97, 0.3);
+        }
+        .year-revenue {
+            display: block;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--gold);
+        }
+        .year-label {
+            display: block;
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.8);
+            margin: 0.15rem 0;
+        }
+        .year-detail {
+            display: block;
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* Chart bars */
+        .chart-bar {
+            flex: 1;
+            background: rgba(201, 169, 97, 0.5);
+            border-radius: 2px 2px 0 0;
+            cursor: help;
+            transition: all 0.15s ease;
+            min-width: 12px;
+        }
+        .chart-bar:hover {
+            background: var(--gold);
+            transform: scaleY(1.05);
+            transform-origin: bottom;
+        }
+        .chart-bar.peak {
+            background: var(--gold);
+        }
+        .chart-bar.current {
+            background: #10b981;
+        }
+
+        /* Revenue cards */
+        .revenue-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 6px;
+            padding: 1.25rem;
+            cursor: help;
+            transition: all 0.2s ease;
+        }
+        .revenue-card:hover {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(201, 169, 97, 0.3);
+        }
+        .revenue-type {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .revenue-amount {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--white);
+            margin: 0.25rem 0;
+        }
+        .revenue-detail {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
+        }
+    </style>
 
     <!-- Interactive Well Map -->
     <section class="section-dark" style="padding: 60px 5%;">
