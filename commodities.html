@@ -679,14 +679,14 @@
             <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
             {
                 "symbols": [
-                    {"proName": "ICEUS:SB1!", "title": "Sugar #11"},
-                    {"proName": "ICEUS:KC1!", "title": "Arabica Coffee"},
-                    {"proName": "CBOT:ZS1!", "title": "Soybeans"},
-                    {"proName": "CBOT:ZC1!", "title": "Corn"},
-                    {"proName": "ICEUS:OJ1!", "title": "Orange Juice"},
-                    {"proName": "ICEUS:CT1!", "title": "Cotton"},
-                    {"proName": "CME:LE1!", "title": "Live Cattle"},
-                    {"proName": "SGX:FEF1!", "title": "Iron Ore"}
+                    {"proName": "PEPPERSTONE:SUGARUSD", "title": "Sugar"},
+                    {"proName": "PEPPERSTONE:COFFEEUSD", "title": "Coffee"},
+                    {"proName": "AMEX:CANE", "title": "Sugar ETF"},
+                    {"proName": "AMEX:JO", "title": "Coffee ETF"},
+                    {"proName": "AMEX:SOYB", "title": "Soybeans"},
+                    {"proName": "AMEX:CORN", "title": "Corn"},
+                    {"proName": "AMEX:DBA", "title": "Agriculture"},
+                    {"proName": "PEPPERSTONE:SOYBEANUSD", "title": "Soybean"}
                 ],
                 "showSymbolLogo": false,
                 "isTransparent": true,
@@ -754,11 +754,41 @@
                     <p class="product-description">Premium white refined cane sugar meeting international ICUMSA 45 specifications. Sourced directly from Brazilian mills with established export infrastructure through Port of Santos. Recent crop, certified radiation-free.</p>
                     
                     <!-- Live Market Price -->
-                    <p class="market-widget-label">ICE London No. 5 — Live</p>
-                    <div class="market-widget" style="height:220px;">
-                        <iframe src="https://s.tradingview.com/widgetembed/?hideideas=1&overrides=&enabled_features=&disabled_features=&locale=en#%7B%22symbol%22%3A%22ICEEUR%3AW1!%22%2C%22frameElementId%22%3A%22tv-sugar-45%22%2C%22interval%22%3A%22D%22%2C%22hide_top_toolbar%22%3A%221%22%2C%22hide_legend%22%3A%221%22%2C%22save_image%22%3A%220%22%2C%22studies%22%3A%22%22%2C%22theme%22%3A%22light%22%2C%22style%22%3A%223%22%2C%22timezone%22%3A%22exchange%22%2C%22studies_overrides%22%3A%22%7B%7D%22%2C%22utm_source%22%3A%22cladutacorp.com%22%2C%22utm_medium%22%3A%22widget_new%22%2C%22utm_campaign%22%3A%22chart%22%2C%22utm_term%22%3A%22ICEEUR%3AW1!%22%2C%22page-hierarchical-uri%22%3A%22symbols%2FICEEUR-W1!%2F%22%7D" 
-                            style="width:100%; height:100%; border:none;" allowtransparency="true" frameborder="0"></iframe>
+                    <p class="market-widget-label">Sugar — Live Market</p>
+                    <div class="market-widget" style="height:180px;">
+                        <div class="tradingview-widget-container">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+                            {
+                                "symbols": [["Sugar", "PEPPERSTONE:SUGARUSD|12M"]],
+                                "chartOnly": true,
+                                "width": "100%",
+                                "height": "100%",
+                                "locale": "en",
+                                "colorTheme": "light",
+                                "autosize": true,
+                                "showVolume": false,
+                                "showMA": false,
+                                "hideDateRanges": true,
+                                "hideMarketStatus": true,
+                                "hideSymbolLogo": true,
+                                "scalePosition": "no",
+                                "scaleMode": "Normal",
+                                "fontFamily": "Source Sans Pro, sans-serif",
+                                "fontSize": "10",
+                                "noTimeScale": false,
+                                "valuesTracking": "1",
+                                "changeMode": "price-and-percent",
+                                "chartType": "area",
+                                "lineWidth": 2,
+                                "lineColor": "#2d4a3e",
+                                "topColor": "rgba(45, 74, 62, 0.3)",
+                                "bottomColor": "rgba(45, 74, 62, 0.0)"
+                            }
+                            </script>
+                        </div>
                     </div>
+                    <p style="font-size:0.75rem; color:#999; margin-bottom:1rem;">Priced against ICE London No. 5 benchmark + premium</p>
 
                     <h3>Specifications</h3>
                     <table class="specs-table">
@@ -857,11 +887,41 @@
                     <p class="product-description">Very High Polarization (VHP) raw cane sugar for industrial refining and food manufacturing. Lower processing cost alternative to ICUMSA 45 with consistent quality from Brazilian mills.</p>
                     
                     <!-- Live Market Price -->
-                    <p class="market-widget-label">ICE New York No. 11 — Live</p>
-                    <div class="market-widget" style="height:220px;">
-                        <iframe src="https://s.tradingview.com/widgetembed/?hideideas=1&overrides=&enabled_features=&disabled_features=&locale=en#%7B%22symbol%22%3A%22ICEUS%3ASB1!%22%2C%22frameElementId%22%3A%22tv-sugar-150%22%2C%22interval%22%3A%22D%22%2C%22hide_top_toolbar%22%3A%221%22%2C%22hide_legend%22%3A%221%22%2C%22save_image%22%3A%220%22%2C%22studies%22%3A%22%22%2C%22theme%22%3A%22light%22%2C%22style%22%3A%223%22%2C%22timezone%22%3A%22exchange%22%2C%22studies_overrides%22%3A%22%7B%7D%22%2C%22utm_source%22%3A%22cladutacorp.com%22%2C%22utm_medium%22%3A%22widget_new%22%2C%22utm_campaign%22%3A%22chart%22%2C%22utm_term%22%3A%22ICEUS%3ASB1!%22%2C%22page-hierarchical-uri%22%3A%22symbols%2FICEUS-SB1!%2F%22%7D" 
-                            style="width:100%; height:100%; border:none;" allowtransparency="true" frameborder="0"></iframe>
+                    <p class="market-widget-label">Sugar — Live Market</p>
+                    <div class="market-widget" style="height:180px;">
+                        <div class="tradingview-widget-container">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+                            {
+                                "symbols": [["Sugar", "PEPPERSTONE:SUGARUSD|12M"]],
+                                "chartOnly": true,
+                                "width": "100%",
+                                "height": "100%",
+                                "locale": "en",
+                                "colorTheme": "light",
+                                "autosize": true,
+                                "showVolume": false,
+                                "showMA": false,
+                                "hideDateRanges": true,
+                                "hideMarketStatus": true,
+                                "hideSymbolLogo": true,
+                                "scalePosition": "no",
+                                "scaleMode": "Normal",
+                                "fontFamily": "Source Sans Pro, sans-serif",
+                                "fontSize": "10",
+                                "noTimeScale": false,
+                                "valuesTracking": "1",
+                                "changeMode": "price-and-percent",
+                                "chartType": "area",
+                                "lineWidth": 2,
+                                "lineColor": "#2d4a3e",
+                                "topColor": "rgba(45, 74, 62, 0.3)",
+                                "bottomColor": "rgba(45, 74, 62, 0.0)"
+                            }
+                            </script>
+                        </div>
                     </div>
+                    <p style="font-size:0.75rem; color:#999; margin-bottom:1rem;">Priced against ICE New York No. 11 benchmark + premium</p>
 
                     <h3>Specifications</h3>
                     <table class="specs-table">
@@ -964,10 +1024,39 @@
                     <p class="product-description">Premium green coffee beans from renowned Brazilian growing regions including Minas Gerais, São Paulo, and Espírito Santo. Smooth body, medium acidity, and sweet flavor notes. Suitable for specialty and commercial roasting.</p>
                     
                     <!-- Live Market Price -->
-                    <p class="market-widget-label">ICE New York Coffee C — Live</p>
-                    <div class="market-widget" style="height:220px;">
-                        <iframe src="https://s.tradingview.com/widgetembed/?hideideas=1&overrides=&enabled_features=&disabled_features=&locale=en#%7B%22symbol%22%3A%22ICEUS%3AKC1!%22%2C%22frameElementId%22%3A%22tv-coffee%22%2C%22interval%22%3A%22D%22%2C%22hide_top_toolbar%22%3A%221%22%2C%22hide_legend%22%3A%221%22%2C%22save_image%22%3A%220%22%2C%22studies%22%3A%22%22%2C%22theme%22%3A%22light%22%2C%22style%22%3A%223%22%2C%22timezone%22%3A%22exchange%22%2C%22studies_overrides%22%3A%22%7B%7D%22%2C%22utm_source%22%3A%22cladutacorp.com%22%2C%22utm_medium%22%3A%22widget_new%22%2C%22utm_campaign%22%3A%22chart%22%2C%22utm_term%22%3A%22ICEUS%3AKC1!%22%2C%22page-hierarchical-uri%22%3A%22symbols%2FICEUS-KC1!%2F%22%7D" 
-                            style="width:100%; height:100%; border:none;" allowtransparency="true" frameborder="0"></iframe>
+                    <p class="market-widget-label">Coffee — Live Market</p>
+                    <div class="market-widget" style="height:180px;">
+                        <div class="tradingview-widget-container">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+                            {
+                                "symbols": [["Coffee", "PEPPERSTONE:COFFEEUSD|12M"]],
+                                "chartOnly": true,
+                                "width": "100%",
+                                "height": "100%",
+                                "locale": "en",
+                                "colorTheme": "light",
+                                "autosize": true,
+                                "showVolume": false,
+                                "showMA": false,
+                                "hideDateRanges": true,
+                                "hideMarketStatus": true,
+                                "hideSymbolLogo": true,
+                                "scalePosition": "no",
+                                "scaleMode": "Normal",
+                                "fontFamily": "Source Sans Pro, sans-serif",
+                                "fontSize": "10",
+                                "noTimeScale": false,
+                                "valuesTracking": "1",
+                                "changeMode": "price-and-percent",
+                                "chartType": "area",
+                                "lineWidth": 2,
+                                "lineColor": "#2d4a3e",
+                                "topColor": "rgba(45, 74, 62, 0.3)",
+                                "bottomColor": "rgba(45, 74, 62, 0.0)"
+                            }
+                            </script>
+                        </div>
                     </div>
 
                     <h3>Specifications</h3>
