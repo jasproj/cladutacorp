@@ -212,6 +212,19 @@
             border-radius: 4px;
         }
 
+        .product-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .product-gallery img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
         .product-videos {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -439,6 +452,10 @@
             .trade-terms .container {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .product-gallery {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
         @media (max-width: 768px) {
@@ -541,6 +558,10 @@
             <div class="product-grid">
                 <div class="product-media">
                     <img src="sugar-container.jpg" alt="Brazilian Sugar 50kg Bags in Container" class="product-image-main">
+                    <div class="product-gallery">
+                        <img src="sugar-loading.jpg" alt="Sugar Bags Loading at Port Santos">
+                        <img src="sugar-bag.jpg" alt="50kg White Crystal Sugar Bag">
+                    </div>
                     <div class="product-videos">
                         <video controls muted playsinline>
                             <source src="sugar-video.mp4" type="video/mp4">
