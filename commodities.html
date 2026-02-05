@@ -429,6 +429,16 @@
             font-size: 0.95rem;
         }
 
+        .footer-contact a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .footer-contact a:hover {
+            opacity: 0.8;
+        }
+
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
@@ -439,6 +449,34 @@
             max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        /* TradingView Ticker Strip */
+        .ticker-strip {
+            margin-top: 0;
+            background: #1a1a1a;
+            border-bottom: 1px solid rgba(201,169,97,0.3);
+            overflow: hidden;
+        }
+        .ticker-strip .tradingview-widget-container {
+            margin: 0 !important;
+        }
+
+        /* Mini Chart Widget */
+        .market-widget {
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .market-widget-label {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--green-dark);
+            padding: 0.5rem 0;
         }
 
         /* Mobile Menu */
@@ -634,9 +672,36 @@
         document.getElementById('heroVideo').playbackRate = 0.5;
     </script>
 
+    <!-- Live Market Ticker -->
+    <div class="ticker-strip">
+        <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+            {
+                "symbols": [
+                    {"proName": "ICEEUR:SF1!", "title": "White Sugar #5"},
+                    {"proName": "ICEUS:SB1!", "title": "Raw Sugar #11"},
+                    {"proName": "ICEUS:KC1!", "title": "Arabica Coffee"},
+                    {"proName": "CBOT:ZS1!", "title": "Soybeans"},
+                    {"proName": "CBOT:ZC1!", "title": "Corn"},
+                    {"proName": "ICEUS:OJ1!", "title": "Orange Juice"},
+                    {"proName": "ICEUS:CT1!", "title": "Cotton"},
+                    {"proName": "CME:LE1!", "title": "Live Cattle"},
+                    {"proName": "SGX:FEF1!", "title": "Iron Ore"}
+                ],
+                "showSymbolLogo": false,
+                "isTransparent": true,
+                "displayMode": "regular",
+                "colorTheme": "dark",
+                "locale": "en"
+            }
+            </script>
+        </div>
+    </div>
+
     <!-- Trade Terms Bar -->
     <div class="trade-terms">
-        <div class="container">
+        <div class="container" style="grid-template-columns: repeat(3, 1fr);">
             <div class="term-item">
                 <h4>Incoterms</h4>
                 <p>CIF / FOB Santos</p>
@@ -646,12 +711,22 @@
                 <p>SGS or Equivalent</p>
             </div>
             <div class="term-item">
-                <h4>Payment</h4>
-                <p>30% Signing / 70% at B/L</p>
-            </div>
-            <div class="term-item">
                 <h4>Origin</h4>
                 <p>Brazil</p>
+            </div>
+        </div>
+        <div class="container" style="grid-template-columns: repeat(3, 1fr); margin-top: 1.5rem;">
+            <div class="term-item">
+                <h4>Payment</h4>
+                <p>SBLC accepted on orders above 5,000 MT</p>
+            </div>
+            <div class="term-item">
+                <h4>Instruments</h4>
+                <p>DLC not accepted</p>
+            </div>
+            <div class="term-item">
+                <h4>Standard Terms</h4>
+                <p>30% Signing / 70% at B/L</p>
             </div>
         </div>
     </div>
@@ -679,6 +754,27 @@
                 <div class="product-details">
                     <p class="product-description">Premium white refined cane sugar meeting international ICUMSA 45 specifications. Sourced directly from Brazilian mills with established export infrastructure through Port of Santos. Recent crop, certified radiation-free.</p>
                     
+                    <!-- Live Market Price -->
+                    <p class="market-widget-label">ICE London No. 5 — Live</p>
+                    <div class="market-widget">
+                        <div class="tradingview-widget-container" style="height:200px;">
+                            <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                            {
+                                "symbol": "ICEEUR:SF1!",
+                                "width": "100%",
+                                "height": "100%",
+                                "locale": "en",
+                                "dateRange": "3M",
+                                "colorTheme": "light",
+                                "isTransparent": true,
+                                "autosize": true,
+                                "largeChartUrl": ""
+                            }
+                            </script>
+                        </div>
+                    </div>
+
                     <h3>Specifications</h3>
                     <table class="specs-table">
                         <tr>
@@ -735,7 +831,7 @@
                         </tr>
                         <tr>
                             <td>MOQ</td>
-                            <td>12,500 MT</td>
+                            <td>10 Containers</td>
                         </tr>
                         <tr>
                             <td>Packaging</td>
@@ -748,6 +844,10 @@
                         <tr>
                             <td>Inspection</td>
                             <td>SGS at loading port</td>
+                        </tr>
+                        <tr>
+                            <td>Pricing Index</td>
+                            <td>ICE London No. 5 + premium</td>
                         </tr>
                     </table>
 
@@ -823,7 +923,7 @@
                         </tr>
                         <tr>
                             <td>MOQ</td>
-                            <td>12,500 MT</td>
+                            <td>10 Containers</td>
                         </tr>
                         <tr>
                             <td>Packaging</td>
@@ -836,6 +936,10 @@
                         <tr>
                             <td>Inspection</td>
                             <td>SGS at loading port</td>
+                        </tr>
+                        <tr>
+                            <td>Pricing Index</td>
+                            <td>ICE New York No. 11 + premium</td>
                         </tr>
                     </table>
 
@@ -867,6 +971,27 @@
                 <div class="product-details">
                     <p class="product-description">Premium green coffee beans from renowned Brazilian growing regions including Minas Gerais, São Paulo, and Espírito Santo. Smooth body, medium acidity, and sweet flavor notes. Suitable for specialty and commercial roasting.</p>
                     
+                    <!-- Live Market Price -->
+                    <p class="market-widget-label">ICE New York Coffee C — Live</p>
+                    <div class="market-widget">
+                        <div class="tradingview-widget-container" style="height:200px;">
+                            <div class="tradingview-widget-container__widget" style="height:100%;width:100%"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                            {
+                                "symbol": "ICEUS:KC1!",
+                                "width": "100%",
+                                "height": "100%",
+                                "locale": "en",
+                                "dateRange": "3M",
+                                "colorTheme": "light",
+                                "isTransparent": true,
+                                "autosize": true,
+                                "largeChartUrl": ""
+                            }
+                            </script>
+                        </div>
+                    </div>
+
                     <h3>Specifications</h3>
                     <table class="specs-table">
                         <tr>
@@ -983,7 +1108,7 @@
                         </tr>
                         <tr>
                             <td>MOQ</td>
-                            <td>Inquire for availability</td>
+                            <td>1 Container</td>
                         </tr>
                         <tr>
                             <td>Packaging</td>
@@ -1029,14 +1154,9 @@
             </div>
             <div class="footer-contact">
                 <h4>Contact</h4>
-                <p>info@cladutacorp.com</p>
+                <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b3daddd5dcf3d0dfd2d7c6c7d2d0dcc1c39dd0dcde">[email&#160;protected]</a></p>
                 <p>+1 (727) 623-2652</p>
                 <p>South Dakota, USA</p>
             </div>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Claduta Corporation. All rights reserved.</p>
-        </div>
-    </footer>
-</body>
-</html>
+        <div class="footer-bott
