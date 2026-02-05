@@ -406,6 +406,13 @@
         }
 
         /* Responsive */
+        @media (max-width: 968px) {
+            .focus-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -427,8 +434,25 @@
                 display: block;
             }
 
+            section {
+                padding: 60px 5%;
+            }
+
+            .hero {
+                padding: 100px 5% 60px;
+                min-height: auto;
+            }
+
+            .hero-logo {
+                max-width: 280px;
+            }
+
             .hero h1 {
-                font-size: 2rem;
+                font-size: 1.75rem;
+            }
+
+            .hero .tagline {
+                font-size: 1rem;
             }
 
             .hero-ctas {
@@ -439,15 +463,57 @@
             .hero-cta {
                 width: 100%;
                 max-width: 300px;
+                padding: 1.5rem;
+            }
+
+            .section-header h2,
+            .about-text h2,
+            .cta h2 {
+                font-size: 1.75rem;
+            }
+
+            .section-header {
+                margin-bottom: 2.5rem;
             }
 
             .about-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-image {
+                order: -1;
+            }
+
+            .focus-card,
+            .project-card {
+                padding: 1.5rem;
             }
 
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+            }
+
+            .btn {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .section-header h2,
+            .about-text h2,
+            .cta h2 {
+                font-size: 1.5rem;
+            }
+
+            .cta p {
+                font-size: 1rem;
             }
         }
     </style>
@@ -556,8 +622,8 @@
                 </div>
             </div>
             <div style="text-align: center; margin-top: 3rem;">
-                <a href="projects.html" class="btn" style="margin-right: 1rem;">View All Projects</a>
-                <a href="commodities.html" class="btn btn-outline">View Commodities</a>
+                <a href="projects.html" class="btn">View All Projects</a>
+                <a href="commodities.html" class="btn btn-outline" style="margin-left: 1rem;">View Commodities</a>
             </div>
         </div>
     </section>
