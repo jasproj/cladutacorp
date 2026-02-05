@@ -73,9 +73,38 @@
 
         /* Hero */
         .hero {
+            position: relative;
             padding: 160px 5% 100px;
-            background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-medium) 100%);
             text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(45,74,62,0.85) 0%, rgba(61,90,78,0.85) 100%);
+            z-index: -1;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
         }
 
         .hero h1 {
@@ -185,13 +214,13 @@
 
         .product-videos {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
         }
 
         .product-videos video {
             width: 100%;
-            height: 150px;
+            height: 180px;
             object-fit: cover;
             border-radius: 4px;
             background: var(--charcoal);
@@ -410,10 +439,6 @@
             .trade-terms .container {
                 grid-template-columns: repeat(2, 1fr);
             }
-
-            .product-videos {
-                grid-template-columns: 1fr;
-            }
         }
 
         @media (max-width: 768px) {
@@ -471,11 +496,18 @@
     </nav>
 
     <section class="hero">
+        <video class="hero-video" autoplay muted loop playsinline id="heroVideo">
+            <source src="coffee-video-1.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
         <div class="container">
             <h1>Physical Commodities</h1>
             <p>We supply agricultural commodities to international buyers through direct producer relationships and structured trade execution.</p>
         </div>
     </section>
+    <script>
+        document.getElementById('heroVideo').playbackRate = 0.5;
+    </script>
 
     <!-- Trade Terms Bar -->
     <div class="trade-terms">
@@ -507,9 +539,13 @@
                 <h2>ICUMSA 45 White Refined Sugar</h2>
             </div>
             <div class="product-grid">
-                <div class="product-image">
-                    <!-- Replace with: <img src="sugar-product.jpg" alt="ICUMSA 45 White Refined Sugar"> -->
-                    [Sugar Product Image]
+                <div class="product-media">
+                    <img src="sugar-container.jpg" alt="Brazilian Sugar 50kg Bags in Container" class="product-image-main">
+                    <div class="product-videos">
+                        <video controls muted playsinline>
+                            <source src="sugar-video.mp4" type="video/mp4">
+                        </video>
+                    </div>
                 </div>
                 <div class="product-details">
                     <p class="product-description">Premium white refined cane sugar meeting international ICUMSA 45 specifications. Sourced directly from Brazilian mills with established export infrastructure through Port of Santos. Recent crop, certified radiation-free.</p>
