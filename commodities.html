@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Claduta Corporation | Strategic Capital. Real Assets. Global Reach.</title>
-    <meta name="description" content="Claduta Corporation - A holding company operating in real-asset investments and physical commodity trading.">
+    <title>Physical Commodities | Claduta Corporation</title>
+    <meta name="description" content="Source ICUMSA 45 sugar, Arabica coffee beans, and black pepper direct from Brazilian producers. Claduta Corporation - reliable supply, competitive pricing, structured trade execution.">
     
     <!-- Open Graph / Facebook / iMessage / WhatsApp -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://cladutacorp.com/">
-    <meta property="og:title" content="Claduta Corporation | Strategic Capital. Real Assets. Global Reach.">
-    <meta property="og:description" content="A holding company operating in real-asset investments and physical commodity trading.">
+    <meta property="og:url" content="https://cladutacorp.com/commodities.html">
+    <meta property="og:title" content="Physical Commodities | Claduta Corporation">
+    <meta property="og:description" content="ICUMSA 45 Sugar, Arabica Coffee, Brazilian Black Pepper. Direct from Brazilian producers. Reliable supply, competitive pricing.">
     <meta property="og:image" content="https://cladutacorp.com/og-commodities.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Claduta Corporation">
-    <meta name="twitter:description" content="Strategic Capital. Real Assets. Global Reach.">
+    <meta name="twitter:title" content="Physical Commodities | Claduta Corporation">
+    <meta name="twitter:description" content="ICUMSA 45 Sugar, Arabica Coffee, Brazilian Black Pepper. Direct from Brazilian producers.">
     <meta name="twitter:image" content="https://cladutacorp.com/og-commodities.png">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -82,135 +82,69 @@
             transition: color 0.3s;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover,
+        .nav-links a.active {
             color: var(--green-dark);
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .mobile-menu-btn span {
-            display: block;
-            width: 25px;
-            height: 2px;
-            background: var(--charcoal);
-            margin: 5px 0;
-            transition: 0.3s;
         }
 
         /* Hero */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-medium) 100%);
-            padding: 120px 5% 80px;
+            position: relative;
+            padding: 160px 5% 100px;
             text-align: center;
+            overflow: hidden;
         }
 
-        .hero-content {
-            max-width: 800px;
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: -2;
         }
 
-        .hero-logo {
-            max-width: 400px;
-            margin-bottom: 2rem;
-            filter: brightness(0) invert(1);
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(45,74,62,0.85) 0%, rgba(61,90,78,0.85) 100%);
+            z-index: -1;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
         }
 
         .hero h1 {
             color: var(--white);
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
             letter-spacing: 0.02em;
         }
 
-        .hero .tagline {
+        .hero p {
             color: rgba(255,255,255,0.9);
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             font-weight: 300;
-            margin-bottom: 2.5rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Dual CTA */
-        .hero-ctas {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .hero-cta {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            padding: 2rem 2.5rem;
-            border-radius: 4px;
-            text-align: center;
-            min-width: 220px;
-            transition: all 0.3s;
-        }
-
-        .hero-cta:hover {
-            background: rgba(255,255,255,0.15);
-            border-color: var(--gold);
-        }
-
-        .hero-cta h3 {
-            color: var(--gold);
-            font-size: 0.85rem;
-            font-family: 'Source Sans Pro', sans-serif;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero-cta p {
-            color: var(--white);
-            font-size: 1.1rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.875rem 2rem;
-            background: var(--gold);
-            color: var(--charcoal);
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 2px;
-            transition: all 0.3s;
-            font-size: 0.95rem;
-        }
-
-        .btn:hover {
-            background: var(--white);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--gold);
-            color: var(--white);
-        }
-
-        .btn-outline:hover {
-            background: var(--gold);
-            color: var(--charcoal);
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         /* Sections */
         section {
-            padding: 100px 5%;
+            padding: 80px 5%;
+        }
+
+        .section-cream {
+            background: var(--cream);
         }
 
         .section-dark {
@@ -218,143 +152,229 @@
             color: var(--white);
         }
 
-        .section-cream {
-            background: var(--cream);
-        }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
+        /* Product Cards */
+        .product-section {
+            padding: 80px 5%;
         }
 
-        .section-header h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .product-section:nth-child(even) {
+            background: var(--cream);
         }
 
-        .section-header p {
-            font-size: 1.1rem;
-            opacity: 0.8;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* About */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+        .product-header {
+            display: flex;
             align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
         }
 
-        .about-text h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--green-dark);
-        }
-
-        .about-text p {
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .about-image img {
-            width: 100%;
-            max-width: 350px;
-            margin: 0 auto;
-            display: block;
-        }
-
-        /* Focus Areas */
-        .focus-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-
-        .focus-card {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 4px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            transition: transform 0.3s;
-        }
-
-        .focus-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .focus-card h3 {
-            color: var(--green-dark);
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-        }
-
-        .focus-card p {
-            color: var(--charcoal);
-            opacity: 0.8;
-        }
-
-        /* Projects Preview */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 2.5rem;
-            border-radius: 4px;
-            transition: all 0.3s;
-        }
-
-        .project-card:hover {
-            border-color: var(--gold);
-        }
-
-        .project-card .tag {
-            display: inline-block;
+        .product-header .tag {
             background: var(--gold);
             color: var(--charcoal);
-            padding: 0.25rem 0.75rem;
+            padding: 0.25rem 1rem;
             font-size: 0.8rem;
             font-weight: 600;
-            margin-bottom: 1rem;
             border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
-        .project-card h3 {
-            margin-bottom: 0.75rem;
+        .product-header h2 {
+            font-size: 2rem;
+            color: var(--green-dark);
         }
 
-        .project-card p {
-            opacity: 0.8;
-            font-size: 0.95rem;
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
         }
 
-        /* CTA */
-        .cta {
-            text-align: center;
+        .product-image {
+            width: 100%;
+            height: 350px;
+            background: var(--green-medium);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-media {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .product-image-main {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .product-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .product-gallery img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .product-videos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .product-videos video {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 4px;
+            background: var(--charcoal);
+        }
+
+        .product-details h3 {
+            font-size: 1.1rem;
+            color: var(--green-dark);
+            margin-bottom: 0.5rem;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .specs-table {
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+
+        .specs-table tr {
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .specs-table td {
+            padding: 0.75rem 0;
+            vertical-align: top;
+        }
+
+        .specs-table td:first-child {
+            font-weight: 600;
+            width: 40%;
+            color: var(--charcoal);
+        }
+
+        .specs-table td:last-child {
+            color: #555;
+        }
+
+        .product-description {
+            color: #555;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--gold);
+            color: var(--charcoal);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 2px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
             background: var(--green-dark);
             color: var(--white);
         }
 
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--charcoal);
+        }
+
+        .btn-outline:hover {
+            background: var(--gold);
+            color: var(--charcoal);
+        }
+
+        /* Trade Terms Section */
+        .trade-terms {
+            background: var(--charcoal);
+            color: var(--white);
+            padding: 60px 5%;
+        }
+
+        .trade-terms .container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .term-item h4 {
+            color: var(--gold);
+            font-family: 'Source Sans Pro', sans-serif;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.85rem;
+        }
+
+        .term-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* CTA Section */
+        .cta {
+            text-align: center;
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 80px 5%;
+        }
+
         .cta h2 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             margin-bottom: 1rem;
         }
 
         .cta p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             opacity: 0.9;
             margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* Footer */
@@ -421,11 +441,36 @@
             margin-right: auto;
         }
 
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--charcoal);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
         /* Responsive */
         @media (max-width: 968px) {
-            .focus-grid,
-            .projects-grid {
+            .product-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .trade-terms .container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .product-gallery {
+                grid-template-columns: 1fr 1fr;
             }
         }
 
@@ -450,86 +495,109 @@
                 display: block;
             }
 
-            section {
-                padding: 60px 5%;
-            }
-
             .hero {
-                padding: 100px 5% 60px;
-                min-height: auto;
-            }
-
-            .hero-logo {
-                max-width: 280px;
+                padding: 120px 5% 60px;
             }
 
             .hero h1 {
-                font-size: 1.75rem;
+                font-size: 2rem;
             }
 
-            .hero .tagline {
+            .hero p {
                 font-size: 1rem;
             }
 
-            .hero-ctas {
+            .product-section {
+                padding: 50px 5%;
+            }
+
+            .product-header {
                 flex-direction: column;
-                align-items: center;
+                align-items: flex-start;
+                gap: 0.5rem;
             }
 
-            .hero-cta {
-                width: 100%;
-                max-width: 300px;
-                padding: 1.5rem;
+            .product-header h2 {
+                font-size: 1.5rem;
             }
 
-            .section-header h2,
-            .about-text h2,
+            .specs-table td:first-child {
+                width: 45%;
+            }
+
+            .specs-table td {
+                padding: 0.5rem 0;
+                font-size: 0.95rem;
+            }
+
+            .product-description {
+                font-size: 1rem;
+            }
+
+            .cta {
+                padding: 60px 5%;
+            }
+
             .cta h2 {
                 font-size: 1.75rem;
-            }
-
-            .section-header {
-                margin-bottom: 2.5rem;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .about-image {
-                order: -1;
-            }
-
-            .focus-card,
-            .project-card {
-                padding: 1.5rem;
             }
 
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
-
-            .btn {
-                padding: 0.75rem 1.5rem;
-                font-size: 0.9rem;
-            }
         }
 
         @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 1.5rem;
+            .trade-terms .container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
-            .section-header h2,
-            .about-text h2,
+            .trade-terms {
+                padding: 40px 5%;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .product-header h2 {
+                font-size: 1.3rem;
+            }
+
+            .product-image-main {
+                height: 220px;
+            }
+
+            .product-gallery img {
+                height: 120px;
+            }
+
+            .product-videos video {
+                height: 150px;
+            }
+
+            .specs-table td:first-child {
+                width: 40%;
+                font-size: 0.9rem;
+            }
+
+            .specs-table td:last-child {
+                font-size: 0.9rem;
+            }
+
             .cta h2 {
                 font-size: 1.5rem;
             }
 
             .cta p {
                 font-size: 1rem;
+            }
+
+            .btn {
+                padding: 0.875rem 1.5rem;
+                font-size: 0.95rem;
             }
         }
     </style>
@@ -546,109 +614,315 @@
         </button>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
-            <li><a href="commodities.html">Commodities</a></li>
+            <li><a href="commodities.html" class="active">Commodities</a></li>
             <li><a href="projects.html">Projects</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
 
     <section class="hero">
-        <div class="hero-content">
-            <img src="logo-full.png" alt="Claduta Corporation" class="hero-logo">
-            <h1>Strategic Capital. Real Assets. Global Reach.</h1>
-            <p class="tagline">A holding company operating in real-asset investments and physical commodity trading.</p>
-            
-            <div class="hero-ctas">
-                <div class="hero-cta">
-                    <h3>For Investors</h3>
-                    <p>Invest in Real Asset Projects</p>
-                    <a href="projects.html" class="btn">View Projects</a>
-                </div>
-                <div class="hero-cta">
-                    <h3>For Buyers</h3>
-                    <p>Source Physical Commodities</p>
-                    <a href="commodities.html" class="btn">View Products</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-cream">
-        <div class="container about-grid">
-            <div class="about-text">
-                <h2>About Claduta Corporation</h2>
-                <p>Claduta Corporation is a U.S.-based holding company headquartered in South Dakota. We operate across two complementary business lines: real-asset project investments and physical commodity trading.</p>
-                <p>Our investment arm identifies, structures, and manages ventures in energy, mining, and agriculture. Our trading operations supply physical commodities—including sugar, coffee, and black pepper—to international buyers through direct producer relationships in Brazil.</p>
-                <p>Trading generates cash flow and market relationships. Projects generate long-term asset value. Together, they create a platform with diversified revenue and deal flow.</p>
-            </div>
-            <div class="about-image">
-                <img src="logo-horizontal.png" alt="Claduta Corporation">
-            </div>
-        </div>
-    </section>
-
-    <section>
+        <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="metadata" id="heroVideo">
+            <source src="coffee-video-1.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
         <div class="container">
-            <div class="section-header">
-                <h2>Investment Focus</h2>
-                <p>We target opportunities with existing assets, clear title, defined exit paths, and asymmetric upside.</p>
-            </div>
-            <div class="focus-grid">
-                <div class="focus-card">
-                    <h3>Oil & Natural Gas</h3>
-                    <p>Strategic investments in exploration, production, and distribution across proven reserves and emerging plays.</p>
-                </div>
-                <div class="focus-card">
-                    <h3>Mining & Minerals</h3>
-                    <p>Precious metals, industrial minerals, and critical resources essential to modern infrastructure and technology.</p>
-                </div>
-                <div class="focus-card">
-                    <h3>Agriculture & Commodities</h3>
-                    <p>Direct supply relationships with Brazilian producers for sugar, coffee, and black pepper. Physical commodity trading with international buyers.</p>
-                </div>
-                <div class="focus-card">
-                    <h3>Renewable Energy</h3>
-                    <p>Solar development, ethanol production, and clean energy projects with tax-advantaged structures.</p>
-                </div>
-            </div>
+            <h1>Physical Commodities</h1>
+            <p>We supply agricultural commodities to international buyers through direct producer relationships and structured trade execution.</p>
         </div>
     </section>
+    <script>
+        document.getElementById('heroVideo').playbackRate = 0.5;
+    </script>
 
-    <section class="section-dark">
+    <!-- Trade Terms Bar -->
+    <div class="trade-terms">
         <div class="container">
-            <div class="section-header">
-                <h2>Current Opportunities</h2>
-                <p>Active projects and available commodities.</p>
+            <div class="term-item">
+                <h4>Incoterms</h4>
+                <p>CIF / FOB Santos</p>
             </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <span class="tag">Oil & Gas</span>
-                    <h3>Humble Dome</h3>
-                    <p>Strategic oil and gas development project in a proven Texas field with existing production and significant upside potential.</p>
-                </div>
-                <div class="project-card">
-                    <span class="tag">Commodities</span>
-                    <h3>Brazilian Agricultural Products</h3>
-                    <p>ICUMSA 45 sugar, Arabica coffee, and black pepper. Direct from producers, CIF/FOB Santos.</p>
-                </div>
-                <div class="project-card">
-                    <span class="tag">Renewable</span>
-                    <h3>100MW Solar Platform</h3>
-                    <p>Utility-scale solar development with 40% ITC qualification. Seeking tax-equity partners.</p>
-                </div>
+            <div class="term-item">
+                <h4>Inspection</h4>
+                <p>SGS or Equivalent</p>
             </div>
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="projects.html" class="btn">View All Projects</a>
-                <a href="commodities.html" class="btn btn-outline" style="margin-left: 1rem;">View Commodities</a>
+            <div class="term-item">
+                <h4>Payment</h4>
+                <p>30% Signing / 70% at B/L</p>
+            </div>
+            <div class="term-item">
+                <h4>Origin</h4>
+                <p>Brazil</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUGAR -->
+    <section class="product-section" id="sugar">
+        <div class="container">
+            <div class="product-header">
+                <span class="tag">Available</span>
+                <h2>ICUMSA 45 White Refined Sugar</h2>
+            </div>
+            <div class="product-grid">
+                <div class="product-media">
+                    <img src="sugar-container.jpg" alt="Brazilian Sugar 50kg Bags in Container" class="product-image-main">
+                    <div class="product-gallery">
+                        <img src="sugar-loading.jpg" alt="Sugar Bags Loading at Port Santos">
+                        <img src="sugar-bag.jpg" alt="50kg White Crystal Sugar Bag">
+                    </div>
+                    <div class="product-videos">
+                        <video controls muted playsinline webkit-playsinline preload="metadata" poster="sugar-container.jpg">
+                            <source src="sugar-video.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <div class="product-details">
+                    <p class="product-description">Premium white refined cane sugar meeting international ICUMSA 45 specifications. Sourced directly from Brazilian mills with established export infrastructure through Port of Santos. Recent crop, certified radiation-free.</p>
+                    
+                    <h3>Specifications</h3>
+                    <table class="specs-table">
+                        <tr>
+                            <td>ICUMSA</td>
+                            <td>45 RBU (ICUMSA Method #10-1978)</td>
+                        </tr>
+                        <tr>
+                            <td>Polarization</td>
+                            <td>Min 99.80°</td>
+                        </tr>
+                        <tr>
+                            <td>Ash Content</td>
+                            <td>Max 0.04% by weight</td>
+                        </tr>
+                        <tr>
+                            <td>Moisture</td>
+                            <td>Max 0.04% by weight</td>
+                        </tr>
+                        <tr>
+                            <td>SO2</td>
+                            <td>Max 70 mg/kg</td>
+                        </tr>
+                        <tr>
+                            <td>Magnetic Particles</td>
+                            <td>Max 4 mg/kg</td>
+                        </tr>
+                        <tr>
+                            <td>Solubility</td>
+                            <td>100% dry & free flowing</td>
+                        </tr>
+                        <tr>
+                            <td>Granulation</td>
+                            <td>Fine standard</td>
+                        </tr>
+                        <tr>
+                            <td>Color</td>
+                            <td>Sparkling white</td>
+                        </tr>
+                        <tr>
+                            <td>Radiation</td>
+                            <td>Normal, no cesium or iodine</td>
+                        </tr>
+                    </table>
+
+                    <h3>Trade Terms</h3>
+                    <table class="specs-table">
+                        <tr>
+                            <td>Origin</td>
+                            <td>Brazil</td>
+                        </tr>
+                        <tr>
+                            <td>Loading Port</td>
+                            <td>Santos, Brazil</td>
+                        </tr>
+                        <tr>
+                            <td>MOQ</td>
+                            <td>12,500 MT</td>
+                        </tr>
+                        <tr>
+                            <td>Packaging</td>
+                            <td>50kg bags or Bulk</td>
+                        </tr>
+                        <tr>
+                            <td>Delivery</td>
+                            <td>CIF or FOB</td>
+                        </tr>
+                        <tr>
+                            <td>Inspection</td>
+                            <td>SGS at loading port</td>
+                        </tr>
+                    </table>
+
+                    <a href="contact.html?product=sugar" class="btn">Request Pricing</a>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- COFFEE -->
+    <section class="product-section" id="coffee">
+        <div class="container">
+            <div class="product-header">
+                <span class="tag">Available</span>
+                <h2>Brazilian Arabica Green Coffee</h2>
+            </div>
+            <div class="product-grid">
+                <div class="product-media">
+                    <img src="coffee-farm.jpg" alt="Brazilian Arabica Coffee Plantation" class="product-image-main">
+                    <div class="product-videos">
+                        <video controls muted playsinline webkit-playsinline preload="metadata" poster="coffee-farm.jpg">
+                            <source src="coffee-video-1.mp4" type="video/mp4">
+                        </video>
+                        <video controls muted playsinline webkit-playsinline preload="metadata" poster="coffee-farm.jpg">
+                            <source src="coffee-video-2.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <div class="product-details">
+                    <p class="product-description">Premium green coffee beans from renowned Brazilian growing regions including Minas Gerais, São Paulo, and Espírito Santo. Smooth body, medium acidity, and sweet flavor notes. Suitable for specialty and commercial roasting.</p>
+                    
+                    <h3>Specifications</h3>
+                    <table class="specs-table">
+                        <tr>
+                            <td>Variety</td>
+                            <td>100% Arabica</td>
+                        </tr>
+                        <tr>
+                            <td>Processing</td>
+                            <td>Natural or Washed (per request)</td>
+                        </tr>
+                        <tr>
+                            <td>Moisture</td>
+                            <td>Max 12.5%</td>
+                        </tr>
+                        <tr>
+                            <td>Screen Size</td>
+                            <td>16+ Standard Export Grade</td>
+                        </tr>
+                        <tr>
+                            <td>Cup Profile</td>
+                            <td>Smooth body, medium acidity, sweet notes</td>
+                        </tr>
+                        <tr>
+                            <td>Quality Control</td>
+                            <td>Visual, moisture, defect count, cupping</td>
+                        </tr>
+                    </table>
+
+                    <h3>Trade Terms</h3>
+                    <table class="specs-table">
+                        <tr>
+                            <td>Origin</td>
+                            <td>Brazil (Minas Gerais, São Paulo, Espírito Santo)</td>
+                        </tr>
+                        <tr>
+                            <td>Loading Port</td>
+                            <td>Santos or Vitória, Brazil</td>
+                        </tr>
+                        <tr>
+                            <td>MOQ</td>
+                            <td>1 container (320 bags)</td>
+                        </tr>
+                        <tr>
+                            <td>Packaging</td>
+                            <td>60kg jute bags</td>
+                        </tr>
+                        <tr>
+                            <td>Container</td>
+                            <td>~320 bags per 20ft container</td>
+                        </tr>
+                        <tr>
+                            <td>Delivery</td>
+                            <td>FOB or CIF</td>
+                        </tr>
+                    </table>
+
+                    <a href="contact.html?product=coffee" class="btn">Request Pricing</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLACK PEPPER -->
+    <section class="product-section" id="pepper">
+        <div class="container">
+            <div class="product-header">
+                <span class="tag">Available</span>
+                <h2>Brazilian Black Pepper</h2>
+            </div>
+            <div class="product-grid">
+                <div class="product-image">
+                    <img src="pepper-vine.jpg" alt="Brazilian Black Pepper Vine">
+                </div>
+                <div class="product-details">
+                    <p class="product-description">Premium black peppercorns from Brazilian producers. High piperine content with bold, aromatic flavor profile. Sourced from established plantations with direct farmer relationships.</p>
+                    
+                    <h3>Specifications</h3>
+                    <table class="specs-table">
+                        <tr>
+                            <td>Product</td>
+                            <td>Whole Black Peppercorns</td>
+                        </tr>
+                        <tr>
+                            <td>Moisture</td>
+                            <td>Max 12%</td>
+                        </tr>
+                        <tr>
+                            <td>Piperine Content</td>
+                            <td>Min 4%</td>
+                        </tr>
+                        <tr>
+                            <td>Extraneous Matter</td>
+                            <td>Max 1%</td>
+                        </tr>
+                        <tr>
+                            <td>Light Berries</td>
+                            <td>Max 2%</td>
+                        </tr>
+                        <tr>
+                            <td>Density</td>
+                            <td>Min 500 g/L</td>
+                        </tr>
+                    </table>
+
+                    <h3>Trade Terms</h3>
+                    <table class="specs-table">
+                        <tr>
+                            <td>Origin</td>
+                            <td>Brazil</td>
+                        </tr>
+                        <tr>
+                            <td>Loading Port</td>
+                            <td>Santos, Brazil</td>
+                        </tr>
+                        <tr>
+                            <td>MOQ</td>
+                            <td>Inquire for availability</td>
+                        </tr>
+                        <tr>
+                            <td>Packaging</td>
+                            <td>25kg or 50kg bags</td>
+                        </tr>
+                        <tr>
+                            <td>Delivery</td>
+                            <td>FOB or CIF</td>
+                        </tr>
+                        <tr>
+                            <td>Inspection</td>
+                            <td>SGS at loading port</td>
+                        </tr>
+                    </table>
+
+                    <a href="contact.html?product=pepper" class="btn">Request Pricing</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
     <section class="cta">
         <div class="container">
-            <h2>Ready to Connect?</h2>
-            <p>Whether you're an investor seeking real-asset exposure or a buyer sourcing physical commodities, we're ready to talk.</p>
-            <a href="contact.html" class="btn">Contact Us</a>
+            <h2>Request Specs & Pricing</h2>
+            <p>Contact our trading desk for current availability, pricing, and contract terms.</p>
+            <a href="contact.html" class="btn">Contact Trading Desk</a>
         </div>
     </section>
 
