@@ -479,17 +479,109 @@
                 display: block;
             }
 
+            .hero {
+                padding: 120px 5% 60px;
+            }
+
             .hero h1 {
                 font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .product-section {
+                padding: 50px 5%;
+            }
+
+            .product-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .product-header h2 {
+                font-size: 1.5rem;
+            }
+
+            .specs-table td:first-child {
+                width: 45%;
+            }
+
+            .specs-table td {
+                padding: 0.5rem 0;
+                font-size: 0.95rem;
+            }
+
+            .product-description {
+                font-size: 1rem;
+            }
+
+            .cta {
+                padding: 60px 5%;
+            }
+
+            .cta h2 {
+                font-size: 1.75rem;
             }
 
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
+        }
 
+        @media (max-width: 480px) {
             .trade-terms .container {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .trade-terms {
+                padding: 40px 5%;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .product-header h2 {
+                font-size: 1.3rem;
+            }
+
+            .product-image-main {
+                height: 220px;
+            }
+
+            .product-gallery img {
+                height: 120px;
+            }
+
+            .product-videos video {
+                height: 150px;
+            }
+
+            .specs-table td:first-child {
+                width: 40%;
+                font-size: 0.9rem;
+            }
+
+            .specs-table td:last-child {
+                font-size: 0.9rem;
+            }
+
+            .cta h2 {
+                font-size: 1.5rem;
+            }
+
+            .cta p {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 0.875rem 1.5rem;
+                font-size: 0.95rem;
             }
         }
     </style>
@@ -513,7 +605,7 @@
     </nav>
 
     <section class="hero">
-        <video class="hero-video" autoplay muted loop playsinline id="heroVideo">
+        <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="metadata" id="heroVideo">
             <source src="coffee-video-1.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
@@ -563,7 +655,7 @@
                         <img src="sugar-bag.jpg" alt="50kg White Crystal Sugar Bag">
                     </div>
                     <div class="product-videos">
-                        <video controls muted playsinline>
+                        <video controls muted playsinline webkit-playsinline preload="metadata">
                             <source src="sugar-video.mp4" type="video/mp4">
                         </video>
                     </div>
@@ -660,10 +752,10 @@
                 <div class="product-media">
                     <img src="coffee-farm.jpg" alt="Brazilian Arabica Coffee Plantation" class="product-image-main">
                     <div class="product-videos">
-                        <video controls muted playsinline poster="coffee-farm.jpg">
+                        <video controls muted playsinline webkit-playsinline preload="metadata" poster="coffee-farm.jpg">
                             <source src="coffee-video-1.mp4" type="video/mp4">
                         </video>
-                        <video controls muted playsinline poster="coffee-farm.jpg">
+                        <video controls muted playsinline webkit-playsinline preload="metadata" poster="coffee-farm.jpg">
                             <source src="coffee-video-2.mp4" type="video/mp4">
                         </video>
                     </div>
