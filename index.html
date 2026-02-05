@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Claduta Corporation | Strategic Capital. Real Assets. Global Reach.</title>
-    <meta name="description" content="Claduta Corporation - Investment and project development company focused on natural resources, energy, and real assets.">
+    <meta name="description" content="Claduta Corporation - A holding company operating in real-asset investments and physical commodity trading.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
@@ -70,6 +70,24 @@
             color: var(--green-dark);
         }
 
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--charcoal);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
         /* Hero */
         .hero {
             min-height: 100vh;
@@ -98,26 +116,80 @@
             letter-spacing: 0.02em;
         }
 
-        .hero p {
+        .hero .tagline {
             color: rgba(255,255,255,0.9);
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: 300;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Dual CTA */
+        .hero-ctas {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-cta {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 2rem 2.5rem;
+            border-radius: 4px;
+            text-align: center;
+            min-width: 220px;
+            transition: all 0.3s;
+        }
+
+        .hero-cta:hover {
+            background: rgba(255,255,255,0.15);
+            border-color: var(--gold);
+        }
+
+        .hero-cta h3 {
+            color: var(--gold);
+            font-size: 0.85rem;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-cta p {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 1.25rem;
         }
 
         .btn {
             display: inline-block;
-            padding: 1rem 2.5rem;
+            padding: 0.875rem 2rem;
             background: var(--gold);
             color: var(--charcoal);
             text-decoration: none;
             font-weight: 600;
             border-radius: 2px;
             transition: all 0.3s;
+            font-size: 0.95rem;
         }
 
         .btn:hover {
             background: var(--white);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--gold);
+            color: var(--white);
+        }
+
+        .btn-outline:hover {
+            background: var(--gold);
+            color: var(--charcoal);
         }
 
         /* Sections */
@@ -337,10 +409,36 @@
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 1rem 5%;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
             }
 
             .hero h1 {
                 font-size: 2rem;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-cta {
+                width: 100%;
+                max-width: 300px;
             }
 
             .about-grid {
@@ -359,10 +457,15 @@
         <a href="index.html" class="nav-logo">
             <img src="logo-header.png" alt="Claduta Corporation">
         </a>
+        <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <ul class="nav-links">
             <li><a href="index.html">Home</a></li>
+            <li><a href="commodities.html">Commodities</a></li>
             <li><a href="projects.html">Projects</a></li>
-            <li><a href="humble-dome.html">Humble Dome</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
@@ -371,8 +474,20 @@
         <div class="hero-content">
             <img src="logo-full.png" alt="Claduta Corporation" class="hero-logo">
             <h1>Strategic Capital. Real Assets. Global Reach.</h1>
-            <p>Connecting investors with high-value opportunities in natural resources, energy, and real asset development.</p>
-            <a href="projects.html" class="btn">View Our Projects</a>
+            <p class="tagline">A holding company operating in real-asset investments and physical commodity trading.</p>
+            
+            <div class="hero-ctas">
+                <div class="hero-cta">
+                    <h3>For Investors</h3>
+                    <p>Invest in Real Asset Projects</p>
+                    <a href="projects.html" class="btn">View Projects</a>
+                </div>
+                <div class="hero-cta">
+                    <h3>For Buyers</h3>
+                    <p>Source Physical Commodities</p>
+                    <a href="commodities.html" class="btn">View Products</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -380,9 +495,9 @@
         <div class="container about-grid">
             <div class="about-text">
                 <h2>About Claduta Corporation</h2>
-                <p>Claduta Corporation is a U.S.-based investment and project development company headquartered in South Dakota. We specialize in identifying, structuring, and managing high-potential ventures in natural resources, energy, and real asset sectors.</p>
-                <p>Our approach combines rigorous due diligence with strategic partnerships to deliver sustainable returns for our investors while driving economic growth in the communities where we operate.</p>
-                <p>With a focus on transparency and long-term value creation, we bridge the gap between capital and opportunity across domestic and international markets.</p>
+                <p>Claduta Corporation is a U.S.-based holding company headquartered in South Dakota. We operate across two complementary business lines: real-asset project investments and physical commodity trading.</p>
+                <p>Our investment arm identifies, structures, and manages ventures in energy, mining, and agriculture. Our trading operations supply physical commodities—including sugar, coffee, and black pepper—to international buyers through direct producer relationships in Brazil.</p>
+                <p>Trading generates cash flow and market relationships. Projects generate long-term asset value. Together, they create a platform with diversified revenue and deal flow.</p>
             </div>
             <div class="about-image">
                 <img src="logo-horizontal.png" alt="Claduta Corporation">
@@ -394,7 +509,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>Investment Focus</h2>
-                <p>We target opportunities in sectors with tangible assets, proven demand, and strong fundamentals.</p>
+                <p>We target opportunities with existing assets, clear title, defined exit paths, and asymmetric upside.</p>
             </div>
             <div class="focus-grid">
                 <div class="focus-card">
@@ -406,12 +521,12 @@
                     <p>Precious metals, industrial minerals, and critical resources essential to modern infrastructure and technology.</p>
                 </div>
                 <div class="focus-card">
-                    <h3>Agriculture</h3>
-                    <p>Large-scale farming operations, agribusiness ventures, and sustainable food production systems.</p>
+                    <h3>Agriculture & Commodities</h3>
+                    <p>Direct supply relationships with Brazilian producers for sugar, coffee, and black pepper. Physical commodity trading with international buyers.</p>
                 </div>
                 <div class="focus-card">
                     <h3>Renewable Energy</h3>
-                    <p>Ethanol production, biofuels, and clean energy projects driving the transition to sustainable power.</p>
+                    <p>Solar development, ethanol production, and clean energy projects with tax-advantaged structures.</p>
                 </div>
             </div>
         </div>
@@ -420,36 +535,37 @@
     <section class="section-dark">
         <div class="container">
             <div class="section-header">
-                <h2>Current Projects</h2>
-                <p>Active opportunities in our investment portfolio.</p>
+                <h2>Current Opportunities</h2>
+                <p>Active projects and available commodities.</p>
             </div>
             <div class="projects-grid">
                 <div class="project-card">
                     <span class="tag">Oil & Gas</span>
                     <h3>Humble Dome</h3>
-                    <p>Strategic oil and gas development project in a proven Texas field with significant upside potential.</p>
+                    <p>Strategic oil and gas development project in a proven Texas field with existing production and significant upside potential.</p>
                 </div>
                 <div class="project-card">
-                    <span class="tag">Coming Soon</span>
-                    <h3>Project 2</h3>
-                    <p>Details on additional investment opportunities will be announced soon.</p>
+                    <span class="tag">Commodities</span>
+                    <h3>Brazilian Agricultural Products</h3>
+                    <p>ICUMSA 45 sugar, Arabica coffee, and black pepper. Direct from producers, CIF/FOB Santos.</p>
                 </div>
                 <div class="project-card">
-                    <span class="tag">Coming Soon</span>
-                    <h3>Project 3</h3>
-                    <p>Details on additional investment opportunities will be announced soon.</p>
+                    <span class="tag">Renewable</span>
+                    <h3>100MW Solar Platform</h3>
+                    <p>Utility-scale solar development with 40% ITC qualification. Seeking tax-equity partners.</p>
                 </div>
             </div>
             <div style="text-align: center; margin-top: 3rem;">
-                <a href="projects.html" class="btn">View All Projects</a>
+                <a href="projects.html" class="btn" style="margin-right: 1rem;">View All Projects</a>
+                <a href="commodities.html" class="btn btn-outline">View Commodities</a>
             </div>
         </div>
     </section>
 
     <section class="cta">
         <div class="container">
-            <h2>Ready to Explore Opportunities?</h2>
-            <p>Connect with our team to learn more about current and upcoming investment projects.</p>
+            <h2>Ready to Connect?</h2>
+            <p>Whether you're an investor seeking real-asset exposure or a buyer sourcing physical commodities, we're ready to talk.</p>
             <a href="contact.html" class="btn">Contact Us</a>
         </div>
     </section>
@@ -458,11 +574,12 @@
         <div class="footer-content">
             <div class="footer-brand">
                 <img src="logo-full.png" alt="Claduta Corporation">
-                <p>Investment and project development focused on natural resources and real assets.</p>
+                <p>Holding company operating in real-asset investments and physical commodity trading.</p>
             </div>
             <div class="footer-links">
                 <h4>Quick Links</h4>
                 <a href="index.html">Home</a>
+                <a href="commodities.html">Commodities</a>
                 <a href="projects.html">Projects</a>
                 <a href="contact.html">Contact</a>
             </div>
@@ -474,7 +591,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Claduta Corporation. All rights reserved.</p>
+            <p>&copy; 2025 Claduta Corporation. All rights reserved.</p>
         </div>
     </footer>
 </body>
