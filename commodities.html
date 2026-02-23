@@ -1,1055 +1,665 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brazilian Sugar, Coffee & Pepper Export | ICUMSA 45 | Claduta</title>
-    <meta name="description" content="Export Brazilian ICUMSA 45 sugar, Arabica coffee & black pepper. Direct from producers, CIF/FOB Santos. MOQ 1 container. SGS inspected. Request pricing.">
-    
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://cladutacorp.com/commodities.html">
-    <meta property="og:title" content="Physical Commodities | Claduta Corporation">
-    <meta property="og:description" content="ICUMSA 45 Sugar, Arabica Coffee, Brazilian Black Pepper. Direct from Brazilian producers. Reliable supply, competitive pricing.">
-    <meta property="og:image" content="https://cladutacorp.com/og-commodities.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Physical Commodities | Claduta Corporation">
-    <meta name="twitter:description" content="ICUMSA 45 Sugar, Arabica Coffee, Brazilian Black Pepper. Direct from Brazilian producers.">
-    <meta name="twitter:image" content="https://cladutacorp.com/og-commodities.png">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --green-dark: #2d4a3e;
-            --green-medium: #3d5a4e;
-            --cream: #f5f3ef;
-            --charcoal: #1a1a1a;
-            --gold: #c9a961;
-            --white: #ffffff;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Source Sans Pro', sans-serif;
-            color: var(--charcoal);
-            line-height: 1.6;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-        }
-
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: var(--white);
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            z-index: 1000;
-        }
-
-        .nav-logo img { height: 50px; }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--charcoal);
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active { color: var(--green-dark); }
-
-        .hero {
-            position: relative;
-            padding: 160px 5% 100px;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        .hero-video {
-            position: absolute;
-            top: 50%; left: 50%;
-            min-width: 100%; min-height: 100%;
-            width: auto; height: auto;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-            z-index: -2;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(135deg, rgba(45,74,62,0.85) 0%, rgba(61,90,78,0.85) 100%);
-            z-index: -1;
-        }
-
-        .hero .container { position: relative; z-index: 1; }
-
-        .hero h1 {
-            color: var(--white);
-            font-size: 2.8rem;
-            margin-bottom: 1.5rem;
-            letter-spacing: 0.02em;
-        }
-
-        .hero p {
-            color: rgba(255,255,255,0.9);
-            font-size: 1.2rem;
-            font-weight: 300;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        section { padding: 80px 5%; }
-        .section-cream { background: var(--cream); }
-
-        .container { max-width: 1200px; margin: 0 auto; }
-
-        .product-section { padding: 80px 5%; }
-        .product-section:nth-child(even) { background: var(--cream); }
-
-        .product-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .product-header .tag {
-            background: var(--gold);
-            color: var(--charcoal);
-            padding: 0.25rem 1rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-            border-radius: 2px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .product-header h2 {
-            font-size: 2rem;
-            color: var(--green-dark);
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .product-image {
-            width: 100%;
-            height: 350px;
-            background: var(--green-medium);
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255,255,255,0.5);
-            font-size: 0.9rem;
-            overflow: hidden;
-        }
-
-        .product-image img { width: 100%; height: 100%; object-fit: cover; }
-
-        .product-media {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .product-image-main {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 4px;
-        }
-
-        .product-gallery {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-
-        .product-gallery img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 4px;
-        }
-
-        .product-videos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-        }
-
-        .product-videos video {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 4px;
-            background: var(--charcoal);
-        }
-
-        .product-details h3 {
-            font-size: 1.1rem;
-            color: var(--green-dark);
-            margin-bottom: 0.5rem;
-            font-family: 'Source Sans Pro', sans-serif;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .specs-table {
-            width: 100%;
-            margin-bottom: 2rem;
-        }
-
-        .specs-table tr { border-bottom: 1px solid rgba(0,0,0,0.08); }
-
-        .specs-table td {
-            padding: 0.75rem 0;
-            vertical-align: top;
-        }
-
-        .specs-table td:first-child {
-            font-weight: 600;
-            width: 40%;
-            color: var(--charcoal);
-        }
-
-        .specs-table td:last-child { color: #555; }
-
-        .product-description {
-            color: #555;
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
-        }
-
-        /* Price Box */
-        .price-box {
-            background: var(--green-dark);
-            color: var(--white);
-            border-radius: 4px;
-            padding: 1.25rem 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .price-box-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            opacity: 0.7;
-            margin-bottom: 0.25rem;
-        }
-
-        .price-box-amount {
-            font-size: 1.8rem;
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-            color: var(--gold);
-            line-height: 1.1;
-        }
-
-        .price-box-unit {
-            font-size: 0.85rem;
-            opacity: 0.7;
-            margin-top: 0.15rem;
-        }
-
-        .price-box-disclaimer {
-            font-size: 0.78rem;
-            opacity: 0.6;
-            margin-top: 0.75rem;
-            border-top: 1px solid rgba(255,255,255,0.15);
-            padding-top: 0.6rem;
-            font-style: italic;
-        }
-
-        /* Grade tabs for coffee */
-        .grade-tabs {
-            display: flex;
-            gap: 0;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(0,0,0,0.12);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .grade-tab {
-            flex: 1;
-            padding: 0.6rem 0.5rem;
-            text-align: center;
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            background: transparent;
-            color: var(--charcoal);
-            transition: all 0.2s;
-            border-right: 1px solid rgba(0,0,0,0.12);
-        }
-
-        .grade-tab:last-child { border-right: none; }
-
-        .grade-tab.active {
-            background: var(--green-dark);
-            color: var(--white);
-        }
-
-        .grade-panel { display: none; }
-        .grade-panel.active { display: block; }
-
-        /* Multi-grade price boxes */
-        .price-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-        }
-
-        @media (max-width: 500px) {
-            .price-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .price-card {
-            background: var(--green-dark);
-            color: var(--white);
-            border-radius: 4px;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        .price-card-grade {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            opacity: 0.7;
-            margin-bottom: 0.4rem;
-        }
-
-        .price-card-amount {
-            font-size: 1.4rem;
-            font-family: 'Playfair Display', serif;
-            color: var(--gold);
-            font-weight: 600;
-        }
-
-        .price-card-unit {
-            font-size: 0.7rem;
-            opacity: 0.6;
-            margin-top: 0.2rem;
-        }
-
-        .price-disclaimer {
-            font-size: 0.78rem;
-            color: #888;
-            font-style: italic;
-            margin-bottom: 1.5rem;
-        }
-
-        /* Pepper grades */
-        .pepper-grades {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.75rem;
-            margin-bottom: 1rem;
-        }
-
-        .pepper-grade-card {
-            border: 1px solid rgba(0,0,0,0.1);
-            border-radius: 4px;
-            padding: 0.85rem;
-        }
-
-        .pepper-grade-card h4 {
-            font-family: 'Source Sans Pro', sans-serif;
-            font-weight: 700;
-            font-size: 0.85rem;
-            color: var(--green-dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .pepper-grade-card p {
-            font-size: 0.8rem;
-            color: #666;
-            line-height: 1.4;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: var(--gold);
-            color: var(--charcoal);
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 2px;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        .btn:hover {
-            background: var(--green-dark);
-            color: var(--white);
-        }
-
-        .trade-terms {
-            background: var(--charcoal);
-            color: var(--white);
-            padding: 60px 5%;
-        }
-
-        .trade-terms .container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            text-align: center;
-        }
-
-        .term-item h4 {
-            color: var(--gold);
-            font-family: 'Source Sans Pro', sans-serif;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-size: 0.85rem;
-        }
-
-        .term-item p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        .cta {
-            text-align: center;
-            background: var(--green-dark);
-            color: var(--white);
-            padding: 80px 5%;
-        }
-
-        .cta h2 { font-size: 2.2rem; margin-bottom: 1rem; }
-
-        .cta p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        footer {
-            background: var(--charcoal);
-            color: var(--white);
-            padding: 60px 5% 30px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 4rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-brand img {
-            max-width: 200px;
-            filter: brightness(0) invert(1);
-            margin-bottom: 1rem;
-        }
-
-        .footer-brand p { opacity: 0.7; font-size: 0.95rem; }
-
-        .footer-links h4, .footer-contact h4 {
-            color: var(--gold);
-            margin-bottom: 1rem;
-            font-family: 'Source Sans Pro', sans-serif;
-            font-weight: 600;
-        }
-
-        .footer-links a {
-            display: block;
-            color: var(--white);
-            text-decoration: none;
-            opacity: 0.7;
-            margin-bottom: 0.5rem;
-            transition: opacity 0.3s;
-        }
-
-        .footer-links a:hover { opacity: 1; }
-
-        .footer-contact p { opacity: 0.7; margin-bottom: 0.5rem; font-size: 0.95rem; }
-
-        .footer-contact a {
-            color: var(--gold);
-            text-decoration: none;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            margin-top: 3rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            opacity: 0.6;
-            font-size: 0.9rem;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .ticker-strip {
-            margin-top: 0;
-            background: #1a1a1a;
-            border-bottom: 1px solid rgba(201,169,97,0.3);
-            overflow: hidden;
-        }
-
-        .market-widget {
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(0,0,0,0.08);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .market-widget-label {
-            font-family: 'Source Sans Pro', sans-serif;
-            font-weight: 600;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--green-dark);
-            padding: 0.5rem 0;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .mobile-menu-btn span {
-            display: block;
-            width: 25px;
-            height: 2px;
-            background: var(--charcoal);
-            margin: 5px 0;
-        }
-
-        @media (max-width: 968px) {
-            .product-grid { grid-template-columns: 1fr; }
-            .trade-terms .container { grid-template-columns: repeat(2, 1fr); }
-            .price-grid { grid-template-columns: 1fr; }
-            .pepper-grades { grid-template-columns: 1fr; }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%; left: 0; right: 0;
-                background: var(--white);
-                flex-direction: column;
-                padding: 1rem 5%;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            }
-            .nav-links.active { display: flex; }
-            .mobile-menu-btn { display: block; }
-            .hero { padding: 120px 5% 60px; }
-            .hero h1 { font-size: 2rem; }
-            .product-section { padding: 50px 5%; }
-            .product-header h2 { font-size: 1.5rem; }
-            .footer-content { grid-template-columns: 1fr; gap: 2rem; }
-            .grade-tabs { flex-direction: column; }
-            .grade-tab { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.12); }
-            .grade-tab:last-child { border-bottom: none; }
-        }
-
-        @media (max-width: 480px) {
-            .trade-terms .container { grid-template-columns: 1fr; gap: 1.5rem; }
-            .hero h1 { font-size: 1.6rem; }
-            .price-box-amount { font-size: 1.5rem; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brazilian Sugar, Coffee &amp; Pepper Export | ICUMSA 45 | Claduta</title>
+  <meta name="description" content="Export Brazilian ICUMSA 45 sugar, Arabica &amp; Robusta coffee, and black pepper. Direct from producers, CIF/FOB Santos &amp; Vitória. MOQ 1 container. SGS inspected. Request pricing.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cladutacorp.com/commodities.html">
+  <meta property="og:title" content="Brazilian Sugar, Coffee &amp; Pepper Export | ICUMSA 45 | Claduta">
+  <meta property="og:description" content="ICUMSA 45 Sugar, Arabica Coffee, Brazilian Black Pepper. Direct from Brazilian producers. Reliable supply, competitive pricing.">
+  <meta property="og:image" content="https://cladutacorp.com/og-commodities.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Brazilian Sugar, Coffee &amp; Pepper Export | ICUMSA 45 | Claduta">
+  <meta name="twitter:description" content="ICUMSA 45 Sugar, Arabica Coffee, Brazilian Black Pepper. Direct from Brazilian producers.">
+  <meta name="twitter:image" content="https://cladutacorp.com/og-commodities.png">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","name":"Claduta Corporation","url":"https://cladutacorp.com","contactPoint":{"@type":"ContactPoint","telephone":"+1-727-623-2652","email":"info@cladutacorp.com"}}
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"What is ICUMSA 45 sugar and why does it matter?","acceptedAnswer":{"@type":"Answer","text":"ICUMSA 45 is the highest grade of white refined cane sugar, with a whiteness rating of 45 RBU. It is the standard for human consumption, food manufacturing, and confectionery worldwide."}},
+    {"@type":"Question","name":"What is the difference between ICUMSA 45 and ICUMSA 150?","acceptedAnswer":{"@type":"Answer","text":"ICUMSA 45 is fully refined white sugar for direct consumption. ICUMSA 150 (VHP) is raw cane sugar used as industrial input for refineries and beverage manufacturers — less processed and lower cost."}},
+    {"@type":"Question","name":"What is your minimum order quantity?","acceptedAnswer":{"@type":"Answer","text":"Sugar: 10 containers (12,500 MT). Coffee and Black Pepper: 1 container."}},
+    {"@type":"Question","name":"What ports do you ship from?","acceptedAnswer":{"@type":"Answer","text":"Sugar ships from Port Santos, Brazil. Coffee ships from Santos or Vitória. Black pepper ships from Vitória, Espírito Santo."}},
+    {"@type":"Question","name":"What payment terms do you accept?","acceptedAnswer":{"@type":"Answer","text":"Standard terms are 30% at contract signing, 70% at Bill of Lading. Wire transfer. SBLC accepted for orders over 20 containers. DLC not accepted."}},
+    {"@type":"Question","name":"How is coffee pricing determined?","acceptedAnswer":{"@type":"Answer","text":"Coffee is priced against ICE Coffee C futures (KC1!). Arabica NY2/3 is approximately $6,400/MT FOB. All prices are indicative and confirmed at time of order."}},
+    {"@type":"Question","name":"Do you offer Halal certified products?","acceptedAnswer":{"@type":"Answer","text":"Yes. Halal certification is available upon request for black pepper shipments. Certification cost is passed through to the buyer. Allow 2-3 weeks."}},
+    {"@type":"Question","name":"Can I request samples before placing an order?","acceptedAnswer":{"@type":"Answer","text":"Yes. Sample requests are available for qualified buyers. Contact our trading desk to arrange."}}
+  ]}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green-dark: #2d4a3e;
+      --green-medium: #3d5a4e;
+      --cream: #f5f3ef;
+      --charcoal: #1a1a1a;
+      --gold: #c9a961;
+      --white: #ffffff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Source Sans Pro', sans-serif; color: var(--charcoal); line-height: 1.6; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 600; }
+
+    nav { position: fixed; top: 0; width: 100%; background: var(--white); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); z-index: 1000; }
+    .nav-logo img { height: 50px; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--charcoal); font-weight: 600; font-size: 0.95rem; transition: color 0.3s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--green-dark); }
+    .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+    .mobile-menu-btn span { display: block; width: 25px; height: 2px; background: var(--charcoal); margin: 5px 0; }
+
+    .hero { position: relative; padding: 160px 5% 100px; text-align: center; overflow: hidden; }
+    .hero-video { position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; transform: translate(-50%, -50%); object-fit: cover; z-index: -2; }
+    .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(45,74,62,0.85) 0%, rgba(61,90,78,0.85) 100%); z-index: -1; }
+    .hero .container { position: relative; z-index: 1; }
+    .hero-sub { color: var(--gold); font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 0.75rem; }
+    .hero h1 { color: var(--white); font-size: 2.8rem; margin-bottom: 1.25rem; letter-spacing: 0.02em; }
+    .hero p { color: rgba(255,255,255,0.9); font-size: 1.15rem; font-weight: 300; max-width: 680px; margin: 0 auto 2rem; }
+    .hero-badges { display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; }
+    .hero-badge { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); color: var(--white); padding: 0.35rem 0.9rem; border-radius: 2px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em; }
+
+    .ticker-strip { background: #1a1a1a; border-bottom: 1px solid rgba(201,169,97,0.3); overflow: hidden; }
+
+    .cred-strip { background: var(--green-dark); padding: 2.5rem 5%; }
+    .cred-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; text-align: center; }
+    .cred-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--gold); line-height: 1; }
+    .cred-label { font-size: 0.78rem; color: rgba(255,255,255,0.65); margin-top: 0.3rem; }
+
+    .trade-terms-bar { background: var(--charcoal); color: var(--white); padding: 50px 5%; }
+    .trade-terms-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(6, 1fr); gap: 1.5rem; text-align: center; }
+    .term-item h4 { color: var(--gold); font-family: 'Source Sans Pro', sans-serif; font-weight: 600; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.72rem; }
+    .term-item p { font-size: 0.92rem; opacity: 0.9; }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+    .product-section { padding: 80px 5%; }
+    .product-section.alt { background: var(--cream); }
+    .product-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+    .product-header .tag { background: var(--gold); color: var(--charcoal); padding: 0.25rem 1rem; font-size: 0.78rem; font-weight: 600; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .product-header h2 { font-size: 2rem; color: var(--green-dark); }
+    .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+
+    .product-media { display: flex; flex-direction: column; gap: 1rem; }
+    .img-main { width: 100%; height: 300px; object-fit: cover; border-radius: 4px; }
+    .img-single { width: 100%; height: 390px; object-fit: cover; border-radius: 4px; }
+    .gallery { display: grid; grid-template-columns: repeat(2,1fr); gap: 0.75rem; }
+    .gallery img { width: 100%; height: 150px; object-fit: cover; border-radius: 4px; }
+    .video-wrap { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 4px; }
+    .video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+    .vid-player { width: 100%; height: 180px; object-fit: cover; border-radius: 4px; background: var(--charcoal); }
+
+    .product-details h3 { font-size: 0.92rem; color: var(--green-dark); margin: 1.6rem 0 0.5rem; font-family: 'Source Sans Pro', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; }
+    .product-description { color: #555; margin-bottom: 1.25rem; font-size: 1.05rem; }
+
+    .proof-callout { background: rgba(45,74,62,0.06); border-left: 3px solid var(--gold); padding: 0.8rem 1rem; border-radius: 0 4px 4px 0; margin-bottom: 1.25rem; font-size: 0.87rem; color: #444; line-height: 1.55; }
+
+    .price-box { background: var(--green-dark); color: var(--white); border-radius: 4px; padding: 1.2rem 1.4rem; margin-bottom: 0.6rem; }
+    .price-box-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.7; margin-bottom: 0.2rem; }
+    .price-box-amount { font-size: 1.65rem; font-family: 'Playfair Display', serif; font-weight: 600; color: var(--gold); line-height: 1.2; }
+    .price-box-unit { font-size: 0.8rem; opacity: 0.7; margin-top: 0.15rem; }
+    .price-box-disclaimer { font-size: 0.73rem; opacity: 0.6; margin-top: 0.7rem; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 0.55rem; font-style: italic; }
+
+    .price-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.65rem; margin-bottom: 0.65rem; }
+    .price-card { background: var(--green-dark); color: var(--white); border-radius: 4px; padding: 0.9rem; text-align: center; }
+    .price-card-grade { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.7; margin-bottom: 0.35rem; line-height: 1.4; }
+    .price-card-amount { font-size: 1.35rem; font-family: 'Playfair Display', serif; color: var(--gold); font-weight: 600; }
+    .price-card-unit { font-size: 0.65rem; opacity: 0.6; margin-top: 0.2rem; }
+
+    .halal-note { background: rgba(201,169,97,0.1); border: 1px solid rgba(201,169,97,0.35); border-radius: 4px; padding: 0.75rem 1rem; margin-bottom: 1.25rem; font-size: 0.85rem; color: #555; line-height: 1.5; }
+    .halal-note strong { color: var(--green-dark); }
+
+    .pepper-grades { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.7rem; margin-bottom: 0.65rem; }
+    .pepper-grade-card { border: 1px solid rgba(0,0,0,0.1); border-radius: 4px; padding: 0.85rem; }
+    .pepper-grade-card h4 { font-family: 'Source Sans Pro', sans-serif; font-weight: 700; font-size: 0.82rem; color: var(--green-dark); margin-bottom: 0.45rem; }
+    .pepper-grade-card p { font-size: 0.77rem; color: #666; line-height: 1.5; }
+
+    .specs-table { width: 100%; margin-bottom: 0.25rem; }
+    .specs-table tr { border-bottom: 1px solid rgba(0,0,0,0.07); }
+    .specs-table td { padding: 0.6rem 0; vertical-align: top; font-size: 0.93rem; }
+    .specs-table td:first-child { font-weight: 600; width: 42%; color: var(--charcoal); }
+    .specs-table td:last-child { color: #555; }
+
+    .price-disclaimer { font-size: 0.76rem; color: #999; font-style: italic; margin-bottom: 1rem; }
+    .benchmark-link { font-size: 0.78rem; color: #999; margin-bottom: 1.4rem; }
+    .benchmark-link a { color: var(--green-dark); text-decoration: none; }
+
+    .btn { display: inline-block; padding: 0.85rem 1.8rem; background: var(--gold); color: var(--charcoal); text-decoration: none; font-weight: 600; border-radius: 2px; transition: all 0.3s; border: none; cursor: pointer; font-size: 0.95rem; margin-top: 1.5rem; margin-right: 0.6rem; }
+    .btn:hover { background: var(--green-dark); color: var(--white); }
+    .btn-dl { display: inline-flex; align-items: center; gap: 6px; margin-top: 1.5rem; text-decoration: none; color: var(--green-dark); font-size: 0.83rem; font-weight: 600; border: 1px solid var(--gold); border-radius: 4px; padding: 0.5rem 0.9rem; background: var(--white); }
+    .btn-dl:hover { background: var(--cream); }
+
+    .procedure-list { margin: 0 0 1.5rem 1.2rem; padding: 0; }
+    .procedure-list li { padding: 0.45rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.92rem; color: #444; line-height: 1.5; }
+    .procedure-list li:last-child { border-bottom: none; }
+    .procedure-list a { color: var(--green-dark); }
+
+    .cta-section { text-align: center; background: var(--green-dark); color: var(--white); padding: 80px 5%; }
+    .cta-section h2 { font-size: 2.2rem; margin-bottom: 1rem; }
+    .cta-section p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+    .faq-section { background: var(--cream); padding: 80px 5%; }
+    .section-label { font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 0.4rem; }
+    .faq-section h2 { font-size: 2rem; color: var(--green-dark); margin-bottom: 0.4rem; }
+    .section-intro { color: #666; font-size: 0.95rem; margin-bottom: 2.5rem; }
+    .faq-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.25rem; }
+    .faq-item { background: var(--white); border-radius: 4px; padding: 1.4rem; border-left: 3px solid var(--gold); }
+    .faq-item h4 { font-family: 'Source Sans Pro', sans-serif; font-weight: 700; font-size: 0.93rem; color: var(--green-dark); margin-bottom: 0.55rem; }
+    .faq-item p { font-size: 0.88rem; color: #555; line-height: 1.65; }
+
+    .termsheets-section { background: var(--white); padding: 60px 5%; }
+    .termsheets-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px,1fr)); gap: 1rem; margin-top: 2rem; }
+    .ts-card { display: flex; flex-direction: column; align-items: center; gap: 9px; padding: 1.4rem 1rem; background: var(--cream); border: 1px solid #ddd; border-radius: 8px; text-decoration: none; color: var(--green-dark); text-align: center; transition: border-color 0.2s; }
+    .ts-card:hover { border-color: var(--gold); }
+    .ts-card .ts-name { font-size: 0.83rem; font-weight: 700; line-height: 1.35; }
+    .ts-card .ts-dl { font-size: 0.7rem; color: var(--gold); font-weight: 600; }
+
+    footer { background: var(--charcoal); color: var(--white); padding: 60px 5% 30px; }
+    .footer-content { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; max-width: 1200px; margin: 0 auto; }
+    .footer-brand img { max-width: 200px; filter: brightness(0) invert(1); margin-bottom: 1rem; }
+    .footer-brand p { opacity: 0.7; font-size: 0.95rem; }
+    .footer-links h4, .footer-contact h4 { color: var(--gold); margin-bottom: 1rem; font-family: 'Source Sans Pro', sans-serif; font-weight: 600; }
+    .footer-links a { display: block; color: var(--white); text-decoration: none; opacity: 0.7; margin-bottom: 0.5rem; }
+    .footer-links a:hover { opacity: 1; }
+    .footer-contact p { opacity: 0.7; margin-bottom: 0.5rem; font-size: 0.95rem; }
+    .footer-contact a { color: var(--gold); text-decoration: none; }
+    .footer-bottom { text-align: center; padding-top: 2rem; margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.6; font-size: 0.9rem; max-width: 1200px; margin-left: auto; margin-right: auto; }
+
+    @media (max-width: 1024px) {
+      .trade-terms-inner { grid-template-columns: repeat(3,1fr); }
+      .cred-grid { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 968px) {
+      .product-grid { grid-template-columns: 1fr; }
+      .price-grid { grid-template-columns: 1fr; }
+      .pepper-grades { grid-template-columns: 1fr; }
+      .faq-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--white); flex-direction: column; padding: 1rem 5%; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+      .nav-links.active { display: flex; }
+      .mobile-menu-btn { display: block; }
+      .hero { padding: 120px 5% 60px; }
+      .hero h1 { font-size: 2rem; }
+      .product-section { padding: 50px 5%; }
+      .product-header h2 { font-size: 1.5rem; }
+      .footer-content { grid-template-columns: 1fr; gap: 2rem; }
+      .trade-terms-inner { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 1.6rem; }
+      .price-box-amount { font-size: 1.4rem; }
+      .trade-terms-inner { grid-template-columns: 1fr; }
+      .cred-grid { grid-template-columns: repeat(2,1fr); }
+    }
+  </style>
 </head>
 <body>
-    <nav>
-        <a href="index.html" class="nav-logo">
-            <img src="logo-header.png" alt="Claduta Corporation">
-        </a>
-        <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">
-            <span></span><span></span><span></span>
-        </button>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="commodities.html" class="active">Commodities</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
 
-    <section class="hero">
-        <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="metadata" id="heroVideo">
-            <source src="coffee-video-1.mp4" type="video/mp4">
+<nav>
+  <a href="index.html" class="nav-logo"><img src="logo-header.png" alt="Claduta Corporation"></a>
+  <button class="mobile-menu-btn" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="commodities.html" class="active">Commodities</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="metadata" id="heroVideo">
+    <source src="coffee-video-1.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <p class="hero-sub">Direct Producer Access — No Middlemen</p>
+    <h1>Physical Commodities</h1>
+    <p>We source agricultural commodities directly from Brazilian producers. No brokers, no traders between you and origin.</p>
+    <div class="hero-badges">
+      <span class="hero-badge">Brazil Origin</span>
+      <span class="hero-badge">SGS Inspected</span>
+      <span class="hero-badge">FOB &amp; CIF</span>
+      <span class="hero-badge">1 Container MOQ</span>
+    </div>
+  </div>
+</section>
+<script>document.getElementById('heroVideo').playbackRate = 0.5;</script>
+
+<!-- TICKER -->
+<div class="ticker-strip">
+  <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    {"symbols":[{"proName":"ICEEUR:SF1!","title":"White Sugar No.5"},{"proName":"ICEUS:SB1!","title":"Raw Sugar No.11"},{"proName":"ICEUS:KC1!","title":"Coffee C"},{"proName":"CBOT:ZS1!","title":"Soybeans"},{"proName":"CBOT:ZC1!","title":"Corn"},{"proName":"AMEX:DBA","title":"Agriculture"}],"showSymbolLogo":false,"isTransparent":true,"displayMode":"regular","colorTheme":"dark","locale":"en"}
+    </script>
+  </div>
+</div>
+
+<!-- CREDIBILITY STRIP -->
+<div class="cred-strip">
+  <div class="cred-grid">
+    <div><div class="cred-num">75 Years</div><div class="cred-label">Producer relationships in Brazil</div></div>
+    <div><div class="cred-num">28+</div><div class="cred-label">Countries — export reach of our supply partners</div></div>
+    <div><div class="cred-num">270,000 MT</div><div class="cred-label">Active B/L shipments on record</div></div>
+    <div><div class="cred-num">3 Ports</div><div class="cred-label">Santos, Vitória, and regional hubs</div></div>
+  </div>
+</div>
+
+<!-- TRADE TERMS BAR -->
+<div class="trade-terms-bar">
+  <div class="trade-terms-inner">
+    <div class="term-item"><h4>Incoterms</h4><p>CIF / FOB</p></div>
+    <div class="term-item"><h4>Inspection</h4><p>SGS or Equivalent</p></div>
+    <div class="term-item"><h4>Origin</h4><p>Brazil</p></div>
+    <div class="term-item"><h4>Payment</h4><p>Wire Transfer</p></div>
+    <div class="term-item"><h4>Instruments</h4><p>DLC not accepted</p></div>
+    <div class="term-item"><h4>Standard Terms</h4><p>30% Signing / 70% at B/L</p></div>
+  </div>
+</div>
+
+<!-- ======================== ICUMSA 45 ======================== -->
+<section class="product-section" id="sugar">
+  <div class="container">
+    <div class="product-header">
+      <span class="tag">Available</span>
+      <h2>ICUMSA 45 White Refined Sugar</h2>
+    </div>
+    <div class="product-grid">
+      <div class="product-media">
+        <img src="sugar-container.jpg" alt="Brazilian ICUMSA 45 Sugar 50kg Bags in Container" class="img-main">
+        <div class="gallery">
+          <img src="sugar-loading.jpg" alt="Sugar Bags Loading at Port Santos">
+          <img src="sugar-bag.jpg" alt="50kg White Crystal Sugar Bag">
+        </div>
+        <video class="vid-player" controls muted playsinline webkit-playsinline preload="metadata" poster="sugar-container.jpg">
+          <source src="sugar-video.mp4" type="video/mp4">
         </video>
-        <div class="hero-overlay"></div>
-        <div class="container">
-            <h1>Physical Commodities</h1>
-            <p>We supply agricultural commodities to international buyers through direct producer relationships and structured trade execution.</p>
+      </div>
+      <div class="product-details">
+        <p class="product-description">Premium white refined cane sugar meeting international ICUMSA 45 specifications. Sourced directly from Brazilian mills with established export infrastructure through Port of Santos. Recent crop, certified radiation-free.</p>
+        <div class="proof-callout">Active Bills of Lading on file — 270,000 MT shipped Santos → Tema, Ghana via Hapag-Lloyd and MSC. Shipper documentation available upon request.</div>
+        <div class="price-box">
+          <div class="price-box-label">Current Indicative Price</div>
+          <div class="price-box-amount">ICE London No. 5 + CIF Premium</div>
+          <div class="price-box-unit">Priced per metric ton — contact for current quote</div>
+          <div class="price-box-disclaimer">Pricing is market-indexed and subject to change. All quotes confirmed at time of order.</div>
         </div>
-    </section>
-    <script>document.getElementById('heroVideo').playbackRate = 0.5;</script>
-
-    <!-- Live Market Ticker -->
-    <div class="ticker-strip">
-        <div class="tradingview-widget-container">
-            <div class="tradingview-widget-container__widget"></div>
-            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-            {
-                "symbols": [
-                    {"proName": "ICEEUR:SF1!", "title": "White Sugar No.5"},
-                    {"proName": "ICEUS:SB1!", "title": "Raw Sugar No.11"},
-                    {"proName": "ICEUS:KC1!", "title": "Coffee C"},
-                    {"proName": "CBOT:ZS1!", "title": "Soybeans"},
-                    {"proName": "CBOT:ZC1!", "title": "Corn"},
-                    {"proName": "AMEX:DBA", "title": "Agriculture"}
-                ],
-                "showSymbolLogo": false,
-                "isTransparent": true,
-                "displayMode": "regular",
-                "colorTheme": "dark",
-                "locale": "en"
-            }
-            </script>
-        </div>
+        <p class="benchmark-link">Live benchmark: <a href="https://www.tradingview.com/symbols/ICEEUR-W1!/" target="_blank" rel="noopener">ICE London White Sugar No. 5 ↗</a></p>
+        <h3>Specifications</h3>
+        <table class="specs-table">
+          <tr><td>ICUMSA</td><td>45 RBU (ICUMSA Method #10-1978)</td></tr>
+          <tr><td>Polarization</td><td>Min 99.80°</td></tr>
+          <tr><td>Ash Content</td><td>Max 0.04% by weight</td></tr>
+          <tr><td>Moisture</td><td>Max 0.04% by weight</td></tr>
+          <tr><td>SO2</td><td>Max 70 mg/kg</td></tr>
+          <tr><td>Magnetic Particles</td><td>Max 4 mg/kg</td></tr>
+          <tr><td>Solubility</td><td>100% dry &amp; free flowing</td></tr>
+          <tr><td>Color</td><td>Sparkling white</td></tr>
+          <tr><td>Radiation</td><td>Normal, no cesium or iodine</td></tr>
+        </table>
+        <h3>Trade Terms</h3>
+        <table class="specs-table">
+          <tr><td>Origin</td><td>Brazil</td></tr>
+          <tr><td>Loading Port</td><td>Santos, Brazil</td></tr>
+          <tr><td>MOQ</td><td>10 Containers (12,500 MT)</td></tr>
+          <tr><td>Packaging</td><td>50kg bags or Bulk</td></tr>
+          <tr><td>Delivery</td><td>CIF or FOB</td></tr>
+          <tr><td>Inspection</td><td>SGS at loading port</td></tr>
+          <tr><td>Pricing Index</td><td>ICE London No. 5 + CIF costs</td></tr>
+        </table>
+        <h3>Transaction Procedure</h3>
+        <ol class="procedure-list">
+          <li>Buyer sends Letter of Intent (LOI) to <a href="mailto:info@cladutacorp.com">info@cladutacorp.com</a></li>
+          <li>Claduta issues Soft Corporate Offer (SCO)</li>
+          <li>Buyer signs SCO and returns to <a href="mailto:info@cladutacorp.com">info@cladutacorp.com</a></li>
+          <li>Seller issues Sales &amp; Purchase Agreement (SPA) and Invoice</li>
+          <li>Buyer signs SPA and Invoice — 30% payment made to Seller's appointed account</li>
+          <li>Loading commences within 15 days of payment</li>
+          <li>Seller delivers draft loading documents at port</li>
+          <li>Buyer makes 70% balance payment</li>
+          <li>Buyer takes possession</li>
+        </ol>
+        <a href="contact.html?product=sugar" class="btn">Request Pricing</a>
+        <a href="/docs/Claduta-TermSheet-Sugar45.pdf" class="btn-dl">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a961" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+          ICUMSA 45 Term Sheet
+        </a>
+      </div>
     </div>
+  </div>
+</section>
 
-    <!-- Trade Terms Bar -->
-    <div class="trade-terms">
-        <div class="container" style="grid-template-columns: repeat(3, 1fr);">
-            <div class="term-item">
-                <h4>Incoterms</h4>
-                <p>CIF / FOB</p>
-            </div>
-            <div class="term-item">
-                <h4>Inspection</h4>
-                <p>SGS or Equivalent</p>
-            </div>
-            <div class="term-item">
-                <h4>Origin</h4>
-                <p>Brazil</p>
-            </div>
-        </div>
-        <div class="container" style="grid-template-columns: repeat(3, 1fr); margin-top: 1.5rem;">
-            <div class="term-item">
-                <h4>Payment</h4>
-                <p>Wire Transfer (SBLC on 20+ containers)</p>
-            </div>
-            <div class="term-item">
-                <h4>Instruments</h4>
-                <p>DLC not accepted</p>
-            </div>
-            <div class="term-item">
-                <h4>Standard Terms</h4>
-                <p>30% Signing / 70% at B/L</p>
-            </div>
-        </div>
+<!-- ======================== ICUMSA 150 ======================== -->
+<section class="product-section alt" id="sugar-150">
+  <div class="container">
+    <div class="product-header">
+      <span class="tag">Available</span>
+      <h2>ICUMSA 150 Raw Cane Sugar (VHP)</h2>
     </div>
-
-    <!-- SUGAR ICUMSA 45 -->
-    <section class="product-section" id="sugar">
-        <div class="container">
-            <div class="product-header">
-                <span class="tag">Available</span>
-                <h2>ICUMSA 45 White Refined Sugar</h2>
-            </div>
-            <div class="product-grid">
-                <div class="product-media">
-                    <img src="sugar-container.jpg" alt="Brazilian Sugar 50kg Bags in Container" class="product-image-main">
-                    <div class="product-gallery">
-                        <img src="sugar-loading.jpg" alt="Sugar Bags Loading at Port Santos">
-                        <img src="sugar-bag.jpg" alt="50kg White Crystal Sugar Bag">
-                    </div>
-                    <div class="product-videos">
-                        <video controls muted playsinline webkit-playsinline preload="metadata" poster="sugar-container.jpg">
-                            <source src="sugar-video.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                </div>
-                <div class="product-details">
-                    <p class="product-description">Premium white refined cane sugar meeting international ICUMSA 45 specifications. Sourced directly from Brazilian mills with established export infrastructure through Port of Santos. Recent crop, certified radiation-free.</p>
-
-                    <div class="price-box">
-                        <div class="price-box-label">Current Indicative Price</div>
-                        <div class="price-box-amount">ICE London No. 5 + CIF Premium</div>
-                        <div class="price-box-unit">Priced per metric ton — contact for current quote</div>
-                        <div class="price-box-disclaimer">Pricing is market-indexed and subject to change. All quotes confirmed at time of order.</div>
-                    </div>
-                    <p style="font-size:0.8rem; color:#888; margin-bottom:1.5rem;">Live benchmark: <a href="https://www.tradingview.com/symbols/ICEEUR-W1!/" target="_blank" style="color:var(--green-dark);">ICE London White Sugar No. 5 ↗</a></p>
-                        </div>
-                    </div>
-
-                    <h3>Specifications</h3>
-                    <table class="specs-table">
-                        <tr><td>ICUMSA</td><td>45 RBU (ICUMSA Method #10-1978)</td></tr>
-                        <tr><td>Polarization</td><td>Min 99.80°</td></tr>
-                        <tr><td>Ash Content</td><td>Max 0.04% by weight</td></tr>
-                        <tr><td>Moisture</td><td>Max 0.04% by weight</td></tr>
-                        <tr><td>SO2</td><td>Max 70 mg/kg</td></tr>
-                        <tr><td>Magnetic Particles</td><td>Max 4 mg/kg</td></tr>
-                        <tr><td>Solubility</td><td>100% dry & free flowing</td></tr>
-                        <tr><td>Color</td><td>Sparkling white</td></tr>
-                        <tr><td>Radiation</td><td>Normal, no cesium or iodine</td></tr>
-                    </table>
-
-                    <h3>Trade Terms</h3>
-                    <table class="specs-table">
-                        <tr><td>Origin</td><td>Brazil</td></tr>
-                        <tr><td>Loading Port</td><td>Santos, Brazil</td></tr>
-                        <tr><td>MOQ</td><td>10 Containers (12,500 MT)</td></tr>
-                        <tr><td>Packaging</td><td>50kg bags or Bulk</td></tr>
-                        <tr><td>Delivery</td><td>CIF or FOB</td></tr>
-                        <tr><td>Inspection</td><td>SGS at loading port</td></tr>
-                        <tr><td>Pricing Index</td><td>ICE London No. 5 + CIF costs</td></tr>
-                    </table>
-
-
-                    <h3>Transaction Procedure</h3>
-                    <ol style="margin: 0 0 2rem 1.2rem; padding: 0;">
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Buyer sends Letter of Intent (LOI) to <a href="/cdn-cgi/l/email-protection#7c15121a133c1f101d1809081d1f130e0c521f1311" style="color: var(--green-dark);"><span class="__cf_email__" data-cfemail="41282f272e01222d2025343520222e33316f222e2c">[email&#160;protected]</span></a></li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Claduta issues Soft Corporate Offer (SCO)</li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Buyer signs SCO and returns to <a href="/cdn-cgi/l/email-protection#b7ded9d1d8f7d4dbd6d3c2c3d6d4d8c5c799d4d8da" style="color: var(--green-dark);"><span class="__cf_email__" data-cfemail="90f9fef6ffd0f3fcf1f4e5e4f1f3ffe2e0bef3fffd">[email&#160;protected]</span></a></li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Seller issues Sales &amp; Purchase Agreement (SPA) and Invoice</li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Buyer signs SPA and Invoice — 30% payment made to Seller&#39;s appointed account</li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Loading commences within 15 days of payment</li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Seller delivers draft loading documents at port</li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Buyer makes 70% balance payment</li>
-                        <li style="padding: 0.5rem 0; font-size: 0.95rem; color: #444; line-height: 1.5;">Buyer takes possession</li>
-                    </ol>
-                    <a href="contact.html?product=sugar" class="btn">Request Pricing</a>
-                    <a href="/docs/Claduta-TermSheet-Sugar45.pdf" download style="display:inline-flex;align-items:center;gap:8px;margin-bottom:1.2rem;text-decoration:none;color:#2d4a3e;font-size:0.88rem;font-weight:600;border:1px solid #c9a961;border-radius:4px;padding:7px 14px;background:#fff;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c9a961" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>ICUMSA 45 Term Sheet.pdf</a>
-                    
-                </div>
-            </div>
+    <div class="product-grid">
+      <div class="product-media">
+        <img src="sugar-loading.jpg" alt="ICUMSA 150 VHP Sugar Loading at Port Santos" class="img-single">
+      </div>
+      <div class="product-details">
+        <p class="product-description">Very High Polarization (VHP) raw cane sugar for industrial refining and food manufacturing. Lower processing cost alternative to ICUMSA 45 with consistent quality from Brazilian mills.</p>
+        <div class="proof-callout">Active Bills of Lading on file — 270,000 MT shipped Santos → Tema, Ghana via Hapag-Lloyd and MSC. Shipper documentation available upon request.</div>
+        <div class="price-box">
+          <div class="price-box-label">Current Indicative Price</div>
+          <div class="price-box-amount">ICE New York No. 11 + CIF Premium</div>
+          <div class="price-box-unit">Priced per metric ton — contact for current quote</div>
+          <div class="price-box-disclaimer">Pricing is market-indexed and subject to change. All quotes confirmed at time of order.</div>
         </div>
-    </section>
+        <h3>Specifications</h3>
+        <table class="specs-table">
+          <tr><td>ICUMSA</td><td>Max 150 RBU</td></tr>
+          <tr><td>Polarization</td><td>Min 99.50°</td></tr>
+          <tr><td>Ash Content</td><td>Max 0.10% by weight</td></tr>
+          <tr><td>Moisture</td><td>Max 0.10% by weight</td></tr>
+          <tr><td>Color</td><td>Light golden / off-white</td></tr>
+          <tr><td>Solubility</td><td>100% dry &amp; free flowing</td></tr>
+          <tr><td>Crop</td><td>Recent Crop</td></tr>
+        </table>
+        <h3>Trade Terms</h3>
+        <table class="specs-table">
+          <tr><td>Origin</td><td>Brazil</td></tr>
+          <tr><td>Loading Port</td><td>Santos, Brazil</td></tr>
+          <tr><td>MOQ</td><td>10 Containers</td></tr>
+          <tr><td>Packaging</td><td>50kg bags or Bulk</td></tr>
+          <tr><td>Delivery</td><td>CIF or FOB</td></tr>
+          <tr><td>Inspection</td><td>SGS at loading port</td></tr>
+          <tr><td>Pricing Index</td><td>ICE New York No. 11 + CIF costs</td></tr>
+        </table>
+        <h3>Transaction Procedure</h3>
+        <ol class="procedure-list">
+          <li>Buyer sends Letter of Intent (LOI) to <a href="mailto:info@cladutacorp.com">info@cladutacorp.com</a></li>
+          <li>Claduta issues Soft Corporate Offer (SCO)</li>
+          <li>Buyer signs SCO and returns to <a href="mailto:info@cladutacorp.com">info@cladutacorp.com</a></li>
+          <li>Seller issues Sales &amp; Purchase Agreement (SPA) and Invoice</li>
+          <li>Buyer signs SPA and Invoice — 30% payment made to Seller's appointed account</li>
+          <li>Loading commences within 15 days of payment</li>
+          <li>Seller delivers draft loading documents at port</li>
+          <li>Buyer makes 70% balance payment</li>
+          <li>Buyer takes possession</li>
+        </ol>
+        <a href="contact.html?product=sugar-150" class="btn">Request Pricing</a>
+        <a href="/docs/Claduta-TermSheet-Sugar150.pdf" class="btn-dl">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a961" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+          ICUMSA 150 Term Sheet
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- ICUMSA 150 -->
-    <section class="product-section" id="sugar-150">
-        <div class="container">
-            <div class="product-header">
-                <span class="tag">Available</span>
-                <h2>ICUMSA 150 Raw Cane Sugar (VHP)</h2>
-            </div>
-            <div class="product-grid">
-                <div class="product-media">
-                    <img src="sugar-loading.jpg" alt="ICUMSA 150 VHP Sugar Loading at Port Santos" class="product-image-main">
-                </div>
-                <div class="product-details">
-                    <p class="product-description">Very High Polarization (VHP) raw cane sugar for industrial refining and food manufacturing. Lower processing cost alternative to ICUMSA 45 with consistent quality from Brazilian mills.</p>
-
-                    <div class="price-box">
-                        <div class="price-box-label">Current Indicative Price</div>
-                        <div class="price-box-amount">ICE New York No. 11 + CIF Premium</div>
-                        <div class="price-box-unit">Priced per metric ton — contact for current quote</div>
-                        <div class="price-box-disclaimer">Pricing is market-indexed and subject to change. All quotes confirmed at time of order.</div>
-                    </div>
-
-                        </div>
-                    </div>
-
-                    <h3>Specifications</h3>
-                    <table class="specs-table">
-                        <tr><td>ICUMSA</td><td>Max 150 RBU</td></tr>
-                        <tr><td>Polarization</td><td>Min 99.50°</td></tr>
-                        <tr><td>Ash Content</td><td>Max 0.10% by weight</td></tr>
-                        <tr><td>Moisture</td><td>Max 0.10% by weight</td></tr>
-                        <tr><td>Color</td><td>Light golden / off-white</td></tr>
-                        <tr><td>Solubility</td><td>100% dry & free flowing</td></tr>
-                        <tr><td>Crop</td><td>Recent Crop</td></tr>
-                    </table>
-
-                    <h3>Trade Terms</h3>
-                    <table class="specs-table">
-                        <tr><td>Origin</td><td>Brazil</td></tr>
-                        <tr><td>Loading Port</td><td>Santos, Brazil</td></tr>
-                        <tr><td>MOQ</td><td>10 Containers</td></tr>
-                        <tr><td>Packaging</td><td>50kg bags or Bulk</td></tr>
-                        <tr><td>Delivery</td><td>CIF or FOB</td></tr>
-                        <tr><td>Inspection</td><td>SGS at loading port</td></tr>
-                        <tr><td>Pricing Index</td><td>ICE New York No. 11 + CIF costs</td></tr>
-                    </table>
-
-
-                    <h3>Transaction Procedure</h3>
-                    <ol style="margin: 0 0 2rem 1.2rem; padding: 0;">
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Buyer sends Letter of Intent (LOI) to <a href="/cdn-cgi/l/email-protection#4b22252d240b28272a2f3e3f2a2824393b65282426" style="color: var(--green-dark);"><span class="__cf_email__" data-cfemail="ef86818980af8c838e8b9a9b8e8c809d9fc18c8082">[email&#160;protected]</span></a></li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Claduta issues Soft Corporate Offer (SCO)</li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Buyer signs SCO and returns to <a href="/cdn-cgi/l/email-protection#3e575058517e5d525f5a4b4a5f5d514c4e105d5153" style="color: var(--green-dark);"><span class="__cf_email__" data-cfemail="e78e898188a7848b868392938684889597c984888a">[email&#160;protected]</span></a></li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Seller issues Sales &amp; Purchase Agreement (SPA) and Invoice</li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Buyer signs SPA and Invoice — 30% payment made to Seller&#39;s appointed account</li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Loading commences within 15 days of payment</li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Seller delivers draft loading documents at port</li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Buyer makes 70% balance payment</li>
-                        <li style="padding: 0.5rem 0; font-size: 0.95rem; color: #444; line-height: 1.5;">Buyer takes possession</li>
-                    </ol>
-                    <a href="contact.html?product=sugar-150" class="btn">Request Pricing</a>
-                    <a href="/docs/Claduta-TermSheet-Sugar150.pdf" download style="display:inline-flex;align-items:center;gap:8px;margin-bottom:1.2rem;text-decoration:none;color:#2d4a3e;font-size:0.88rem;font-weight:600;border:1px solid #c9a961;border-radius:4px;padding:7px 14px;background:#fff;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c9a961" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>ICUMSA 150 Term Sheet.pdf</a>
-                    
-                </div>
-            </div>
+<!-- ======================== COFFEE ======================== -->
+<section class="product-section" id="coffee">
+  <div class="container">
+    <div class="product-header">
+      <span class="tag">Available</span>
+      <h2>Brazilian Green Coffee — Arabica &amp; Robusta</h2>
+    </div>
+    <div class="product-grid">
+      <div class="product-media">
+        <img src="coffee-farm.jpg" alt="Brazilian Coffee Plantation — Espírito Santo" class="img-main">
+        <div class="video-wrap">
+          <iframe src="https://www.youtube.com/embed/4DT4_94kwIg" title="Brazilian Coffee Farm — Direct from Producer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-    </section>
-
-    <!-- COFFEE -->
-    <section class="product-section" id="coffee">
-        <div class="container">
-            <div class="product-header">
-                <span class="tag">Available</span>
-                <h2>Brazilian Green Coffee</h2>
-            </div>
-            <div class="product-grid">
-                <div class="product-media">
-                    <img src="coffee-farm.jpg" alt="Brazilian Coffee Plantation" class="product-image-main">
-                    <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:4px;">
-                        <iframe 
-                            src="https://www.youtube.com/embed/4DT4_94kwIg" 
-                            title="Brazilian Coffee Farm — Direct from Producer"
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen
-                            style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius:4px;">
-                        </iframe>
-                    </div>
-                </div>
-                <div class="product-details">
-                    <p class="product-description">Green coffee sourced directly from Brazilian producer relationships in Minas Gerais and Rio de Janeiro state. Available in Arabica and Robusta varieties. Prompt shipment from FOB Santos or Vitória.</p>
-
-                    <!-- Price grid — 3 grades -->
-                    <div class="price-grid">
-                        <div class="price-card">
-                            <div class="price-card-grade">Arabica NY 2/3<br>Screen 17/18</div>
-                            <div class="price-card-amount">$6,400</div>
-                            <div class="price-card-unit">/ MT FOB</div>
-                        </div>
-                        <div class="price-card">
-                            <div class="price-card-grade">Arabica NY 3/4<br>Screen 15/16</div>
-                            <div class="price-card-amount">$6,200</div>
-                            <div class="price-card-unit">/ MT FOB</div>
-                        </div>
-                        <div class="price-card">
-                            <div class="price-card-grade">Robusta<br>Green Bean</div>
-                            <div class="price-card-amount">$6,200</div>
-                            <div class="price-card-unit">/ MT FOB</div>
-                        </div>
-                    </div>
-                    <p class="price-disclaimer">* Coffee prices track ICE Coffee C futures and fluctuate daily. Prices above are indicative — all quotes confirmed at time of order. CIF pricing available upon request.</p>
-                    <p style="font-size:0.8rem; color:#888; margin-bottom:1.5rem;">Live benchmark: <a href="https://www.tradingview.com/symbols/ICEUS-KC1!/" target="_blank" style="color:var(--green-dark);">ICE Coffee C Futures ↗</a></p>
-                            
-                        </div>
-                    </div>
-
-                    <h3>Arabica Specifications</h3>
-                    <table class="specs-table">
-                        <tr><td>Variety</td><td>100% Arabica — Rio Minas</td></tr>
-                        <tr><td>Grade NY 2/3</td><td>Screen 17/18 — Premium export grade</td></tr>
-                        <tr><td>Grade NY 3/4</td><td>Screen 15/16 — Standard export grade</td></tr>
-                        <tr><td>Moisture</td><td>Max 12.5%</td></tr>
-                        <tr><td>Processing</td><td>Natural or Washed (per request)</td></tr>
-                        <tr><td>Crop</td><td>2025/26</td></tr>
-                        <tr><td>Cup Profile</td><td>Smooth body, medium acidity, sweet notes</td></tr>
-                    </table>
-
-                    <h3>Robusta (Conilon) Specifications</h3>
-                    <table class="specs-table">
-                        <tr><td>Variety</td><td>Conilon (Coffea canephora) — Escolha Conilon</td></tr>
-                        <tr><td>Origin</td><td>Brazil — Espírito Santo</td></tr>
-                        <tr><td>Crop</td><td>Safra 2025</td></tr>
-                        <tr><td>Moisture</td><td>~12.1%</td></tr>
-                        <tr><td>Impurities</td><td>~0.3%</td></tr>
-                        <tr><td>Screen Size</td><td>Primary Peneira 15–16</td></tr>
-                        <tr><td>Classification</td><td>7/8 Brocado — Conventional</td></tr>
-                        
-                    </table>
-
-                    <h3>Trade Terms</h3>
-                    <table class="specs-table">
-                        <tr><td>Loading Port</td><td>Santos or Vitória, Brazil</td></tr>
-                        <tr><td>MOQ</td><td>1 Container</td></tr>
-                        <tr><td>Container</td><td>~325 bags × 59kg (~19–26 MT)</td></tr>
-                        <tr><td>Packaging</td><td>60kg jute bags (standard) or custom</td></tr>
-                        <tr><td>Delivery</td><td>FOB or CIF</td></tr>
-                        <tr><td>Capacity</td><td>10–15 containers/month</td></tr>
-                    </table>
-
-
-                    <h3>Transaction Procedure</h3>
-                    <ol style="margin: 0 0 2rem 1.2rem; padding: 0;">
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Buyer sends Letter of Intent (LOI) to <a href="/cdn-cgi/l/email-protection#cea7a0a8a18eada2afaabbbaafada1bcbee0ada1a3" style="color: var(--green-dark);"><span class="__cf_email__" data-cfemail="2c45424a436c4f404d4859584d4f435e5c024f4341">[email&#160;protected]</span></a></li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Claduta issues Soft Corporate Offer (SCO)</li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Buyer signs SCO and returns to <a href="/cdn-cgi/l/email-protection#264f48404966454a4742535247454954560845494b" style="color: var(--green-dark);"><span class="__cf_email__" data-cfemail="0c65626a634c6f606d6879786d6f637e7c226f6361">[email&#160;protected]</span></a></li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Seller issues Sales &amp; Purchase Agreement (SPA) and Invoice</li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Buyer signs SPA and Invoice — 30% payment made to Seller&#39;s appointed account</li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Loading commences within 15 days of payment</li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Seller delivers draft loading documents at port</li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Buyer makes 70% balance payment</li>
-                        <li style="padding: 0.5rem 0; font-size: 0.95rem; color: #444; line-height: 1.5;">Buyer takes possession</li>
-                    </ol>
-                    <a href="contact.html?product=coffee" class="btn">Request Pricing</a>
-                    <a href="/docs/Claduta-TermSheet-Coffee.pdf" download style="display:inline-flex;align-items:center;gap:8px;margin-bottom:1.2rem;text-decoration:none;color:#2d4a3e;font-size:0.88rem;font-weight:600;border:1px solid #c9a961;border-radius:4px;padding:7px 14px;background:#fff;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c9a961" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>Coffee Term Sheet.pdf</a>
-                    
-                </div>
-            </div>
+      </div>
+      <div class="product-details">
+        <p class="product-description">Green coffee sourced directly from Brazilian producer relationships in Minas Gerais and Espírito Santo. Available in Arabica and Conilon Robusta. Prompt shipment FOB Santos or Vitória.</p>
+        <div class="proof-callout">Sourced directly from cooperative cold storage — Safra 2025 crop, warehouse-stored, classification cards on file.</div>
+        <div class="price-grid">
+          <div class="price-card">
+            <div class="price-card-grade">Arabica NY 2/3<br>Screen 17/18</div>
+            <div class="price-card-amount">$6,400</div>
+            <div class="price-card-unit">/ MT FOB</div>
+          </div>
+          <div class="price-card">
+            <div class="price-card-grade">Arabica NY 3/4<br>Screen 15/16</div>
+            <div class="price-card-amount">$6,200</div>
+            <div class="price-card-unit">/ MT FOB</div>
+          </div>
+          <div class="price-card">
+            <div class="price-card-grade">Robusta / Conilon<br>Safra 2025</div>
+            <div class="price-card-amount">$3,000</div>
+            <div class="price-card-unit">/ MT FOB</div>
+          </div>
         </div>
-    </section>
+        <p class="price-disclaimer">* Coffee prices track ICE Coffee C futures and fluctuate daily. Prices above are indicative — all quotes confirmed at time of order. CIF pricing available upon request.</p>
+        <p class="benchmark-link">Live benchmark: <a href="https://www.tradingview.com/symbols/ICEUS-KC1!/" target="_blank" rel="noopener">ICE Coffee C Futures ↗</a></p>
+        <h3>Arabica Specifications</h3>
+        <table class="specs-table">
+          <tr><td>Variety</td><td>100% Arabica — Rio Minas</td></tr>
+          <tr><td>Grade NY 2/3</td><td>Screen 17/18 — Premium export grade</td></tr>
+          <tr><td>Grade NY 3/4</td><td>Screen 15/16 — Standard export grade</td></tr>
+          <tr><td>Moisture</td><td>Max 12.5%</td></tr>
+          <tr><td>Processing</td><td>Natural or Washed (per request)</td></tr>
+          <tr><td>Crop</td><td>2025/26</td></tr>
+          <tr><td>Cup Profile</td><td>Smooth body, medium acidity, sweet notes</td></tr>
+        </table>
+        <h3>Robusta (Conilon) Specifications</h3>
+        <table class="specs-table">
+          <tr><td>Variety</td><td>Conilon (Coffea canephora)</td></tr>
+          <tr><td>Origin</td><td>Espírito Santo, Brazil</td></tr>
+          <tr><td>Crop</td><td>Safra 2025</td></tr>
+          <tr><td>Moisture</td><td>~12.1%</td></tr>
+          <tr><td>Impurities</td><td>~0.3%</td></tr>
+          <tr><td>Screen Size</td><td>Peneira 15–16</td></tr>
+          <tr><td>Classification</td><td>7/8 Brocado — Conventional</td></tr>
+          <tr><td>Storage</td><td>Cooperative cold storage</td></tr>
+        </table>
+        <h3>Trade Terms</h3>
+        <table class="specs-table">
+          <tr><td>Loading Port</td><td>Santos or Vitória, Brazil</td></tr>
+          <tr><td>MOQ</td><td>1 Container</td></tr>
+          <tr><td>Container</td><td>~325 bags × 59kg (~19–26 MT)</td></tr>
+          <tr><td>Packaging</td><td>60kg jute bags (standard) or custom</td></tr>
+          <tr><td>Delivery</td><td>FOB or CIF</td></tr>
+          <tr><td>Capacity</td><td>10–15 containers/month</td></tr>
+        </table>
+        <h3>Transaction Procedure</h3>
+        <ol class="procedure-list">
+          <li>Buyer sends Letter of Intent (LOI) to <a href="mailto:info@cladutacorp.com">info@cladutacorp.com</a></li>
+          <li>Claduta issues Soft Corporate Offer (SCO)</li>
+          <li>Buyer signs SCO and returns to <a href="mailto:info@cladutacorp.com">info@cladutacorp.com</a></li>
+          <li>Seller issues Sales &amp; Purchase Agreement (SPA) and Invoice</li>
+          <li>Buyer signs SPA and Invoice — 30% payment made to Seller's appointed account</li>
+          <li>Loading commences within 15 days of payment</li>
+          <li>Seller delivers draft loading documents at port</li>
+          <li>Buyer makes 70% balance payment</li>
+          <li>Buyer takes possession</li>
+        </ol>
+        <a href="contact.html?product=coffee" class="btn">Request Pricing</a>
+        <a href="/docs/Claduta-TermSheet-Coffee.pdf" class="btn-dl">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a961" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+          Coffee Term Sheet
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- BLACK PEPPER -->
-    <section class="product-section" id="pepper">
-        <div class="container">
-            <div class="product-header">
-                <span class="tag">Available</span>
-                <h2>Brazilian Black Pepper</h2>
-            </div>
-            <div class="product-grid">
-                <div class="product-image">
-                    <img src="pepper-vine.jpg" alt="Brazilian Black Pepper Vine — Sacconi Pimentas">
-                </div>
-                <div class="product-details">
-                    <p class="product-description">Premium whole black peppercorns sourced directly from established Brazilian producers in Espírito Santo state. Our supply partner has over 75 years of export history with reach across 28+ countries. Shipped FOB Vitória.</p>
-
-                    <div class="price-box">
-                        <div class="price-box-label">Current Indicative Price</div>
-                        <div class="price-box-amount">$6,200 <span style="font-size:1rem; font-family:'Source Sans Pro', sans-serif; font-weight:400;">/MT</span></div>
-                        <div class="price-box-unit">FOB Vitória — all grades available</div>
-                        <div class="price-box-disclaimer">Pepper pricing reflects current market conditions and is subject to change. Confirmed at time of order.</div>
-                    </div>
-
-                    <h3>Available Grades</h3>
-                    <div class="pepper-grades">
-                        <div class="pepper-grade-card">
-                            <h4>Brazil ASTA (BASTA)</h4>
-                            <p>Density: 580 g/L min<br>Moisture: 13% max<br>Impurities: 1% max<br>Empty grains: 1% max</p>
-                        </div>
-                        <div class="pepper-grade-card">
-                            <h4>Brazil B1 (BB1)</h4>
-                            <p>Density: 550 g/L min<br>Moisture: 13% max<br>Impurities: 2% max<br>Empty grains: 5% max</p>
-                        </div>
-                        <div class="pepper-grade-card">
-                            <h4>Brazil B2 (BB2)</h4>
-                            <p>Density: 500 g/L min<br>Moisture: 13% max<br>Impurities: 5% max<br>Empty grains: 25% max</p>
-                        </div>
-                    </div>
-                    <p class="price-disclaimer" style="margin-top: 0.5rem;">* All grades available. BASTA is premium grade. Price varies by grade — contact for grade-specific pricing.</p>
-
-                    <h3>Trade Terms</h3>
-                    <table class="specs-table">
-                        <tr><td>Origin</td><td>Brazil (Espírito Santo)</td></tr>
-                        <tr><td>Loading Port</td><td>Vitória, Brazil</td></tr>
-                        <tr><td>MOQ</td><td>1 Container (19 MT)</td></tr>
-                        <tr><td>Container</td><td>316 bags × 60kg</td></tr>
-                        <tr><td>Packaging</td><td>25kg or 50kg bags</td></tr>
-                        <tr><td>Delivery</td><td>FOB or CIF</td></tr>
-                        <tr><td>Inspection</td><td>SGS at loading port</td></tr>
-                        <tr><td>Capacity</td><td>4–5 containers/month</td></tr>
-                    </table>
-
-
-                    <h3>Transaction Procedure</h3>
-                    <ol style="margin: 0 0 2rem 1.2rem; padding: 0;">
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Buyer sends Letter of Intent (LOI) to <a href="/cdn-cgi/l/email-protection#c0a9aea6af80a3aca1a4b5b4a1a3afb2b0eea3afad" style="color: var(--green-dark);"><span class="__cf_email__" data-cfemail="6d04030b022d0e010c0918190c0e021f1d430e0200">[email&#160;protected]</span></a></li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Claduta issues Soft Corporate Offer (SCO)</li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Buyer signs SCO and returns to <a href="/cdn-cgi/l/email-protection#f59c9b939ab596999491808194969a8785db969a98" style="color: var(--green-dark);"><span class="__cf_email__" data-cfemail="026b6c646d42616e6366777663616d70722c616d6f">[email&#160;protected]</span></a></li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Seller issues Sales &amp; Purchase Agreement (SPA) and Invoice</li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Buyer signs SPA and Invoice — 30% payment made to Seller&#39;s appointed account</li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Loading commences within 15 days of payment</li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Seller delivers draft loading documents at port</li>
-                        <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); font-size: 0.95rem; color: #444; line-height: 1.5;">Buyer makes 70% balance payment</li>
-                        <li style="padding: 0.5rem 0; font-size: 0.95rem; color: #444; line-height: 1.5;">Buyer takes possession</li>
-                    </ol>
-                    <a href="contact.html?product=pepper" class="btn">Request Pricing</a>
-                    <a href="/docs/Claduta-TermSheet-Pepper.pdf" download style="display:inline-flex;align-items:center;gap:8px;margin-bottom:1.2rem;text-decoration:none;color:#2d4a3e;font-size:0.88rem;font-weight:600;border:1px solid #c9a961;border-radius:4px;padding:7px 14px;background:#fff;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#c9a961" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>Black Pepper Term Sheet.pdf</a>
-                    
-                </div>
-            </div>
+<!-- ======================== PEPPER ======================== -->
+<section class="product-section alt" id="pepper">
+  <div class="container">
+    <div class="product-header">
+      <span class="tag">Available</span>
+      <h2>Brazilian Black Pepper</h2>
+    </div>
+    <div class="product-grid">
+      <div class="product-media">
+        <img src="pepper-vine.jpg" alt="Brazilian Black Pepper — Espírito Santo" class="img-single">
+      </div>
+      <div class="product-details">
+        <p class="product-description">Premium whole black peppercorns sourced from established Brazilian producers in Espírito Santo. Our supply partners have 75+ years of export history with reach across 28+ countries. Halal certification available upon request.</p>
+        <div class="proof-callout">Sourced from established Brazilian producers in Espírito Santo with 75+ years of export history and active export containers.</div>
+        <div class="price-box">
+          <div class="price-box-label">Current Indicative Price</div>
+          <div class="price-box-amount">$6,200 <span style="font-size:1rem;font-family:'Source Sans Pro',sans-serif;font-weight:400;">/MT</span></div>
+          <div class="price-box-unit">FOB Vitória — all grades available</div>
+          <div class="price-box-disclaimer">Pepper pricing reflects current market conditions and is subject to change. Confirmed at time of order.</div>
         </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta">
-        <div class="container">
-            <h2>Request Specs & Pricing</h2>
-            <p>Contact our trading desk for current availability, pricing, and contract terms.</p>
-            <a href="contact.html" class="btn">Contact Trading Desk</a>
+        <div class="halal-note">
+          <strong>Halal Certified:</strong> Available upon request for Muslim market buyers. Certification cost passed through to buyer. Allow 2–3 weeks.
         </div>
-    </section>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand">
-                <img src="logo-full.png" alt="Claduta Corporation">
-                <p>Holding company operating in real-asset investments and physical commodity trading.</p>
-            </div>
-            <div class="footer-links">
-                <h4>Quick Links</h4>
-                <a href="index.html">Home</a>
-                <a href="commodities.html">Commodities</a>
-                <a href="projects.html">Projects</a>
-                <a href="contact.html">Contact</a>
-            </div>
-            <div class="footer-contact">
-                <h4>Contact</h4>
-                <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d9b0b7bfb699bab5b8bdacadb8bab6aba9f7bab6b4">[email&#160;protected]</a></p>
-                <p>+1 (727) 623-2652</p>
-                <p>South Dakota, USA</p>
-            </div>
+        <h3>Available Grades</h3>
+        <div class="pepper-grades">
+          <div class="pepper-grade-card"><h4>Brazil ASTA (BASTA)</h4><p>Density: 580 g/L min<br>Moisture: 13% max<br>Impurities: 1% max<br>Empty grains: 1% max</p></div>
+          <div class="pepper-grade-card"><h4>Brazil B1 (BB1)</h4><p>Density: 550 g/L min<br>Moisture: 13% max<br>Impurities: 2% max<br>Empty grains: 5% max</p></div>
+          <div class="pepper-grade-card"><h4>Brazil B2 (BB2)</h4><p>Density: 500 g/L min<br>Moisture: 13% max<br>Impurities: 5% max<br>Empty grains: 25% max</p></div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2026 Claduta Corporation. All rights reserved.</p>
-        </div>
-    </footer>
+        <p class="price-disclaimer">* All grades available. BASTA is premium grade. Price varies by grade — contact for grade-specific pricing.</p>
+        <h3>Trade Terms</h3>
+        <table class="specs-table">
+          <tr><td>Origin</td><td>Brazil (Espírito Santo)</td></tr>
+          <tr><td>Loading Port</td><td>Vitória, Brazil</td></tr>
+          <tr><td>MOQ</td><td>1 Container (19 MT)</td></tr>
+          <tr><td>Container</td><td>316 bags × 60kg</td></tr>
+          <tr><td>Packaging</td><td>25kg or 50kg bags</td></tr>
+          <tr><td>Delivery</td><td>FOB or CIF</td></tr>
+          <tr><td>Inspection</td><td>SGS at loading port</td></tr>
+          <tr><td>Capacity</td><td>4–5 containers/month</td></tr>
+        </table>
+        <h3>Transaction Procedure</h3>
+        <ol class="procedure-list">
+          <li>Buyer sends Letter of Intent (LOI) to <a href="mailto:info@cladutacorp.com">info@cladutacorp.com</a></li>
+          <li>Claduta issues Soft Corporate Offer (SCO)</li>
+          <li>Buyer signs SCO and returns to <a href="mailto:info@cladutacorp.com">info@cladutacorp.com</a></li>
+          <li>Seller issues Sales &amp; Purchase Agreement (SPA) and Invoice</li>
+          <li>Buyer signs SPA and Invoice — 30% payment made to Seller's appointed account</li>
+          <li>Loading commences within 15 days of payment</li>
+          <li>Seller delivers draft loading documents at port</li>
+          <li>Buyer makes 70% balance payment</li>
+          <li>Buyer takes possession</li>
+        </ol>
+        <a href="contact.html?product=pepper" class="btn">Request Pricing</a>
+        <a href="/docs/Claduta-TermSheet-Pepper.pdf" class="btn-dl">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a961" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+          Black Pepper Term Sheet
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section style="background:#f5f3ef; padding:4rem 2rem;">
-        <div style="max-width:860px; margin:0 auto;">
-            <p style="font-size:0.8rem; letter-spacing:2px; text-transform:uppercase; color:#c9a961; font-weight:700; margin-bottom:0.5rem;">Documentation</p>
-            <h2 style="font-size:2rem; color:#2d4a3e; font-weight:800; margin-bottom:0.5rem;">Product Term Sheets</h2>
-            <p style="color:#666; margin-bottom:2.5rem; font-size:0.95rem;">Download full product specifications, commercial terms, and transaction procedures for each commodity.</p>
-            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(190px, 1fr)); gap:1rem;">
-                <a href="/docs/Claduta-TermSheet-Sugar45.pdf" download style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:1.5rem 1rem;background:#fff;border:1px solid #ddd;border-radius:8px;text-decoration:none;color:#2d4a3e;text-align:center;">
-                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#c9a961" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
-                    <span style="font-size:0.85rem;font-weight:700;color:#2d4a3e;line-height:1.3;">ICUMSA 45 White Sugar</span>
-                    <span style="font-size:0.75rem;color:#c9a961;font-weight:600;">DOWNLOAD PDF</span>
-                </a>
-                <a href="/docs/Claduta-TermSheet-Sugar150.pdf" download style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:1.5rem 1rem;background:#fff;border:1px solid #ddd;border-radius:8px;text-decoration:none;color:#2d4a3e;text-align:center;">
-                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#c9a961" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
-                    <span style="font-size:0.85rem;font-weight:700;color:#2d4a3e;line-height:1.3;">ICUMSA 150 VHP Raw Sugar</span>
-                    <span style="font-size:0.75rem;color:#c9a961;font-weight:600;">DOWNLOAD PDF</span>
-                </a>
-                <a href="/docs/Claduta-TermSheet-Coffee.pdf" download style="display:flex;flex-direction:column;align-items:center;gap:10px;padding:1.5rem 1rem;background:#fff;border:1px solid #ddd;border-radius:8px;text-decoration:none;color:#2d4a3e;text-align:center;">
-                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#c9a961" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Request Specs &amp; Pricing</h2>
+    <p>Contact our trading desk for current availability, pricing, and contract terms.</p>
+    <a href="contact.html" class="btn">Contact Trading Desk</a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <p class="section-label">Common Questions</p>
+    <h2>Frequently Asked Questions</h2>
+    <p class="section-intro">Everything buyers need to know before sending an LOI.</p>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h4>What is ICUMSA 45 sugar and why does it matter?</h4>
+        <p>ICUMSA 45 is the highest grade of white refined cane sugar, with a whiteness rating of 45 RBU. It is the global standard for human consumption, food manufacturing, and confectionery.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What is the difference between ICUMSA 45 and ICUMSA 150?</h4>
+        <p>ICUMSA 45 is fully refined white sugar for direct consumption. ICUMSA 150 (VHP) is raw cane sugar used as industrial input for refineries and beverage manufacturers — less processed, lower cost.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What is your minimum order quantity?</h4>
+        <p>Sugar: 10 containers (12,500 MT). Coffee and Black Pepper: 1 container each. Contact us to discuss partial loads for qualified buyers.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What ports do you ship from?</h4>
+        <p>Sugar ships from Port Santos, Brazil. Coffee ships from Santos or Vitória depending on origin. Black pepper ships from Vitória, Espírito Santo.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What payment terms do you accept?</h4>
+        <p>Standard: 30% at contract signing, 70% at Bill of Lading. Wire transfer. SBLC accepted for orders over 20 containers. DLC not accepted.</p>
+      </div>
+      <div class="faq-item">
+        <h4>How is coffee pricing determined?</h4>
+        <p>Coffee is priced against ICE Coffee C futures (KC1!). Arabica NY2/3 is approximately $6,400/MT FOB. Robusta/Conilon is significantly lower at $2,800–3,200/MT. All prices are indicative and confirmed at time of order.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Do you offer Halal certified products?</h4>
+        <p>Yes. Halal certification is available upon request for black pepper shipments. Certification cost is passed through to the buyer. Allow 2–3 weeks from order confirmation.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Can I request samples before placing an order?</h4>
+        <p>Yes. Sample requests are available for qualified buyers. Contact our trading desk with your company details and we will arrange.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TERM SHEETS -->
+<section class="termsheets-section">
+  <div class="container">
+    <p class="section-label">Documentation</p>
+    <h2 style="font-size:2rem;color:var(--green-dark);margin-bottom:0.4rem;">Product Term Sheets</h2>
+    <p style="color:#666;font-size:0.95rem;">Download full product specifications, commercial terms, and transaction procedures for each commodity.</p>
+    <div class="termsheets-grid">
+      <a href="/docs/Claduta-TermSheet-Sugar45.pdf" class="ts-card">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#c9a961" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+        <span class="ts-name">ICUMSA 45 White Sugar</span>
+        <span class="ts-dl">DOWNLOAD PDF</span>
+      </a>
+      <a href="/docs/Claduta-TermSheet-Sugar150.pdf" class="ts-card">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#c9a961" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+        <span class="ts-name">ICUMSA 150 VHP Raw Sugar</span>
+        <span class="ts-dl">DOWNLOAD PDF</span>
+      </a>
+      <a href="/docs/Claduta-TermSheet-Coffee.pdf" class="ts-card">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#c9a961" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+        <span class="ts-name">Green Coffee (Arabica &amp; Robusta)</span>
+        <span class="ts-dl">DOWNLOAD PDF</span>
+      </a>
+      <a href="/docs/Claduta-TermSheet-Pepper.pdf" class="ts-card">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#c9a961" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+        <span class="ts-name">Black Pepper (BASTA / B1 / B2)</span>
+        <span class="ts-dl">DOWNLOAD PDF</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-content">
+    <div class="footer-brand">
+      <img src="logo-full.png" alt="Claduta Corporation">
+      <p>Holding company operating in real-asset investments and physical commodity trading.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="commodities.html">Commodities</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-contact">
+      <h4>Contact</h4>
+      <p><a href="mailto:info@cladutacorp.com">info@cladutacorp.com</a></p>
+      <p>+1 (727) 623-2652</p>
+      <p>South Dakota, USA</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Claduta Corporation. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
