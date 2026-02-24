@@ -141,6 +141,40 @@
     .procedure-list li:last-child { border-bottom: none; }
     .procedure-list a { color: var(--green-dark); }
 
+    /* ── LIVE PRICING WIDGET ─────────────────────────────────────── */
+    .live-pricing { background: #0f1f0f; padding: 60px 5%; }
+    .live-pricing .container { max-width: 1200px; margin: 0 auto; }
+    .lp-header { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 10px; }
+    .lp-title { font-family: 'Playfair Display', serif; font-size: 2rem; color: #fff; margin-bottom: 4px; }
+    .lp-sub { font-size: 0.85rem; color: #7a9a7a; }
+    .lp-updated { font-size: 0.75rem; color: #5a7a5a; background: #1a2f1a; padding: 5px 12px; border-radius: 4px; border: 1px solid #2a4f2a; white-space: nowrap; align-self: flex-start; margin-top: 8px; }
+    .lp-section-label { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 6px; }
+    .lp-dest-row { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; flex-wrap: wrap; }
+    .lp-dest-label { color: #7a9a7a; font-size: 0.85rem; }
+    .lp-dest-select { background: #1a2f1a; color: #fff; border: 1px solid #3a6a3a; padding: 7px 14px; border-radius: 4px; font-size: 0.9rem; cursor: pointer; font-family: 'Source Sans Pro', sans-serif; }
+    .lp-dest-select:focus { outline: none; border-color: var(--gold); }
+    .lp-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-bottom: 24px; }
+    .lp-card { background: #162616; border: 1px solid #2a4a2a; border-radius: 6px; padding: 22px; }
+    .lp-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px; }
+    .lp-card-commodity { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: #5a8a5a; margin-bottom: 3px; }
+    .lp-card-grade { font-size: 0.82rem; color: #9ab89a; }
+    .lp-card-icon { font-size: 1.4rem; }
+    .lp-fob-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: #5a8a5a; margin-bottom: 3px; }
+    .lp-fob-price { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 600; color: var(--gold); line-height: 1; }
+    .lp-fob-unit { font-size: 0.72rem; color: #5a8a5a; margin-top: 3px; }
+    .lp-divider { border: none; border-top: 1px solid #2a4a2a; margin: 14px 0; }
+    .lp-cif-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em; color: #5a8a5a; margin-bottom: 3px; }
+    .lp-cif-dest { font-size: 0.75rem; color: #7aaa7a; margin-bottom: 4px; }
+    .lp-cif-price { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600; color: #8ec98e; line-height: 1; }
+    .lp-breakdown { font-size: 0.68rem; color: #4a6a4a; margin-top: 5px; line-height: 1.6; }
+    .lp-moq { margin-top: 12px; font-size: 0.68rem; color: #4a6a4a; }
+    .lp-disclaimer { background: #0c180c; border-left: 3px solid #2a5a2a; border-radius: 0 4px 4px 0; padding: 14px 18px; margin-bottom: 22px; }
+    .lp-disclaimer p { font-size: 0.75rem; color: #5a8a5a; line-height: 1.6; margin: 0; }
+    .lp-disclaimer strong { color: #9ab89a; }
+    .lp-cta { text-align: center; }
+    .lp-loading { text-align: center; color: #5a8a5a; font-size: 0.85rem; padding: 20px 0; }
+    /* ── END LIVE PRICING ─────────────────────────────────────── */
+
     .cta-section { text-align: center; background: var(--green-dark); color: var(--white); padding: 80px 5%; }
     .cta-section h2 { font-size: 2.2rem; margin-bottom: 1rem; }
     .cta-section p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
@@ -181,6 +215,7 @@
       .price-grid { grid-template-columns: 1fr; }
       .pepper-grades { grid-template-columns: 1fr; }
       .faq-grid { grid-template-columns: 1fr; }
+      .lp-cards { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--white); flex-direction: column; padding: 1rem 5%; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
@@ -192,6 +227,7 @@
       .product-header h2 { font-size: 1.5rem; }
       .footer-content { grid-template-columns: 1fr; gap: 2rem; }
       .trade-terms-inner { grid-template-columns: repeat(2,1fr); }
+      .lp-title { font-size: 1.5rem; }
     }
     @media (max-width: 480px) {
       .hero h1 { font-size: 1.6rem; }
@@ -268,6 +304,50 @@
   </div>
 </div>
 
+<!-- ======================== LIVE PRICING WIDGET ======================== -->
+<section class="live-pricing" id="live-pricing">
+  <div class="container">
+    <div class="lp-header">
+      <div>
+        <p class="lp-section-label">Market Pricing</p>
+        <h2 class="lp-title">Indicative Prices — FOB &amp; CIF</h2>
+        <p class="lp-sub">FOB Santos/Vitória, Brazil + estimated CIF to destination port. Updated every 6 hours.</p>
+      </div>
+      <span class="lp-updated" id="lp-updated">Loading prices...</span>
+    </div>
+
+    <div class="lp-dest-row">
+      <span class="lp-dest-label">CIF destination port:</span>
+      <select class="lp-dest-select" id="lp-dest" onchange="lpUpdateCIF()">
+        <option value="dubai">Dubai / UAE</option>
+        <option value="singapore">Singapore</option>
+        <option value="lagos">Lagos, Nigeria</option>
+        <option value="jakarta">Jakarta, Indonesia</option>
+        <option value="guangzhou">Guangzhou, China</option>
+      </select>
+    </div>
+
+    <div class="lp-cards" id="lp-cards">
+      <div class="lp-loading">Loading market data...</div>
+    </div>
+
+    <div class="lp-disclaimer">
+      <p>
+        <strong>Indicative only.</strong>
+        CIF = FOB + estimated ocean freight + 0.5% insurance.
+        Pepper FOB sourced from IPC (ipcnet.org). Sugar indexed to ICE London #5. Coffee indexed to ICE C NY.
+        Freight estimates are based on current market rates and vary by vessel, season, and Incoterms.
+        <strong>Contact us for firm CIF quotes before placing orders.</strong>
+        Prices updated automatically every 6 hours.
+      </p>
+    </div>
+
+    <div class="lp-cta">
+      <a href="mailto:info@cladutacorp.com?subject=Request%20for%20Firm%20CIF%20Quote" class="btn">Request Firm Quote</a>
+    </div>
+  </div>
+</section>
+
 <!-- ======================== ICUMSA 45 ======================== -->
 <section class="product-section" id="sugar">
   <div class="container">
@@ -292,7 +372,7 @@
         <div class="price-box">
           <div class="price-box-label">Current Indicative Price</div>
           <div class="price-box-amount">ICE London No. 5 + CIF Premium</div>
-          <div class="price-box-unit">Priced per metric ton — contact for current quote</div>
+          <div class="price-box-unit">See live pricing above — contact for firm quote</div>
           <div class="price-box-disclaimer">Pricing is market-indexed and subject to change. All quotes confirmed at time of order.</div>
         </div>
         <p class="benchmark-link">Live benchmark: <a href="https://www.tradingview.com/symbols/ICEEUR-W1!/" target="_blank" rel="noopener">ICE London White Sugar No. 5 ↗</a></p>
@@ -466,7 +546,6 @@
         <video controls muted loop playsinline webkit-playsinline preload="metadata" style="width:100%;border-radius:4px;margin-bottom:1.25rem;">
           <source src="robusta-coffee.mp4" type="video/mp4">
         </video>
-
         <h3>Trade Terms</h3>
         <table class="specs-table">
           <tr><td>Loading Port</td><td>Santos or Vitória, Brazil</td></tr>
@@ -521,7 +600,7 @@
         <div class="price-box">
           <div class="price-box-label">Current Indicative Price</div>
           <div class="price-box-amount">$6,200 <span style="font-size:1rem;font-family:'Source Sans Pro',sans-serif;font-weight:400;">/MT</span></div>
-          <div class="price-box-unit">FOB Vitória — all grades available</div>
+          <div class="price-box-unit">FOB Vitória — see live pricing above for CIF by destination</div>
           <div class="price-box-disclaimer">Pepper pricing reflects current market conditions and is subject to change. Confirmed at time of order.</div>
         </div>
         <div class="halal-note">
@@ -675,6 +754,124 @@
     <p>© 2026 Claduta Corporation. All rights reserved.</p>
   </div>
 </footer>
+
+<!-- ── LIVE PRICING JAVASCRIPT ─────────────────────────────────────────── -->
+<script>
+(function() {
+  var priceData = null;
+
+  var COMMODITY_CONFIG = [
+    {
+      key: 'pepper',
+      fobKey: 'pepper_brazil_black_asta570',
+      label: 'Black Pepper',
+      grade: 'Brazil ASTA 570',
+      icon: '🌶',
+      moq: 'MOQ: 19 MT (1×20ft container)'
+    },
+    {
+      key: 'sugar',
+      fobKey: 'sugar_icumsa45',
+      label: 'ICUMSA 45 Sugar',
+      grade: 'White Refined',
+      icon: '🍬',
+      moq: 'MOQ: 12,500 MT (vessel)'
+    },
+    {
+      key: 'coffee',
+      fobKey: 'coffee_arabica',
+      label: 'Arabica Coffee',
+      grade: 'Green Bean, Brazil',
+      icon: '☕',
+      moq: 'MOQ: 19 MT (1×20ft container)'
+    }
+  ];
+
+  function fmt(n) {
+    if (n == null || isNaN(n)) return '—';
+    return '$' + Number(n).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + '/MT';
+  }
+
+  function destLabel() {
+    var sel = document.getElementById('lp-dest');
+    return sel ? sel.options[sel.selectedIndex].text : '';
+  }
+
+  function renderCards() {
+    if (!priceData) return;
+    var dest = document.getElementById('lp-dest').value;
+    var html = '';
+
+    COMMODITY_CONFIG.forEach(function(c) {
+      var fob = priceData.fob && priceData.fob[c.fobKey] ? priceData.fob[c.fobKey].price : null;
+      var cifData = priceData.cif && priceData.cif[c.key] ? priceData.cif[c.key][dest] : null;
+      var cifPrice = cifData ? cifData.cif : null;
+      var freight = cifData ? cifData.freight : null;
+      var insurance = cifData ? cifData.insurance : null;
+
+      html += '<div class="lp-card">' +
+        '<div class="lp-card-top">' +
+          '<div>' +
+            '<div class="lp-card-commodity">' + c.label + '</div>' +
+            '<div class="lp-card-grade">' + c.grade + '</div>' +
+          '</div>' +
+          '<span class="lp-card-icon">' + c.icon + '</span>' +
+        '</div>' +
+        '<div class="lp-fob-label">FOB Santos / Vitória</div>' +
+        '<div class="lp-fob-price">' + fmt(fob) + '</div>' +
+        '<div class="lp-fob-unit">per metric ton</div>' +
+        '<hr class="lp-divider">' +
+        '<div class="lp-cif-label">Est. CIF</div>' +
+        '<div class="lp-cif-dest">' + destLabel() + '</div>' +
+        '<div class="lp-cif-price">' + fmt(cifPrice) + '</div>';
+
+      if (freight != null && insurance != null) {
+        html += '<div class="lp-breakdown">Freight: ~$' + freight + '/MT &nbsp;·&nbsp; Insurance: ~$' + insurance.toFixed(0) + '/MT</div>';
+      }
+
+      html += '<div class="lp-moq">' + c.moq + '</div>' +
+        '</div>';
+    });
+
+    document.getElementById('lp-cards').innerHTML = html;
+  }
+
+  window.lpUpdateCIF = function() {
+    if (priceData) renderCards();
+  };
+
+  function formatUpdated(iso) {
+    try {
+      var d = new Date(iso);
+      return 'Updated: ' + d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) +
+        ' ' + d.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', timeZoneName: 'short' });
+    } catch(e) { return 'Updated: ' + iso; }
+  }
+
+  function loadPrices() {
+    fetch('/prices.json?t=' + Date.now())
+      .then(function(r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
+      .then(function(data) {
+        priceData = data;
+        if (data.updated) {
+          document.getElementById('lp-updated').textContent = formatUpdated(data.updated);
+        }
+        renderCards();
+      })
+      .catch(function(e) {
+        console.warn('Price load failed:', e);
+        document.getElementById('lp-updated').textContent = 'Contact us for current pricing';
+        document.getElementById('lp-cards').innerHTML =
+          '<div class="lp-loading">Live prices temporarily unavailable. <a href="mailto:info@cladutacorp.com" style="color:#c9a961;">Contact us</a> for a firm quote.</div>';
+      });
+  }
+
+  loadPrices();
+})();
+</script>
 
 </body>
 </html>
