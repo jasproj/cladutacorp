@@ -24,10 +24,10 @@
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
     {"@type":"Question","name":"What is ICUMSA 45 sugar and why does it matter?","acceptedAnswer":{"@type":"Answer","text":"ICUMSA 45 is the highest grade of white refined cane sugar, with a whiteness rating of 45 RBU. It is the standard for human consumption, food manufacturing, and confectionery worldwide."}},
     {"@type":"Question","name":"What is the difference between ICUMSA 45 and ICUMSA 150?","acceptedAnswer":{"@type":"Answer","text":"ICUMSA 45 is fully refined white sugar for direct consumption. ICUMSA 150 (VHP) is raw cane sugar used as industrial input for refineries and beverage manufacturers — less processed and lower cost."}},
-    {"@type":"Question","name":"What is your minimum order quantity?","acceptedAnswer":{"@type":"Answer","text":"Sugar: 10 containers (12,500 MT). Coffee and Black Pepper: 1 container."}},
-    {"@type":"Question","name":"What ports do you ship from?","acceptedAnswer":{"@type":"Answer","text":"Sugar ships from Port Santos, Brazil. Coffee ships from Santos or Vitória. Black pepper ships from Vitória, Espírito Santo."}},
+    {"@type":"Question","name":"What is your minimum order quantity?","acceptedAnswer":{"@type":"Answer","text":"Sugar: 5 containers (6,250 MT). Coffee and Black Pepper: 1 container."}},
+    {"@type":"Question","name":"What ports do you ship from?","acceptedAnswer":{"@type":"Answer","text":"Sugar ships from Port Santos, Brazil. Arabica coffee ships from Santos. Robusta/Conilon ships from Vitória. Black pepper ships from Vitória, Espírito Santo."}},
     {"@type":"Question","name":"What payment terms do you accept?","acceptedAnswer":{"@type":"Answer","text":"Standard terms are 30% at contract signing, 70% at Bill of Lading. Wire transfer. SBLC accepted for orders over 20 containers. DLC not accepted."}},
-    {"@type":"Question","name":"How is coffee pricing determined?","acceptedAnswer":{"@type":"Answer","text":"Coffee is priced against ICE Coffee C futures (KC1!). Arabica NY2/3 is approximately $6,400/MT FOB. All prices are indicative and confirmed at time of order."}},
+    {"@type":"Question","name":"How is coffee pricing determined?","acceptedAnswer":{"@type":"Answer","text":"Coffee is priced against ICE Coffee C futures (KC1!). Arabica NY2/3 Screen 17/18 is $5,970/MT FOB. Arabica NY3/4 Screen 15/16 is $5,750/MT FOB. Robusta/Conilon starts at $4,501/MT FOB. All prices are indicative and confirmed at time of order."}},
     {"@type":"Question","name":"Do you offer Halal certified products?","acceptedAnswer":{"@type":"Answer","text":"Yes. Halal certification is available upon request for black pepper shipments. Certification cost is passed through to the buyer. Allow 2-3 weeks."}},
     {"@type":"Question","name":"Can I request samples before placing an order?","acceptedAnswer":{"@type":"Answer","text":"Yes. Sample requests are available for qualified buyers. Contact our trading desk to arrange."}}
   ]}
@@ -92,13 +92,10 @@
     .gallery { display: grid; grid-template-columns: repeat(2,1fr); gap: 0.75rem; }
     .gallery img { width: 100%; height: 150px; object-fit: cover; border-radius: 4px; }
     .gallery.four img { height: 130px; }
-    .video-wrap { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 4px; }
-    .video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
     .vid-player { width: 100%; height: 180px; object-fit: cover; border-radius: 4px; background: var(--charcoal); }
 
     .product-details h3 { font-size: 0.92rem; color: var(--green-dark); margin: 1.6rem 0 0.5rem; font-family: 'Source Sans Pro', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; }
     .product-description { color: #555; margin-bottom: 1.25rem; font-size: 1.05rem; }
-
     .proof-callout { background: rgba(45,74,62,0.06); border-left: 3px solid var(--gold); padding: 0.8rem 1rem; border-radius: 0 4px 4px 0; margin-bottom: 1.25rem; font-size: 0.87rem; color: #444; line-height: 1.55; }
 
     .price-box { background: var(--green-dark); color: var(--white); border-radius: 4px; padding: 1.2rem 1.4rem; margin-bottom: 0.6rem; }
@@ -107,11 +104,13 @@
     .price-box-unit { font-size: 0.8rem; opacity: 0.7; margin-top: 0.15rem; }
     .price-box-disclaimer { font-size: 0.73rem; opacity: 0.6; margin-top: 0.7rem; border-top: 1px solid rgba(255,255,255,0.15); padding-top: 0.55rem; font-style: italic; }
 
-    .price-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.65rem; margin-bottom: 0.65rem; }
+    .price-grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 0.65rem; margin-bottom: 0.65rem; }
+    .price-grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.65rem; margin-bottom: 0.65rem; }
     .price-card { background: var(--green-dark); color: var(--white); border-radius: 4px; padding: 0.9rem; text-align: center; }
     .price-card-grade { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.7; margin-bottom: 0.35rem; line-height: 1.4; }
     .price-card-amount { font-size: 1.35rem; font-family: 'Playfair Display', serif; color: var(--gold); font-weight: 600; }
     .price-card-unit { font-size: 0.65rem; opacity: 0.6; margin-top: 0.2rem; }
+    .price-card-screen { font-size: 0.62rem; opacity: 0.5; margin-top: 0.35rem; line-height: 1.5; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.35rem; }
 
     .halal-note { background: rgba(201,169,97,0.1); border: 1px solid rgba(201,169,97,0.35); border-radius: 4px; padding: 0.75rem 1rem; margin-bottom: 1.25rem; font-size: 0.85rem; color: #555; line-height: 1.5; }
     .halal-note strong { color: var(--green-dark); }
@@ -141,7 +140,7 @@
     .procedure-list li:last-child { border-bottom: none; }
     .procedure-list a { color: var(--green-dark); }
 
-    /* ── LIVE PRICING WIDGET ─────────────────────────────────────── */
+    /* LIVE PRICING */
     .live-pricing { background: #0f1f0f; padding: 60px 5%; }
     .live-pricing .container { max-width: 1200px; margin: 0 auto; }
     .lp-header { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 10px; }
@@ -173,7 +172,6 @@
     .lp-disclaimer strong { color: #9ab89a; }
     .lp-cta { text-align: center; }
     .lp-loading { text-align: center; color: #5a8a5a; font-size: 0.85rem; padding: 20px 0; }
-    /* ── END LIVE PRICING ─────────────────────────────────────── */
 
     .cta-section { text-align: center; background: var(--green-dark); color: var(--white); padding: 80px 5%; }
     .cta-section h2 { font-size: 2.2rem; margin-bottom: 1rem; }
@@ -212,7 +210,7 @@
     }
     @media (max-width: 968px) {
       .product-grid { grid-template-columns: 1fr; }
-      .price-grid { grid-template-columns: 1fr; }
+      .price-grid-2, .price-grid-3 { grid-template-columns: 1fr; }
       .pepper-grades { grid-template-columns: 1fr; }
       .faq-grid { grid-template-columns: 1fr; }
       .lp-cards { grid-template-columns: 1fr; }
@@ -304,7 +302,7 @@
   </div>
 </div>
 
-<!-- ======================== LIVE PRICING WIDGET ======================== -->
+<!-- LIVE PRICING WIDGET -->
 <section class="live-pricing" id="live-pricing">
   <div class="container">
     <div class="lp-header">
@@ -315,7 +313,6 @@
       </div>
       <span class="lp-updated" id="lp-updated">Loading prices...</span>
     </div>
-
     <div class="lp-dest-row">
       <span class="lp-dest-label">CIF destination port:</span>
       <select class="lp-dest-select" id="lp-dest" onchange="lpUpdateCIF()">
@@ -326,11 +323,9 @@
         <option value="guangzhou">Guangzhou, China</option>
       </select>
     </div>
-
     <div class="lp-cards" id="lp-cards">
       <div class="lp-loading">Loading market data...</div>
     </div>
-
     <div class="lp-disclaimer">
       <p>
         <strong>Indicative only.</strong>
@@ -341,14 +336,13 @@
         Prices updated automatically every 6 hours.
       </p>
     </div>
-
     <div class="lp-cta">
       <a href="mailto:info@cladutacorp.com?subject=Request%20for%20Firm%20CIF%20Quote" class="btn">Request Firm Quote</a>
     </div>
   </div>
 </section>
 
-<!-- ======================== ICUMSA 45 ======================== -->
+<!-- ICUMSA 45 -->
 <section class="product-section" id="sugar">
   <div class="container">
     <div class="product-header">
@@ -392,7 +386,7 @@
         <table class="specs-table">
           <tr><td>Origin</td><td>Brazil</td></tr>
           <tr><td>Loading Port</td><td>Santos, Brazil</td></tr>
-          <tr><td>MOQ</td><td>10 Containers (12,500 MT)</td></tr>
+          <tr><td>MOQ</td><td>5 Containers (6,250 MT)</td></tr>
           <tr><td>Packaging</td><td>50kg bags or Bulk</td></tr>
           <tr><td>Delivery</td><td>CIF or FOB</td></tr>
           <tr><td>Inspection</td><td>SGS at loading port</td></tr>
@@ -420,7 +414,7 @@
   </div>
 </section>
 
-<!-- ======================== ICUMSA 150 ======================== -->
+<!-- ICUMSA 150 -->
 <section class="product-section alt" id="sugar-150">
   <div class="container">
     <div class="product-header">
@@ -454,7 +448,7 @@
         <table class="specs-table">
           <tr><td>Origin</td><td>Brazil</td></tr>
           <tr><td>Loading Port</td><td>Santos, Brazil</td></tr>
-          <tr><td>MOQ</td><td>10 Containers</td></tr>
+          <tr><td>MOQ</td><td>5 Containers (6,250 MT)</td></tr>
           <tr><td>Packaging</td><td>50kg bags or Bulk</td></tr>
           <tr><td>Delivery</td><td>CIF or FOB</td></tr>
           <tr><td>Inspection</td><td>SGS at loading port</td></tr>
@@ -482,12 +476,12 @@
   </div>
 </section>
 
-<!-- ======================== COFFEE ======================== -->
-<section class="product-section" id="coffee">
+<!-- ======================== ARABICA COFFEE ======================== -->
+<section class="product-section" id="coffee-arabica">
   <div class="container">
     <div class="product-header">
       <span class="tag">Available</span>
-      <h2>Brazilian Green Coffee — Arabica &amp; Robusta</h2>
+      <h2>Arabica Green Coffee — Rio Minas</h2>
     </div>
     <div class="product-grid">
       <div class="product-media">
@@ -500,59 +494,44 @@
         </div>
       </div>
       <div class="product-details">
-        <p class="product-description">Green coffee sourced directly from Brazilian producer relationships in Minas Gerais and Espírito Santo. Available in Arabica and Conilon Robusta. Prompt shipment FOB Santos or Vitória.</p>
-        <div class="proof-callout">Sourced directly from cooperative cold storage — Safra 2025 crop, warehouse-stored, classification cards on file.</div>
-        <div class="price-grid">
+        <p class="product-description">100% Arabica green coffee, Rio Minas type, sourced directly from Brazilian producer relationships in Minas Gerais. Crop 25/26. Available in two export grades with full screen composition data.</p>
+        <div class="proof-callout">Sourced directly from cooperative cold storage — Safra 2025/26 crop, warehouse-stored, classification cards on file. Subject to final confirmation.</div>
+
+        <div class="price-grid-2">
           <div class="price-card">
-            <div class="price-card-grade">Arabica NY 2/3<br>Screen 17/18</div>
-            <div class="price-card-amount">$6,400</div>
+            <div class="price-card-grade">NY 2/3 — Screen 17/18<br>Crop 25/26</div>
+            <div class="price-card-amount">$5,970</div>
             <div class="price-card-unit">/ MT FOB</div>
+            <div class="price-card-screen">Screen 18: 50% &nbsp;·&nbsp; Screen 17: 44% &nbsp;·&nbsp; Fundo: 6%</div>
           </div>
           <div class="price-card">
-            <div class="price-card-grade">Arabica NY 3/4<br>Screen 15/16</div>
-            <div class="price-card-amount">$6,200</div>
+            <div class="price-card-grade">NY 3/4 — Screen 15/16<br>Crop 25/26</div>
+            <div class="price-card-amount">$5,750</div>
             <div class="price-card-unit">/ MT FOB</div>
-          </div>
-          <div class="price-card">
-            <div class="price-card-grade">Robusta / Conilon<br>Safra 2025</div>
-            <div class="price-card-amount">$6,000</div>
-            <div class="price-card-unit">/ MT FOB</div>
+            <div class="price-card-screen">Screen 16: 56% &nbsp;·&nbsp; Screen 15: 37% &nbsp;·&nbsp; Fundo: 7%</div>
           </div>
         </div>
-        <p class="price-disclaimer">* Coffee prices track ICE Coffee C futures and fluctuate daily. Prices above are indicative — all quotes confirmed at time of order. CIF pricing available upon request.</p>
+
+        <p class="price-disclaimer">* Indicative FOB Santos as of 24/02/2026. Coffee prices track ICE Coffee C futures and fluctuate daily. All quotes confirmed at time of order. Subject to our final confirmation.</p>
         <p class="benchmark-link">Live benchmark: <a href="https://www.tradingview.com/symbols/ICEUS-KC1!/" target="_blank" rel="noopener">ICE Coffee C Futures ↗</a></p>
-        <h3>Arabica Specifications</h3>
+
+        <h3>Specifications</h3>
         <table class="specs-table">
           <tr><td>Variety</td><td>100% Arabica — Rio Minas</td></tr>
-          <tr><td>Grade NY 2/3</td><td>Screen 17/18 — Premium export grade</td></tr>
-          <tr><td>Grade NY 3/4</td><td>Screen 15/16 — Standard export grade</td></tr>
+          <tr><td>NY 2/3 Screen 17/18</td><td>Screen 18: 50% · Screen 17: 44% · Fundo: 6%</td></tr>
+          <tr><td>NY 3/4 Screen 15/16</td><td>Screen 16: 56% · Screen 15: 37% · Fundo: 7%</td></tr>
           <tr><td>Moisture</td><td>Max 12.5%</td></tr>
           <tr><td>Processing</td><td>Natural or Washed (per request)</td></tr>
           <tr><td>Crop</td><td>2025/26</td></tr>
           <tr><td>Cup Profile</td><td>Smooth body, medium acidity, sweet notes</td></tr>
         </table>
-        <h3>Robusta (Conilon) Specifications</h3>
-        <table class="specs-table">
-          <tr><td>Variety</td><td>Conilon (Coffea canephora)</td></tr>
-          <tr><td>Origin</td><td>Espírito Santo, Brazil</td></tr>
-          <tr><td>Crop</td><td>Safra 2025</td></tr>
-          <tr><td>Moisture</td><td>~12.1%</td></tr>
-          <tr><td>Impurities</td><td>~0.3%</td></tr>
-          <tr><td>Screen Size</td><td>Peneira 15–16</td></tr>
-          <tr><td>Classification</td><td>7/8 Brocado — Conventional</td></tr>
-          <tr><td>Storage</td><td>Cooperative cold storage</td></tr>
-        </table>
-        <h3>Robusta — From the Cooperative</h3>
-        <video controls muted loop playsinline webkit-playsinline preload="metadata" style="width:100%;border-radius:4px;margin-bottom:1.25rem;">
-          <source src="robusta-coffee.mp4" type="video/mp4">
-        </video>
         <h3>Trade Terms</h3>
         <table class="specs-table">
-          <tr><td>Loading Port</td><td>Santos or Vitória, Brazil</td></tr>
-          <tr><td>MOQ</td><td>1 Container</td></tr>
-          <tr><td>Container</td><td>~325 bags × 59kg (~19–26 MT)</td></tr>
+          <tr><td>Loading Port</td><td>Santos, Brazil</td></tr>
+          <tr><td>MOQ</td><td>1 Container (~19–26 MT)</td></tr>
           <tr><td>Packaging</td><td>60kg jute bags (standard) or custom</td></tr>
           <tr><td>Delivery</td><td>FOB or CIF</td></tr>
+          <tr><td>Inspection</td><td>SGS at loading port</td></tr>
           <tr><td>Capacity</td><td>10–15 containers/month</td></tr>
         </table>
         <h3>Transaction Procedure</h3>
@@ -567,18 +546,104 @@
           <li>Buyer makes 70% balance payment</li>
           <li>Buyer takes possession</li>
         </ol>
-        <a href="contact.html?product=coffee" class="btn">Request Pricing</a>
+        <a href="contact.html?product=coffee-arabica" class="btn">Request Pricing</a>
         <a href="/docs/Claduta-TermSheet-Coffee.pdf" class="btn-dl">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a961" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
-          Coffee Term Sheet
+          Arabica Coffee Term Sheet
         </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ======================== PEPPER ======================== -->
-<section class="product-section alt" id="pepper">
+<!-- ======================== ROBUSTA COFFEE ======================== -->
+<section class="product-section alt" id="coffee-robusta">
+  <div class="container">
+    <div class="product-header">
+      <span class="tag">Available</span>
+      <h2>Robusta / Conilon Coffee — Espírito Santo</h2>
+    </div>
+    <div class="product-grid">
+      <div class="product-media">
+        <img src="PHOTO20260220100939.jpg" alt="Conilon Robusta Coffee Bags at Cooperative Storage — Safra 2025" class="img-main">
+        <div class="gallery">
+          <img src="PHOTO20260220100936.jpg" alt="Conilon Coffee Sacks — Safra 2025 Cooperative">
+          <img src="PHOTO20260220100918.jpg" alt="Conilon Classification Card — Safra 2025">
+        </div>
+        <video controls muted loop playsinline webkit-playsinline preload="metadata" class="vid-player">
+          <source src="robusta-coffee.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="product-details">
+        <p class="product-description">Conilon Robusta coffee sourced directly from Espírito Santo cooperatives. Three grades available — from conventional 7/8 through premium Score 82 specialty. FOB Vitória. Direct from cold storage, Safra 2025.</p>
+        <div class="proof-callout">Sourced directly from cooperative cold storage — Safra 2025 crop, classification cards on file, ready for export.</div>
+
+        <div class="price-grid-3">
+          <div class="price-card">
+            <div class="price-card-grade">Conilon 7/8<br>Standard Grade</div>
+            <div class="price-card-amount">$4,501</div>
+            <div class="price-card-unit">/ MT FOB</div>
+          </div>
+          <div class="price-card">
+            <div class="price-card-grade">Conilon Type 7<br>Selected Grade</div>
+            <div class="price-card-amount">$4,681</div>
+            <div class="price-card-unit">/ MT FOB</div>
+          </div>
+          <div class="price-card">
+            <div class="price-card-grade">Conilon Special<br>Score 82 pts</div>
+            <div class="price-card-amount">$5,825</div>
+            <div class="price-card-unit">/ MT FOB</div>
+          </div>
+        </div>
+
+        <p class="price-disclaimer">* Indicative FOB Vitória as of 24/02/2026. Prices track ICE Coffee C futures and fluctuate daily. All quotes confirmed at time of order.</p>
+        <p class="benchmark-link">Live benchmark: <a href="https://www.tradingview.com/symbols/ICEUS-KC1!/" target="_blank" rel="noopener">ICE Coffee C Futures ↗</a></p>
+
+        <h3>Specifications</h3>
+        <table class="specs-table">
+          <tr><td>Variety</td><td>Conilon (Coffea canephora)</td></tr>
+          <tr><td>Origin</td><td>Espírito Santo, Brazil</td></tr>
+          <tr><td>Crop</td><td>Safra 2025</td></tr>
+          <tr><td>Grades Available</td><td>7/8 Brocado · Type 7 · Special Score 82</td></tr>
+          <tr><td>Moisture</td><td>~12.1%</td></tr>
+          <tr><td>Impurities</td><td>~0.3%</td></tr>
+          <tr><td>Screen Size</td><td>Peneira 15–16</td></tr>
+          <tr><td>Classification</td><td>7/8 Brocado — Conventional</td></tr>
+          <tr><td>Storage</td><td>Cooperative cold storage</td></tr>
+        </table>
+        <h3>Trade Terms</h3>
+        <table class="specs-table">
+          <tr><td>Loading Port</td><td>Vitória, Brazil</td></tr>
+          <tr><td>MOQ</td><td>1 Container (~19–26 MT)</td></tr>
+          <tr><td>Packaging</td><td>60kg jute bags (standard) or custom</td></tr>
+          <tr><td>Delivery</td><td>FOB or CIF</td></tr>
+          <tr><td>Inspection</td><td>SGS at loading port</td></tr>
+          <tr><td>Capacity</td><td>10–15 containers/month</td></tr>
+        </table>
+        <h3>Transaction Procedure</h3>
+        <ol class="procedure-list">
+          <li>Buyer sends Letter of Intent (LOI) to <a href="mailto:info@cladutacorp.com">info@cladutacorp.com</a></li>
+          <li>Claduta issues Soft Corporate Offer (SCO)</li>
+          <li>Buyer signs SCO and returns to <a href="mailto:info@cladutacorp.com">info@cladutacorp.com</a></li>
+          <li>Seller issues Sales &amp; Purchase Agreement (SPA) and Invoice</li>
+          <li>Buyer signs SPA and Invoice — 30% payment made to Seller's appointed account</li>
+          <li>Loading commences within 15 days of payment</li>
+          <li>Seller delivers draft loading documents at port</li>
+          <li>Buyer makes 70% balance payment</li>
+          <li>Buyer takes possession</li>
+        </ol>
+        <a href="contact.html?product=coffee-robusta" class="btn">Request Pricing</a>
+        <a href="/docs/Claduta-TermSheet-Coffee-Robusta.pdf" class="btn-dl">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c9a961" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+          Robusta Coffee Term Sheet
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PEPPER -->
+<section class="product-section" id="pepper">
   <div class="container">
     <div class="product-header">
       <span class="tag">Available</span>
@@ -672,11 +737,11 @@
       </div>
       <div class="faq-item">
         <h4>What is your minimum order quantity?</h4>
-        <p>Sugar: 10 containers (12,500 MT). Coffee and Black Pepper: 1 container each. Contact us to discuss partial loads for qualified buyers.</p>
+        <p>Sugar: 5 containers (6,250 MT). Coffee and Black Pepper: 1 container each. Contact us to discuss partial loads for qualified buyers.</p>
       </div>
       <div class="faq-item">
         <h4>What ports do you ship from?</h4>
-        <p>Sugar ships from Port Santos, Brazil. Coffee ships from Santos or Vitória depending on origin. Black pepper ships from Vitória, Espírito Santo.</p>
+        <p>Sugar ships from Port Santos, Brazil. Arabica coffee ships from Santos. Robusta/Conilon ships from Vitória. Black pepper ships from Vitória, Espírito Santo.</p>
       </div>
       <div class="faq-item">
         <h4>What payment terms do you accept?</h4>
@@ -684,7 +749,7 @@
       </div>
       <div class="faq-item">
         <h4>How is coffee pricing determined?</h4>
-        <p>Coffee is priced against ICE Coffee C futures (KC1!). Arabica NY2/3 is approximately $6,400/MT FOB. Robusta/Conilon is approximately $6,000/MT FOB. All prices are indicative and confirmed at time of order.</p>
+        <p>Coffee is priced against ICE Coffee C futures (KC1!). Arabica NY2/3 Screen 17/18 is $5,970/MT FOB. Arabica NY3/4 Screen 15/16 is $5,750/MT FOB. Robusta/Conilon starts at $4,501/MT FOB. All prices are indicative and confirmed at time of order.</p>
       </div>
       <div class="faq-item">
         <h4>Do you offer Halal certified products?</h4>
@@ -717,7 +782,12 @@
       </a>
       <a href="/docs/Claduta-TermSheet-Coffee.pdf" class="ts-card">
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#c9a961" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
-        <span class="ts-name">Green Coffee (Arabica &amp; Robusta)</span>
+        <span class="ts-name">Arabica Coffee — Rio Minas</span>
+        <span class="ts-dl">DOWNLOAD PDF</span>
+      </a>
+      <a href="/docs/Claduta-TermSheet-Coffee-Robusta.pdf" class="ts-card">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#c9a961" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 18 15 15"/></svg>
+        <span class="ts-name">Robusta / Conilon Coffee</span>
         <span class="ts-dl">DOWNLOAD PDF</span>
       </a>
       <a href="/docs/Claduta-TermSheet-Pepper.pdf" class="ts-card">
@@ -755,7 +825,7 @@
   </div>
 </footer>
 
-<!-- ── LIVE PRICING JAVASCRIPT ─────────────────────────────────────────── -->
+<!-- LIVE PRICING JAVASCRIPT -->
 <script>
 (function() {
   var priceData = null;
@@ -775,15 +845,15 @@
       label: 'ICUMSA 45 Sugar',
       grade: 'White Refined',
       icon: '🍬',
-      moq: 'MOQ: 12,500 MT (vessel)'
+      moq: 'MOQ: 6,250 MT (5 containers)'
     },
     {
       key: 'coffee',
       fobKey: 'coffee_arabica',
       label: 'Arabica Coffee',
-      grade: 'Green Bean, Brazil',
+      grade: 'NY 2/3 Screen 17/18',
       icon: '☕',
-      moq: 'MOQ: 19 MT (1×20ft container)'
+      moq: 'MOQ: 1 container (~19 MT)'
     }
   ];
 
