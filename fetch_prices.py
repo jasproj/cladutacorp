@@ -33,8 +33,8 @@ HEADERS = {
 SUPPLIER_FOB = {
     "pepper_brazil_black_asta570": 6175,  # USD/MT FOB Vitoria
     "sugar_icumsa45":               560,  # USD/MT FOB Santos
-    "coffee_arabica":              5970,  # USD/MT FOB Santos — NY 2/3 Screen 17/18
-    "coffee_robusta":              4501,  # USD/MT FOB Vitoria — Conilon 7/8 Standard
+    "coffee_arabica":              6292,  # USD/MT FOB Santos — NY 2/3 Screen 17/18 (+10% on $5,720)
+    "coffee_robusta":              4715,  # USD/MT FOB Vitoria — Conilon 7/8 (+10% on $4,286.47)
 }
 
 # ── FREIGHT ESTIMATES (USD/MT, 20ft container) ───────────────────────────────
