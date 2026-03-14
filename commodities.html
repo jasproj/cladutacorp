@@ -66,7 +66,7 @@
     .hero-badges { display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; }
     .hero-badge { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); color: var(--white); padding: 0.35rem 0.9rem; border-radius: 2px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em; }
 
-    .ticker-strip { background: #1a1a1a; border-bottom: 1px solid rgba(201,169,97,0.3); overflow: hidden; }
+    /* ticker styles inline */
 
     .cred-strip { background: var(--green-dark); padding: 2.5rem 5%; }
     .cred-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; text-align: center; }
@@ -272,13 +272,44 @@
 
 <!-- TICKER -->
 <div class="ticker-strip">
-  <div class="tradingview-widget-container">
-    <div class="tradingview-widget-container__widget"></div>
-    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-    {"symbols":[{"proName":"ICEEUR:SF1!","title":"White Sugar No.5"},{"proName":"ICEUS:SB1!","title":"Raw Sugar No.11"},{"proName":"ICEUS:KC1!","title":"Coffee C"},{"proName":"CBOT:ZS1!","title":"Soybeans"},{"proName":"CBOT:ZC1!","title":"Corn"},{"proName":"AMEX:DBA","title":"Agriculture"}],"showSymbolLogo":false,"isTransparent":true,"displayMode":"regular","colorTheme":"dark","locale":"en"}
-    </script>
+  <div class="ticker-inner" id="ticker-inner">
+    <span class="ticker-loading">Loading prices...</span>
   </div>
 </div>
+<style>
+  .ticker-strip { background: #1a1a1a; border-bottom: 1px solid rgba(201,169,97,0.3); overflow: hidden; height: 38px; display: flex; align-items: center; }
+  .ticker-inner { display: flex; align-items: center; white-space: nowrap; animation: ticker-scroll 40s linear infinite; }
+  .ticker-inner:hover { animation-play-state: paused; }
+  .ticker-item { display: inline-flex; align-items: center; gap: 8px; padding: 0 32px; font-family: 'Source Sans Pro', sans-serif; font-size: 0.78rem; border-right: 1px solid rgba(255,255,255,0.1); }
+  .ticker-label { color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.06em; }
+  .ticker-price { color: #c9a961; font-weight: 600; }
+  .ticker-unit { color: rgba(255,255,255,0.35); font-size: 0.7rem; }
+  .ticker-loading { color: rgba(255,255,255,0.3); font-size: 0.78rem; padding: 0 20px; font-family: 'Source Sans Pro', sans-serif; }
+  @keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+</style>
+<script>
+(function() {
+  fetch('/prices.json?t=' + Date.now())
+    .then(r => r.json())
+    .then(data => {
+      const items = [
+        { label: 'ICUMSA 45 Sugar', fob: data.fob.sugar_icumsa45?.price, cif: data.cif.sugar?.dubai?.cif },
+        { label: 'Arabica NY 2/3', fob: data.fob.coffee_arabica?.price, cif: data.cif.coffee_arabica?.dubai?.cif },
+        { label: 'Conilon 7/8', fob: data.fob.coffee_robusta?.price, cif: data.cif.coffee_robusta?.dubai?.cif },
+        { label: 'Black Pepper ASTA 570', fob: data.fob.pepper_brazil_black_asta570?.price, cif: data.cif.pepper?.dubai?.cif },
+      ];
+      const fmt = n => n ? '$' + n.toLocaleString() : '—';
+      const html = items.map(i =>
+        `<span class="ticker-item"><span class="ticker-label">${i.label}</span><span class="ticker-price">${fmt(i.fob)}</span><span class="ticker-unit">FOB</span><span style="color:rgba(255,255,255,0.2)">·</span><span class="ticker-price">${fmt(i.cif)}</span><span class="ticker-unit">CIF Dubai</span></span>`
+      ).join('');
+      const el = document.getElementById('ticker-inner');
+      el.innerHTML = html + html;
+    })
+    .catch(() => {
+      document.getElementById('ticker-inner').innerHTML = '<span class="ticker-loading">FOB Vitória — Sugar · Arabica Coffee · Conilon Robusta · Black Pepper</span>';
+    });
+})();
+</script>
 
 <!-- CREDIBILITY STRIP -->
 <div class="cred-strip">
