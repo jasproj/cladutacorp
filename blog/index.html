@@ -34,7 +34,7 @@
     .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
     .mobile-menu-btn span { display: block; width: 25px; height: 2px; background: var(--charcoal); margin: 5px 0; }
 
-    .page-header { background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-medium) 100%); padding: 140px 5% 80px; color: var(--white); text-align: center; }
+    .page-header { background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-medium) 100%); padding: 80px 5% 80px; color: var(--white); text-align: center; }
     .page-header h1 { font-size: 3rem; margin-bottom: 1rem; }
     .page-header p { font-size: 1.15rem; opacity: 0.9; max-width: 600px; margin: 0 auto; font-weight: 300; }
 
@@ -98,6 +98,48 @@
       <li><a href="../contact.html">Contact</a></li>
     </ul>
   </nav>
+  <!-- MARKET TICKER -->
+  <style>
+    #market-ticker{background:#1a1a1a;padding:10px 5%;font-family:'Source Sans Pro',sans-serif;font-size:0.82rem;display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-top:72px;}
+    #market-ticker .tk-label{color:rgba(255,255,255,0.5);font-weight:600;letter-spacing:0.08em;text-transform:uppercase;font-size:0.72rem;align-self:center;width:100%;text-align:center;}
+    #market-ticker .tk-item{color:#fff;white-space:nowrap;}
+    #market-ticker .tk-name{color:#c9a961;font-weight:600;}
+    #market-ticker .tk-updated{color:rgba(255,255,255,0.3);font-size:0.68rem;align-self:center;}
+    @media(min-width:769px){
+      #market-ticker .tk-label{width:auto;text-align:left;}
+    }
+    @media(max-width:768px){
+      #market-ticker{margin-top:60px;padding:8px 4%;gap:0;justify-content:space-between;flex-wrap:wrap;}
+      #market-ticker .tk-label{display:none;}
+      #market-ticker .tk-item{flex:0 0 48%;text-align:center;padding:5px 0;font-size:0.76rem;}
+      #market-ticker .tk-updated{width:100%;text-align:center;padding-top:4px;}
+    }
+    @media(max-width:380px){
+      #market-ticker .tk-item{flex:0 0 100%;font-size:0.74rem;}
+    }
+  </style>
+  <div id="market-ticker">
+    <span class="tk-label">Market Benchmarks</span>
+    <span class="tk-item"><span class="tk-name">Coffee C</span> <span id="tk-coffee-price">&mdash;</span> <span id="tk-coffee-chg" style="font-size:0.75rem;">&mdash;</span></span>
+    <span class="tk-item"><span class="tk-name">Sugar No.11</span> <span id="tk-sugar-price">&mdash;</span> <span id="tk-sugar-chg" style="font-size:0.75rem;">&mdash;</span></span>
+    <span class="tk-item"><span class="tk-name">Henry Hub</span> <span id="tk-natgas-price">&mdash;</span> <span id="tk-natgas-chg" style="font-size:0.75rem;">&mdash;</span></span>
+    <span class="tk-item"><span class="tk-name">USD/BRL</span> <span id="tk-brlusd-price">&mdash;</span> <span id="tk-brlusd-chg" style="font-size:0.75rem;">&mdash;</span></span>
+    <span class="tk-updated" id="tk-updated">loading...</span>
+  </div>
+  <script>
+  (function(){
+    fetch("/data/prices.json").then(function(r){return r.json();}).then(function(d){
+      ["coffee","sugar","natgas","brlusd"].forEach(function(k){
+        if(!d[k]||d[k].error)return;
+        var p=d[k],el=document.getElementById("tk-"+k+"-price"),ch=document.getElementById("tk-"+k+"-chg");
+        if(el)el.textContent=p.price+(p.unit?" "+p.unit:"");
+        if(ch){var up=p.change>=0;ch.textContent=(up?"▲":"▼")+" "+Math.abs(p.pct)+"%";ch.style.color=up?"#4caf50":"#ef5350";}
+      });
+      if(d._meta){var u=document.getElementById("tk-updated");if(u)u.textContent="Updated "+new Date(d._meta.updated).toLocaleDateString("en-US",{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"});}
+    }).catch(function(){var u=document.getElementById("tk-updated");if(u)u.textContent="data unavailable";});
+  })();
+  </script>
+
 
   <div class="page-header">
     <h1>Insights</h1>
