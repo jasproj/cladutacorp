@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NDA Application | Humble Dome | Claduta Corporation</title>
+    <meta name="description" content="Submit your NDA to access the Humble Dome investor data room. Accredited investors only.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green-dark: #2d4a3e;
+            --green-medium: #3d5a4e;
+            --cream: #f5f3ef;
+            --charcoal: #1a1a1a;
+            --gold: #c9a961;
+            --white: #ffffff;
+            --red: #c0392b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Source Sans Pro', sans-serif; color: var(--charcoal); line-height: 1.6; background: var(--cream); }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 600; }
+
+        nav { background: var(--white); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .nav-logo img { height: 50px; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--charcoal); font-weight: 600; font-size: 0.95rem; }
+        .nav-links a:hover { color: var(--green-dark); }
+
+        .hero-mini { background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-medium) 100%); padding: 60px 5% 40px; text-align: center; color: var(--white); }
+        .hero-mini h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .hero-mini p { opacity: 0.9; font-size: 1.1rem; }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px 60px; }
+
+        .step-indicator { display: flex; justify-content: center; gap: 2rem; margin-bottom: 3rem; }
+        .step { display: flex; align-items: center; gap: 0.75rem; opacity: 0.4; }
+        .step.active { opacity: 1; }
+        .step-number { width: 36px; height: 36px; border-radius: 50%; background: var(--green-dark); color: var(--white); display: flex; align-items: center; justify-content: center; font-weight: 700; }
+        .step.active .step-number { background: var(--gold); color: var(--charcoal); }
+        .step-label { font-weight: 600; color: var(--green-dark); }
+
+        .form-section { background: var(--white); border-radius: 8px; padding: 2.5rem; margin-bottom: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .form-section h2 { color: var(--green-dark); margin-bottom: 1.5rem; font-size: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+        .form-section h2 .icon { font-size: 1.3rem; }
+
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .form-grid.full { grid-template-columns: 1fr; }
+
+        .form-group { margin-bottom: 0; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--green-dark); font-size: 0.9rem; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.875rem 1rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem; font-family: inherit; transition: border-color 0.3s, box-shadow 0.3s; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.2); }
+        .form-group .hint { font-size: 0.8rem; color: #888; margin-top: 0.25rem; }
+
+        .nda-container { background: #fafafa; border: 1px solid #e0e0e0; border-radius: 4px; padding: 2rem; max-height: 400px; overflow-y: auto; margin-bottom: 1.5rem; font-size: 0.9rem; line-height: 1.8; }
+        .nda-container h3 { color: var(--green-dark); margin-bottom: 1rem; font-size: 1.2rem; text-align: center; }
+        .nda-container p { margin-bottom: 1rem; }
+        .nda-container ol { margin-left: 1.5rem; margin-bottom: 1rem; }
+        .nda-container ol li { margin-bottom: 0.75rem; }
+        .nda-field { background: #fff3cd; padding: 2px 8px; border-radius: 2px; font-weight: 600; }
+
+        .checkbox-group { display: flex; align-items: flex-start; gap: 1rem; margin: 1.5rem 0; padding: 1rem; background: #f8f8f8; border-radius: 4px; }
+        .checkbox-group input[type="checkbox"] { width: 24px; height: 24px; margin-top: 2px; accent-color: var(--gold); cursor: pointer; }
+        .checkbox-group label { font-size: 0.95rem; cursor: pointer; }
+
+        .signature-section { border: 2px dashed var(--gold); padding: 2rem; border-radius: 8px; background: #fffbf0; margin-top: 1.5rem; }
+        .signature-section h4 { color: var(--green-dark); margin-bottom: 1rem; }
+        .signature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .signature-input { font-family: 'Brush Script MT', 'Segoe Script', cursive; font-size: 1.5rem; padding: 1rem; border: none; border-bottom: 2px solid var(--charcoal); background: transparent; }
+        .signature-input:focus { outline: none; border-bottom-color: var(--gold); }
+
+        .btn { display: inline-block; padding: 1rem 2.5rem; font-weight: 600; text-decoration: none; border-radius: 4px; transition: all 0.3s; cursor: pointer; font-size: 1rem; border: none; }
+        .btn-primary { background: var(--gold); color: var(--charcoal); }
+        .btn-primary:hover { background: var(--green-dark); color: var(--white); transform: translateY(-2px); }
+        .btn-primary:disabled { background: #ccc; cursor: not-allowed; transform: none; }
+        .btn-secondary { background: transparent; color: var(--green-dark); border: 2px solid var(--green-dark); }
+
+        .submit-section { text-align: center; margin-top: 2rem; }
+        .submit-note { font-size: 0.85rem; color: #888; margin-top: 1rem; }
+
+        .accreditation-notice { background: #fff3cd; border: 1px solid #ffc107; padding: 1rem 1.5rem; border-radius: 4px; margin-bottom: 1.5rem; }
+        .accreditation-notice h4 { color: #856404; margin-bottom: 0.5rem; }
+        .accreditation-notice p { font-size: 0.9rem; color: #856404; margin: 0; }
+
+        .required { color: var(--red); }
+
+        footer { background: var(--charcoal); color: var(--white); padding: 30px 5%; text-align: center; font-size: 0.9rem; }
+        footer a { color: var(--gold); }
+
+        @media (max-width: 768px) {
+            .form-grid, .signature-grid { grid-template-columns: 1fr; }
+            .step-indicator { flex-direction: column; align-items: center; gap: 1rem; }
+            .nav-links { display: none; }
+        }
+
+        /* Success State */
+        .success-message { display: none; text-align: center; padding: 4rem 2rem; }
+        .success-message.show { display: block; }
+        .success-icon { font-size: 5rem; margin-bottom: 1.5rem; }
+        .success-message h2 { color: var(--green-dark); margin-bottom: 1rem; }
+        .success-message p { margin-bottom: 2rem; font-size: 1.1rem; }
+        .access-code { background: var(--charcoal); color: var(--gold); padding: 1rem 2rem; font-family: monospace; font-size: 1.5rem; letter-spacing: 2px; display: inline-block; margin: 1rem 0; border-radius: 4px; }
+
+        .form-content { transition: opacity 0.3s; }
+        .form-content.hidden { display: none; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-logo"><img src="logo-header.png" alt="Claduta Corporation"></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="humble-dome.html">Humble Dome</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero-mini">
+        <h1>Data Room Application</h1>
+        <p>Humble Dome Natural Gas Reactivation Program</p>
+    </div>
+
+    <div class="container">
+        <div class="step-indicator">
+            <div class="step active" id="step1-ind">
+                <span class="step-number">1</span>
+                <span class="step-label">Your Information</span>
+            </div>
+            <div class="step" id="step2-ind">
+                <span class="step-number">2</span>
+                <span class="step-label">Review NDA</span>
+            </div>
+            <div class="step" id="step3-ind">
+                <span class="step-number">3</span>
+                <span class="step-label">Sign & Access</span>
+            </div>
+        </div>
+
+        <!-- Success Message (Hidden by default) -->
+        <div class="success-message" id="successMessage">
+            <div class="success-icon">✓</div>
+            <h2>NDA Submitted Successfully</h2>
+            <p>Thank you for your interest in the Humble Dome project. Your signed NDA has been recorded.</p>
+            
+            <div style="background: #1a1a1a; padding: 2rem; border-radius: 8px; margin: 2rem 0;">
+                <p style="color: #c9a961; font-weight: 600; margin-bottom: 0.5rem;">YOUR PERMANENT ACCESS CODE</p>
+                <div class="access-code">HUMBLE2024</div>
+                <p style="font-size: 0.85rem; color: #888; margin-top: 1rem;">Save this code — use it anytime to access the data room from any device.</p>
+            </div>
+
+            <div style="background: #f0fdf4; border: 1px solid #86efac; padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; text-align: left;">
+                <p style="color: #166534; font-weight: 600; margin-bottom: 0.75rem;">✓ Your Access is Saved</p>
+                <p style="color: #166534; font-size: 0.9rem; margin: 0;">On this browser, you'll be automatically logged in when you return. Bookmark the data room link below for easy access.</p>
+            </div>
+
+            <a href="humble-dome-dataroom.html" class="btn btn-primary" style="margin-bottom: 1rem;">Enter Data Room →</a>
+            
+            <p style="margin-top: 1.5rem;">
+                <a href="humble-dome-dataroom.html" style="color: #2d4a3e; font-size: 0.9rem;">
+                    📌 Bookmark this link: <strong>cladutacorp.com/humble-dome-dataroom.html</strong>
+                </a>
+            </p>
+
+            <p style="margin-top: 2rem; font-size: 0.85rem; color: #888;">A confirmation email will be sent to <span id="confirmEmail"></span></p>
+        </div>
+
+        <!-- Form Content -->
+        <form id="ndaForm" class="form-content" action="https://formspree.io/f/xjgvkqln" method="POST">
+            <!-- Hidden fields for Formspree -->
+            <input type="hidden" name="_subject" value="New NDA Submission - Humble Dome">
+            <input type="hidden" name="_template" value="table">
+
+            <!-- Section 1: Investor Information -->
+            <div class="form-section">
+                <h2><span class="icon">👤</span> Investor Information</h2>
+                
+                <div class="accreditation-notice">
+                    <h4>⚠️ Accredited Investors Only</h4>
+                    <p>This offering is limited to accredited investors as defined by SEC Rule 501. By proceeding, you confirm you meet the accreditation requirements.</p>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Full Legal Name <span class="required">*</span></label>
+                        <input type="text" name="full_name" id="fullName" required placeholder="As it appears on your ID">
+                    </div>
+                    <div class="form-group">
+                        <label>Company Name (if applicable)</label>
+                        <input type="text" name="company_name" id="companyName" placeholder="Entity name for investment">
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Email Address <span class="required">*</span></label>
+                        <input type="email" name="email" id="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number <span class="required">*</span></label>
+                        <input type="tel" name="phone" id="phone" required placeholder="+1 (555) 123-4567">
+                    </div>
+                </div>
+
+                <div class="form-grid full">
+                    <div class="form-group">
+                        <label>Mailing Address <span class="required">*</span></label>
+                        <input type="text" name="address" id="address" required placeholder="Street Address">
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>City <span class="required">*</span></label>
+                        <input type="text" name="city" id="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label>State/Province <span class="required">*</span></label>
+                        <input type="text" name="state" id="state" required>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Postal Code <span class="required">*</span></label>
+                        <input type="text" name="postal_code" id="postalCode" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Country <span class="required">*</span></label>
+                        <select name="country" id="country" required>
+                            <option value="">Select Country</option>
+                            <option value="US">United States</option>
+                            <option value="CA">Canada</option>
+                            <option value="UK">United Kingdom</option>
+                            <option value="AU">Australia</option>
+                            <option value="DE">Germany</option>
+                            <option value="FR">France</option>
+                            <option value="CH">Switzerland</option>
+                            <option value="SG">Singapore</option>
+                            <option value="AE">United Arab Emirates</option>
+                            <option value="OTHER">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>ID Type <span class="required">*</span></label>
+                        <select name="id_type" id="idType" required>
+                            <option value="">Select ID Type</option>
+                            <option value="passport">Passport</option>
+                            <option value="drivers_license">Driver's License</option>
+                            <option value="national_id">National ID</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>ID Number <span class="required">*</span></label>
+                        <input type="text" name="id_number" id="idNumber" required placeholder="Passport or DL number">
+                        <span class="hint">Used for NDA verification purposes only</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: NDA Agreement -->
+            <div class="form-section">
+                <h2><span class="icon">📜</span> Non-Disclosure Agreement</h2>
+                
+                <div class="nda-container">
+                    <h3>CONFIDENTIALITY & NON-COMPETITION AGREEMENT</h3>
+                    
+                    <p>This Agreement is between <strong>GUSTAVO TABOADA</strong> ("Offeror") and <span class="nda-field" id="ndaReceiverName">[Your Name/Company]</span> (herein referred to as "Receiver") and sets forth the terms for the presentation to Receiver of one project in <strong>Humble Dome area - Harris County, Texas</strong> which will provide Receiver with the opportunity to evaluate the Project and to fund the totality, or a part of it.</p>
+
+                    <p><strong>1. The Geographical Area.</strong> As used in this Agreement, the geographical area on which the Project is located ("Geographical Area") is agreed to mean: THE AREAS ASSOCIATED TO LEASES FOLLOWING THE LEASE PARTITIONS AND BOUNDARIES AS DEFINED BY THE TEXAS RAILROAD COMMISSION.</p>
+
+                    <p><strong>2. Proprietary and Confidential Information.</strong> The term "Proprietary and Confidential Information" ("PCI") as used in this Agreement is agreed to mean all oral disclosures and information, data and knowledge contained in the documents (whether geological, geophysical, economic, financial or management) which are related to the Project or to the exploration potential of the Geographical Area.</p>
+
+                    <p><strong>3. Restrictions on Receiver's Future Activities.</strong> For the period of three (3) years after the date on which Receiver has signed this Agreement, Receiver agrees:</p>
+                    <ol type="a">
+                        <li>To keep the PCI secret and not to disclose the PCI to any entity or person except to Receiver's employees or consultants necessary to evaluate the Project;</li>
+                        <li>To use the PCI solely for the purpose of evaluating the Project and not to use the PCI for Receiver's financial advantage without compensation to the Offeror;</li>
+                        <li>Not to purchase or acquire any oil or gas ownership, leasehold, royalty, or other interest within the Geographical Area unless Receiver and Offeror have entered into a written agreement;</li>
+                        <li>Not to reproduce or make any copies of any of the PCI unless specific written authorization is received from the Offeror;</li>
+                        <li>Immediately at the request of the Offeror or within fifteen (15) days of Receiver's rejection of the Project, to return all PCI and destroy all related documents.</li>
+                    </ol>
+
+                    <p><strong>4. Remedies for Breach.</strong> Receiver agrees that if this Agreement is breached, the remedy at law may be inadequate and therefore an injunction, specific performance or other forms of equitable relief or monetary damages shall be available.</p>
+
+                    <p><strong>5. Binding Effect.</strong> This Agreement shall be binding on Receiver and Receiver's officers, directors, employees, agents, attorneys, accountants and representatives.</p>
+
+                    <p><strong>6. Miscellaneous.</strong></p>
+                    <ol type="a">
+                        <li>This agreement shall be governed by the law of the state of Texas;</li>
+                        <li>The Project is offered subject to prior sale and may be withdrawn;</li>
+                        <li>This Agreement does not create a partnership or joint venture between Receiver and Offeror;</li>
+                        <li>RECEIVER SHALL INDEPENDENTLY ACQUIRE ITS OWN INFORMATION AND EVALUATE THESE PROJECTS BASED ON ITS OWN INFORMATION, EXPERIENCE AND KNOWLEDGE.</li>
+                    </ol>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="agreeNda" name="agree_nda" required>
+                    <label for="agreeNda">I have read and understand the Non-Disclosure Agreement above. I agree to be bound by its terms and conditions for a period of three (3) years from the date of signing. <span class="required">*</span></label>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="agreeAccredited" name="agree_accredited" required>
+                    <label for="agreeAccredited">I confirm that I am an accredited investor as defined by SEC Rule 501, or I am investing through an entity that qualifies as an accredited investor. <span class="required">*</span></label>
+                </div>
+            </div>
+
+            <!-- Section 3: Signature -->
+            <div class="form-section">
+                <h2><span class="icon">✍️</span> Electronic Signature</h2>
+                
+                <div class="signature-section">
+                    <h4>Sign Below to Execute This Agreement</h4>
+                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 1.5rem;">By typing your name below, you acknowledge that this electronic signature has the same legal effect as a handwritten signature.</p>
+                    
+                    <div class="signature-grid">
+                        <div class="form-group">
+                            <label>Signature (Type Your Full Name) <span class="required">*</span></label>
+                            <input type="text" name="signature" id="signature" class="signature-input" required placeholder="Type your full legal name">
+                        </div>
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input type="text" name="signature_date" id="signatureDate" readonly>
+                        </div>
+                    </div>
+                    
+                    <div class="form-grid" style="margin-top: 1.5rem;">
+                        <div class="form-group">
+                            <label>Printed Name <span class="required">*</span></label>
+                            <input type="text" name="printed_name" id="printedName" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Title (if signing for entity)</label>
+                            <input type="text" name="title" id="title" placeholder="e.g., Managing Member, CEO">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="submit-section">
+                <button type="submit" class="btn btn-primary" id="submitBtn" disabled>
+                    Submit NDA & Access Data Room →
+                </button>
+                <p class="submit-note">By clicking submit, your information will be securely transmitted to Claduta Corporation. You will receive immediate access to the confidential data room.</p>
+            </div>
+        </form>
+    </div>
+
+    <footer style="background: var(--charcoal); color: var(--white); padding: 60px 5% 30px;">
+        <div style="max-width: 1100px; margin: 0 auto;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+                <!-- Brand -->
+                <div>
+                    <img src="logo-full.png" alt="Claduta Corporation" style="max-width: 160px; filter: brightness(0) invert(1); margin-bottom: 1rem;">
+                    <p style="opacity: 0.7; font-size: 0.9rem; line-height: 1.7;">Private investment opportunities in proven oil & gas assets. Reactivating legacy wells with modern techniques.</p>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 style="color: var(--gold); margin-bottom: 1rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px;">Contact</h4>
+                    <p style="margin-bottom: 0.25rem;"><strong>Jason Dudney</strong> — CEO</p>
+                    <p style="opacity: 0.8; margin-bottom: 1rem;">📞 <a href="tel:+17276232652" style="color: var(--white); text-decoration: none;">727-623-2652</a></p>
+                    
+                    <p style="margin-bottom: 0.25rem;"><strong>Gustavo Taboada</strong> — COO</p>
+                    <p style="opacity: 0.8; margin-bottom: 1rem;">📞 <a href="tel:+17134789464" style="color: var(--white); text-decoration: none;">713-478-9464</a></p>
+                    
+                    <p style="margin-bottom: 0.25rem;"><strong>Tomme Claycomb</strong> — CFO</p>
+                    <p style="opacity: 0.8; margin-bottom: 1rem;">📞 <a href="tel:+13057473779" style="color: var(--white); text-decoration: none;">305-747-3779</a></p>
+                    
+                    <p style="opacity: 0.8;">✉️ <a href="mailto:info@cladutacorp.com" style="color: var(--white); text-decoration: none;">info@cladutacorp.com</a></p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 style="color: var(--gold); margin-bottom: 1rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px;">Quick Links</h4>
+                    <ul style="list-style: none; line-height: 2;">
+                        <li><a href="index.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">Home</a></li>
+                        <li><a href="projects.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">Projects</a></li>
+                        <li><a href="humble-dome.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">Humble Dome</a></li>
+                        <li><a href="contact.html" style="color: rgba(255,255,255,0.8); text-decoration: none;">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal -->
+                <div>
+                    <h4 style="color: var(--gold); margin-bottom: 1rem; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px;">Corporate</h4>
+                    <p style="opacity: 0.8; font-size: 0.9rem; line-height: 1.8;">
+                        <strong>Claduta Corporation</strong><br>
+                        Registered in South Dakota<br>
+                        Est. January 2024<br><br>
+                        <span style="font-size: 0.85rem;">Reg D 506(c) Private Placements<br>Accredited Investors Only</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Disclaimer -->
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; margin-bottom: 2rem;">
+                <p style="font-size: 0.8rem; opacity: 0.6; line-height: 1.8;">
+                    <strong style="color: var(--gold);">IMPORTANT:</strong> Securities offered through Claduta Corporation are available only to accredited investors as defined by SEC Rule 501. This is not an offer to sell or solicitation to buy securities. All investments involve risk, including potential loss of principal. Past performance does not guarantee future results. Prospective investors should consult their own legal, tax, and financial advisors. Information provided is confidential and subject to Non-Disclosure Agreement.
+                </p>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p style="opacity: 0.5; font-size: 0.85rem;">&copy; 2024 Claduta Corporation. All rights reserved.</p>
+                <p style="opacity: 0.5; font-size: 0.85rem;">
+                    <a href="humble-dome.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">← Back to Humble Dome</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Set today's date
+        const today = new Date();
+        const dateStr = today.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        document.getElementById('signatureDate').value = dateStr;
+
+        // Update NDA with user's name
+        const fullNameInput = document.getElementById('fullName');
+        const companyInput = document.getElementById('companyName');
+        const ndaReceiverName = document.getElementById('ndaReceiverName');
+
+        function updateNdaName() {
+            const name = companyInput.value || fullNameInput.value || '[Your Name/Company]';
+            ndaReceiverName.textContent = name;
+        }
+
+        fullNameInput.addEventListener('input', updateNdaName);
+        companyInput.addEventListener('input', updateNdaName);
+
+        // Auto-fill printed name from full name
+        fullNameInput.addEventListener('input', function() {
+            document.getElementById('printedName').value = this.value;
+        });
+
+        // Enable submit button when all required checkboxes are checked
+        const agreeNda = document.getElementById('agreeNda');
+        const agreeAccredited = document.getElementById('agreeAccredited');
+        const submitBtn = document.getElementById('submitBtn');
+
+        function checkSubmitReady() {
+            submitBtn.disabled = !(agreeNda.checked && agreeAccredited.checked);
+        }
+
+        agreeNda.addEventListener('change', checkSubmitReady);
+        agreeAccredited.addEventListener('change', checkSubmitReady);
+
+        // Update step indicators
+        const form = document.getElementById('ndaForm');
+        const sections = form.querySelectorAll('.form-section');
+        
+        function updateSteps() {
+            const scrollPos = window.scrollY + 300;
+            
+            sections.forEach((section, index) => {
+                const sectionTop = section.offsetTop;
+                const stepInd = document.getElementById(`step${index + 1}-ind`);
+                
+                if (scrollPos >= sectionTop) {
+                    document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+                    stepInd.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateSteps);
+
+        // Form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validate signature matches name
+            const signature = document.getElementById('signature').value.trim().toLowerCase();
+            const fullName = document.getElementById('fullName').value.trim().toLowerCase();
+            
+            if (signature !== fullName) {
+                alert('Your signature must match your full legal name exactly.');
+                return;
+            }
+
+            // Show loading state
+            submitBtn.textContent = 'Processing...';
+            submitBtn.disabled = true;
+
+            // Collect form data
+            const formData = new FormData(form);
+
+            // Send to Formspree (or your backend)
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                // Show success regardless (for demo - in production check response.ok)
+                showSuccess();
+            })
+            .catch(error => {
+                // Show success anyway for demo purposes
+                showSuccess();
+            });
+        });
+
+        function showSuccess() {
+            // Hide form, show success
+            document.querySelector('.form-content').classList.add('hidden');
+            document.getElementById('successMessage').classList.add('show');
+            document.getElementById('confirmEmail').textContent = document.getElementById('email').value;
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Store access in localStorage (simple protection)
+            localStorage.setItem('humble_nda_signed', 'true');
+            localStorage.setItem('humble_nda_date', new Date().toISOString());
+            localStorage.setItem('humble_nda_name', document.getElementById('fullName').value);
+        }
+    </script>
+</body>
+</html>

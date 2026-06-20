@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Humble Dome | Natural Gas Reactivation Program | Claduta Corporation</title>
+    <meta name="description" content="Private investment opportunity in proven natural gas assets. Harris County Texas. Accredited investors only.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green-dark: #2d4a3e;
+            --green-medium: #3d5a4e;
+            --green-light: #4a6b5d;
+            --cream: #f5f3ef;
+            --cream-dark: #e8e4dc;
+            --charcoal: #1a1a1a;
+            --gold: #c9a961;
+            --gold-light: #d4b978;
+            --white: #ffffff;
+            --orange: #e67e22;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Source Sans Pro', sans-serif; color: var(--charcoal); line-height: 1.6; overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 600; }
+
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+        @keyframes glow { 0%, 100% { box-shadow: 0 0 20px rgba(201, 169, 97, 0.3); } 50% { box-shadow: 0 0 40px rgba(201, 169, 97, 0.6); } }
+
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        nav { position: fixed; top: 0; width: 100%; background: var(--white); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); z-index: 1000; }
+        .nav-logo img { height: 50px; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--charcoal); font-weight: 600; font-size: 0.95rem; transition: color 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--green-dark); }
+
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-medium) 100%); padding: 120px 5% 80px; text-align: center; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px); background-size: 50px 50px; animation: shimmer 20s linear infinite; }
+        .hero-content { position: relative; z-index: 2; max-width: 1000px; animation: fadeInUp 1s ease; }
+        .hero-badge { display: inline-block; background: rgba(201, 169, 97, 0.2); border: 1px solid var(--gold); color: var(--gold); padding: 0.5rem 1.5rem; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 2rem; animation: pulse 2s ease-in-out infinite; }
+        .hero h1 { color: var(--white); font-size: 4rem; margin-bottom: 1rem; letter-spacing: 0.02em; }
+        .hero-subtitle { color: rgba(255,255,255,0.9); font-size: 1.5rem; font-weight: 300; margin-bottom: 2rem; }
+        .hero-stats { display: flex; justify-content: center; gap: 3rem; margin: 3rem 0; flex-wrap: wrap; }
+        .hero-stat { text-align: center; animation: fadeInUp 1s ease; }
+        .hero-stat:nth-child(1) { animation-delay: 0.1s; }
+        .hero-stat:nth-child(2) { animation-delay: 0.2s; }
+        .hero-stat:nth-child(3) { animation-delay: 0.3s; }
+        .hero-stat:nth-child(4) { animation-delay: 0.4s; }
+        .hero-stat-value { display: block; font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 700; color: var(--gold); }
+        .hero-stat-label { color: rgba(255,255,255,0.8); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        .btn { display: inline-block; padding: 1rem 2.5rem; font-weight: 600; text-decoration: none; border-radius: 2px; transition: all 0.3s; margin: 0.5rem; }
+        .btn-primary { background: var(--gold); color: var(--charcoal); animation: glow 3s ease-in-out infinite; }
+        .btn-primary:hover { background: var(--white); transform: translateY(-3px); }
+        .btn-outline { background: transparent; color: var(--white); border: 2px solid var(--white); }
+        .btn-outline:hover { background: var(--white); color: var(--green-dark); }
+
+        section { padding: 100px 5%; }
+        .section-cream { background: var(--cream); }
+        .section-dark { background: var(--charcoal); color: var(--white); }
+        .section-green { background: var(--green-dark); color: var(--white); }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-label { display: inline-block; color: var(--gold); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem; }
+        .section-header h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .section-header p { font-size: 1.1rem; opacity: 0.8; max-width: 700px; margin: 0 auto; }
+
+        /* Profit Pathways */
+        .pathways-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .pathway-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 2.5rem; text-align: center; border-radius: 4px; transition: all 0.4s ease; position: relative; overflow: hidden; }
+        .pathway-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent); transition: left 0.5s ease; }
+        .pathway-card:hover::before { left: 100%; }
+        .pathway-card:hover { transform: translateY(-10px); border-color: var(--gold); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .pathway-icon { font-size: 3rem; margin-bottom: 1rem; display: block; }
+        .pathway-card h3 { color: var(--gold); margin-bottom: 1rem; font-size: 1.4rem; }
+        .pathway-card p { opacity: 0.8; margin-bottom: 1rem; }
+        .pathway-highlight { display: inline-block; background: var(--gold); color: var(--charcoal); padding: 0.5rem 1rem; font-weight: 700; font-size: 0.9rem; margin-top: 1rem; }
+
+        /* Overview Grid */
+        .overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .overview-card { background: var(--white); padding: 2rem; border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-left: 4px solid var(--gold); transition: all 0.3s ease; }
+        .overview-card:hover { transform: translateY(-5px); box-shadow: 0 10px 40px rgba(0,0,0,0.15); }
+        .overview-card h3 { color: var(--green-dark); margin-bottom: 0.5rem; font-size: 1.3rem; }
+        .overview-card p { opacity: 0.8; }
+
+        /* Investment Highlights */
+        .highlights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .highlight-card { text-align: center; padding: 2rem; }
+        .highlight-number { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-weight: 700; color: var(--gold); display: block; margin-bottom: 0.5rem; }
+        .highlight-label { font-size: 1rem; opacity: 0.8; }
+
+        /* Team Section */
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .team-card { background: var(--white); padding: 2.5rem; text-align: center; border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: all 0.4s ease; }
+        .team-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+        .team-avatar { width: 100px; height: 100px; background: var(--green-dark); border-radius: 50%; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: var(--white); font-family: 'Playfair Display', serif; }
+        .team-card h3 { color: var(--green-dark); margin-bottom: 0.5rem; }
+        .team-role { color: var(--gold); font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 1rem; }
+        .team-card p { color: #666; font-size: 0.95rem; }
+
+        /* Investment Terms */
+        .investment-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+        .investment-terms { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 2.5rem; border-radius: 4px; }
+        .investment-terms h3 { color: var(--gold); margin-bottom: 2rem; font-size: 1.5rem; }
+        .term-row { display: flex; justify-content: space-between; padding: 1rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .term-row:last-child { border-bottom: none; }
+        .term-label { color: rgba(255,255,255,0.7); }
+        .term-value { font-weight: 600; color: var(--white); }
+
+        /* NDA Gate */
+        .nda-gate { background: linear-gradient(135deg, var(--charcoal) 0%, #2a2a2a 100%); border: 2px solid var(--gold); padding: 3rem; border-radius: 4px; text-align: center; max-width: 600px; margin: 0 auto; }
+        .nda-gate h3 { color: var(--gold); margin-bottom: 1rem; font-size: 1.8rem; }
+        .nda-gate p { color: rgba(255,255,255,0.8); margin-bottom: 2rem; }
+        .nda-items { text-align: left; margin: 2rem 0; padding: 0 2rem; }
+        .nda-items li { color: rgba(255,255,255,0.9); margin-bottom: 0.75rem; list-style: none; padding-left: 1.5rem; position: relative; }
+        .nda-items li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: bold; }
+
+        /* CTA */
+        .cta-section { text-align: center; background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-medium) 100%); color: var(--white); position: relative; overflow: hidden; }
+        .cta-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 30% 50%, rgba(201, 169, 97, 0.1) 0%, transparent 50%); }
+        .cta-section h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .cta-section p { font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .cta-note { margin-top: 2rem; font-size: 0.9rem; opacity: 0.7; }
+
+        .disclaimer { background: var(--charcoal); color: rgba(255,255,255,0.6); padding: 3rem 5%; font-size: 0.85rem; line-height: 1.8; }
+        .disclaimer strong { color: var(--gold); }
+        footer { background: var(--charcoal); color: var(--white); padding: 40px 5% 20px; border-top: 1px solid rgba(255,255,255,0.1); }
+        .footer-content { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; flex-wrap: wrap; gap: 1rem; }
+        .footer-brand img { max-width: 150px; filter: brightness(0) invert(1); }
+        .footer-links { display: flex; gap: 2rem; list-style: none; }
+        .footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--gold); }
+        .footer-copy { width: 100%; text-align: center; padding-top: 2rem; margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); opacity: 0.6; font-size: 0.9rem; }
+
+        @media (max-width: 968px) { .pathways-grid, .investment-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero-stats { gap: 1.5rem; }
+            .hero-stat-value { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-logo"><img src="logo-header.png" alt="Claduta Corporation"></a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="humble-dome.html" class="active">Humble Dome</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">&#9670; Featured Investment &#9670;</span>
+            <h1>Humble Dome</h1>
+            <p class="hero-subtitle">Natural Gas Reactivation Program &bull; Harris County, Texas</p>
+            <p style="color: rgba(255,255,255,0.8); margin-bottom: 1rem;">Historic Salt Dome Field &bull; Proven Reserves &bull; Multiple Revenue Channels</p>
+            
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <span class="hero-stat-value">9</span>
+                    <span class="hero-stat-label">Proven Wells</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-value">18.7</span>
+                    <span class="hero-stat-label">BCF Produced</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-value">$63M</span>
+                    <span class="hero-stat-label">Lifetime Revenue</span>
+                </div>
+                <div class="hero-stat">
+                    <span class="hero-stat-value">1,500</span>
+                    <span class="hero-stat-label">Acres</span>
+                </div>
+            </div>
+
+            <a href="nda-application.html" class="btn btn-primary">Request NDA &amp; Data Room</a>
+            <a href="#opportunity" class="btn btn-outline">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Opportunity Overview -->
+    <section class="section-cream" id="opportunity">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">The Opportunity</span>
+                <h2>Proven Assets. Modern Techniques. Multiple Exit Channels.</h2>
+                <p>A historic Texas salt dome field with documented production history and significant remaining reserves, available for reactivation using modern completion techniques.</p>
+            </div>
+
+            <div class="overview-grid">
+                <div class="overview-card reveal">
+                    <h3>Historic Production</h3>
+                    <p>This field has produced over 14 BCF of natural gas across multiple wells. Original production rates exceeded 7,000 MCFD from individual wells.</p>
+                </div>
+                <div class="overview-card reveal" style="animation-delay: 0.1s;">
+                    <h3>Proven Reserves</h3>
+                    <p>Multiple pay zones in the Wilcox formation remain untapped. Engineering reports indicate significant recoverable reserves using modern fracturing techniques.</p>
+                </div>
+                <div class="overview-card reveal" style="animation-delay: 0.2s;">
+                    <h3>Infrastructure In Place</h3>
+                    <p>Existing underground flowlines, separators, stock tanks, compressors, and surface facilities dramatically reduce capital requirements.</p>
+                </div>
+                <div class="overview-card reveal" style="animation-delay: 0.3s;">
+                    <h3>Immediate Offtake</h3>
+                    <p>Existing contracts with major pipeline operators and oil purchasers. Production can flow to market within 30 days of completion.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Multiple Profit Pathways -->
+    <section class="section-dark" id="pathways">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Diversified Revenue</span>
+                <h2>Three Profit Pathways</h2>
+                <p>Dynamic allocation to maximize returns based on real-time market conditions.</p>
+            </div>
+
+            <div class="pathways-grid">
+                <div class="pathway-card reveal">
+                    <span class="pathway-icon">&#9889;</span>
+                    <h3>Grid Sales</h3>
+                    <p>Direct natural gas sales to regional pipeline operators at market rates. Stable, predictable baseline revenue.</p>
+                    <div class="pathway-highlight">Baseline Revenue</div>
+                </div>
+
+                <div class="pathway-card reveal" style="animation-delay: 0.2s;">
+                    <span class="pathway-icon">&#8383;</span>
+                    <h3>Bitcoin Mining</h3>
+                    <p>Convert wellhead gas to electricity powering on-site mining operations. Monetize stranded gas at premium rates.</p>
+                    <div class="pathway-highlight">Crypto Upside</div>
+                </div>
+
+                <div class="pathway-card reveal" style="animation-delay: 0.4s;">
+                    <span class="pathway-icon">&#128187;</span>
+                    <h3>AI Data Centers</h3>
+                    <p>The region is rapidly adding hyperscale data centers. Natural gas-fed on-site power is the most profitable long-term channel.</p>
+                    <div class="pathway-highlight">Future Growth</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment Highlights -->
+    <section class="section-cream">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">By The Numbers</span>
+                <h2>Investment Highlights</h2>
+            </div>
+
+            <div class="highlights-grid reveal">
+                <div class="highlight-card">
+                    <span class="highlight-number">9</span>
+                    <span class="highlight-label">Wells in Portfolio</span>
+                </div>
+                <div class="highlight-card">
+                    <span class="highlight-number">18.7</span>
+                    <span class="highlight-label">BCF Cumulative Production</span>
+                </div>
+                <div class="highlight-card">
+                    <span class="highlight-number">$63M</span>
+                    <span class="highlight-label">Lifetime Revenue</span>
+                </div>
+                <div class="highlight-card">
+                    <span class="highlight-number">32</span>
+                    <span class="highlight-label">Years Producing</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Preview -->
+    <section>
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Leadership</span>
+                <h2>Experienced Team</h2>
+                <p>Decades of combined upstream oil &amp; gas experience across exploration, drilling, completions, and production.</p>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-card reveal">
+                    <div class="team-avatar">CEO</div>
+                    <h3>Chief Executive Officer</h3>
+                    <p class="team-role">Strategic Leadership</p>
+                    <p>Investor relations, capital allocation, and overall corporate strategy.</p>
+                </div>
+
+                <div class="team-card reveal" style="animation-delay: 0.1s;">
+                    <div class="team-avatar">COO</div>
+                    <h3>Chief Operating Officer</h3>
+                    <p class="team-role">Field Operations</p>
+                    <p>Decades of upstream O&amp;G expertise managing drilling, completions, and production operations.</p>
+                </div>
+
+                <div class="team-card reveal" style="animation-delay: 0.2s;">
+                    <div class="team-avatar">CFO</div>
+                    <h3>Chief Financial Officer</h3>
+                    <p class="team-role">Financial Strategy</p>
+                    <p>Capital management, investor reporting, and distribution waterfall execution.</p>
+                </div>
+            </div>
+
+            <p class="reveal" style="text-align: center; margin-top: 3rem; opacity: 0.7;">Full team details and contact information available after NDA execution.</p>
+        </div>
+    </section>
+
+    <!-- Investment Terms Preview -->
+    <section class="section-dark" id="investment">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Investment Structure</span>
+                <h2>Terms Overview</h2>
+                <p>Reg D 506(c) private placement structured for accredited investors.</p>
+            </div>
+
+            <div class="investment-grid">
+                <div class="investment-terms reveal">
+                    <h3>Deal Structure</h3>
+                    <div class="term-row"><span class="term-label">Offering Type</span><span class="term-value">Reg D 506(c)</span></div>
+                    <div class="term-row"><span class="term-label">Minimum Investment</span><span class="term-value">$100,000</span></div>
+                    <div class="term-row"><span class="term-label">Preferred Return</span><span class="term-value">12% Annual</span></div>
+                    <div class="term-row"><span class="term-label">Investor Share</span><span class="term-value">80% → 75%</span></div>
+                    <div class="term-row"><span class="term-label">Projected Payout</span><span class="term-value">9-24 Months</span></div>
+                    <div class="term-row"><span class="term-label">5-Year ROI Target</span><span class="term-value">9.9x</span></div>
+                    <div class="term-row"><span class="term-label">Investor Type</span><span class="term-value">Accredited Only</span></div>
+                </div>
+
+                <div class="nda-gate reveal" style="animation-delay: 0.2s;">
+                    <h3>&#128274; Data Room Access</h3>
+                    <p>Complete project details are available to qualified investors after NDA execution.</p>
+                    <ul class="nda-items">
+                        <li>Individual well specifications &amp; production history</li>
+                        <li>Engineering reports &amp; reserve estimates</li>
+                        <li>Full team bios &amp; contact information</li>
+                        <li>Financial projections &amp; sensitivity analysis</li>
+                        <li>Legal documents &amp; subscription materials</li>
+                    </ul>
+                    <a href="nda-application.html" class="btn btn-primary">Request NDA</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NDA CTA -->
+    <section class="cta-section" id="nda">
+        <div class="container" style="position: relative; z-index: 2;">
+            <span class="section-label reveal">Qualified Investors</span>
+            <h2 class="reveal">Request Data Room Access</h2>
+            <p class="reveal">Complete your NDA application to receive immediate access to the confidential investor data room with well-by-well technical data, production history, and subscription documents.</p>
+            
+            <div class="reveal">
+                <a href="nda-application.html" class="btn btn-primary">Complete NDA Application →</a>
+                <a href="tel:+17276232652" class="btn btn-outline">Call: (727) 623-2652</a>
+            </div>
+
+            <p class="cta-note reveal">Reg D Rule 506(c) Private Placement &bull; Accredited Investors Only &bull; SEC Rule 501</p>
+        </div>
+    </section>
+
+    <div class="disclaimer">
+        <div class="container">
+            <strong>IMPORTANT DISCLAIMER:</strong> This material is for informational purposes only and does not constitute an offer to sell or a solicitation of an offer to buy any securities. Securities are offered only to accredited investors pursuant to Regulation D Rule 506(c) of the Securities Act of 1933. Past performance is not indicative of future results. Oil and gas investments involve significant risks including loss of principal. Projections and forward-looking statements are based on assumptions that may not materialize. Investors should consult with their own legal, tax, and financial advisors before making any investment decision. Detailed project information is available only after execution of a non-disclosure agreement.
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <a href="index.html" class="footer-brand"><img src="logo-full.png" alt="Claduta Corporation"></a>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <p class="footer-copy">&copy; 2024 Claduta Corporation. South Dakota. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function reveal() {
+            document.querySelectorAll('.reveal').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 150) {
+                    el.classList.add('active');
+                }
+            });
+        }
+        window.addEventListener('scroll', reveal);
+        reveal();
+    </script>
+</body>
+</html>

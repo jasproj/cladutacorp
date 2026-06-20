@@ -1,0 +1,10 @@
+{
+  "last_product_sent": "coffee",
+  "ramp_day": 0,
+  "last_send_date": "2026-06-17",
+  "safety_brake": {
+    "active": true,
+    "reason": "7-day failure rate 25.26% > 5.0% threshold",
+    "triggered_at": "2026-06-19T06:00:00.578682"
+  }
+}

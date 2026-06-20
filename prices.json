@@ -1,0 +1,144 @@
+{
+  "updated": "2026-03-07T12:59:17Z",
+  "note": "Prices are indicative. CIF = FOB + freight + 0.5% insurance. Contact us for firm quotes.",
+  "fob": {
+    "pepper_brazil_black_asta570": {
+      "price": 6050.0,
+      "unit": "USD/MT",
+      "source": "IPC (ipcnet.org)",
+      "grade": "Brazil Black Pepper ASTA 570"
+    },
+    "sugar_icumsa45": {
+      "price": 520,
+      "unit": "USD/MT",
+      "source": "ICE London #5 (indicative)",
+      "grade": "ICUMSA 45 White Refined"
+    },
+    "coffee_arabica": {
+      "price": 5200,
+      "unit": "USD/MT",
+      "source": "ICE C NY (indicative)",
+      "grade": "Green Arabica"
+    }
+  },
+  "freight_usd_mt": {
+    "dubai": 85,
+    "singapore": 110,
+    "lagos": 120,
+    "jakarta": 130,
+    "guangzhou": 105
+  },
+  "cif": {
+    "pepper": {
+      "dubai": {
+        "fob": 6050.0,
+        "freight": 85,
+        "insurance": 30.25,
+        "cif": 6165.0,
+        "dest": "dubai"
+      },
+      "singapore": {
+        "fob": 6050.0,
+        "freight": 110,
+        "insurance": 30.25,
+        "cif": 6190.0,
+        "dest": "singapore"
+      },
+      "lagos": {
+        "fob": 6050.0,
+        "freight": 120,
+        "insurance": 30.25,
+        "cif": 6200.0,
+        "dest": "lagos"
+      },
+      "jakarta": {
+        "fob": 6050.0,
+        "freight": 130,
+        "insurance": 30.25,
+        "cif": 6210.0,
+        "dest": "jakarta"
+      },
+      "guangzhou": {
+        "fob": 6050.0,
+        "freight": 105,
+        "insurance": 30.25,
+        "cif": 6185.0,
+        "dest": "guangzhou"
+      }
+    },
+    "sugar": {
+      "dubai": {
+        "fob": 520,
+        "freight": 85,
+        "insurance": 2.6,
+        "cif": 608.0,
+        "dest": "dubai"
+      },
+      "singapore": {
+        "fob": 520,
+        "freight": 110,
+        "insurance": 2.6,
+        "cif": 633.0,
+        "dest": "singapore"
+      },
+      "lagos": {
+        "fob": 520,
+        "freight": 120,
+        "insurance": 2.6,
+        "cif": 643.0,
+        "dest": "lagos"
+      },
+      "jakarta": {
+        "fob": 520,
+        "freight": 130,
+        "insurance": 2.6,
+        "cif": 653.0,
+        "dest": "jakarta"
+      },
+      "guangzhou": {
+        "fob": 520,
+        "freight": 105,
+        "insurance": 2.6,
+        "cif": 628.0,
+        "dest": "guangzhou"
+      }
+    },
+    "coffee": {
+      "dubai": {
+        "fob": 5200,
+        "freight": 85,
+        "insurance": 26.0,
+        "cif": 5311.0,
+        "dest": "dubai"
+      },
+      "singapore": {
+        "fob": 5200,
+        "freight": 110,
+        "insurance": 26.0,
+        "cif": 5336.0,
+        "dest": "singapore"
+      },
+      "lagos": {
+        "fob": 5200,
+        "freight": 120,
+        "insurance": 26.0,
+        "cif": 5346.0,
+        "dest": "lagos"
+      },
+      "jakarta": {
+        "fob": 5200,
+        "freight": 130,
+        "insurance": 26.0,
+        "cif": 5356.0,
+        "dest": "jakarta"
+      },
+      "guangzhou": {
+        "fob": 5200,
+        "freight": 105,
+        "insurance": 26.0,
+        "cif": 5331.0,
+        "dest": "guangzhou"
+      }
+    }
+  }
+}

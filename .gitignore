@@ -1,0 +1,63 @@
+# ══════════════════════════════════════════════════════════════════════════
+# SAFETY GUARD: this is the PUBLIC GitHub Pages repo (cladutacorp.com).
+# The cold-email engine and recipient/suppression data must NEVER be committed
+# here. Patterns below keep them untracked. (guard added 2026-06-09)
+# ══════════════════════════════════════════════════════════════════════════
+
+# ── Email-engine / operational tooling scripts ──
+claduta_drip.py
+claduta_mega_blast.py
+claduta_zombie_cleanup.py
+process_unsubscribes.py
+dump_buyer_replies.py
+sheets_patch_pepper.py
+fetch_prices.py
+*.py
+
+# ── Recipient lists, tracking + suppression data (PII: emails/names/phones) ──
+mega_blast_tracking.csv
+drip_summary.csv
+suppression_unsubscribes.csv
+*.csv
+v11_updated.xlsx
+*.xlsx
+.sendgrid_suppressions.json
+buyer_replies_dump.json
+
+# ── Drip runtime state / logs ──
+.drip_state.json
+.drip.lock
+.pepper_patch_state.json
+.unsubscribe_scanner_last_ok
+logs/
+mega_blast_cron.log
+mega_blast_log.txt
+pepper_blast_log_*.txt
+
+# ── Backups (never commit data backups) ──
+*.bak
+*.bak_*
+*.before_fix
+
+# ── Secrets / keys (defensive — should already live outside the repo) ──
+.secrets/
+*.env
+api.env
+*.key
+*.pem
+*-key.json
+*credentials*.json
+
+# ── Local memory drafts / auth notes / one-off reports ──
+MEMORY.md.work
+MEMORY.md.bak
+SHEETS_AUTH_NOTES.md
+overnight_report_*.md
+personal_outbox_*.md
+
+# ── Python build artifacts ──
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/

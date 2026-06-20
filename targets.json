@@ -1,0 +1,602 @@
+[
+  {
+    "email": "info@allycoffee.com",
+    "company": "Ally Coffee",
+    "country": "USA",
+    "product": "Coffee"
+  },
+  {
+    "email": "daria@allycoffee.com",
+    "company": "Ally Coffee",
+    "country": "USA (South Carolina)",
+    "product": "Coffee"
+  },
+  {
+    "email": "info@royalcoffee.com",
+    "company": "Royal Coffee",
+    "country": "USA",
+    "product": "Coffee"
+  },
+  {
+    "email": "peter@royalcoffee.com",
+    "company": "Royal Coffee",
+    "country": "USA",
+    "product": "Coffee"
+  },
+  {
+    "email": "jsheasley@elitespice.com",
+    "company": "Elite Spice Inc",
+    "country": "",
+    "product": "Pepper"
+  },
+  {
+    "email": "egrilli@elitespice.com",
+    "company": "Elite Spice Inc",
+    "country": "",
+    "product": "Pepper"
+  },
+  {
+    "email": "amy_coupland@mccormick.com",
+    "company": "McCormick Global Ingredients",
+    "country": "USA/Global",
+    "product": "Pepper"
+  },
+  {
+    "email": "jenny_gardner@mccormick.com",
+    "company": "McCormick Global Ingredients",
+    "country": "",
+    "product": "Pepper"
+  },
+  {
+    "email": "brendellima@cofcointernational.com",
+    "company": "COFCO International (Chicago office)",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "elenagrebeniuk@cofcointernational.com",
+    "company": "COFCO International (Chicago office)",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "carlasilva@cofcointernational.com",
+    "company": "COFCO International (Chicago office)",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "ralmeida@cofcointernational.com",
+    "company": "COFCO International (Chicago office)",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "felipeoliveira@cofcointernational.com",
+    "company": "COFCO International (Chicago office)",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "carloscastro@cofcointernational.com",
+    "company": "COFCO International (Chicago office)",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "davidpan@cofcointernational.com",
+    "company": "COFCO International (Chicago office)",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "anthonyregnier@cofcointernational.com",
+    "company": "COFCO International (Chicago office)",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "weiqijiang@cofcointernational.com",
+    "company": "COFCO International (Chicago office)",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "mlozes@cristal-union.fr",
+    "company": "Cristal Union",
+    "country": "France",
+    "product": "Sugar"
+  },
+  {
+    "email": "mwilhelm@cristal-union.fr",
+    "company": "Cristal Union",
+    "country": "France",
+    "product": "Sugar"
+  },
+  {
+    "email": "cmonnier@cristal-union.fr",
+    "company": "Cristal Union",
+    "country": "France",
+    "product": "Sugar"
+  },
+  {
+    "email": "aroyer@cristal-union.fr",
+    "company": "Cristal Union",
+    "country": "France",
+    "product": "Sugar"
+  },
+  {
+    "email": "fcouturier@cristal-union.fr",
+    "company": "Cristal Union",
+    "country": "France",
+    "product": "Sugar"
+  },
+  {
+    "email": "droyer@cristal-union.fr",
+    "company": "Cristal Union",
+    "country": "France",
+    "product": "Sugar"
+  },
+  {
+    "email": "sbouchard@cristal-union.fr",
+    "company": "Cristal Union",
+    "country": "France",
+    "product": "Sugar"
+  },
+  {
+    "email": "sfournier@cristal-union.fr",
+    "company": "Cristal Union",
+    "country": "France",
+    "product": "Sugar"
+  },
+  {
+    "email": "spandey@cristal-union.fr",
+    "company": "Cristal Union",
+    "country": "France",
+    "product": "Sugar"
+  },
+  {
+    "email": "vijayakumar@eidparry.com",
+    "company": "E.I.D. Parry (India) Ltd.",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "nfynn@ecomtrading.com",
+    "company": "ECOM Trading (Dubai office for nuts/ingredients)",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "vshale@ecomtrading.com",
+    "company": "ECOM Trading (Dubai office for nuts/ingredients)",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "jstoots@ecomtrading.com",
+    "company": "ECOM Trading (Dubai office for nuts/ingredients)",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "cfisk@ecomtrading.com",
+    "company": "ECOM Trading (Dubai office for nuts/ingredients)",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "jsukumar@ecomtrading.com",
+    "company": "ECOM Trading (Dubai office for nuts/ingredients)",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "tescobar@ecomtrading.com",
+    "company": "ECOM Trading (Dubai office for nuts/ingredients)",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "oalarcon@ecomtrading.com",
+    "company": "ECOM Trading (Dubai office for nuts/ingredients)",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "rpatel@ecomtrading.com",
+    "company": "ECOM Trading (Dubai office for nuts/ingredients)",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "acortez@ecomtrading.com",
+    "company": "ECOM Trading (Dubai office for nuts/ingredients)",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "dania.a@msmsugar.com",
+    "company": "MSM Sugar Refinery Johor",
+    "country": "Malaysia",
+    "product": "Sugar"
+  },
+  {
+    "email": "azman.a@msmsugar.com",
+    "company": "MSM Sugar Refinery Johor",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "ilyas.i@msmsugar.com",
+    "company": "MSM Sugar Refinery Johor",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "alif.a@msmsugar.com",
+    "company": "MSM Sugar Refinery Johor",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "fatin.y@msmsugar.com",
+    "company": "MSM Sugar Refinery Johor",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "wai.l@msmsugar.com",
+    "company": "MSM Sugar Refinery Johor",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "mohd.n@msmsugar.com",
+    "company": "MSM Sugar Refinery Johor",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "azura.o@msmsugar.com",
+    "company": "MSM Sugar Refinery Johor",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "aisyah.a@msmsugar.com",
+    "company": "MSM Sugar Refinery Johor",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "mohd.k@msmsugar.com",
+    "company": "MSM Sugar Refinery Johor",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "d.elser@mitsui.com",
+    "company": "Mitsui & Co. (Asia Pacific)",
+    "country": "Singapore (Singapore)",
+    "product": "Sugar"
+  },
+  {
+    "email": "xiaoyi.wang@mitsui.com",
+    "company": "Mitsui & Co. (Asia Pacific)",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "r.yokoyama@mitsui.com",
+    "company": "Mitsui & Co. (Asia Pacific)",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "a.dotan@mitsui.com",
+    "company": "Mitsui & Co. (Asia Pacific)",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "s.takayama@mitsui.com",
+    "company": "Mitsui & Co. (Asia Pacific)",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "s.hiroya@mitsui.com",
+    "company": "Mitsui & Co. (Asia Pacific)",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "s.billiet@mitsui.com",
+    "company": "Mitsui & Co. (Asia Pacific)",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "t.matsui@mitsui.com",
+    "company": "Mitsui & Co. (Asia Pacific)",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "n.ramazanova@mitsui.com",
+    "company": "Mitsui & Co. (Asia Pacific)",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "d.hicks@mitsui.com",
+    "company": "Mitsui & Co. (Asia Pacific)",
+    "country": "",
+    "product": "Sugar"
+  },
+  {
+    "email": "info@olamgroup.com",
+    "company": "Olam International (USA)",
+    "country": "USA/Global",
+    "product": "Sugar"
+  },
+  {
+    "email": "khairul@rni.co.id",
+    "company": "PT Rajawali Nusantara",
+    "country": "Indonesia",
+    "product": "Sugar"
+  },
+  {
+    "email": "nurdin@rni.co.id",
+    "company": "PT Rajawali Nusantara",
+    "country": "Indonesia",
+    "product": "Sugar"
+  },
+  {
+    "email": "tiara@rni.co.id",
+    "company": "PT Rajawali Nusantara",
+    "country": "Indonesia",
+    "product": "Sugar"
+  },
+  {
+    "email": "bastian@rni.co.id",
+    "company": "PT Rajawali Nusantara",
+    "country": "Indonesia",
+    "product": "Sugar"
+  },
+  {
+    "email": "budi@rni.co.id",
+    "company": "PT Rajawali Nusantara",
+    "country": "Indonesia",
+    "product": "Sugar"
+  },
+  {
+    "email": "prayoga@rni.co.id",
+    "company": "PT Rajawali Nusantara",
+    "country": "Indonesia",
+    "product": "Sugar"
+  },
+  {
+    "email": "yassir@rni.co.id",
+    "company": "PT Rajawali Nusantara",
+    "country": "Indonesia",
+    "product": "Sugar"
+  },
+  {
+    "email": "ali@rni.co.id",
+    "company": "PT Rajawali Nusantara",
+    "country": "Indonesia",
+    "product": "Sugar"
+  },
+  {
+    "email": "yosdian@rni.co.id",
+    "company": "PT Rajawali Nusantara",
+    "country": "Indonesia",
+    "product": "Sugar"
+  },
+  {
+    "email": "erland@rni.co.id",
+    "company": "PT Rajawali Nusantara",
+    "country": "Indonesia",
+    "product": "Sugar"
+  },
+  {
+    "email": "sugarethanol@raizen.com",
+    "company": "Ra\u00edzen (Sugar/Ethanol sales)",
+    "country": "Brazil (S\u00e3o Paulo)",
+    "product": "Sugar"
+  },
+  {
+    "email": "mpestana@sugaraustralia.com.au",
+    "company": "Sugar Australia",
+    "country": "Australia (Yarraville, VIC)",
+    "product": "Sugar"
+  },
+  {
+    "email": "raymond.howlett@sugaraustralia.com.au",
+    "company": "Sugar Australia",
+    "country": "Australia",
+    "product": "Sugar"
+  },
+  {
+    "email": "jason.hughes@sugaraustralia.com.au",
+    "company": "Sugar Australia",
+    "country": "Australia",
+    "product": "Sugar"
+  },
+  {
+    "email": "rmeyer@sugaraustralia.com.au",
+    "company": "Sugar Australia",
+    "country": "Australia",
+    "product": "Sugar"
+  },
+  {
+    "email": "bchambati@sugaraustralia.com.au",
+    "company": "Sugar Australia",
+    "country": "Australia",
+    "product": "Sugar"
+  },
+  {
+    "email": "msotiroski@sugaraustralia.com.au",
+    "company": "Sugar Australia",
+    "country": "Australia",
+    "product": "Sugar"
+  },
+  {
+    "email": "jmulware@sugaraustralia.com.au",
+    "company": "Sugar Australia",
+    "country": "Australia",
+    "product": "Sugar"
+  },
+  {
+    "email": "alittlejohn@sugaraustralia.com.au",
+    "company": "Sugar Australia",
+    "country": "Australia",
+    "product": "Sugar"
+  },
+  {
+    "email": "ymachado@sugaraustralia.com.au",
+    "company": "Sugar Australia",
+    "country": "Australia",
+    "product": "Sugar"
+  },
+  {
+    "email": "kroddy@sugaraustralia.com.au",
+    "company": "Sugar Australia",
+    "country": "Australia",
+    "product": "Sugar"
+  },
+  {
+    "email": "info@tradecommodities.com",
+    "company": "Trade Commodities International",
+    "country": "Global",
+    "product": "Sugar"
+  },
+  {
+    "email": "info@savola.com",
+    "company": "United Sugar Co (Savola)",
+    "country": "Saudi Arabia",
+    "product": "Sugar"
+  },
+  {
+    "email": "sales_na@volcafe.com",
+    "company": "Volcafe North America LLC",
+    "country": "USA (North America)",
+    "product": "Sugar"
+  },
+  {
+    "email": "info-meals@cn.wilmar-intl.com",
+    "company": "Wilmar International (China meals email)",
+    "country": "China (China contact)",
+    "product": "Sugar"
+  },
+  {
+    "email": "nan",
+    "company": "4-J IMPORT EXPORT LTDA",
+    "country": "Brazil \u2014 Brazil",
+    "product": "Brazil Exporter (sourcing)"
+  },
+  {
+    "email": "nan",
+    "company": "A.T.O TRADING LTDA",
+    "country": "Brazil \u2014 Sao Paulo",
+    "product": "Brazil Exporter (sourcing)"
+  },
+  {
+    "email": "nan",
+    "company": "A.T.O. TRADING LTDA",
+    "country": "Brazil \u2014 Sao Paulo",
+    "product": "Brazil Exporter (sourcing)"
+  },
+  {
+    "email": "nan",
+    "company": "A1 COMMODITIES S.A.",
+    "country": "Brazil \u2014 Sao Paulo",
+    "product": "Brazil Exporter (sourcing)"
+  },
+  {
+    "email": "nan",
+    "company": "AAZIS COMERCIAL IMPORTADORA E EXPORTADORA LTDA",
+    "country": "Brazil \u2014 Minas Gerais",
+    "product": "Brazil Exporter (sourcing)"
+  },
+  {
+    "email": "nan",
+    "company": "AB TRADING COMMODITIES LTDA",
+    "country": "Brazil \u2014 Sao Paulo",
+    "product": "Brazil Exporter (sourcing)"
+  },
+  {
+    "email": "nan",
+    "company": "ABC ARMAZEM BRASILEIRO DE CAFE LTDA",
+    "country": "Brazil \u2014 Sao Paulo",
+    "product": "Brazil Exporter (sourcing)"
+  },
+  {
+    "email": "nan",
+    "company": "ABEX EXPORTACAO E COMERCIO DE CAFE LTDA.",
+    "country": "Brazil \u2014 Minas Gerais",
+    "product": "Brazil Exporter (sourcing)"
+  },
+  {
+    "email": "nan",
+    "company": "ABEX EXPORTAcaO E COMeRCIO DE CAFe LTDA",
+    "country": "Brazil \u2014 Brazil",
+    "product": "Brazil Exporter (sourcing)"
+  },
+  {
+    "email": "nan",
+    "company": "ABIM COMERCIO EXTERIOR & LOGISTICA LTDA",
+    "country": "Brazil \u2014 Sao Paulo",
+    "product": "Brazil Exporter (sourcing)"
+  },
+  {
+    "email": "nan",
+    "company": "ADV ARMAZENS GERAIS SA",
+    "country": "Brazil \u2014 Espirito Santo",
+    "product": "Brazil Exporter (sourcing)"
+  },
+  {
+    "email": "nan",
+    "company": "AGAB COMERCIO DE CAFE LTDA",
+    "country": "Brazil \u2014 Espirito Santo",
+    "product": "Brazil Exporter (sourcing)"
+  },
+  {
+    "email": "nan",
+    "company": "AGRANDA DISTRIBUICAO E EXPORTACAO DE SEMENTES LTDA",
+    "country": "Brazil \u2014 Brazil",
+    "product": "Brazil Exporter (sourcing)"
+  },
+  {
+    "email": "nan",
+    "company": "AGRANDA DISTRIBUICAO, IMPORTACAO E EXPORTACAO LTDA",
+    "country": "Brazil \u2014 Sao Paulo",
+    "product": "Brazil Exporter (sourcing)"
+  },
+  {
+    "email": "nan",
+    "company": "AGRICON BUSINESS COMERCIO ATACADISTA DE PRODUTOS AGRICOLAS E EXPORTACAO LTDA",
+    "country": "Brazil \u2014 Brazil",
+    "product": "Brazil Exporter (sourcing)"
+  },
+  {
+    "email": "nan",
+    "company": "AGRICON BUSINESS COMERCIO ATACADISTA DE PRODUTOS AGRICOLAS E EXPORTACAO LTDA.",
+    "country": "Brazil \u2014 Rio Grande do Sul",
+    "product": "Brazil Exporter (sourcing)"
+  },
+  {
+    "email": "nan",
+    "company": "AGRO FONTE ALTA LTDA",
+    "country": "Brazil \u2014 Minas Gerais",
+    "product": "Brazil Exporter (sourcing)"
+  },
+  {
+    "email": "nan",
+    "company": "AGRO TARUMA COMERCIO DE MERCADORIAS LTDA",
+    "country": "Brazil \u2014 Amazonas",
+    "product": "Brazil Exporter (sourcing)"
+  }
+]
