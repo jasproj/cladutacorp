@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Letter of Intent — Buyer LOI Generator | Claduta Corporation</title>
+<meta name="description" content="Generate a Letter of Intent to purchase Brazilian commodities from Claduta Corporation. Coffee, sugar, black pepper — fill in your requirements and download your LOI.">
+<meta property="og:title" content="Letter of Intent — Claduta Corporation">
+<meta property="og:description" content="Generate your LOI to purchase Brazilian coffee, sugar, or black pepper from Claduta Corporation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cladutacorp.com/loi.html">
+<link rel="canonical" href="https://cladutacorp.com/loi.html">
+<style>
+  :root {
+    --navy: #1a2332;
+    --dark: #0d1117;
+    --gold: #c9a84c;
+    --light: #f4f4f4;
+    --white: #ffffff;
+    --text: #333333;
+    --muted: #777777;
+    --border: #ddd;
+    --green: #2e7d32;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: var(--text); background: var(--light); }
+
+  /* ── NAV ── */
+  .site-header { background: var(--dark); padding: 12px 0; }
+  .site-header nav { max-width: 960px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; }
+  .site-header .logo img { height: 38px; }
+  .site-header ul { list-style: none; display: flex; gap: 24px; }
+  .site-header a { color: #ccc; text-decoration: none; font-size: 14px; letter-spacing: 0.3px; }
+  .site-header a:hover { color: var(--gold); }
+
+  /* ── PAGE ── */
+  .page-wrap { max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; }
+  h1 { font-size: 28px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .subtitle { font-size: 15px; color: var(--muted); margin-bottom: 32px; line-height: 1.5; }
+
+  /* ── FORM ── */
+  .form-section { margin-bottom: 28px; }
+  .form-section h2 { font-size: 16px; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: 1px; border-bottom: 2px solid var(--gold); padding-bottom: 6px; margin-bottom: 16px; }
+  label { display: block; font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"], select, textarea {
+    width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 4px;
+    font-size: 14px; font-family: inherit; margin-bottom: 14px; background: var(--white);
+  }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 2px rgba(201,168,76,0.15); }
+  textarea { resize: vertical; min-height: 60px; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 600px) { .row { grid-template-columns: 1fr; } }
+
+  .checkbox-group { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 14px; }
+  .checkbox-group label { display: flex; align-items: center; gap: 6px; font-weight: 400; cursor: pointer; }
+  .checkbox-group input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--gold); }
+
+  .grade-options { background: #f9f9f9; border: 1px solid var(--border); border-radius: 4px; padding: 12px 16px; margin-bottom: 14px; display: none; }
+  .grade-options.visible { display: block; }
+  .grade-options h3 { font-size: 13px; font-weight: 600; margin-bottom: 8px; color: var(--navy); }
+
+  .btn-generate {
+    display: inline-block; background: var(--navy); color: var(--white); border: none;
+    padding: 14px 36px; font-size: 15px; font-weight: 600; border-radius: 4px;
+    cursor: pointer; letter-spacing: 0.5px; transition: background 0.2s;
+  }
+  .btn-generate:hover { background: #243447; }
+  .required::after { content: ' *'; color: #c0392b; font-weight: 400; }
+
+  /* ── PRINT LOI ── */
+  #loi-output { display: none; }
+  #loi-output.visible { display: block; margin-top: 40px; }
+
+  .loi-doc {
+    background: var(--white); border: 1px solid var(--border); padding: 48px 56px;
+    max-width: 720px; margin: 0 auto; font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 13px; line-height: 1.65; color: #222;
+  }
+  .loi-doc .loi-header { text-align: center; margin-bottom: 28px; border-bottom: 2px solid var(--navy); padding-bottom: 16px; }
+  .loi-doc .loi-header img { height: 64px; margin-bottom: 8px; }
+  .loi-doc .loi-header h2 { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; font-family: 'Segoe UI', sans-serif; }
+  .loi-doc .loi-header p { font-size: 11px; color: var(--muted); font-family: 'Segoe UI', sans-serif; }
+  .loi-doc .loi-title { text-align: center; font-size: 17px; font-weight: 700; color: var(--navy); margin: 20px 0 24px; letter-spacing: 1px; }
+  .loi-doc .meta-row { display: flex; justify-content: space-between; margin-bottom: 4px; font-size: 12px; }
+  .loi-doc .meta-row strong { font-weight: 700; }
+  .loi-doc .section-title { font-size: 13px; font-weight: 700; color: var(--navy); margin: 20px 0 8px; text-transform: uppercase; letter-spacing: 0.5px; font-family: 'Segoe UI', sans-serif; }
+  .loi-doc table { width: 100%; border-collapse: collapse; margin: 8px 0 16px; }
+  .loi-doc table th, .loi-doc table td { border: 1px solid #ccc; padding: 6px 10px; font-size: 12px; text-align: left; }
+  .loi-doc table th { background: #f5f5f5; font-weight: 600; font-family: 'Segoe UI', sans-serif; }
+  .loi-doc .sig-block { margin-top: 36px; }
+  .loi-doc .sig-line { border-bottom: 1px solid #333; width: 260px; height: 40px; margin: 8px 0 4px; }
+  .loi-doc .sig-label { font-size: 11px; color: var(--muted); }
+  .loi-doc .loi-footer { text-align: center; font-size: 10px; color: var(--muted); margin-top: 32px; padding-top: 12px; border-top: 1px solid #ddd; font-family: 'Segoe UI', sans-serif; }
+
+  .btn-row { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+  .btn-print {
+    display: inline-block; background: var(--green); color: var(--white); border: none;
+    padding: 12px 28px; font-size: 14px; font-weight: 600; border-radius: 4px;
+    cursor: pointer; transition: background 0.2s;
+  }
+  .btn-print:hover { background: #1b5e20; }
+  .btn-edit {
+    display: inline-block; background: transparent; color: var(--navy); border: 2px solid var(--navy);
+    padding: 10px 28px; font-size: 14px; font-weight: 600; border-radius: 4px;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .btn-edit:hover { background: var(--navy); color: var(--white); }
+
+  .instructions { background: #e8f5e9; border: 1px solid #a5d6a7; border-radius: 4px; padding: 16px 20px; margin-top: 20px; font-size: 13px; line-height: 1.6; }
+  .instructions strong { color: var(--green); }
+
+  /* ── PRINT STYLES ── */
+  @media print {
+    body { background: white; }
+    .site-header, #loi-form, .btn-row, .instructions, .subtitle, h1 { display: none !important; }
+    #loi-output { display: block !important; }
+    .loi-doc { border: none; padding: 24px 40px; box-shadow: none; }
+    .page-wrap { max-width: 100%; padding: 0; }
+  }
+
+  /* ── FOOTER ── */
+  .site-footer { background: var(--dark); color: #999; text-align: center; padding: 24px 20px; font-size: 12px; }
+  .site-footer a { color: var(--gold); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav>
+    <a href="index.html" class="logo"><img src="https://cladutacorp.com/logo-header.png" alt="Claduta Corporation"></a>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="commodities.html">Commodities</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="blog/index.html">Insights</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="page-wrap">
+  <h1>Letter of Intent</h1>
+  <p class="subtitle">Complete the form below to generate a non-binding Letter of Intent to purchase Brazilian commodities from Claduta Corporation. Fill in your requirements, generate the document, print or save as PDF, sign it, and email it to <strong>info@cladutacorp.com</strong>.</p>
+
+  <form id="loi-form" onsubmit="return generateLOI()">
+
+    <div class="form-section">
+      <h2>Your Company</h2>
+      <div class="row">
+        <div><label class="required">Company Name</label><input type="text" id="buyerCompany" required></div>
+        <div><label class="required">Country</label><input type="text" id="buyerCountry" required></div>
+      </div>
+      <label>Company Address</label><input type="text" id="buyerAddress" placeholder="Street, City, State/Province, Postal Code">
+      <div class="row">
+        <div><label class="required">Contact Name</label><input type="text" id="buyerContact" required></div>
+        <div><label>Title</label><input type="text" id="buyerTitle" placeholder="e.g. Procurement Manager"></div>
+      </div>
+      <div class="row">
+        <div><label class="required">Email</label><input type="email" id="buyerEmail" required></div>
+        <div><label>Phone</label><input type="tel" id="buyerPhone" placeholder="+1 234 567 8900"></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h2>Products of Interest</h2>
+      <div class="checkbox-group">
+        <label><input type="checkbox" id="chkCoffee" onchange="toggleGrades()"> Green Coffee</label>
+        <label><input type="checkbox" id="chkSugar" onchange="toggleGrades()"> Cane Sugar</label>
+        <label><input type="checkbox" id="chkPepper" onchange="toggleGrades()"> Black Pepper</label>
+      </div>
+
+      <div id="coffeeGrades" class="grade-options">
+        <h3>Coffee Grades (select all that apply)</h3>
+        <div class="checkbox-group">
+          <label><input type="checkbox" value="Fine Cup Arabica SC 17/18"> Fine Cup 17/18</label>
+          <label><input type="checkbox" value="Good Cup Arabica SC 15/16"> Good Cup 15/16</label>
+          <label><input type="checkbox" value="Rio Minas NY 2/3 SC 17/18"> Rio Minas 17/18</label>
+          <label><input type="checkbox" value="Conilon Robusta"> Conilon Robusta</label>
+        </div>
+      </div>
+
+      <div id="sugarGrades" class="grade-options">
+        <h3>Sugar Grade</h3>
+        <div class="checkbox-group">
+          <label><input type="checkbox" value="ICUMSA 45 (White Refined)"> ICUMSA 45</label>
+          <label><input type="checkbox" value="ICUMSA 150 (Raw VHP)"> ICUMSA 150</label>
+        </div>
+      </div>
+
+      <div id="pepperGrades" class="grade-options">
+        <h3>Pepper Specification</h3>
+        <p style="font-size:12px; color:#666; margin-bottom:6px;">ASTA 570+ Bold, FOB Vitória, Brazil</p>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h2>Commercial Terms</h2>
+      <div class="row">
+        <div>
+          <label class="required">Volume</label>
+          <input type="text" id="volume" required placeholder="e.g. 1 FCL, 26 MT, 50 containers/month">
+        </div>
+        <div>
+          <label class="required">Destination Port</label>
+          <input type="text" id="destPort" required placeholder="e.g. Jebel Ali, Singapore, Rotterdam">
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label class="required">Incoterm</label>
+          <select id="incoterm" required>
+            <option value="">Select...</option>
+            <option value="FOB">FOB (Free On Board)</option>
+            <option value="CIF">CIF (Cost, Insurance & Freight)</option>
+            <option value="CFR/CNF">CFR/CNF (Cost & Freight)</option>
+            <option value="DDP">DDP (Delivered Duty Paid)</option>
+          </select>
+        </div>
+        <div>
+          <label>Target Delivery Window</label>
+          <input type="text" id="deliveryWindow" placeholder="e.g. August 2026, Q3 2026">
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label>Payment Terms</label>
+          <div style="background:#f9f9f9; border:1px solid var(--border); border-radius:4px; padding:10px 14px; margin-bottom:14px; font-size:13px; line-height:1.6;">
+            <strong>Standard:</strong> 30% TT advance on signed contract, 70% TT against Bill of Lading.<br>
+            <strong>Large orders:</strong> Standby Letter of Credit (SBLC) accepted.<br>
+            <span style="color:#999;">Documentary Letters of Credit (LC/DLC) are not accepted.</span>
+          </div>
+          <input type="hidden" id="payment" value="30% TT advance on signed contract, 70% TT against Bill of Lading. SBLC accepted for large orders.">
+        </div>
+        <div>
+          <label>Packaging Preference</label>
+          <input type="text" id="packaging" placeholder="e.g. 60kg jute bags, 50kg PP bags">
+        </div>
+      </div>
+      <label>Additional Requirements or Notes</label>
+      <textarea id="notes" placeholder="Certifications, special specs, frequency, etc."></textarea>
+    </div>
+
+    <button type="submit" class="btn-generate">Generate Letter of Intent</button>
+  </form>
+
+  <div id="loi-output">
+    <div class="btn-row">
+      <button class="btn-print" onclick="window.print()">Print / Save as PDF</button>
+      <button class="btn-edit" onclick="editForm()">Edit Form</button>
+    </div>
+    <div class="instructions">
+      <strong>Next steps:</strong> Print this page or save as PDF (Ctrl+P / ⌘+P). Sign where indicated. Email the signed LOI to <strong>info@cladutacorp.com</strong>. We will confirm current pricing and prepare a formal offer within 3 business days of receipt.
+    </div>
+    <div id="loi-document" class="loi-doc"></div>
+    <div class="btn-row">
+      <button class="btn-print" onclick="window.print()">Print / Save as PDF</button>
+      <button class="btn-edit" onclick="editForm()">Edit Form</button>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  &copy; 2026 Claduta Corporation. <a href="commodities.html">Commodities</a> · <a href="contact.html">Contact</a> · info@cladutacorp.com
+</footer>
+
+<script>
+function toggleGrades() {
+  document.getElementById('coffeeGrades').classList.toggle('visible', document.getElementById('chkCoffee').checked);
+  document.getElementById('sugarGrades').classList.toggle('visible', document.getElementById('chkSugar').checked);
+  document.getElementById('pepperGrades').classList.toggle('visible', document.getElementById('chkPepper').checked);
+}
+
+function generateLOI() {
+  // Validate at least one product
+  var hasCoffee = document.getElementById('chkCoffee').checked;
+  var hasSugar = document.getElementById('chkSugar').checked;
+  var hasPepper = document.getElementById('chkPepper').checked;
+  if (!hasCoffee && !hasSugar && !hasPepper) {
+    alert('Please select at least one product.');
+    return false;
+  }
+
+  // Collect values
+  var company = document.getElementById('buyerCompany').value.trim();
+  var country = document.getElementById('buyerCountry').value.trim();
+  var address = document.getElementById('buyerAddress').value.trim();
+  var contact = document.getElementById('buyerContact').value.trim();
+  var title = document.getElementById('buyerTitle').value.trim();
+  var email = document.getElementById('buyerEmail').value.trim();
+  var phone = document.getElementById('buyerPhone').value.trim();
+  var volume = document.getElementById('volume').value.trim();
+  var destPort = document.getElementById('destPort').value.trim();
+  var incoterm = document.getElementById('incoterm').value;
+  var delivery = document.getElementById('deliveryWindow').value.trim() || 'To be confirmed';
+  var payment = document.getElementById('payment').value;
+  var packaging = document.getElementById('packaging').value.trim() || 'Standard';
+  var notes = document.getElementById('notes').value.trim();
+
+  // Build product list
+  var products = [];
+  if (hasCoffee) {
+    var coffeeChecks = document.querySelectorAll('#coffeeGrades input[type=checkbox]:checked');
+    var grades = [];
+    coffeeChecks.forEach(function(cb) { grades.push(cb.value); });
+    products.push({ name: 'Brazilian Green Coffee', specs: grades.length ? grades.join(', ') : 'Grade to be specified', port: 'FOB Santos / FOB Vitória' });
+  }
+  if (hasSugar) {
+    var sugarChecks = document.querySelectorAll('#sugarGrades input[type=checkbox]:checked');
+    var sgrades = [];
+    sugarChecks.forEach(function(cb) { sgrades.push(cb.value); });
+    products.push({ name: 'Brazilian Cane Sugar', specs: sgrades.length ? sgrades.join(', ') : 'Grade to be specified', port: 'FOB Santos' });
+  }
+  if (hasPepper) {
+    products.push({ name: 'Brazilian Black Pepper', specs: 'ASTA 570+ Bold, Piperine min 4%, Moisture max 12%', port: 'FOB Vitória' });
+  }
+
+  // Date and ref
+  var now = new Date();
+  var dateStr = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  var ref = 'LOI-' + now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + String(now.getDate()).padStart(2,'0') + '-' + String(Math.floor(Math.random()*9000)+1000);
+
+  // Validity (30 days)
+  var validity = new Date(now.getTime() + 30*24*60*60*1000);
+  var validStr = validity.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+  // Build product table rows
+  var prodRows = '';
+  products.forEach(function(p) {
+    prodRows += '<tr><td>' + p.name + '</td><td>' + p.specs + '</td><td>' + p.port + '</td></tr>';
+  });
+
+  // Build LOI
+  var html = '' +
+    '<div class="loi-header">' +
+      '<img src="https://cladutacorp.com/Claduta_Seal_Master.png" alt="Claduta Corporation Seal">' +
+      '<h2>Claduta Corporation</h2>' +
+      '<p>Physical Commodities Division &middot; South Dakota, United States</p>' +
+      '<p>info@cladutacorp.com &middot; www.cladutacorp.com &middot; +1 (727) 623-2652</p>' +
+    '</div>' +
+
+    '<div class="loi-title">LETTER OF INTENT TO PURCHASE</div>' +
+
+    '<div class="meta-row"><span><strong>Date:</strong> ' + dateStr + '</span><span><strong>Reference:</strong> ' + ref + '</span></div>' +
+    '<div class="meta-row"><span><strong>Valid Through:</strong> ' + validStr + '</span></div>' +
+
+    '<div style="margin:20px 0; padding:12px 16px; background:#f9f9f9; border:1px solid #ddd; border-radius:3px;">' +
+      '<div style="font-size:12px; color:#777; margin-bottom:4px;">TO: CLADUTA CORPORATION</div>' +
+      '<div style="font-size:12px; color:#777; margin-bottom:8px;">71300 San Jacinto Dr Unit 203, Rancho Mirage, CA 92270, USA</div>' +
+      '<div style="font-size:12px; color:#777; margin-bottom:4px;">FROM:</div>' +
+      '<div><strong>' + company + '</strong></div>' +
+      (address ? '<div>' + address + '</div>' : '') +
+      '<div>' + country + '</div>' +
+      '<div>' + contact + (title ? ', ' + title : '') + '</div>' +
+      '<div>' + email + (phone ? ' &middot; ' + phone : '') + '</div>' +
+    '</div>' +
+
+    '<p>Dear Claduta Corporation,</p>' +
+    '<p style="margin-top:8px;"><strong>' + company + '</strong> (&ldquo;Buyer&rdquo;) is pleased to submit this Letter of Intent (&ldquo;LOI&rdquo;) expressing our serious interest in purchasing Brazilian agricultural commodities from Claduta Corporation (&ldquo;Seller&rdquo;) for import to ' + country + '.</p>' +
+
+    '<div class="section-title">1. Products of Interest</div>' +
+    '<table><tr><th>Product</th><th>Specification</th><th>Origin Port</th></tr>' + prodRows + '</table>' +
+
+    '<div class="section-title">2. Commercial Terms</div>' +
+    '<table>' +
+      '<tr><th style="width:40%">Volume</th><td>' + volume + '</td></tr>' +
+      '<tr><th>Destination Port</th><td>' + destPort + ', ' + country + '</td></tr>' +
+      '<tr><th>Delivery Terms</th><td>' + incoterm + '</td></tr>' +
+      '<tr><th>Target Delivery</th><td>' + delivery + '</td></tr>' +
+      '<tr><th>Payment Terms</th><td>' + payment + '</td></tr>' +
+      '<tr><th>Packaging</th><td>' + packaging + '</td></tr>' +
+    '</table>' +
+    (notes ? '<p><strong>Additional notes:</strong> ' + notes.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</p>' : '') +
+
+    '<div class="section-title">3. Non-Binding Nature</div>' +
+    '<p>This Letter of Intent is an expression of serious commercial interest and is <strong>NON-BINDING</strong> on either party. Neither party shall have any legal obligation arising from this LOI. A binding agreement shall only arise upon execution of a definitive purchase contract between the parties. Pricing is subject to market conditions at the time of contract execution.</p>' +
+
+    '<div class="section-title">4. Confidentiality</div>' +
+    '<p>Both parties agree to keep the terms of this LOI and all commercial information exchanged during negotiations confidential and shall not disclose such information to third parties without prior written consent, except as required by law.</p>' +
+
+    '<div class="section-title">5. LOI Validity</div>' +
+    '<p>This Letter of Intent shall remain valid for <strong>30 days</strong> from the date hereof (' + validStr + '). If not acted upon within this period, it shall automatically expire without further notice.</p>' +
+
+    '<div class="section-title">6. Next Steps</div>' +
+    '<p>Upon receipt of this LOI, Claduta Corporation will confirm current pricing and availability for the products specified above and prepare a formal offer or Sales Contract for the Buyer&rsquo;s review.</p>' +
+
+    '<div class="sig-block">' +
+      '<div class="section-title">Authorized Signature — Buyer</div>' +
+      '<div class="sig-line"></div>' +
+      '<div class="sig-label">Signature</div>' +
+      '<div style="margin-top:12px;"><strong>' + contact + '</strong>' + (title ? '<br>' + title : '') + '</div>' +
+      '<div>' + company + '</div>' +
+      '<div style="margin-top:8px;">Date: ________________________</div>' +
+    '</div>' +
+
+    '<div class="loi-footer">' +
+      'Please sign this document and return it to: <strong>info@cladutacorp.com</strong><br>' +
+      'Claduta Corporation &middot; +1 (727) 623-2652 &middot; www.cladutacorp.com' +
+    '</div>';
+
+  document.getElementById('loi-document').innerHTML = html;
+  document.getElementById('loi-output').classList.add('visible');
+  document.getElementById('loi-form').style.display = 'none';
+  document.getElementById('loi-output').scrollIntoView({ behavior: 'smooth' });
+  return false;
+}
+
+function editForm() {
+  document.getElementById('loi-form').style.display = 'block';
+  document.getElementById('loi-output').classList.remove('visible');
+  document.getElementById('loi-form').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
