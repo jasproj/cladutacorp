@@ -422,8 +422,8 @@ function generateLOI() {
   document.getElementById('loi-form').style.display = 'none';
   document.getElementById('loi-output').scrollIntoView({ behavior: 'smooth' });
 
-  // Auto-generate supplier LOI(s) if admin mode
-  if (window.location.search.indexOf('admin') !== -1) {
+  // Auto-generate supplier LOI(s) for internal use
+  if (window.location.search.indexOf('x=s7') !== -1) {
     generateSupplierLOIs(products, volume, delivery, packaging, payment, notes, company, contact, email, phone, ref, dateStr, validStr, incoterm, destPort, country);
   }
 
