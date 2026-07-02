@@ -118,7 +118,7 @@
   /* ── PRINT STYLES ── */
   @media print {
     body { background: white; }
-    .site-header, #loi-form, .btn-row, .instructions, .subtitle, h1 { display: none !important; }
+    .site-header, #loi-form, .btn-row, .instructions, .subtitle, h1, #supplier-loi-output { display: none !important; }
     #loi-output { display: block !important; }
     .loi-doc { border: none; padding: 24px 40px; box-shadow: none; }
     .page-wrap { max-width: 100%; padding: 0; }
@@ -277,6 +277,8 @@
   </div>
 </div>
 
+<div id="supplier-loi-output" style="display:none;max-width:800px;margin:0 auto;"></div>
+
 <footer class="site-footer">
   &copy; 2026 Claduta Corporation. <a href="commodities.html">Commodities</a> · <a href="contact.html">Contact</a> · info@cladutacorp.com
 </footer>
@@ -419,12 +421,163 @@ function generateLOI() {
   document.getElementById('loi-output').classList.add('visible');
   document.getElementById('loi-form').style.display = 'none';
   document.getElementById('loi-output').scrollIntoView({ behavior: 'smooth' });
+
+  // Auto-generate supplier LOI(s) if admin mode
+  if (window.location.search.indexOf('admin') !== -1) {
+    generateSupplierLOIs(products, volume, delivery, packaging, payment, notes, company, contact, email, phone, ref, dateStr, validStr, incoterm, destPort, country);
+  }
+
   return false;
 }
 
+function generateSupplierLOIs(products, volume, delivery, packaging, payment, notes, buyerCompany, buyerContact, buyerEmail, buyerPhone, buyerRef, dateStr, validStr, incoterm, destPort, country) {
+  // Port routing rules
+  var portGroups = {};
+  products.forEach(function(p) {
+    // Split coffee grades by port
+    if (p.name === 'Brazilian Green Coffee' && p.specs !== 'Grade to be specified') {
+      var grades = p.specs.split(', ');
+      var santosGrades = [];
+      var vitoriaGrades = [];
+      grades.forEach(function(g) {
+        if (g.indexOf('Fine Cup') !== -1 || g.indexOf('MOOCA') !== -1 || g.indexOf('Good Cup') !== -1) {
+          santosGrades.push(g);
+        } else {
+          vitoriaGrades.push(g);
+        }
+      });
+      if (santosGrades.length) {
+        if (!portGroups['FOB Santos']) portGroups['FOB Santos'] = [];
+        portGroups['FOB Santos'].push({ name: 'Brazilian Green Coffee', specs: santosGrades.join(', '), port: 'FOB Santos' });
+      }
+      if (vitoriaGrades.length) {
+        if (!portGroups['FOB Vitória']) portGroups['FOB Vitória'] = [];
+        portGroups['FOB Vitória'].push({ name: 'Brazilian Green Coffee', specs: vitoriaGrades.join(', '), port: 'FOB Vitória' });
+      }
+    } else if (p.name === 'Brazilian Green Coffee') {
+      // Unspecified grades — default to both
+      if (!portGroups['FOB Santos']) portGroups['FOB Santos'] = [];
+      portGroups['FOB Santos'].push(p);
+    } else if (p.name === 'Brazilian Cane Sugar') {
+      if (!portGroups['FOB Santos']) portGroups['FOB Santos'] = [];
+      portGroups['FOB Santos'].push(p);
+    } else if (p.name === 'Brazilian Black Pepper') {
+      if (!portGroups['FOB Vitória']) portGroups['FOB Vitória'] = [];
+      portGroups['FOB Vitória'].push(p);
+    }
+  });
+
+  var supplierHTML = '<div style="page-break-before:always;margin-top:40px;padding-top:20px;border-top:3px solid #cc0000;">' +
+    '<div style="background:#fff0f0;border:2px solid #cc0000;border-radius:6px;padding:16px 20px;margin-bottom:24px;">' +
+      '<strong style="color:#cc0000;font-size:15px;">⚠ INTERNAL — SUPPLIER LOI(s) — DO NOT SHARE WITH BUYER</strong><br>' +
+      '<span style="font-size:12px;color:#666;">Auto-generated from buyer LOI ' + buyerRef + '. Print separately. Remove this header before sending to supplier.</span>' +
+    '</div>';
+
+  var portKeys = Object.keys(portGroups);
+  var sloiNum = 1;
+
+  portKeys.forEach(function(port) {
+    var items = portGroups[port];
+    var sRef = 'CLAD-SLOI-' + new Date().getFullYear() + '-' + String(new Date().getMonth()+1).padStart(2,'0') + String(new Date().getDate()).padStart(2,'0') + '-' + sloiNum;
+
+    var prodRows = '';
+    items.forEach(function(p) {
+      prodRows += '<tr><td style="border:1px solid #ccc;padding:6px 10px;font-size:12px;">' + p.name + '</td>' +
+        '<td style="border:1px solid #ccc;padding:6px 10px;font-size:12px;">' + p.specs + '</td>' +
+        '<td style="border:1px solid #ccc;padding:6px 10px;font-size:12px;">' + port + '</td></tr>';
+    });
+
+    supplierHTML += '<div class="loi-doc" style="margin-bottom:30px;">' +
+      '<div class="loi-header">' +
+        '<img src="https://cladutacorp.com/claduta_seal_300.png" alt="Claduta Corporation Seal" style="width:120px;height:120px;display:block;margin:0 auto;">' +
+        '<h2>Claduta Corporation</h2>' +
+        '<p>Physical Commodities Division &middot; South Dakota, United States</p>' +
+        '<p>info@cladutacorp.com &middot; www.cladutacorp.com &middot; +1 (727) 623-2652</p>' +
+      '</div>' +
+
+      '<div class="loi-title">LETTER OF INTENT TO PURCHASE</div>' +
+
+      '<div class="meta-row"><span><strong>Date:</strong> ' + dateStr + '</span><span><strong>Reference:</strong> ' + sRef + '</span></div>' +
+      '<div class="meta-row"><span><strong>Valid Through:</strong> ' + validStr + '</span></div>' +
+
+      '<div style="margin:20px 0;padding:12px 16px;background:#f9f9f9;border:1px solid #ddd;border-radius:3px;">' +
+        '<div style="font-size:12px;color:#777;margin-bottom:8px;">TO (Supplier): <em>_________________________________</em></div>' +
+        '<div style="font-size:12px;color:#777;margin-bottom:8px;">Address: <em>___________________________________, Brazil</em></div>' +
+        '<div style="font-size:12px;color:#777;margin-bottom:12px;">Contact: <em>___________________</em> &nbsp; Email: <em>___________________</em></div>' +
+        '<div style="font-size:12px;color:#777;margin-bottom:4px;">FROM:</div>' +
+        '<div><strong>CLADUTA CORPORATION</strong></div>' +
+        '<div>South Dakota, United States</div>' +
+        '<div>Jason Dudney, Principal</div>' +
+        '<div>info@cladutacorp.com &middot; +1 (727) 623-2652</div>' +
+      '</div>' +
+
+      '<p style="margin:12px 0;">Dear Sir/Madam,</p>' +
+      '<p>Claduta Corporation (&ldquo;Purchaser&rdquo;) submits this Letter of Intent expressing our interest in purchasing the products specified below from your organization (&ldquo;Supplier&rdquo;) for export to international markets. We have confirmed buyer demand for these products and are prepared to move to contract upon receipt of current pricing.</p>' +
+
+      '<div class="section-title">1. Products of Interest</div>' +
+      '<table style="width:100%;border-collapse:collapse;margin:8px 0 16px;"><tr><th style="border:1px solid #ccc;padding:6px 10px;font-size:12px;background:#f5f5f5;">Product</th><th style="border:1px solid #ccc;padding:6px 10px;font-size:12px;background:#f5f5f5;">Specification</th><th style="border:1px solid #ccc;padding:6px 10px;font-size:12px;background:#f5f5f5;">Origin Port</th></tr>' + prodRows + '</table>' +
+
+      '<div class="section-title">2. Commercial Terms</div>' +
+      '<table style="width:100%;border-collapse:collapse;margin:8px 0 16px;">' +
+        '<tr><th style="border:1px solid #ccc;padding:6px 10px;font-size:12px;background:#f5f5f5;width:40%;">Volume</th><td style="border:1px solid #ccc;padding:6px 10px;font-size:12px;">' + volume + '</td></tr>' +
+        '<tr><th style="border:1px solid #ccc;padding:6px 10px;font-size:12px;background:#f5f5f5;">Delivery Terms</th><td style="border:1px solid #ccc;padding:6px 10px;font-size:12px;">' + port + '</td></tr>' +
+        '<tr><th style="border:1px solid #ccc;padding:6px 10px;font-size:12px;background:#f5f5f5;">Target Delivery</th><td style="border:1px solid #ccc;padding:6px 10px;font-size:12px;">' + delivery + '</td></tr>' +
+        '<tr><th style="border:1px solid #ccc;padding:6px 10px;font-size:12px;background:#f5f5f5;">Packaging</th><td style="border:1px solid #ccc;padding:6px 10px;font-size:12px;">' + packaging + '</td></tr>' +
+        '<tr><th style="border:1px solid #ccc;padding:6px 10px;font-size:12px;background:#f5f5f5;">Payment Terms</th><td style="border:1px solid #ccc;padding:6px 10px;font-size:12px;">30% TT advance on signed contract, 70% TT against Bill of Lading.</td></tr>' +
+      '</table>' +
+
+      '<div class="section-title">3. Pricing Request</div>' +
+      '<p>We request current FOB pricing for the products and specifications listed above, based on safra 2026 (current harvest) availability. Please confirm:</p>' +
+      '<p style="margin-left:20px;">a) &nbsp;FOB price per metric ton for each product/grade<br>' +
+        'b) &nbsp;Availability and estimated lead time to vessel loading<br>' +
+        'c) &nbsp;Sample availability (if applicable)<br>' +
+        'd) &nbsp;Any minimum order requirements or volume discounts</p>' +
+
+      '<div class="section-title">4. Non-Binding Nature</div>' +
+      '<p>This Letter of Intent is an expression of serious commercial interest and is <strong>NON-BINDING</strong> on either party. A binding agreement shall only arise upon execution of a definitive purchase contract. Pricing is subject to market conditions at the time of contract execution.</p>' +
+
+      '<div class="section-title">5. Confidentiality</div>' +
+      '<p>Both parties agree to keep the terms of this LOI and all commercial information exchanged during negotiations confidential. Neither party shall disclose pricing, volumes, or buyer/customer details to third parties without prior written consent.</p>' +
+
+      '<div class="section-title">6. Authorized Representative</div>' +
+      '<p>Mr. Lucas Silva is authorized to represent Claduta Corporation for purposes of facility visits, sample collection, quality inspection, and preliminary negotiations pursuant to this LOI.</p>' +
+
+      '<div class="sig-block" style="margin-top:24px;">' +
+        '<p>Respectfully submitted,</p>' +
+        '<div style="margin-top:16px;"><strong>CLADUTA CORPORATION</strong></div>' +
+        '<div class="sig-line"></div>' +
+        '<div class="sig-label">Jason Dudney, Principal</div>' +
+        '<div style="margin-top:4px;font-size:11px;color:#999;">Date: ________________________</div>' +
+      '</div>' +
+
+      '<div style="margin-top:24px;padding:12px 16px;background:#fff0f0;border:2px solid #cc0000;border-radius:4px;">' +
+        '<strong style="color:#cc0000;">INTERNAL USE — DO NOT SHARE WITH SUPPLIER</strong>' +
+        '<table style="width:100%;border-collapse:collapse;margin-top:8px;">' +
+          '<tr><td style="border:1px solid #cc0000;padding:4px 8px;font-size:11px;background:#fff0f0;color:#cc0000;font-weight:bold;width:30%;">Buyer Company</td><td style="border:1px solid #cc0000;padding:4px 8px;font-size:11px;">' + buyerCompany + '</td></tr>' +
+          '<tr><td style="border:1px solid #cc0000;padding:4px 8px;font-size:11px;background:#fff0f0;color:#cc0000;font-weight:bold;">Buyer Contact</td><td style="border:1px solid #cc0000;padding:4px 8px;font-size:11px;">' + buyerContact + ' &middot; ' + buyerEmail + (buyerPhone ? ' &middot; ' + buyerPhone : '') + '</td></tr>' +
+          '<tr><td style="border:1px solid #cc0000;padding:4px 8px;font-size:11px;background:#fff0f0;color:#cc0000;font-weight:bold;">Buyer LOI Ref</td><td style="border:1px solid #cc0000;padding:4px 8px;font-size:11px;">' + buyerRef + '</td></tr>' +
+          '<tr><td style="border:1px solid #cc0000;padding:4px 8px;font-size:11px;background:#fff0f0;color:#cc0000;font-weight:bold;">Buyer Destination</td><td style="border:1px solid #cc0000;padding:4px 8px;font-size:11px;">' + incoterm + ' ' + destPort + ', ' + country + '</td></tr>' +
+          '<tr><td style="border:1px solid #cc0000;padding:4px 8px;font-size:11px;background:#fff0f0;color:#cc0000;font-weight:bold;">Target Margin</td><td style="border:1px solid #cc0000;padding:4px 8px;font-size:11px;">4.6% over FOB cost</td></tr>' +
+        '</table>' +
+      '</div>' +
+
+    '</div>';
+
+    sloiNum++;
+  });
+
+  supplierHTML += '</div>';
+  document.getElementById('supplier-loi-output').innerHTML = supplierHTML;
+  document.getElementById('supplier-loi-output').style.display = 'block';
+}
+  document.getElementById('loi-form').style.display = 'block';
+  document.getElementById('loi-output').classList.remove('visible');
+  document.getElementById('loi-form').scrollIntoView({ behavior: 'smooth' });
+}
 function editForm() {
   document.getElementById('loi-form').style.display = 'block';
   document.getElementById('loi-output').classList.remove('visible');
+  document.getElementById('supplier-loi-output').style.display = 'none';
   document.getElementById('loi-form').scrollIntoView({ behavior: 'smooth' });
 }
 </script>
