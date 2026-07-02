@@ -116,6 +116,7 @@
     #loi-output { display: block !important; }
     .loi-doc { border: none; padding: 24px 40px; box-shadow: none; }
     .page-wrap { max-width: 100%; padding: 0; }
+    .loi-doc img { display: block !important; visibility: visible !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   }
 
   /* ── FOOTER ── */
@@ -341,7 +342,7 @@ function generateLOI() {
   // Build LOI
   var html = '' +
     '<div class="loi-header">' +
-      '<img src="https://cladutacorp.com/Claduta_Seal_Master.png" alt="Claduta Corporation Seal">' +
+      '<img src="https://cladutacorp.com/claduta_seal_300.png" alt="Claduta Corporation Seal" style="width:150px;height:150px;display:block;margin:0 auto;">' +
       '<h2>Claduta Corporation</h2>' +
       '<p>Physical Commodities Division &middot; South Dakota, United States</p>' +
       '<p>info@cladutacorp.com &middot; www.cladutacorp.com &middot; +1 (727) 623-2652</p>' +
