@@ -339,24 +339,6 @@ function generateLOI() {
   var dateStr = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   var ref = 'LOI-' + now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + String(now.getDate()).padStart(2,'0') + '-' + String(Math.floor(Math.random()*9000)+1000);
 
-  // Silent POST to capture sheet
-  try {
-    var prodNames = products.map(function(p) { return p.name; }).join(', ');
-    var prodSpecs = products.map(function(p) { return p.specs; }).join(' | ');
-    fetch('https://script.google.com/macros/s/AKfycbyEai8WxcPLNbzeYKMnCxG-vi9a6-LD-kw4zCemz626Rdof5OcTV86tWtBBUOMWSLpwbQ/exec', {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        ref: ref, company: company, country: country, address: address,
-        contact: contact, title: title, email: email, phone: phone,
-        products: prodNames, specs: prodSpecs, volume: volume,
-        destPort: destPort, incoterm: incoterm, delivery: delivery,
-        packaging: packaging, notes: notes
-      })
-    });
-  } catch(e) { /* silent fail — don't block LOI generation */ }
-
   // Validity (30 days)
   var validity = new Date(now.getTime() + 30*24*60*60*1000);
   var validStr = validity.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
@@ -588,16 +570,14 @@ function generateSupplierLOIs(products, volume, delivery, packaging, payment, no
   document.getElementById('supplier-loi-output').innerHTML = supplierHTML;
   document.getElementById('supplier-loi-output').style.display = 'block';
 }
-  document.getElementById('loi-form').style.display = 'block';
-  document.getElementById('loi-output').classList.remove('visible');
-  document.getElementById('loi-form').scrollIntoView({ behavior: 'smooth' });
-}
+
 function editForm() {
   document.getElementById('loi-form').style.display = 'block';
   document.getElementById('loi-output').classList.remove('visible');
   document.getElementById('supplier-loi-output').style.display = 'none';
   document.getElementById('loi-form').scrollIntoView({ behavior: 'smooth' });
 }
+
 // Auto-fill form from URL parameters (admin link from LOI sheet)
 (function() {
   var p = new URLSearchParams(window.location.search);
@@ -612,7 +592,6 @@ function editForm() {
     var el = document.getElementById(map[k]);
     if (el && p.get(k)) el.value = decodeURIComponent(p.get(k));
   });
-  // Set incoterm select
   var ic = p.get('ic');
   if (ic) {
     var sel = document.getElementById('incoterm');
@@ -620,16 +599,13 @@ function editForm() {
       if (sel.options[i].value === ic) { sel.selectedIndex = i; break; }
     }
   }
-  // Set product checkboxes
   var pr = p.get('pr') || '';
   if (pr.indexOf('Coffee') !== -1) {
     document.getElementById('chkCoffee').checked = true;
     toggleGrades();
-    // Check matching coffee grades from specs
     var sp = decodeURIComponent(p.get('sp') || '');
-    var coffeeSpecs = sp.split(' | ')[0] || '';
     document.querySelectorAll('#coffeeGrades input[type=checkbox]').forEach(function(cb) {
-      if (coffeeSpecs.indexOf(cb.value) !== -1) cb.checked = true;
+      if (sp.indexOf(cb.value) !== -1) cb.checked = true;
     });
   }
   if (pr.indexOf('Sugar') !== -1) {
