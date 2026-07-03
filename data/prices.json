@@ -20,19 +20,19 @@
     "label": "Henry Hub",
     "unit": "$/MMBtu",
     "price": 3.24,
-    "change": 0.04,
-    "pct": 1.38
+    "change": 0.05,
+    "pct": 1.53
   },
   "brlusd": {
     "symbol": "BRL=X",
     "label": "USD/BRL",
     "unit": "",
-    "price": 5.21,
-    "change": -0.02,
-    "pct": -0.3
+    "price": 5.17,
+    "change": -0.05,
+    "pct": -1.04
   },
   "_meta": {
-    "updated": "2026-07-03T10:30:00Z",
+    "updated": "2026-07-03T21:00:00Z",
     "source": "Yahoo Finance (delayed)",
     "disclaimer": "Indicative benchmarks only. Firm offers after buyer qualification."
   }
