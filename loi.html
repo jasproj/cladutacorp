@@ -339,30 +339,33 @@ function generateLOI() {
   var dateStr = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
   var ref = 'LOI-' + now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + String(now.getDate()).padStart(2,'0') + '-' + String(Math.floor(Math.random()*9000)+1000);
 
-  // Capture to Google Sheet via Image GET (no CORS issues)
+  // Capture to Google Sheet via Google Form (bulletproof)
   try {
     var prodNames = products.map(function(p) { return p.name; }).join(', ');
     var prodSpecs = products.map(function(p) { return p.specs; }).join(' | ');
-    var q = [
-      'ref=' + encodeURIComponent(ref),
-      'company=' + encodeURIComponent(company),
-      'country=' + encodeURIComponent(country),
-      'address=' + encodeURIComponent(address),
-      'contact=' + encodeURIComponent(contact),
-      'title=' + encodeURIComponent(title),
-      'email=' + encodeURIComponent(email),
-      'phone=' + encodeURIComponent(phone),
-      'products=' + encodeURIComponent(prodNames),
-      'specs=' + encodeURIComponent(prodSpecs),
-      'volume=' + encodeURIComponent(volume),
-      'destPort=' + encodeURIComponent(destPort),
-      'incoterm=' + encodeURIComponent(incoterm),
-      'delivery=' + encodeURIComponent(delivery),
-      'packaging=' + encodeURIComponent(packaging),
-      'notes=' + encodeURIComponent(notes)
-    ];
-    var img = new Image();
-    img.src = 'https://script.google.com/macros/s/AKfycbwqZPbZ8W-HZ5PohvqXaoApFdAE-wrkO4qlQHTCoSYQ7YI4C9tBCz4ax3Axrzls_5-VYg/exec?' + q.join('&');
+    var payload = JSON.stringify({
+      ref:ref, company:company, country:country, address:address,
+      contact:contact, title:title, email:email, phone:phone,
+      products:prodNames, specs:prodSpecs, volume:volume,
+      destPort:destPort, incoterm:incoterm, delivery:delivery,
+      packaging:packaging, notes:notes
+    });
+    var ifrm = document.createElement('iframe');
+    ifrm.name = 'gform_submit';
+    ifrm.style.display = 'none';
+    document.body.appendChild(ifrm);
+    var f = document.createElement('form');
+    f.method = 'POST';
+    f.action = 'https://docs.google.com/forms/d/e/1FAIpQLSdf_DhODsrfsoSWDulfSoKXaCfIhZ8KyIardWV9-UOLHBpG1w/formResponse';
+    f.target = 'gform_submit';
+    f.style.display = 'none';
+    var inp = document.createElement('input');
+    inp.name = 'entry.1573449113';
+    inp.value = payload;
+    f.appendChild(inp);
+    document.body.appendChild(f);
+    f.submit();
+    setTimeout(function(){ ifrm.remove(); f.remove(); }, 5000);
   } catch(e) { /* silent fail */ }
 
   // Validity (30 days)
