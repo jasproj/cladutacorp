@@ -3,17 +3,17 @@
     "symbol": "KC=F",
     "label": "ICE Coffee C",
     "unit": "\u00a2/lb",
-    "price": 315.65,
-    "change": -8.65,
-    "pct": -2.67
+    "price": 287.45,
+    "change": -36.85,
+    "pct": -11.36
   },
   "sugar": {
     "symbol": "SB=F",
     "label": "ICE Sugar No.11",
     "unit": "\u00a2/lb",
-    "price": 14.85,
-    "change": -0.14,
-    "pct": -0.93
+    "price": 14.81,
+    "change": -0.18,
+    "pct": -1.2
   },
   "natgas": {
     "symbol": "NG=F",
@@ -32,7 +32,7 @@
     "pct": -1.05
   },
   "_meta": {
-    "updated": "2026-07-04T10:30:02Z",
+    "updated": "2026-07-05T10:30:03Z",
     "source": "Yahoo Finance (delayed)",
     "disclaimer": "Indicative benchmarks only. Firm offers after buyer qualification."
   }
