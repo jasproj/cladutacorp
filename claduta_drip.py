@@ -122,31 +122,81 @@ FORBIDDEN_REGEX_BY_PRODUCT: dict[str, list[str]] = {
 }
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Country filter (ITEM B). Hard-block Canada (CASL) + EU/UK/EEA (GDPR — no
-# documented LIA). Match on full name OR ISO2 code OR email TLD fallback.
+# Country filter (ITEM B). The DEFAULT policy hard-blocks Canada (CASL) +
+# EU/UK/EEA (GDPR). COFFEE is treated specially (see COFFEE_* below): its buyers
+# cluster in the EU/UK, so — backed by the documented Legitimate Interest
+# Assessment in docs/coffee-b2b-lia.md — coffee re-admits the Tier-A EU/UK
+# countries outright and Germany for ROLE addresses only. Austria + Canada stay
+# blocked for every product. Match on full name OR ISO2 code OR email-TLD.
+#
+# Single source of truth: the canon maps drive both the blunt EXCLUDED_* sets
+# (sugar/pepper) and the coffee-specific classifier — no hand-sync drift.
 # ─────────────────────────────────────────────────────────────────────────────
 
-EXCLUDED_COUNTRY_NAMES = {
-    "canada",
-    "united kingdom", "uk", "great britain", "england", "scotland", "wales",
-    "ireland", "france", "germany", "italy", "spain", "netherlands", "holland",
-    "belgium", "luxembourg", "austria", "denmark", "sweden", "finland",
-    "portugal", "greece", "poland", "czech republic", "czechia", "slovakia",
-    "slovenia", "hungary", "romania", "bulgaria", "croatia", "estonia",
-    "latvia", "lithuania", "malta", "cyprus", "switzerland", "norway",
-    "iceland", "liechtenstein",
+_COUNTRY_NAME_CANON = {
+    "canada": "canada",
+    "united kingdom": "uk", "uk": "uk", "great britain": "uk",
+    "england": "uk", "scotland": "uk", "wales": "uk",
+    "ireland": "ireland", "france": "france", "germany": "germany",
+    "italy": "italy", "spain": "spain", "netherlands": "netherlands",
+    "holland": "netherlands", "belgium": "belgium", "luxembourg": "luxembourg",
+    "austria": "austria", "denmark": "denmark", "sweden": "sweden",
+    "finland": "finland", "portugal": "portugal", "greece": "greece",
+    "poland": "poland", "czech republic": "czechia", "czechia": "czechia",
+    "slovakia": "slovakia", "slovenia": "slovenia", "hungary": "hungary",
+    "romania": "romania", "bulgaria": "bulgaria", "croatia": "croatia",
+    "estonia": "estonia", "latvia": "latvia", "lithuania": "lithuania",
+    "malta": "malta", "cyprus": "cyprus", "switzerland": "switzerland",
+    "norway": "norway", "iceland": "iceland", "liechtenstein": "liechtenstein",
 }
-EXCLUDED_COUNTRY_ISO2 = {
-    "CA", "UK", "GB", "IE", "FR", "DE", "IT", "ES", "NL", "BE", "LU",
-    "AT", "DK", "SE", "FI", "PT", "GR", "PL", "CZ", "SK", "SI", "HU",
-    "RO", "BG", "HR", "EE", "LV", "LT", "MT", "CY", "CH", "NO", "IS", "LI",
+_COUNTRY_ISO2_CANON = {
+    "CA": "canada", "UK": "uk", "GB": "uk", "IE": "ireland", "FR": "france",
+    "DE": "germany", "IT": "italy", "ES": "spain", "NL": "netherlands",
+    "BE": "belgium", "LU": "luxembourg", "AT": "austria", "DK": "denmark",
+    "SE": "sweden", "FI": "finland", "PT": "portugal", "GR": "greece",
+    "PL": "poland", "CZ": "czechia", "SK": "slovakia", "SI": "slovenia",
+    "HU": "hungary", "RO": "romania", "BG": "bulgaria", "HR": "croatia",
+    "EE": "estonia", "LV": "latvia", "LT": "lithuania", "MT": "malta",
+    "CY": "cyprus", "CH": "switzerland", "NO": "norway", "IS": "iceland",
+    "LI": "liechtenstein",
 }
-EXCLUDED_TLDS = {
-    ".ca", ".uk", ".gb", ".ie", ".fr", ".de", ".it", ".es", ".nl", ".be",
-    ".lu", ".at", ".dk", ".se", ".fi", ".pt", ".gr", ".pl", ".cz", ".sk",
-    ".si", ".hu", ".ro", ".bg", ".hr", ".ee", ".lv", ".lt", ".mt", ".cy",
-    ".ch", ".no", ".is", ".li", ".eu",
+_COUNTRY_TLD_CANON = {
+    ".ca": "canada", ".uk": "uk", ".gb": "uk", ".ie": "ireland", ".fr": "france",
+    ".de": "germany", ".it": "italy", ".es": "spain", ".nl": "netherlands",
+    ".be": "belgium", ".lu": "luxembourg", ".at": "austria", ".dk": "denmark",
+    ".se": "sweden", ".fi": "finland", ".pt": "portugal", ".gr": "greece",
+    ".pl": "poland", ".cz": "czechia", ".sk": "slovakia", ".si": "slovenia",
+    ".hu": "hungary", ".ro": "romania", ".bg": "bulgaria", ".hr": "croatia",
+    ".ee": "estonia", ".lv": "latvia", ".lt": "lithuania", ".mt": "malta",
+    ".cy": "cyprus", ".ch": "switzerland", ".no": "norway", ".is": "iceland",
+    ".li": "liechtenstein", ".eu": "eu",
 }
+
+# Blunt sets used by the DEFAULT (sugar/pepper) block. Derived from the canon
+# maps so there is one source of truth; values equal the historical hand-written
+# sets exactly (no behavior change for sugar/pepper).
+EXCLUDED_COUNTRY_NAMES = set(_COUNTRY_NAME_CANON)
+EXCLUDED_COUNTRY_ISO2  = set(_COUNTRY_ISO2_CANON)
+EXCLUDED_TLDS          = set(_COUNTRY_TLD_CANON)
+
+# US state abbreviations that collide with excluded country ISO2 codes:
+# CA=California↔Canada, DE=Delaware↔Germany, MT=Montana↔Malta. A bare state code
+# must NOT be read as a country — fixes US contacts wrongly blocked (all products).
+US_STATE_ISO2_COLLISIONS = {"CA", "DE", "MT"}
+
+# Coffee-specific unblocking. Canonical labels listed here are ADMITTED for
+# coffee despite the default block. Germany is admitted for ROLE addresses only
+# (info@/sales@/procurement@ …). Austria + Canada are deliberately ABSENT, so
+# they remain blocked for coffee too. See docs/coffee-b2b-lia.md.
+COFFEE_UNBLOCK = {
+    "uk", "ireland", "france", "italy", "spain", "netherlands", "belgium",
+    "luxembourg", "denmark", "sweden", "finland", "portugal", "greece",
+    "poland", "czechia", "slovakia", "slovenia", "hungary", "romania",
+    "bulgaria", "croatia", "estonia", "latvia", "lithuania", "malta",
+    "cyprus", "switzerland", "norway", "iceland", "liechtenstein", "eu",
+    "germany",
+}
+COFFEE_UNBLOCK_ROLE_ONLY = {"germany"}   # DE: role addresses only (GDPR risk)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Role-address tiering (ITEM C)
@@ -442,49 +492,85 @@ def _normalize_country(s: str) -> str:
     s = re.sub(r"\s+", " ", s).strip()
     return s
 
+def _looks_us(norm: str) -> bool:
+    """True when a normalized location string carries an explicit US signal, so
+    US firms pass even when a state code (CA/DE) or a 'USA/Canada' style label
+    would otherwise trip the block."""
+    if "usa" in norm or "united states" in norm:
+        return True
+    return "us" in norm.split()
+
+def country_block_key(country_str: str | None, email: str | None) -> str | None:
+    """Canonical excluded-country label for a contact under the DEFAULT policy,
+    or None if not blocked. Priority: country/city text → email-TLD fallback.
+    Skips US-state ISO2 collisions (CA/DE/MT) and honors a US signal."""
+    country = (country_str or "").strip()
+    if country:
+        norm = _normalize_country(country)
+        if norm:
+            if _looks_us(norm):
+                return None
+            for name, canon in _COUNTRY_NAME_CANON.items():
+                if name in norm:
+                    return canon
+            for tok in norm.split():
+                u = tok.upper()
+                if u in US_STATE_ISO2_COLLISIONS:
+                    continue
+                if u in _COUNTRY_ISO2_CANON:
+                    return _COUNTRY_ISO2_CANON[u]
+            return None
+    # No usable country text → email-TLD backstop.
+    em = (email or "").lower().rstrip()
+    for tld, canon in _COUNTRY_TLD_CANON.items():
+        if em.endswith(tld):
+            return canon
+    return None
+
+# Back-compat thin wrappers (kept for external callers / tests).
 def country_excluded(country_str: str | None) -> bool:
-    if not country_str:
-        return False
-    norm = _normalize_country(country_str)
-    if not norm:
-        return False
-    for name in EXCLUDED_COUNTRY_NAMES:
-        if name in norm:
-            return True
-    for tok in norm.split():
-        if tok.upper() in EXCLUDED_COUNTRY_ISO2:
-            return True
-    return False
+    return country_block_key(country_str, None) is not None
 
 def tld_excluded(email: str) -> bool:
-    em = email.lower().rstrip()
-    for tld in EXCLUDED_TLDS:
-        if em.endswith(tld):
-            return True
-    return False
+    em = (email or "").lower().rstrip()
+    return any(em.endswith(t) for t in EXCLUDED_TLDS)
 
-def apply_country_filter(candidates: list[dict], logger: logging.Logger) -> tuple[list[dict], int]:
+def _coffee_admits(key: str, contact: dict) -> bool:
+    """Coffee override: is this DEFAULT-blocked country re-admitted for coffee?"""
+    if key not in COFFEE_UNBLOCK:
+        return False                       # austria, canada → stay blocked
+    if key in COFFEE_UNBLOCK_ROLE_ONLY:    # Germany → role addresses (tier 1/2) only
+        return email_tier(contact.get("email", ""), contact.get("first_name")) in (1, 2)
+    return True
+
+def apply_country_filter(candidates: list[dict], logger: logging.Logger,
+                         product: str | None = None) -> tuple[list[dict], int]:
     """
     Drop contacts in excluded countries. Priority: contact['country'] →
     contact['city'] (xlsx Region/Country lives here for schema-compat) →
-    email-TLD fallback (backstop only).
+    email-TLD fallback (backstop only). For product == 'coffee', DEFAULT-blocked
+    Tier-A EU/UK countries — and Germany role addresses — are re-admitted per the
+    Legitimate Interest Assessment (docs/coffee-b2b-lia.md).
     """
     kept: list[dict] = []
     excluded = 0
+    readmitted = 0
     samples: list[str] = []
     for c in candidates:
-        country = (c.get("country") or c.get("city") or "").strip()
-        hit = country_excluded(country)
-        if not hit and not country:
-            hit = tld_excluded(c.get("email", ""))
-        if hit:
+        loc = (c.get("country") or c.get("city") or "").strip()
+        key = country_block_key(loc, c.get("email", ""))
+        if key and product == "coffee" and _coffee_admits(key, c):
+            readmitted += 1
+            key = None
+        if key:
             excluded += 1
             if len(samples) < 5:
-                samples.append(f"{c.get('email')} ({country or 'tld'})")
+                samples.append(f"{c.get('email')} ({loc or 'tld'}::{key})")
             continue
         kept.append(c)
-    if excluded:
-        logger.info(f"country_filter: excluded {excluded} contact(s); sample={samples}")
+    if excluded or readmitted:
+        extra = f"; coffee_readmitted={readmitted}" if product == "coffee" else ""
+        logger.info(f"country_filter: excluded {excluded} contact(s){extra}; sample={samples}")
     return kept, excluded
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -1047,7 +1133,7 @@ def build_queue(today_product: str, batch_size: int, args, state: dict,
               + load_named_contacts(product, logger) \
               + load_tracking_followup_contacts(product, logger)
         loaded = len(cands)
-        cands, cexcl = apply_country_filter(cands, logger)
+        cands, cexcl = apply_country_filter(cands, logger, product)
         elig = filter_eligible(cands, touches, bounced, touch_count, datetime.now())
         thr, dropped = domain_throttle(elig)
         return {
