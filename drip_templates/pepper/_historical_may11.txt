@@ -1,0 +1,37 @@
+SUBJECT: Brazilian black pepper — direct from origin
+
+Hi {{first_name}},
+
+Reaching out from Claduta Corporation — we're a Brazil-origin
+commodity trader supplying black pepper, green coffee, and sugar
+to international buyers.
+
+We're working directly with established Espírito Santo pepper
+producers and have strong supply heading into the next cycle,
+shipping FOB Vitória. ASTA 570+ available, with cleaning and
+grading specs to match buyer requirements.
+
+If pepper is on your sourcing radar — current or upcoming —
+happy to share availability, specs, and terms. No pressure,
+just opening the line.
+
+A few quick questions if useful:
+  • What grade / ASTA spec do you typically buy?
+  • Container volume per shipment?
+  • Destination port?
+
+Best regards,
+
+Jason Dudney
+Principal | Claduta Corporation
+info@cladutacorp.com
+Direct from Brazil. Delivered Worldwide.
+Florida, USA & Belo Horizonte, Brazil
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Historical reference: pepper Variant A body sent to 9 high-priority pepper
+# buyers on 2026-05-11 (NEDSPICE, McCormick, Elite Spice, Noble House, Gel
+# Spice, Badia, Frontier Co-op, Penzeys, Olam). Kept as baseline; the
+# runtime templates in this directory derive from this tone & structure.
+# Filename starts with "_" so the script's `variant_*.txt` glob ignores it.
+# ─────────────────────────────────────────────────────────────────────────────

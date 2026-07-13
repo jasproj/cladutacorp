@@ -74,7 +74,7 @@ PRODUCTS = ("coffee", "sugar", "pepper")
 
 COOLDOWN_DAYS             = 4
 MIN_DAYS_BETWEEN_TOUCHES  = 30
-MAX_TOUCHES_PER_EMAIL     = 3
+MAX_TOUCHES_PER_EMAIL     = 5   # T1–T3 intro (a/b/c) + T4/T5 nurture
 BOUNCE_RATE_WINDOW_DAYS   = 7
 BOUNCE_RATE_TRIP_PCT      = 5.0
 SEND_PACING_SECONDS       = 10
@@ -971,6 +971,24 @@ def load_templates(product: str) -> list[tuple[str, str, str]]:
         raise FileNotFoundError(f"No variant_*.txt files found in {tdir}")
     return out
 
+def load_nurture_templates(product: str) -> list[tuple[str, str, str]]:
+    """Load the T4/T5 nurture templates (nurture_t*.txt), sorted so index 0 = T4
+    (4th touch) and 1 = T5 (5th touch). Returns [] if none exist — callers then
+    fall back to intro-only behavior."""
+    tdir = TEMPLATES_DIR / product
+    out: list[tuple[str, str, str]] = []
+    if not tdir.exists():
+        return out
+    for f in sorted(tdir.glob("nurture_t*.txt")):
+        text = f.read_text()
+        m = SUBJECT_LINE_RE.match(text)
+        if not m:
+            raise ValueError(f"Nurture template {f.name} missing 'SUBJECT: ...' on first line")
+        subject = m.group(1).strip()
+        body = text[m.end():].lstrip("\n")
+        out.append((f.stem, subject, body))
+    return out
+
 def forbidden_token_check(product: str, templates: list[tuple[str, str, str]]) -> list[str]:
     violations: list[str] = []
     literal_forbid = FORBIDDEN_GLOBAL + FORBIDDEN_BY_PRODUCT.get(product, [])
@@ -1114,6 +1132,22 @@ def build_queue(today_product: str, batch_size: int, args, state: dict,
     # carries its own product (`_product`) and rendered template (`_template`).
     # ─────────────────────────────────────────────────────────────────────────
     templates_by_product: dict[str, list[tuple[str, str, str]]] = {today_product: templates}
+    nurture_by_product: dict[str, list[tuple[str, str, str]]] = {}
+
+    def nurture_for(product: str) -> list[tuple[str, str, str]]:
+        """Lazy-load + token-guard the T4/T5 nurture templates for a product.
+        Returns [] (intro-only) if none are present or they fail the guard."""
+        if product in nurture_by_product:
+            return nurture_by_product[product]
+        nt = load_nurture_templates(product)
+        if nt:
+            v = forbidden_token_check(product, nt)
+            if v:
+                for vv in v:
+                    logger.error(f"FORBIDDEN_TOKEN (nurture {product}, disabled): {vv}")
+                nt = []
+        nurture_by_product[product] = nt
+        return nt
 
     def pool_eligible(product: str):
         """Load + country-filter + eligibility-filter + domain-throttle ONE
@@ -1165,6 +1199,8 @@ def build_queue(today_product: str, batch_size: int, args, state: dict,
         eligible_total    += info["eligible_total"]
         domain_dropped    += info["domain_dropped"]
         added = 0
+        intro_i = 0
+        ntmpls = nurture_for(product)
         for c in info["eligible"]:
             if len(queue) >= batch_size:
                 break
@@ -1172,12 +1208,27 @@ def build_queue(today_product: str, batch_size: int, args, state: dict,
             dom = em.split("@", 1)[1] if "@" in em else em
             if em in seen_emails or dom in seen_domains:   # cross-pool dedup
                 continue
+            # Touch-aware template: prior touches 0/1/2 → intro a/b/c (rotated for
+            # send-time diversity); touch 3 → T4 nurture; touch 4 → T5 nurture.
+            tc = touch_count.get(em, 0)
+            if tc <= 2:
+                tmpl = tmpls[intro_i % len(tmpls)]
+            elif (tc - 3) < len(ntmpls):
+                tmpl = ntmpls[tc - 3]
+            else:
+                # Nurture touch required but templates unavailable — skip rather
+                # than downgrade a 4th/5th touch back to a cold intro.
+                logger.warning(f"nurture_unavailable: skipping {em} at prior-touch {tc} ({product})")
+                continue
             seen_emails.add(em)
             seen_domains.add(dom)
             c["_product"] = product
-            c["_template"] = tmpls[added % len(tmpls)]     # balance a/b/c per pool
+            c["_template"] = tmpl
+            c["_touch"] = tc + 1                           # 1-indexed touch number
             queue.append(c)
             added += 1
+            if tc <= 2:
+                intro_i += 1
         if added:
             pools_used.append((product, added))
             logger.info(f"pool_fill: {product} +{added} (total {len(queue)}/{batch_size})")
@@ -1466,8 +1517,8 @@ def main() -> int:
             rsubj, _rbody = render(subj, body, c)
             label = "NEW" if c["email"].strip().lower() not in touches else "RE-ENGAGE"
             logger.info(
-                f"[{i:>3}/{len(queue)}] {label:9} {c['_product']:6} T{c.get('tier',3)} {vid}  "
-                f"{c['email']:<45}  {c['company']}"
+                f"[{i:>3}/{len(queue)}] {label:9} {c['_product']:6} touch{c.get('_touch','?')} "
+                f"{vid:<10} {c['email']:<45}  {c['company']}"
             )
         if queue:
             example_v, example_subj, example_body = queue[0]["_template"]
