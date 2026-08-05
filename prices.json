@@ -1,9 +1,9 @@
 {
-  "updated": "2026-08-05T06:57:47Z",
+  "updated": "2026-08-05T12:39:26Z",
   "note": "Prices are indicative. CIF = FOB + freight + 0.5% insurance. Contact us for firm quotes.",
   "fob": {
     "pepper_brazil_black_asta570": {
-      "price": 5700.0,
+      "price": 5900.0,
       "unit": "USD/MT",
       "source": "IPC (ipcnet.org)",
       "grade": "Brazil Black Pepper ASTA 570"
@@ -31,38 +31,38 @@
   "cif": {
     "pepper": {
       "dubai": {
-        "fob": 5700.0,
+        "fob": 5900.0,
         "freight": 85,
-        "insurance": 28.5,
-        "cif": 5814.0,
+        "insurance": 29.5,
+        "cif": 6014.0,
         "dest": "dubai"
       },
       "singapore": {
-        "fob": 5700.0,
+        "fob": 5900.0,
         "freight": 110,
-        "insurance": 28.5,
-        "cif": 5838.0,
+        "insurance": 29.5,
+        "cif": 6040.0,
         "dest": "singapore"
       },
       "lagos": {
-        "fob": 5700.0,
+        "fob": 5900.0,
         "freight": 120,
-        "insurance": 28.5,
-        "cif": 5848.0,
+        "insurance": 29.5,
+        "cif": 6050.0,
         "dest": "lagos"
       },
       "jakarta": {
-        "fob": 5700.0,
+        "fob": 5900.0,
         "freight": 130,
-        "insurance": 28.5,
-        "cif": 5858.0,
+        "insurance": 29.5,
+        "cif": 6060.0,
         "dest": "jakarta"
       },
       "guangzhou": {
-        "fob": 5700.0,
+        "fob": 5900.0,
         "freight": 105,
-        "insurance": 28.5,
-        "cif": 5834.0,
+        "insurance": 29.5,
+        "cif": 6034.0,
         "dest": "guangzhou"
       }
     },
