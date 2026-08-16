@@ -3,9 +3,9 @@
     "symbol": "KC=F",
     "label": "ICE Coffee C",
     "unit": "\u00a2/lb",
-    "price": 338.1,
-    "change": 5.0,
-    "pct": 1.5
+    "price": 312.0,
+    "change": -21.1,
+    "pct": -6.33
   },
   "sugar": {
     "symbol": "SB=F",
@@ -28,11 +28,11 @@
     "label": "USD/BRL",
     "unit": "",
     "price": 5.21,
-    "change": 0.01,
-    "pct": 0.26
+    "change": 0.02,
+    "pct": 0.34
   },
   "_meta": {
-    "updated": "2026-08-15T10:30:01Z",
+    "updated": "2026-08-16T10:30:01Z",
     "source": "Yahoo Finance (delayed)",
     "disclaimer": "Indicative benchmarks only. Firm offers after buyer qualification."
   }
