@@ -3,25 +3,25 @@
     "symbol": "KC=F",
     "label": "ICE Coffee C",
     "unit": "\u00a2/lb",
-    "price": 341.9,
-    "change": -15.7,
-    "pct": -4.39
+    "price": 312.6,
+    "change": -29.3,
+    "pct": -8.57
   },
   "sugar": {
     "symbol": "SB=F",
     "label": "ICE Sugar No.11",
     "unit": "\u00a2/lb",
-    "price": 18.19,
-    "change": 0.6,
-    "pct": 3.41
+    "price": 17.56,
+    "change": -0.63,
+    "pct": -3.46
   },
   "natgas": {
     "symbol": "NG=F",
     "label": "Henry Hub",
     "unit": "$/MMBtu",
-    "price": 2.91,
-    "change": 0.07,
-    "pct": 2.29
+    "price": 2.89,
+    "change": -0.02,
+    "pct": -0.65
   },
   "brlusd": {
     "symbol": "BRL=X",
@@ -32,7 +32,7 @@
     "pct": 0.86
   },
   "_meta": {
-    "updated": "2026-08-29T10:30:01Z",
+    "updated": "2026-08-30T10:30:01Z",
     "source": "Yahoo Finance (delayed)",
     "disclaimer": "Indicative benchmarks only. Firm offers after buyer qualification."
   }
