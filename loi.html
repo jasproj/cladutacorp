@@ -147,7 +147,7 @@
 
 <div class="page-wrap">
   <h1>Letter of Intent</h1>
-  <p class="subtitle">Complete the form below to generate a non-binding Letter of Intent to purchase Brazilian commodities from Claduta Corporation. Roasted coffee for U.S. delivery is also available in small lots out of Miami, FL. Fill in your requirements, generate the document, print or save as PDF, sign it, and email it to <strong>info@cladutacorp.com</strong>.</p>
+  <p class="subtitle">Complete the form below to generate a non-binding Letter of Intent to purchase Brazilian commodities from Claduta Corporation. Roasted coffee for U.S. delivery is also available in small lots. Fill in your requirements, generate the document, print or save as PDF, sign it, and email it to <strong>info@cladutacorp.com</strong>.</p>
 
   <form id="loi-form" onsubmit="return generateLOI()">
 
@@ -174,7 +174,7 @@
         <label><input type="checkbox" id="chkCoffee" onchange="toggleGrades()">Green Coffee <span style="font-size:11px;color:#999;">(select grades below)</span></label>
         <label><input type="checkbox" id="chkSugar" onchange="toggleGrades()">Cane Sugar <span style="font-size:11px;color:#999;">(select grade below)</span></label>
         <label><input type="checkbox" id="chkPepper" onchange="toggleGrades()">Black Pepper <span style="font-size:11px;color:#999;">(ASTA 570+)</span></label>
-        <label><input type="checkbox" id="chkRoasted" onchange="toggleGrades()">Roasted Coffee &mdash; Miami, FL <span style="font-size:11px;color:#999;">(small lots, ships from Miami)</span></label>
+        <label><input type="checkbox" id="chkRoasted" onchange="toggleGrades()">Roasted Coffee <span style="font-size:11px;color:#999;">(small lots, U.S. delivery)</span></label>
       </div>
 
       <div id="coffeeGrades" class="grade-options">
@@ -210,8 +210,8 @@
       </div>
 
       <div id="roastedGrades" class="grade-options">
-        <h3>Roasted Coffee &mdash; Miami, FL</h3>
-        <p style="font-size:12px; color:#666; margin-bottom:10px;">Roasted lots ship from Miami, Florida. Typical orders run from hundreds of pounds up to a few thousand. No container minimum.</p>
+        <h3>Roasted Coffee &mdash; Small Lots, U.S. Delivery</h3>
+        <p style="font-size:12px; color:#666; margin-bottom:10px;">Roasted lots are delivered within the U.S. Typical orders run from hundreds of pounds up to a few thousand. No container minimum.</p>
         <div class="row">
           <div>
             <label class="required">Quantity (lbs)</label>
@@ -219,7 +219,7 @@
           </div>
           <div>
             <label class="required">Ship-To City, State</label>
-            <input type="text" id="roastedShipTo" placeholder="e.g. Miami, FL">
+            <input type="text" id="roastedShipTo" placeholder="City, State">
           </div>
         </div>
         <div class="row">
@@ -353,7 +353,7 @@ function generateLOI() {
   var packaging = document.getElementById('packaging').value.trim() || 'Standard';
   var notes = document.getElementById('notes').value.trim();
 
-  // Roasted (Miami) lots: small-quantity, ships from Miami, FL
+  // Roasted lots: small-quantity, U.S. domestic delivery
   var onlyRoasted = hasRoasted && !hasCoffee && !hasSugar && !hasPepper;
   var roastedQty = (document.getElementById('roastedQty').value || '').trim();
   var roastedShipTo = document.getElementById('roastedShipTo').value.trim();
@@ -368,7 +368,7 @@ function generateLOI() {
   if (onlyRoasted) {
     volume = roastedLine;
     destPort = roastedShipTo;
-    incoterm = 'Delivered from Miami, FL (terms confirmed in offer)';
+    incoterm = 'Delivered, U.S. domestic (terms confirmed in offer)';
     payment = 'To be confirmed in Claduta\u2019s offer for roasted lots.';
     packaging = roastedBag || 'Standard';
     destLabel = 'Ship-To Location';
@@ -394,7 +394,7 @@ function generateLOI() {
   }
 
   if (hasRoasted) {
-    products.push({ name: 'Roasted Coffee (Miami, FL)', specs: roastedSpec || 'Roast and grind to be specified', port: 'Ships from Miami, FL' });
+    products.push({ name: 'Roasted Coffee', specs: roastedSpec || 'Roast and grind to be specified', port: 'U.S. domestic delivery' });
   }
 
   // Date and ref
@@ -480,7 +480,7 @@ function generateLOI() {
       '<tr><th>Target Delivery</th><td>' + delivery + '</td></tr>' +
       '<tr><th>Payment Terms</th><td>' + payment + '</td></tr>' +
       '<tr><th>Packaging</th><td>' + packaging + '</td></tr>' +
-      (hasRoasted && !onlyRoasted ? '<tr><th>Roasted Coffee (Miami, FL)</th><td>' + roastedLine + '. Pricing and payment terms confirmed in Claduta\u2019s offer.</td></tr>' : '') +
+      (hasRoasted && !onlyRoasted ? '<tr><th>Roasted Coffee</th><td>' + roastedLine + '. Pricing and payment terms confirmed in Claduta\u2019s offer.</td></tr>' : '') +
     '</table>' +
     (notes ? '<p><strong>Additional notes:</strong> ' + notes.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</p>' : '') +
 
@@ -516,7 +516,7 @@ function generateLOI() {
   document.getElementById('loi-output').scrollIntoView({ behavior: 'smooth' });
 
   // Auto-generate supplier LOI(s) for internal use
-  var greenProducts = products.filter(function(p) { return p.port.indexOf('Miami') < 0; });
+  var greenProducts = products.filter(function(p) { return p.port.indexOf('U.S. domestic') < 0; });
   if (window.location.search.indexOf('x=s7') !== -1 && greenProducts.length) {
     generateSupplierLOIs(greenProducts, volume, delivery, packaging, payment, notes, company, contact, email, phone, ref, dateStr, validStr, incoterm, destPort, country);
   }
