@@ -147,7 +147,7 @@
 
 <div class="page-wrap">
   <h1>Letter of Intent</h1>
-  <p class="subtitle">Complete the form below to generate a non-binding Letter of Intent to purchase Brazilian commodities from Claduta Corporation. Fill in your requirements, generate the document, print or save as PDF, sign it, and email it to <strong>info@cladutacorp.com</strong>.</p>
+  <p class="subtitle">Complete the form below to generate a non-binding Letter of Intent to purchase Brazilian commodities from Claduta Corporation. Roasted coffee for U.S. delivery is also available in small lots out of Miami, FL. Fill in your requirements, generate the document, print or save as PDF, sign it, and email it to <strong>info@cladutacorp.com</strong>.</p>
 
   <form id="loi-form" onsubmit="return generateLOI()">
 
@@ -174,6 +174,7 @@
         <label><input type="checkbox" id="chkCoffee" onchange="toggleGrades()">Green Coffee <span style="font-size:11px;color:#999;">(select grades below)</span></label>
         <label><input type="checkbox" id="chkSugar" onchange="toggleGrades()">Cane Sugar <span style="font-size:11px;color:#999;">(select grade below)</span></label>
         <label><input type="checkbox" id="chkPepper" onchange="toggleGrades()">Black Pepper <span style="font-size:11px;color:#999;">(ASTA 570+)</span></label>
+        <label><input type="checkbox" id="chkRoasted" onchange="toggleGrades()">Roasted Coffee &mdash; Miami, FL <span style="font-size:11px;color:#999;">(small lots, ships from Miami)</span></label>
       </div>
 
       <div id="coffeeGrades" class="grade-options">
@@ -207,10 +208,37 @@
         <h3>Pepper Specification</h3>
         <p style="font-size:12px; color:#666; margin-bottom:6px;">ASTA 570+ Bold, FOB Vitória, Brazil</p>
       </div>
+
+      <div id="roastedGrades" class="grade-options">
+        <h3>Roasted Coffee &mdash; Miami, FL</h3>
+        <p style="font-size:12px; color:#666; margin-bottom:10px;">Roasted lots ship from Miami, Florida. Typical orders run from hundreds of pounds up to a few thousand. No container minimum.</p>
+        <div class="row">
+          <div>
+            <label class="required">Quantity (lbs)</label>
+            <input type="number" id="roastedQty" min="1" step="1" placeholder="e.g. 500">
+          </div>
+          <div>
+            <label class="required">Ship-To City, State</label>
+            <input type="text" id="roastedShipTo" placeholder="e.g. Miami, FL">
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <label>Roast / Grind Preference</label>
+            <input type="text" id="roastedSpec" placeholder="e.g. medium roast, whole bean">
+          </div>
+          <div>
+            <label>Bag Size</label>
+            <input type="text" id="roastedBag" placeholder="e.g. 1 lb, 5 lb, 25 lb">
+          </div>
+        </div>
+        <p style="font-size:12px; color:#666; margin-top:4px;">Pricing and payment terms for roasted lots are confirmed in Claduta&rsquo;s offer after we receive your LOI.</p>
+      </div>
     </div>
 
     <div class="form-section">
       <h2>Commercial Terms</h2>
+      <div id="greenTerms">
       <div class="row">
         <div>
           <label class="required">Volume</label>
@@ -252,6 +280,7 @@
           <input type="text" id="packaging" placeholder="e.g. 60kg jute bags, 50kg PP bags">
         </div>
       </div>
+      </div>
       <label>Additional Requirements or Notes</label>
       <textarea id="notes" placeholder="Certifications, special specs, frequency, etc."></textarea>
     </div>
@@ -288,6 +317,13 @@ function toggleGrades() {
   document.getElementById('coffeeGrades').classList.toggle('visible', document.getElementById('chkCoffee').checked);
   document.getElementById('sugarGrades').classList.toggle('visible', document.getElementById('chkSugar').checked);
   document.getElementById('pepperGrades').classList.toggle('visible', document.getElementById('chkPepper').checked);
+  var roasted = document.getElementById('chkRoasted').checked;
+  var green = document.getElementById('chkCoffee').checked || document.getElementById('chkSugar').checked || document.getElementById('chkPepper').checked;
+  document.getElementById('roastedGrades').classList.toggle('visible', roasted);
+  // Container-based terms apply only when a Brazil FOB product is selected
+  document.getElementById('greenTerms').style.display = (roasted && !green) ? 'none' : '';
+  ['volume','destPort','incoterm'].forEach(function(id) { document.getElementById(id).required = !(roasted && !green); });
+  ['roastedQty','roastedShipTo'].forEach(function(id) { document.getElementById(id).required = roasted; });
 }
 
 function generateLOI() {
@@ -295,7 +331,8 @@ function generateLOI() {
   var hasCoffee = document.getElementById('chkCoffee').checked;
   var hasSugar = document.getElementById('chkSugar').checked;
   var hasPepper = document.getElementById('chkPepper').checked;
-  if (!hasCoffee && !hasSugar && !hasPepper) {
+  var hasRoasted = document.getElementById('chkRoasted').checked;
+  if (!hasCoffee && !hasSugar && !hasPepper && !hasRoasted) {
     alert('Please select at least one product.');
     return false;
   }
@@ -316,6 +353,28 @@ function generateLOI() {
   var packaging = document.getElementById('packaging').value.trim() || 'Standard';
   var notes = document.getElementById('notes').value.trim();
 
+  // Roasted (Miami) lots: small-quantity, ships from Miami, FL
+  var onlyRoasted = hasRoasted && !hasCoffee && !hasSugar && !hasPepper;
+  var roastedQty = (document.getElementById('roastedQty').value || '').trim();
+  var roastedShipTo = document.getElementById('roastedShipTo').value.trim();
+  var roastedSpec = document.getElementById('roastedSpec').value.trim();
+  var roastedBag = document.getElementById('roastedBag').value.trim();
+  var roastedLine = '';
+  if (hasRoasted) {
+    roastedLine = Number(roastedQty).toLocaleString('en-US') + ' lbs roasted coffee, ship to ' + roastedShipTo + (roastedBag ? ', ' + roastedBag + ' bags' : '');
+  }
+  var destLabel = 'Destination Port';
+  var purpose = 'for import to ' + country;
+  if (onlyRoasted) {
+    volume = roastedLine;
+    destPort = roastedShipTo;
+    incoterm = 'Delivered from Miami, FL (terms confirmed in offer)';
+    payment = 'To be confirmed in Claduta\u2019s offer for roasted lots.';
+    packaging = roastedBag || 'Standard';
+    destLabel = 'Ship-To Location';
+    purpose = 'for delivery in ' + country;
+  }
+
   // Build product list
   var products = [];
   if (hasCoffee) {
@@ -334,6 +393,10 @@ function generateLOI() {
     products.push({ name: 'Brazilian Black Pepper', specs: 'ASTA 570+ Bold, Piperine min 4%, Moisture max 12%', port: 'FOB Vitória' });
   }
 
+  if (hasRoasted) {
+    products.push({ name: 'Roasted Coffee (Miami, FL)', specs: roastedSpec || 'Roast and grind to be specified', port: 'Ships from Miami, FL' });
+  }
+
   // Date and ref
   var now = new Date();
   var dateStr = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
@@ -346,7 +409,7 @@ function generateLOI() {
     var payload = JSON.stringify({
       ref:ref, company:company, country:country, address:address,
       contact:contact, title:title, email:email, phone:phone,
-      products:prodNames, specs:prodSpecs, volume:volume,
+      products:prodNames, specs:prodSpecs, volume:(onlyRoasted ? roastedLine : (hasRoasted ? volume + ' | ' + roastedLine : volume)),
       destPort:destPort, incoterm:incoterm, delivery:delivery,
       packaging:packaging, notes:notes
     });
@@ -404,19 +467,20 @@ function generateLOI() {
     '</div>' +
 
     '<p>Dear Claduta Corporation,</p>' +
-    '<p style="margin-top:8px;"><strong>' + company + '</strong> (&ldquo;Buyer&rdquo;) is pleased to submit this Letter of Intent (&ldquo;LOI&rdquo;) expressing our serious interest in purchasing Brazilian agricultural commodities from Claduta Corporation (&ldquo;Seller&rdquo;) for import to ' + country + '.</p>' +
+    '<p style="margin-top:8px;"><strong>' + company + '</strong> (&ldquo;Buyer&rdquo;) is pleased to submit this Letter of Intent (&ldquo;LOI&rdquo;) expressing our serious interest in purchasing ' + (onlyRoasted ? 'roasted coffee' : 'Brazilian agricultural commodities') + ' from Claduta Corporation (&ldquo;Seller&rdquo;) ' + purpose + '.</p>' +
 
     '<div class="section-title">1. Products of Interest</div>' +
-    '<table><tr><th>Product</th><th>Specification</th><th>Origin Port</th></tr>' + prodRows + '</table>' +
+    '<table><tr><th>Product</th><th>Specification</th><th>Origin / Ships From</th></tr>' + prodRows + '</table>' +
 
     '<div class="section-title">2. Commercial Terms</div>' +
     '<table>' +
       '<tr><th style="width:40%">Volume</th><td>' + volume + '</td></tr>' +
-      '<tr><th>Destination Port</th><td>' + destPort + ', ' + country + '</td></tr>' +
+      '<tr><th>' + destLabel + '</th><td>' + destPort + ', ' + country + '</td></tr>' +
       '<tr><th>Delivery Terms</th><td>' + incoterm + '</td></tr>' +
       '<tr><th>Target Delivery</th><td>' + delivery + '</td></tr>' +
       '<tr><th>Payment Terms</th><td>' + payment + '</td></tr>' +
       '<tr><th>Packaging</th><td>' + packaging + '</td></tr>' +
+      (hasRoasted && !onlyRoasted ? '<tr><th>Roasted Coffee (Miami, FL)</th><td>' + roastedLine + '. Pricing and payment terms confirmed in Claduta\u2019s offer.</td></tr>' : '') +
     '</table>' +
     (notes ? '<p><strong>Additional notes:</strong> ' + notes.replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</p>' : '') +
 
@@ -452,8 +516,9 @@ function generateLOI() {
   document.getElementById('loi-output').scrollIntoView({ behavior: 'smooth' });
 
   // Auto-generate supplier LOI(s) for internal use
-  if (window.location.search.indexOf('x=s7') !== -1) {
-    generateSupplierLOIs(products, volume, delivery, packaging, payment, notes, company, contact, email, phone, ref, dateStr, validStr, incoterm, destPort, country);
+  var greenProducts = products.filter(function(p) { return p.port.indexOf('Miami') < 0; });
+  if (window.location.search.indexOf('x=s7') !== -1 && greenProducts.length) {
+    generateSupplierLOIs(greenProducts, volume, delivery, packaging, payment, notes, company, contact, email, phone, ref, dateStr, validStr, incoterm, destPort, country);
   }
 
   return false;
